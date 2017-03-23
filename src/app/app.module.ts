@@ -4,12 +4,12 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
-import {ArtistComponent} from './artist/artist.component';
+import {ArtistsComponent} from './artists/artists.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        ArtistComponent
+        ArtistsComponent
     ],
 
     imports: [
@@ -19,7 +19,7 @@ import {ArtistComponent} from './artist/artist.component';
         RouterModule.forRoot([
             {
                 path: 'artists',
-                component: ArtistComponent
+                component: ArtistsComponent
             }
         ])
     ],
