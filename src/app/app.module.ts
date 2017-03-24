@@ -6,6 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {ArtistsComponent} from './artists/artists.component';
 import { SongsComponent } from './songs/songs.component';
+import { PlayerComponent } from './player/player.component';
 
 const appRoutes: Routes = [
     {
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         ArtistsComponent,
-        SongsComponent
+        SongsComponent,
+        PlayerComponent
     ],
 
     imports: [
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes)
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent, PlayerComponent]
 })
 export class AppModule {
 }
