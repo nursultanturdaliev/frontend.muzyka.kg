@@ -10747,7 +10747,7 @@ body.container {
   }
 
   .nav-xs .nav-primary > ul > li > a i {
-    width: auto;
+    width: 70px;
     float: none;
     display: block;
     font-size: 16px;
