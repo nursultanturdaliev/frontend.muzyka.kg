@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 import {ArtistsComponent} from './artists/artists.component';
 import { SongsComponent } from './songs/songs.component';
 import { PlayerComponent } from './player/player.component';
+import { AlertModule } from 'ng2-bootstrap';
 
 const appRoutes: Routes = [
     {
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     ],
 
     imports: [
+        AlertModule.forRoot(),
         BrowserModule,
         FormsModule,
         HttpModule,

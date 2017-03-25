@@ -1,3 +1,25 @@
-<div *ngFor="let artist of artists;">
-    {{artist.name}}
+<div *ngFor="let artist of artists;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+    <div class="item">
+        <div class="pos-rlt">
+            <div class="item-overlay opacity r r-2x bg-black">
+                <div class="center text-center m-t-n">
+                    <a href="http://aio.kg">
+                    <i class="fa fa-play-circle i-2x"></i></a>
+                </div>
+            </div>
+            <a href="http://aio.kg">
+                <img src="http://flatfull.com/themes/musik/images/m1.jpg" alt="{{artist.name}}"
+                    class="r r-2x img-full">
+            </a>
+        </div>
+        <div class="padder-v">
+            <a
+                href="http://aio.kg"
+                data-bjax="" data-target="#bjax-target" data-el="#bjax-el"
+                data-replace="true" class="text-ellipsis">{{artist.name}}</a>
+            <a href="http://aio.kg"
+               data-bjax="" data-target="#bjax-target" data-el="#bjax-el"
+               data-replace="true" class="text-ellipsis text-xs text-muted">{{artist.id}}</a>
+        </div>
+    </div>
 </div>
