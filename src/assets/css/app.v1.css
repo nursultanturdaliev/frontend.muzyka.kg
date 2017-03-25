@@ -11183,8 +11183,8 @@ body.container {
 
 .btn-success {
   color: #fff !important;
-  background-color: #1ab667;
-  border-color: #1ab667;
+  background-color: #9B26AF;
+  border-color: #9B26AF;
 }
 
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
@@ -11198,8 +11198,8 @@ body.container {
 }
 
 .btn-success.disabled, .btn-success.disabled:hover, .btn-success.disabled:focus, .btn-success.disabled:active, .btn-success.disabled.active, .btn-success[disabled], .btn-success[disabled]:hover, .btn-success[disabled]:focus, .btn-success[disabled]:active, .btn-success[disabled].active, fieldset[disabled] .btn-success, fieldset[disabled] .btn-success:hover, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success:active, fieldset[disabled] .btn-success.active {
-  background-color: #1ab667;
-  border-color: #1ab667;
+  background-color: #9B26AF;
+  border-color: #9B26AF;
 }
 
 .btn-info {
@@ -11725,7 +11725,7 @@ body.container {
 }
 
 .switch input:checked + span {
-  background-color: #1ab667;
+  background-color: #9B26AF;
 }
 
 .switch input:checked + span:after {
@@ -12233,7 +12233,7 @@ body.container {
 }
 
 .bg-success {
-  background-color: #1ab667;
+  background-color: #9B26AF;
   color: #a9f3ce;
 }
 
@@ -12242,7 +12242,7 @@ body.container {
 }
 
 .bg-success.lter, .bg-success .lter {
-  background-color: #2ad980;
+  background-color: #68EFAD;
 }
 
 .bg-success.dk, .bg-success .dk {
@@ -12250,11 +12250,11 @@ body.container {
 }
 
 .bg-success.dker, .bg-success .dker {
-  background-color: #108d4e;
+  background-color: #691A99;
 }
 
 .bg-success.bg, .bg-success .bg {
-  background-color: #1ab667;
+  background-color: #9B26AF;
 }
 
 .bg-success-ltest {
@@ -12674,7 +12674,7 @@ a.bg-light:hover, a.bg-light:focus {
 }
 
 .text-success {
-  color: #1ab667;
+  color: #9B26AF;
 }
 
 .text-success-lt {
@@ -13439,7 +13439,7 @@ a.bg-light:hover, a.bg-light:focus {
 }
 
 .avatar i.on {
-  background-color: #1ab667;
+  background-color: #9B26AF;
 }
 
 .avatar i.off {
