@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ArtistsService {
 
-    private artistsUrl = 'http://obon.aio.kg/api/artist/0/100';
+    private artistsUrl = 'http://localhost:8000/api/artist/0/100';
 
     constructor(private http: Http) {
     }
