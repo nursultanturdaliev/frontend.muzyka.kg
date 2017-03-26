@@ -161,3 +161,6 @@ header.navbar {
 aside > section{
   position: fixed;
 }
+#content{
+  padding-bottom: 60px;
+}
