@@ -158,9 +158,15 @@ header.navbar {
   position: fixed;
   width: 100%;
 }
-aside > section{
+
+aside > section {
   position: fixed;
 }
-#content{
+
+#content {
   padding-bottom: 60px;
+}
+
+#form-search {
+  width: 500px;
 }

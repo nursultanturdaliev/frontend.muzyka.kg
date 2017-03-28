@@ -1,90 +1,75 @@
 <section class="vbox">
-    <header class="bg-black lter header header-md navbar navbar-fixed-top-xs">
-        <div class="navbar-header aside bg-muzyka">
-            <a class="btn btn-link visible-xs"
-               data-toggle="class:nav-off-screen,open"
-               data-target="#nav,html"> <i class="icon-list"></i> </a>
-            <a href="index.html" class="navbar-brand text-lt"> <i class="icon-earphones"></i>
-                <img src="images/logo.png"
-                     alt="."
-                     class="hide"> <span
-                        class="hidden-nav-xs m-l-sm">Muzyka.kg</span> </a>
-            <a class="btn btn-link visible-xs" data-toggle="dropdown"
-               data-target=".user"> <i class="icon-settings"></i> </a>
+  <header class="bg-black lter header header-md navbar navbar-fixed-top-xs">
+    <div class="navbar-header aside bg-muzyka">
+      <a class="btn btn-link visible-xs"
+         data-toggle="class:nav-off-screen,open"
+         data-target="#nav,html"> <i class="icon-list"></i> </a>
+      <a href="index.html" class="navbar-brand text-lt"> <i class="icon-earphones"></i>
+        <img src="images/logo.png"
+             alt="."
+             class="hide"> <span
+          class="hidden-nav-xs m-l-sm">Muzyka.kg</span> </a>
+      <a class="btn btn-link visible-xs" data-toggle="dropdown"
+         data-target=".user"> <i class="icon-settings"></i> </a>
+    </div>
+    <ul class="nav navbar-nav hidden-xs">
+      <li>
+        <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted active">
+          <i class="fa fa-indent text"></i> <i class="fa fa-dedent text-active"></i>
+        </a>
+      </li>
+    </ul>
+    <form class="navbar-form navbar-left hidden-xs" role="search" id="form-search">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control input-sm no-border" placeholder="Ыр, Ырчы издөө...">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-sm bg-white btn-icon"><i class="fa fa-search"></i></button>
+          </span>
         </div>
-        <ul class="nav navbar-nav hidden-xs">
-            <li>
-                <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted active">
-                    <i class="fa fa-indent text"></i> <i class="fa fa-dedent text-active"></i>
-                </a>
-            </li>
-        </ul>
-        <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
-            <div class="form-group">
-                <div class="input-group"><span class="input-group-btn">
-          <button type="submit"
-                  class="btn btn-sm bg-white btn-icon rounded"><i
-                  class="fa fa-search"></i></button> </span>
-                    <input type="text"
-                           class="form-control input-sm no-border rounded"
-                           placeholder="Ыр, Ырчы издөө...">
-                </div>
-            </div>
-        </form>
-    </header>
-    <section>
-        <section class="hbox stretch"> <!-- .aside -->
-            <aside class="bg-black dk aside hidden-print" id="nav">
-                <section class="vbox">
-                    <section class="w-f-md scrollable">
-                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
-                             data-size="10px"
-                             data-railOpacity="0.2"> <!-- nav -->
-                            <nav class="nav-primary hidden-xs">
-                                <ul class="nav bg clearfix">
-                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted"> Ырлар дүйнөсү</li>
-
-                                    <li>
-                                        <a routerLink="/songs"> <i class="icon-disc icon text-info"></i> <span
-                                                class="font-bold">Ырлар</span>
-                                        </a></li>
-                                    <li><a routerLink="/artists"> <i class="icon-microphone icon text-success"></i>
-                                        <span class="font-bold">Ырчылар</span>
-                                    </a></li>
-                                    <li><a routerLink="/"> <i class="icon-music-tone-alt icon text-primary"></i>
-                                        <span class="font-bold">Композиторлор</span>
-                                    </a></li>
-                                    <li><a routerLink="/"> <i class="icon-pencil icon text-success-dk"></i>
-                                        <span class="font-bold">Акындар</span>
-                                    </a></li>
-                                    <li><a href="events.html"> <i class="icon-magic-wand icon text-primary-lter"></i> <b
-                                            class="badge bg-primary pull-right">6</b> <span
-                                            class="font-bold">Концерттер</span> </a></li>
-                                    <li><a href="listen.html"> <i class="icon-list icon text-warning"></i> <span
-                                            class="font-bold">Караоке</span>
-                                    </a></li>
-                                    <li><a href="video.html" data-target="#content" data-el="#bjax-el"
-                                           data-replace="true"> <i
-                                            class="icon-social-youtube icon text-danger-lt"></i> <span class="font-bold">Клиптер</span>
-                                    </a></li>
-                                    <li class="m-b hidden-nav-xs"></li>
-                                </ul>
-                            </nav> <!-- / nav --> </div>
-                    </section>
-                </section>
-
-            </aside> <!-- /.aside -->
-            <section id="content">
-                <section class="vbox">
-
-                    <router-outlet></router-outlet>
-
-                    <app-player></app-player>
-                </section>
-                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
-                   data-target="#nav,html"></a></section>
+      </div>
+    </form>
+  </header>
+  <section>
+    <section class="hbox stretch"> <!-- .aside -->
+      <aside class="bg-black dk aside hidden-print" id="nav">
+        <section class="vbox">
+          <section class="w-f-md scrollable">
+            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                 data-size="10px"
+                 data-railOpacity="0.2"> <!-- nav -->
+              <nav class="nav-primary hidden-xs">
+                <ul class="nav bg clearfix">
+                  <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted"> Ырлар дүйнөсү</li>
+                  <li>
+                    <a routerLink="/songs">
+                      <i class="icon-disc icon text-info"></i>
+                      <span class="font-bold">Ырлар</span></a>
+                  </li>
+                  <li>
+                    <a routerLink="/artists">
+                      <i class="icon-microphone icon text-success"></i>
+                      <span class="font-bold">Ырчылар</span>
+                    </a>
+                  </li>
+                  <li class="m-b hidden-nav-xs"></li>
+                </ul>
+              </nav> <!-- / nav --> </div>
+          </section>
         </section>
+
+      </aside> <!-- /.aside -->
+      <section id="content">
+        <section class="vbox">
+
+          <router-outlet></router-outlet>
+
+          <app-player></app-player>
+        </section>
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+           data-target="#nav,html"></a></section>
     </section>
+  </section>
 </section> <!-- Bootstrap --> <!-- App -->
 
 
