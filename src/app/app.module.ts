@@ -5,40 +5,41 @@ import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {ArtistsComponent} from './artists/artists.component';
-import { SongsComponent } from './songs/songs.component';
-import { PlayerComponent } from './player/player.component';
-import { AlertModule } from 'ng2-bootstrap';
+import {SongsComponent} from './songs/songs.component';
+import {PlayerComponent} from './player/player.component';
+import {AlertModule} from 'ng2-bootstrap';
+import {PlayerService} from './player.service';
 
 const appRoutes: Routes = [
-    {
-        path: 'artists',
-        component: ArtistsComponent,
-        // outlet: 'songs'
-    },
-    {
-        path: 'songs',
-        component: SongsComponent,
-        // outlet: 'artists'
-    }
+  {
+    path: 'artists',
+    component: ArtistsComponent,
+    // outlet: 'songs'
+  },
+  {
+    path: 'songs',
+    component: SongsComponent,
+    // outlet: 'artists'
+  }
 ]
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ArtistsComponent,
-        SongsComponent,
-        PlayerComponent
-    ],
+  declarations: [
+    AppComponent,
+    ArtistsComponent,
+    SongsComponent,
+    PlayerComponent
+  ],
 
-    imports: [
-        AlertModule.forRoot(),
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        RouterModule.forRoot(appRoutes)
-    ],
-    providers: [],
-    bootstrap: [AppComponent, PlayerComponent]
+  imports: [
+    AlertModule.forRoot(),
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
+  ],
+  providers: [PlayerService ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

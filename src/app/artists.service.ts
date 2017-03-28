@@ -15,7 +15,7 @@ export class ArtistsService {
         return this.http.get(this.artistsUrl)
             .toPromise()
             .then(response => response.json() as Artists[])
-            .catch(this.handleError)
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

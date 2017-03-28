@@ -15,7 +15,7 @@ export class SongsService {
         return this.http.get(this.songUrl)
             .toPromise()
             .then(response => response.json() as Songs[])
-            .catch(this.handleError)
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

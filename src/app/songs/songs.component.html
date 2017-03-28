@@ -4,7 +4,7 @@
       <section class="vbox animated fadeInUp">
         <section class="scrollable">
           <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
-            <li *ngFor="let song of songs" class="list-group-item">
+            <li *ngFor="let song of songs; let i = index" class="list-group-item" (click)="play(song, songs,i )">
               <div class="pull-right m-l"><a href="#" class="m-r-sm"><i
                 class="icon-cloud-download"></i></a> <a href="#" class="m-r-sm"><i
                 class="icon-plus"></i></a> <a href="#"><i class="icon-close"></i></a></div>
