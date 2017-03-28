@@ -5,31 +5,33 @@ import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {ArtistsComponent} from './artists/artists.component';
-import {SongsComponent} from './songs/songs.component';
-import {PlayerComponent} from './player/player.component';
-import {AlertModule} from 'ng2-bootstrap';
+import { SongsComponent } from './songs/songs.component';
+import { PlayerComponent } from './player/player.component';
+import { AlertModule } from 'ng2-bootstrap';
+import { SearchComponent } from './search/search.component';
 import {PlayerService} from './player.service';
 
 const appRoutes: Routes = [
-  {
-    path: 'artists',
-    component: ArtistsComponent,
-    // outlet: 'songs'
-  },
-  {
-    path: 'songs',
-    component: SongsComponent,
-    // outlet: 'artists'
-  }
-]
+    {
+        path: 'artists',
+        component: ArtistsComponent,
+        // outlet: 'songs'
+    },
+    {
+        path: 'songs',
+        component: SongsComponent,
+        // outlet: 'artists'
+    }
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ArtistsComponent,
-    SongsComponent,
-    PlayerComponent
-  ],
+    declarations: [
+        AppComponent,
+        ArtistsComponent,
+        SongsComponent,
+        PlayerComponent,
+        SearchComponent
+    ],
 
   imports: [
     AlertModule.forRoot(),

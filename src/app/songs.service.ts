@@ -8,8 +8,7 @@ export class SongsService {
 
     private songUrl = 'http://localhost:8000/api/song/0/100';
 
-    constructor(private http: Http) {
-    }
+    constructor(private http: Http) {}
 
     getSongs(): Promise<Songs[]> {
         return this.http.get(this.songUrl)
