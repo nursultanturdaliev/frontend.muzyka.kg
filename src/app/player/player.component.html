@@ -33,10 +33,12 @@
                 </div>
               </div>
             </div>
-            <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
-            <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
-            <div class="hidden-xs hidden-sm"><a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
-              <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a></div>
+            <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted">{{formatTime(audio.currentTime)}}</div>
+            <div class="hidden-xs hidden-sm jp-duration text-xs text-muted">{{formatTime(audio.duration)}}</div>
+            <div class="hidden-xs hidden-sm">
+              <a class="jp-mute" title="mute" (click)="toggleMute(0)" [ngClass]="{'hid': unMuted}"><i class="icon-volume-2"></i></a>
+              <a class="jp-unmute" title="unmute" (click)="toggleMute(1)" [ngClass]="{'hid': muted}"><i class="icon-volume-off"></i></a>
+            </div>
             <div class="hidden-xs hidden-sm jp-volume">
               <div class="jp-volume-bar dk">
                 <div class="jp-volume-bar-value lter"></div>
