@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
-import {Artists} from "./artists";
+import {Artist} from "./artist";
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -11,10 +11,10 @@ export class ArtistsService {
     constructor(private http: Http) {
     }
 
-    getArtists(): Promise<Artists[]> {
+    getArtists(): Promise<Artist[]> {
         return this.http.get(this.artistsUrl)
             .toPromise()
-            .then(response => response.json() as Artists[])
+            .then(response => response.json() as Artist[])
             .catch(this.handleError);
     }
 

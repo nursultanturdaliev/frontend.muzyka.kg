@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Songs} from '../songs';
+import {Song} from '../song';
 import {SongsService} from '../songs.service';
 import {PlayerService} from '../player.service';
 @Component({
@@ -9,12 +9,12 @@ import {PlayerService} from '../player.service';
   providers: [SongsService]
 })
 export class SongsComponent implements OnInit {
-  private songs: Songs[];
+  private songs: Song[];
 
   constructor(private songsService: SongsService, private playerService: PlayerService) {
   }
 
-  play(song: Songs, songs, index) {
+  play(song: Song, songs, index) {
     this.playerService.setCurrentSong(song);
     this.playerService.setSongs(songs);
     this.playerService.setIndex(index);

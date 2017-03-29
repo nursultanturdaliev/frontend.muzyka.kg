@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import {SearchService} from "../search.service";
 import {Search} from "../search";
+import {Component} from "@angular/core";
+import {SearchResult} from "../SearchResult";
 
 @Component({
   selector: 'app-search',
@@ -8,17 +9,22 @@ import {Search} from "../search";
   styleUrls: ['./search.component.css'],
   providers: [SearchService]
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
+  _searchText: any;
   private search: Search[];
-  constructor(private searchService: SearchService) { }
+  private result: SearchResult;
 
-  public searchChange(fileInput: any){
-    console.log(fileInput);
+  constructor(private searchService: SearchService) {
   }
-  ngOnInit() {
-    this.searchService.getResults()
-      .then(search => this.search = search);
+
+  set searchText(searchText: string) {
+    this._searchText = searchText;
+    this.searchService.getResults(searchText)
+      .then(result => {
+        this.result = result;
+      })
   }
+
 
 }

@@ -1,4 +1,4 @@
-export class Songs {
+export class Song {
     public id;
     public title;
     public uuid;

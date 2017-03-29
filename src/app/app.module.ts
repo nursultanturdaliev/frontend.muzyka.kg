@@ -21,6 +21,11 @@ const appRoutes: Routes = [
         path: 'songs',
         component: SongsComponent,
         // outlet: 'artists'
+    },
+    {
+        path: 'search',
+        component: SearchComponent,
+        // outlet: 'artists'
     }
 ];
 

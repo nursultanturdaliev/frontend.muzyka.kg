@@ -1,0 +1,12 @@
+.search{
+  margin: 60px 200px 0 200px;
+  width: auto;
+}
+.artist{
+  color: #691A98;
+  font-style: oblique;
+}
+.song{
+  color: #1AB567;
+  font-style: oblique;
+}

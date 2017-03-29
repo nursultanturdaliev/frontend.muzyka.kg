@@ -1,4 +1,4 @@
-export class Artists {
+export class Artist {
     public id;
     public name;
 }

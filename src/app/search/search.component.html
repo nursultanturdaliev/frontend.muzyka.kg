@@ -1,17 +1,26 @@
-
 <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
   <div class="form-group">
     <div class="input-group"><span class="input-group-btn">
           <button type="submit"
                   class="btn btn-sm bg-white btn-icon rounded"><i
             class="fa fa-search"></i></button> </span>
-      <input (change)="searchChange(this.valueOf())" type="text"
+      <input [(ngModel)]="searchText" type="text" name="text"
              class="form-control input-sm no-border rounded"
              placeholder="Ыр, Ырчы издөө...">
     </div>
   </div>
 </form>
-
-<!--<p *ngFor="let text of search">-->
-  <!--{{text}}-->
-<!--</p>-->
+<div class="list-group search" *ngIf="result">
+  <a href="#" class="list-group-item artist" *ngFor="let artist of result.artists">
+      {{artist.name}}
+    <span class="pull-right">
+      <img width="20px" src="../../assets/img/artist.png" alt="">
+    </span>
+  </a>
+  <a href="#" class="list-group-item song" *ngFor="let song of result.songs">
+    {{song.title}}
+    <span class="pull-right">
+      <img width="24px" src="../../assets/img/song.png" alt="">
+    </span>
+  </a>
+</div>

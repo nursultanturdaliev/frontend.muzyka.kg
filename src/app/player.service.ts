@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {Songs} from './songs';
+import {Song} from './song';
 
 
 @Injectable()
 export class PlayerService {
-  private currentSong: Songs;
+  private currentSong: Song;
   private callbacks: any;
   private songs: any;
   private index: any;
 
-  setCurrentSong(song: Songs) {
+  setCurrentSong(song: Song) {
     this.currentSong = song;
     this.currentSongChanged();
   }
