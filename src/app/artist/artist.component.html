@@ -1,0 +1,40 @@
+<section id="content" *ngIf="artist">
+  <section class="vbox">
+    <section class="w-f-md">
+      <section class="hbox stretch bg-black dker row"> <!-- side content -->
+        <aside class="col-sm-5 no-padder" id="sidebar">
+          <section class="vbox animated fadeInUp">
+            <section class="scrollable">
+              <div class="m-t-n-xxs item pos-rlt">
+                <div class="bottom gd bg-info wrapper-lg">
+                  <span class="pull-right text-sm">
+                    <a href="{{artist.instagram}}" class="btn btn-sm btn-icon btn-dark"><i
+                      class="fa fa-2-5x fa-instagram"></i></a>
+                  </span>
+                  <span class="h2 font-thin">{{artist.name}} {{artist.lastname}}</span></div>
+                <img class="img-full" src="../../assets/img/artist_page.jpg" alt="...">
+              </div>
+              <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+                <li *ngFor="let song of artist.songs; let i = index" class="list-group-item"
+                    (click)="play(song, songs,i )">
+                  <div class="pull-right m-l">
+                    <a href="#" class="m-r-sm">
+                      <i class="icon-cloud-download"></i>
+                    </a>
+                  </div>
+                  <a href="#" class="jp-play-me m-r-sm pull-left">
+                    <i class="icon-control-play text"></i>
+                    <i class="icon-control-pause text-active"></i>
+                  </a>
+                  <div class="clear text-ellipsis"><span>{{song.title}}</span> <span class="text-muted"> -- 04:35</span>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </section>
+        </aside>
+      </section>
+    </section>
+  </section>
+  <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+</section>

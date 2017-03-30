@@ -25,6 +25,4 @@ export class SearchComponent {
         this.result = result;
       })
   }
-
-
 }

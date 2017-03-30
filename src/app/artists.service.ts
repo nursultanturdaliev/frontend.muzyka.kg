@@ -6,20 +6,20 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ArtistsService {
 
-    private artistsUrl = 'http://localhost:8000/api/artist/0/100';
+  private artistsUrl = 'http://localhost:8000/api/artist/0/100';
 
-    constructor(private http: Http) {
-    }
+  constructor(private http: Http) {
+  }
 
-    getArtists(): Promise<Artist[]> {
-        return this.http.get(this.artistsUrl)
-            .toPromise()
-            .then(response => response.json() as Artist[])
-            .catch(this.handleError);
-    }
+  getArtists(): Promise<Artist[]> {
+    return this.http.get(this.artistsUrl)
+      .toPromise()
+      .then(response => response.json() as Artist[])
+      .catch(this.handleError);
+  }
 
-    private handleError(error: any): Promise<any> {
-        console.error('Error!', error);
-        return Promise.reject(error.message || error);
-    }
+  private handleError(error: any): Promise<any> {
+    console.error('Error!', error);
+    return Promise.reject(error.message || error);
+  }
 }

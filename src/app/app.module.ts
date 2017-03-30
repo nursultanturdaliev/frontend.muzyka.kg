@@ -5,38 +5,42 @@ import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
 import {ArtistsComponent} from './artists/artists.component';
-import { SongsComponent } from './songs/songs.component';
-import { PlayerComponent } from './player/player.component';
-import { AlertModule } from 'ng2-bootstrap';
-import { SearchComponent } from './search/search.component';
+import {SongsComponent} from './songs/songs.component';
+import {PlayerComponent} from './player/player.component';
+import {AlertModule} from 'ng2-bootstrap';
+import {SearchComponent} from './search/search.component';
 import {PlayerService} from './player.service';
+import {ArtistComponent} from './artist/artist.component';
+import {ArtistService} from "./artist.service";
 
 const appRoutes: Routes = [
-    {
-        path: 'artists',
-        component: ArtistsComponent,
-        // outlet: 'songs'
-    },
-    {
-        path: 'songs',
-        component: SongsComponent,
-        // outlet: 'artists'
-    },
-    {
-        path: 'search',
-        component: SearchComponent,
-        // outlet: 'artists'
-    }
+  {
+    path: 'artists',
+    component: ArtistsComponent,
+  },
+  {
+    path: 'songs',
+    component: SongsComponent,
+  },
+  {
+    path: 'search',
+    component: SearchComponent,
+  },
+  {
+    path: 'artist/:id',
+    component: ArtistComponent,
+  }
 ];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ArtistsComponent,
-        SongsComponent,
-        PlayerComponent,
-        SearchComponent
-    ],
+  declarations: [
+    AppComponent,
+    ArtistsComponent,
+    SongsComponent,
+    PlayerComponent,
+    SearchComponent,
+    ArtistComponent
+  ],
 
   imports: [
     AlertModule.forRoot(),
@@ -45,7 +49,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PlayerService ],
+  providers: [PlayerService, ArtistService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

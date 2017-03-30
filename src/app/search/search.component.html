@@ -11,7 +11,7 @@
   </div>
 </form>
 <div class="list-group search" *ngIf="result">
-  <a href="#" class="list-group-item artist" *ngFor="let artist of result.artists">
+  <a [routerLink]="['artist', artist.id ]" class="list-group-item artist" *ngFor="let artist of result.artists">
       {{artist.name}}
     <span class="pull-right">
       <img width="20px" src="../../assets/img/artist.png" alt="">
