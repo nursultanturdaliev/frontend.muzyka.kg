@@ -8,6 +8,8 @@ export class PlayerService {
   private callbacks: any;
   private songs: any;
   private index: any;
+  public currentTime: any;
+  public currentSongTitle: any;
 
   setCurrentSong(song: Song) {
     this.currentSong = song;
@@ -47,5 +49,16 @@ export class PlayerService {
   getPreviousSong() {
     this.index--;
     return this.songs[this.index];
+  }
+
+  getSongs() {
+    return this.songs;
+  }
+
+  setCurrentTime(number: number) {
+    this.currentTime = number;
+  }
+  getCurrentTime(): any {
+    return this.currentTime;
   }
 }

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PlayerService} from '../player.service';
-import {Songs} from '../songs';
-import {min} from "rxjs/operator/min";
+
 
 @Component({
   selector: 'app-player',
@@ -11,6 +10,7 @@ import {min} from "rxjs/operator/min";
 
 export class PlayerComponent implements OnInit {
   audio: any;
+  song: any;
   promise: any;
   playing: boolean;
   paused: boolean;
@@ -29,14 +29,13 @@ export class PlayerComponent implements OnInit {
     this.paused = true;
     this.muted = true;
     this.unMuted = false;
+    this.playerService.currentTime = 0;
   }
 
   play() {
     this.audio.src = this.getCurrentURL();
-    if (!this.audio) {
-      alert('ok');
-    }
     this.audio.play();
+    this.audio.currentTime = this.playerService.currentTime;
     this.promise = new Promise((resolve, reject) => {
       this.playing = true;
       this.paused = false;
@@ -62,21 +61,35 @@ export class PlayerComponent implements OnInit {
     return minStr + ':' + secStr;
   }
 
-  pause() {
+  pause(currentTime) {
+    this.playerService.currentTime = currentTime;
     this.toggle();
     this.audio.pause();
   }
 
   next() {
-    this.playerService.setCurrentSong(this.playerService.getNextSong());
+    this.playerService.currentTime = 0;
+    var song = this.playerService.getNextSong();
+    this.playerService.currentSongTitle = song.title;
+    this.playerService.setCurrentSong(song);
   }
 
   previous() {
-    this.playerService.setCurrentSong(this.playerService.getPreviousSong());
+    this.playerService.currentTime = 0;
+    var song = this.playerService.getPreviousSong();
+    this.playerService.currentSongTitle = song.title;
+    this.playerService.setCurrentSong(song);
   }
 
   private getCurrentURL() {
-    return 'http://obon.aio.kg/song/' + this.playerService.getCurrentSong().uuid + '/stream';
+    if (!this.playerService.getCurrentSong()) {
+      var song = this.playerService.getSongs()[0];
+      this.playerService.currentSongTitle = song.title;
+      return 'http://obon.aio.kg/song/' + song.uuid + '/stream';
+    }
+    else
+      return 'http://obon.aio.kg/song/' + this.playerService.getCurrentSong().uuid + '/stream';
+
   }
 
   private toggle() {
@@ -90,4 +103,7 @@ export class PlayerComponent implements OnInit {
     this.unMuted = !this.unMuted;
   }
 
+  getCurrentSongTitle() {
+    return this.playerService.currentSongTitle;
+  }
 }
