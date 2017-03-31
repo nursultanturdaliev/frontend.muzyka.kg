@@ -5,7 +5,7 @@ import {Http} from "@angular/http";
 @Injectable()
 export class ArtistService {
 
-  private artistUrl = 'http://localhost:8000/api/artist/';
+  private artistUrl = 'http://api.aio.kg/app_dev.php/api/artist/';
 
   constructor(private http: Http) {
   }

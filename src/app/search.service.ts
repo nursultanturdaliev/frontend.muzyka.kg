@@ -6,7 +6,7 @@ import {SearchResult} from "./SearchResult";
 @Injectable()
 export class SearchService {
 
-  private searchUrl = 'http://localhost:8000/api/search/';
+  private searchUrl = 'http://api.aio.kg/app_dev.php/api/search/';
 
   constructor(private http: Http) {
   }
