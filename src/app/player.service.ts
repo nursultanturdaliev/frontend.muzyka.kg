@@ -54,11 +54,4 @@ export class PlayerService {
   getSongs() {
     return this.songs;
   }
-
-  setCurrentTime(number: number) {
-    this.currentTime = number;
-  }
-  getCurrentTime(): any {
-    return this.currentTime;
-  }
 }

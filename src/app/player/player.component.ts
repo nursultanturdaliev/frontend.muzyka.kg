@@ -1,9 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {PlayerService} from '../player.service';
+import {Http} from '@angular/http';
+import {SongsService} from '../songs.service';
 
 
 @Component({
   selector: 'app-player',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.css'],
 })
@@ -16,11 +19,23 @@ export class PlayerComponent implements OnInit {
   paused: boolean;
   muted: boolean;
   unMuted: boolean;
+  currentTime: any;
+  progressBar: any;
 
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService, private songService: SongsService, private ref: ChangeDetectorRef, private http: Http) {
     this.audio = new Audio();
     this.playerService.onCurrentSongChange(() => {
       this.play();
+    });
+    setInterval(() => {
+      this.currentTime = this.formatTime(this.audio.currentTime);
+      this.progressBar = this.formatTime(this.audio.currentTime);
+      this.progressBar = this.getProgressBar();
+      this.ref.markForCheck();
+    }, 1000);
+
+    this.audio.addEventListener('ended', () => {
+      this.songService.incrementPlayCount(this.playerService.getCurrentSong() );
     });
   }
 
@@ -29,7 +44,9 @@ export class PlayerComponent implements OnInit {
     this.paused = true;
     this.muted = true;
     this.unMuted = false;
-    this.playerService.currentTime = 0;
+    this.progressBar = 0;
+    this.playerService.currentTime = '00:00';
+    this.currentTime = this.playerService.currentTime;
   }
 
   play() {
@@ -39,6 +56,7 @@ export class PlayerComponent implements OnInit {
     this.promise = new Promise((resolve, reject) => {
       this.playing = true;
       this.paused = false;
+      this.currentTime = this.formatTime(this.playerService.currentTime);
       this.audio.addEventListener('playing', () => {
         resolve(true);
       });
@@ -59,6 +77,11 @@ export class PlayerComponent implements OnInit {
     var minStr = minutes > 9 ? minutes.toString() : '0' + minutes.toString();
     var secStr = seconds > 9 ? seconds.toString() : '0' + seconds.toString();
     return minStr + ':' + secStr;
+  }
+
+  getProgressBar() {
+    var currentPosition = this.audio.currentTime * 100 / this.audio.duration;
+    return currentPosition;
   }
 
   pause(currentTime) {
@@ -104,6 +127,10 @@ export class PlayerComponent implements OnInit {
   }
 
   getCurrentSongTitle() {
+    return this.playerService.currentSongTitle;
+  }
+
+  getCurrentSongUuid() {
     return this.playerService.currentSongTitle;
   }
 }

@@ -11,7 +11,8 @@ import {AlertModule} from 'ng2-bootstrap';
 import {SearchComponent} from './search/search.component';
 import {PlayerService} from './player.service';
 import {ArtistComponent} from './artist/artist.component';
-import {ArtistService} from "./artist.service";
+import {ArtistService} from './artist.service';
+import {SongsService} from "./songs.service";
 
 const appRoutes: Routes = [
   {
@@ -49,7 +50,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PlayerService, ArtistService],
+  providers: [PlayerService, ArtistService, SongsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
