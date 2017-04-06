@@ -1,7 +1,7 @@
 +function ($) { "use strict";
 
   $(function(){
- 	
+
 	// sparkline
 	var sr, sparkline = function($re){
 		$(".sparkline").each(function(){
@@ -22,9 +22,9 @@
 	// easypie
 	var easypie = function(){
 	$('.easypiechart').each(function(){
-		var $this = $(this), 
-		$data = $this.data(), 
-		$step = $this.find('.step'), 
+		var $this = $(this),
+		$data = $this.data(),
+		$step = $this.find('.step'),
 		$target_value = parseInt($($data.target).text()),
 		$value = 0;
 		$data.barColor || ( $data.barColor = function($percent) {
@@ -46,7 +46,7 @@
 		});
 	};
 	easypie();
-  
+
 	// datepicker
 	$(".datepicker-input").each(function(){ $(this).datepicker();});
 
@@ -94,7 +94,7 @@
     $(document).on('updateNav', function(){
       $self.slimScroll($data);
     });
-	});	
+	});
 
 	// portlet
 	$('.portlet').each(function(){
@@ -126,22 +126,22 @@
 		$('tbody [type="checkbox"]',$table).prop('checked', $checked);
 	});
 
-	// random progress
-	$(document).on('click', '[data-toggle^="progress"]', function(e){
+	// random progressBarWidth
+	$(document).on('click', '[data-toggle^="progressBarWidth"]', function(e){
 		e && e.preventDefault();
 
 		var $el = $(e.target),
 		$target = $($el.data('target'));
 		$('.progress', $target).each(
 			function(){
-				var $max = 50, $data, $ps = $('.progress-bar',this).last();
+				var $max = 50, $data, $ps = $('.progressBarWidth-bar',this).last();
 				($(this).hasClass('progress-xs') || $(this).hasClass('progress-sm')) && ($max = 100);
 				$data = Math.floor(Math.random()*$max)+'%';
 				$ps.css('width', $data).attr('data-original-title', $data);
 			}
 		);
 	});
-	
+
 	// add notes
 	function addMsg($msg){
 		var $el = $('.nav-user'), $n = $('.count:first', $el), $v = parseInt($n.text());
@@ -156,7 +156,7 @@
                     'Sophi sent you a email<br>'+
                     '<small class="text-muted">1 minutes ago</small>'+
                   '</span>'+
-                '</a>';	
+                '</a>';
   setTimeout(function(){addMsg($msg);}, 1500);
 
 	//chosen

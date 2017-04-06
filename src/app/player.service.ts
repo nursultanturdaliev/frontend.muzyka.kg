@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Song} from './song';
+import {count} from 'rxjs/operator/count';
 
 
 @Injectable()
@@ -42,13 +43,25 @@ export class PlayerService {
   }
 
   getNextSong() {
-    this.index++;
-    return this.songs[this.index];
+    if (this.index == this.getSongs().length - 1) {
+      this.index = 0;
+      return this.songs[this.index];
+    }
+    else {
+      this.index++;
+      return this.songs[this.index];
+    }
   }
 
   getPreviousSong() {
-    this.index--;
-    return this.songs[this.index];
+    if (!this.index) {
+      this.index = this.getSongs().length - 1;
+      return this.songs[this.index];
+    }
+    else {
+      this.index--;
+      return this.songs[this.index];
+    }
   }
 
   getSongs() {

@@ -17,10 +17,13 @@ export class PlayerComponent implements OnInit {
   promise: any;
   playing: boolean;
   paused: boolean;
+  random: boolean;
+  notRandom: boolean;
   muted: boolean;
   unMuted: boolean;
   currentTime: any;
   progressBar: any;
+  progressBarWidth: any;
 
   constructor(private playerService: PlayerService, private songService: SongsService, private ref: ChangeDetectorRef, private http: Http) {
     this.audio = new Audio();
@@ -31,11 +34,13 @@ export class PlayerComponent implements OnInit {
       this.currentTime = this.formatTime(this.audio.currentTime);
       this.progressBar = this.formatTime(this.audio.currentTime);
       this.progressBar = this.getProgressBar();
+      this.progressBarWidth = document.getElementById('progress-bar').offsetWidth;
       this.ref.markForCheck();
     }, 1000);
 
     this.audio.addEventListener('ended', () => {
-      this.songService.incrementPlayCount(this.playerService.getCurrentSong() );
+      this.songService.incrementPlayCount(this.playerService.getCurrentSong());
+      this.next();
     });
   }
 
@@ -44,9 +49,12 @@ export class PlayerComponent implements OnInit {
     this.paused = true;
     this.muted = true;
     this.unMuted = false;
+    this.random = false;
+    this.notRandom = true;
     this.progressBar = 0;
     this.playerService.currentTime = '00:00';
     this.currentTime = this.playerService.currentTime;
+    this.progressBarWidth = document.getElementById('progress-bar').offsetWidth;
   }
 
   play() {
@@ -90,6 +98,11 @@ export class PlayerComponent implements OnInit {
     this.audio.pause();
   }
 
+  changeCurrentTime(event) {
+    var currentTime = this.audio.duration * event.offsetX / this.progressBarWidth;
+    this.audio.currentTime = ~~currentTime;
+  }
+
   next() {
     this.playerService.currentTime = 0;
     var song = this.playerService.getNextSong();
@@ -118,6 +131,13 @@ export class PlayerComponent implements OnInit {
   private toggle() {
     this.playing = !this.playing;
     this.paused = !this.paused;
+  }
+
+  shuffle() {
+    this.random = !this.random;
+    this.notRandom = !this.notRandom;
+    console.log(this.random);
+    console.log(this.notRandom);
   }
 
   toggleMute(data) {
