@@ -27,28 +27,34 @@
             <div class="hdiv classhidden-sm jp-current-time text-xs text-muted">{{currentTime}}</div>
             <div class="hidden-xs hidden-sm jp-duration text-xs text-muted">{{formatTime(audio.duration)}}</div>
             <div class="hidden-xs hidden-sm">
-              <a class="jp-mute" title="mute" (click)="toggleMute(0)" [ngClass]="{'hid': unMuted}">
+              <a class="jp-mute" title="mute" (click)="toggleMute()" [ngClass]="{'hid': unMuted}">
                 <i class="icon-volume-2"></i>
               </a>
-              <a class="jp-unmute" title="unmute" (click)="toggleMute(1)" [ngClass]="{'hid': muted}">
+              <a class="jp-unmute" title="unmute" (click)="toggleMute()" [ngClass]="{'hid': muted}">
                 <i class="icon-volume-off"></i>
               </a>
             </div>
             <div class="hidden-xs hidden-sm jp-volume">
-              <div class="jp-volume-bar dk">
-                <div class="jp-volume-bar-value lter"></div>
+              <div class="jp-volume-bar dk" id="volume-bar" (click)="changeVolume($event)">
+                <div class="jp-volume-bar-value lter" [style.width.%]="volume"></div>
               </div>
             </div>
             <div>
-              <a class="jp-shuffle" title="shuffle" (click)="shuffle(0)" [ngClass]="{'hid':random }">
+              <a class="jp-shuffle" title="shuffle" (click)="shuffle()" [ngClass]="{'hid':random }">
                 <i class="icon-shuffle text-muted"></i>
               </a>
-              <a class="jp-shuffle-off" title="shuffle off" (click)="shuffle(1)" [ngClass]="{'hid': notRandom}">
+              <a class="jp-shuffle-off" title="shuffle off" (click)="shuffle()" [ngClass]="{'hid': notRandom}">
                 <i class="icon-shuffle text-lt"></i>
               </a>
             </div>
-            <div><a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a> <a
-              class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a></div>
+            <div>
+              <a class="jp-repeat" title="repeat" (click)="repeatOrNot()" [ngClass]="{'hid': repeat}">
+                <i class="icon-loop text-muted"></i>
+              </a>
+              <a class="jp-repeat-off" title="repeat off" (click)="repeatOrNot()" [ngClass]="{'hid': notRepeat}">
+                <i class="icon-loop text-lt"></i>
+              </a>
+            </div>
             <div class="hide"><a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
               <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
             </div>

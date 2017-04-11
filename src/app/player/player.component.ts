@@ -19,10 +19,15 @@ export class PlayerComponent implements OnInit {
   paused: boolean;
   random: boolean;
   notRandom: boolean;
+  repeat: boolean;
+  notRepeat: boolean;
   muted: boolean;
   unMuted: boolean;
   currentTime: any;
   progressBar: any;
+  volume: any;
+  tempVolume: any;
+  volumeBarWidth: any;
   progressBarWidth: any;
 
   constructor(private playerService: PlayerService, private songService: SongsService, private ref: ChangeDetectorRef, private http: Http) {
@@ -35,12 +40,13 @@ export class PlayerComponent implements OnInit {
       this.progressBar = this.formatTime(this.audio.currentTime);
       this.progressBar = this.getProgressBar();
       this.progressBarWidth = document.getElementById('progress-bar').offsetWidth;
+      this.volumeBarWidth = document.getElementById('volume-bar').offsetWidth;
       this.ref.markForCheck();
     }, 1000);
 
     this.audio.addEventListener('ended', () => {
       this.songService.incrementPlayCount(this.playerService.getCurrentSong());
-      this.next();
+      this.next(this.repeat);
     });
   }
 
@@ -51,10 +57,14 @@ export class PlayerComponent implements OnInit {
     this.unMuted = false;
     this.random = false;
     this.notRandom = true;
+    this.repeat = false;
+    this.notRepeat = true;
     this.progressBar = 0;
+    this.volume = 90;
     this.playerService.currentTime = '00:00';
     this.currentTime = this.playerService.currentTime;
     this.progressBarWidth = document.getElementById('progress-bar').offsetWidth;
+    this.volumeBarWidth = document.getElementById('volume-bar').offsetWidth;
   }
 
   play() {
@@ -103,16 +113,26 @@ export class PlayerComponent implements OnInit {
     this.audio.currentTime = ~~currentTime;
   }
 
-  next() {
+  changeVolume(event) {
+    this.audio.volume = event.offsetX / this.volumeBarWidth;
+    this.volume = this.audio.volume * 100;
+  }
+
+  next(isRepeat) {
     this.playerService.currentTime = 0;
-    var song = this.playerService.getNextSong();
+    var song = null;
+    if (isRepeat) {
+      song = this.playerService.getCurrentSong();
+    } else {
+      song = this.playerService.getNextSong(this.random);
+    }
     this.playerService.currentSongTitle = song.title;
     this.playerService.setCurrentSong(song);
   }
 
   previous() {
     this.playerService.currentTime = 0;
-    var song = this.playerService.getPreviousSong();
+    var song = this.playerService.getPreviousSong(this.random);
     this.playerService.currentSongTitle = song.title;
     this.playerService.setCurrentSong(song);
   }
@@ -136,14 +156,24 @@ export class PlayerComponent implements OnInit {
   shuffle() {
     this.random = !this.random;
     this.notRandom = !this.notRandom;
-    console.log(this.random);
-    console.log(this.notRandom);
   }
 
-  toggleMute(data) {
-    this.audio.volume = data;
+  toggleMute() {
+    if (this.muted) {
+      this.audio.volume = 0;
+      this.tempVolume = this.volume;
+      this.volume = this.audio.volume * 100;
+    } else {
+      this.volume = this.tempVolume;
+      this.audio.volume = this.volume / 100;
+    }
     this.muted = !this.muted;
     this.unMuted = !this.unMuted;
+  }
+
+  repeatOrNot() {
+    this.repeat = !this.repeat;
+    this.notRepeat = !this.notRepeat;
   }
 
   getCurrentSongTitle() {

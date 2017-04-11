@@ -42,24 +42,44 @@ export class PlayerService {
     this.index = index;
   }
 
-  getNextSong() {
+  getNextSong(isRandom) {
+    var random = 0;
+    if (isRandom) {
+      random = Math.floor(Math.random() * (99 - 0 + 1)) + 0;
+    }
+
     if (this.index == this.getSongs().length - 1) {
-      this.index = 0;
+      this.index = 0 + random;
       return this.songs[this.index];
     }
     else {
       this.index++;
+      if ((this.index + random) > this.getSongs().length) {
+        this.index = this.getSongs().length + this.index - random;
+      } else {
+        this.index = this.index + random;
+      }
       return this.songs[this.index];
     }
   }
 
-  getPreviousSong() {
+  getPreviousSong(isRandom) {
+    var random = 0;
+    if (isRandom) {
+      random = Math.floor(Math.random() * (99 - 0 + 1)) + 0;
+    }
     if (!this.index) {
       this.index = this.getSongs().length - 1;
       return this.songs[this.index];
     }
     else {
       this.index--;
+      if ((this.index + random) > this.getSongs().length) {
+        this.index = this.getSongs().length + this.index - random;
+      } else {
+        this.index = this.index + random;
+      }
+      console.log(this.getCurrentSong());
       return this.songs[this.index];
     }
   }
