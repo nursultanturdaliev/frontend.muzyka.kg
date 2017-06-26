@@ -1,68 +1,116 @@
 <section class="vbox">
-  <header class="bg-black lter header header-md navbar navbar-fixed-top-xs">
-    <div class="navbar-header aside bg-muzyka">
-      <a class="btn btn-link visible-xs"
-         data-toggle="class:nav-off-screen,open"
-         data-target="#nav,html"> <i class="icon-list"></i> </a>
-      <a href="index.html" class="navbar-brand text-lt"> <i class="icon-earphones"></i>
-        <img src="images/logo.png"
-             alt="."
-             class="hide"> <span
-          class="hidden-nav-xs m-l-sm">Muzyka.kg</span> </a>
-      <a class="btn btn-link visible-xs" data-toggle="dropdown"
-         data-target=".user"> <i class="icon-settings"></i> </a>
-    </div>
-    <ul class="nav navbar-nav hidden-xs">
-      <li>
-        <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted active">
-          <i class="fa fa-indent text"></i> <i class="fa fa-dedent text-active"></i>
-        </a>
-      </li>
-    </ul>
-    <app-search></app-search>
-  </header>
-  <section>
-    <section class="hbox stretch"> <!-- .aside -->
-      <aside class="bg-black dk aside hidden-print" id="nav">
-        <section class="vbox">
-          <section class="w-f-md scrollable">
-            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
-                 data-size="10px"
-                 data-railOpacity="0.2"> <!-- nav -->
-              <nav class="nav-primary hidden-xs">
-                <ul class="nav bg clearfix">
-                  <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted"> Ырлар дүйнөсү</li>
-                  <li>
-                    <a routerLink="/songs">
-                      <i class="icon-disc icon text-info"></i>
-                      <span class="font-bold">Ырлар</span></a>
-                  </li>
-                  <li>
-                    <a routerLink="/artists">
-                      <i class="icon-microphone icon text-success"></i>
-                      <span class="font-bold">Ырчылар</span>
-                    </a>
-                  </li>
-                  <li class="m-b hidden-nav-xs"></li>
-                </ul>
-              </nav>
-            </div>
-          </section>
+    <header class="bg-black lter header header-md navbar navbar-fixed-top-xs">
+        <div class="navbar-header aside bg-muzyka">
+            <a class="btn btn-link visible-xs"
+               data-toggle="class:nav-off-screen,open"
+               data-target="#nav,html"> <i class="icon-list"></i> </a>
+            <a href="index.html" class="navbar-brand text-lt"> <i class="icon-earphones"></i>
+                <img src="images/logo.png"
+                     alt="."
+                     class="hide"> <span
+                        class="hidden-nav-xs m-l-sm">Muzyka.kg</span> </a>
+            <a class="btn btn-link visible-xs" data-toggle="dropdown"
+               data-target=".user"> <i class="icon-settings"></i> </a>
+        </div>
+        <ul class="nav navbar-nav hidden-xs">
+            <li>
+                <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted active">
+                    <i class="fa fa-indent text"></i> <i class="fa fa-dedent text-active"></i>
+                </a>
+            </li>
+        </ul>
+        <app-search></app-search>
+    </header>
+    <section>
+        <section class="hbox stretch"> <!-- .aside -->
+            <aside class="bg-black dk aside hidden-print" id="nav">
+                <section class="vbox">
+                    <section class="w-f-md scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                             data-size="10px"
+                             data-railOpacity="0.2"> <!-- nav -->
+                            <nav class="nav-primary hidden-xs">
+                                <ul class="nav bg clearfix">
+                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted"> Ырлар дүйнөсү</li>
+                                    <li>
+                                        <a routerLink="/songs">
+                                            <i class="icon-disc icon text-info"></i>
+                                            <span class="font-bold">Ырлар</span></a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/artists">
+                                            <i class="icon-microphone icon text-success"></i>
+                                            <span class="font-bold">Ырчылар</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/topsongs">
+                                            <i class="icon-microphone icon text-success"></i>
+                                            <span class="font-bold">Top Songs</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/newsongs">
+                                            <i class="icon-microphone icon text-success"></i>
+                                            <span class="font-bold">New Songs</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/randomsongs">
+                                            <i class="icon-microphone icon text-success"></i>
+                                            <span class="font-bold">Random Songs</span>
+                                        </a>
+                                    </li>
+                                    <li class="m-b hidden-nav-xs"></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </section>
+                </section>
+
+            </aside>
+            <section id="content">
+                <section class="vbox">
+                    <!--<section class="scrollable padder-lg w-f-md" id="bjax-target">-->
+
+                        <!--<app-randomsongs>-->
+                        <!--</app-randomsongs>-->
+
+                        <!--<div class="row">-->
+                            <!--<app-newsongs>-->
+                            <!--</app-newsongs>-->
+
+                            <!--<app-topsongs>-->
+                            <!--</app-topsongs>-->
+                        <!--</div>-->
+
+                        <!--<div class="row m-t-lg m-b-lg">-->
+                            <!--<div class="col-sm-6">-->
+                                <!--<div class="bg-muzyka wrapper-md r"><a href="#"> <span class="h4 m-b-xs block"><i-->
+                                        <!--class=" icon-user-follow i-lg"></i> Жеке баракча ачыңыз</span> <span-->
+                                        <!--class="&lt;!&ndash;text-muted&ndash;&gt;">Save and share your playlist with your friends when you log in or create an account.</span>-->
+                                <!--</a></div>-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-6">-->
+                                <!--<div class="bg-success wrapper-md r"><a href="#"> <span class="h4 m-b-xs block"><i-->
+                                        <!--class="icon-cloud-download i-lg"></i> Мuzyka.kg тиркемесин көчүрүп алыңыз</span>-->
+                                    <!--<span-->
+                                            <!--class="&lt;!&ndash;text-muted&ndash;&gt;">Get the apps for desktop and mobile to start listening music at anywhere and anytime.</span>-->
+                                <!--</a></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                    <!--</section>-->
+
+                    <router-outlet></router-outlet>
+
+                    <app-player></app-player>
+                </section>
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                   data-target="#nav,html"></a>
+            </section>
         </section>
-
-      </aside>
-      <section id="content">
-        <section class="vbox">
-
-          <router-outlet></router-outlet>
-
-          <app-player></app-player>
-        </section>
-        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
-           data-target="#nav,html"></a>
-      </section>
     </section>
-  </section>
 </section>
 
 

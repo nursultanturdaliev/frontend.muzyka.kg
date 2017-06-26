@@ -13,6 +13,9 @@ import {PlayerService} from './player.service';
 import {ArtistComponent} from './artist/artist.component';
 import {ArtistService} from './artist.service';
 import {SongsService} from "./songs.service";
+import { TopsongsComponent } from './topsongs/topsongs.component';
+import { NewsongsComponent } from './newsongs/newsongs.component';
+import {RandomsongsComponent} from "./randomsongs/randomsongs.component";
 
 const appRoutes: Routes = [
   {
@@ -22,6 +25,18 @@ const appRoutes: Routes = [
   {
     path: 'songs',
     component: SongsComponent,
+  },
+  {
+    path: 'topsongs',
+    component: TopsongsComponent,
+  },
+  {
+    path: 'newsongs',
+    component: NewsongsComponent,
+  },
+  {
+    path: 'randomsongs',
+    component: RandomsongsComponent,
   },
   {
     path: 'search',
@@ -40,7 +55,10 @@ const appRoutes: Routes = [
     SongsComponent,
     PlayerComponent,
     SearchComponent,
-    ArtistComponent
+    ArtistComponent,
+    TopsongsComponent,
+    NewsongsComponent,
+    RandomsongsComponent
   ],
 
   imports: [

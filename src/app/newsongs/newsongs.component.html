@@ -1,0 +1,22 @@
+            <div class="col-md-7">
+                <h3 class="font-thin">Жаңы ырлар</h3>
+                <div class="row row-sm">
+                    <div *ngFor="let song of newSongs; let i = index;" class="col-xs-6 col-sm-3">
+                        <div class="item">
+                            <div class="pos-rlt">
+                                <div class="item-overlay opacity r r-2x bg-black">
+                                    <div class="center text-center m-t-n">
+                                        <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
+                                    </div>
+                                </div>
+                                <a href="#"><img src="http://flatfull.com/themes/musik/images/a2.png" alt=""
+                                                 class="r r-2x img-full"></a>
+                            </div>
+                            <div class="padder-v">
+                                <a href="#" class="text-ellipsis">{{song.title}}</a>
+                                <a href="#" class="text-ellipsis text-xs text-muted">{{song.uuid}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
