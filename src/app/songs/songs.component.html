@@ -3,19 +3,48 @@
     <aside class="col-sm-5 no-padder" id="sidebar">
       <section class="vbox animated fadeInUp">
         <section class="scrollable">
-          <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
-            <li *ngFor="let song of songs; let i = index" class="list-group-item" (click)="play(song, songs,i )">
-              <div class="pull-right m-l"><a href="#" class="m-r-sm"><i
-                class="icon-cloud-download"></i></a> <a href="#" class="m-r-sm"><i
-                class="icon-plus"></i></a> <a href="#"><i class="icon-close"></i></a></div>
-              <a href="#" class="jp-play-me m-r-sm pull-left"> <i
-                class="icon-control-play text"></i> <i
-                class="icon-control-pause text-active"></i> </a>
-              <div class="clear text-ellipsis"><span>{{song.title}}</span> <span class="text-muted"> -- {{song.duration}}</span>
-              </div>
-            </li>
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+                <li *ngFor="let song of songs; let i = index" class="list-group-item" (click)="play(song, songs,i )">
+                  <div class="clear text-ellipsis">
+                    <div class="row">
+                      <div class="col-md-1">
+                        <a href="#" class="jp-play-me m-r-sm pull-left"> <i
+                          class="icon-control-play text"></i> <i
+                          class="icon-control-pause text-active"></i>
+                        </a>
+                      </div>
+                      <div class="col-md-6 col-xs-4">
+                        <p>
+                          <strong>{{song.artist_as_one}}</strong>
+                        </p>
+                      </div>
+                      <div class="col-xs-2">{{song.title}}</div>
+                      <div class="text-muted col-md-1 col-xs-2">{{song.duration}}</div>
+                    </div>
+                  </div>
+                </li>
 
-          </ul>
+              </ul>
+            </div>
+            <div class="col-md-4" id="song-lyrics">
+              <div *ngIf="playerService.currentSong">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <strong>{{playerService.currentSong.artist_as_one}}</strong>
+                    -
+                    <span>{{playerService.currentSong.title}}</span>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse in">
+                    <div class="panel-body text-sm">
+                      <pre>{{playerService.currentSong.lyrics}}</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </section>
     </aside> <!-- / side content -->

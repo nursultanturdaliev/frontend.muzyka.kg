@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+aside.aside .vbox {
+  background-color: #232C32;
+}
+
+html {
+  background-color: white;
+}
+
+.bg-black.auto .list-group-item, .bg-black .auto .list-group-item {
+  background-color: white;
+}
+
+.bg-black.dker, .bg-black .dker {
+  background-color: white;
+}
+
+#song-lyrics pre {
+  background-color: white;
+  border: none;
+}
+
+.bg-black.auto .list-group-item:hover, .bg-black.auto .list-group-item:focus, .bg-black.auto .list-group-item:active, .bg-black.auto .list-group-item.active, .bg-black .auto .list-group-item:hover, .bg-black .auto .list-group-item:focus, .bg-black .auto .list-group-item:active, .bg-black .auto .list-group-item.active {
+  background-color: #691A99 !important;
+}

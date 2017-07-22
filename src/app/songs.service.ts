@@ -6,8 +6,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class SongsService {
 
-  private songUrl = 'http://api.aio.kg/app_dev.php/api/song/0/100';
-  private baseURL = 'http://api.aio.kg/api';
+  private songUrl = 'http://localhost:8000/api/song/0/100';
+  private baseURL = 'http://localhost:8000/api';
 
   constructor(private http: Http) {
   };

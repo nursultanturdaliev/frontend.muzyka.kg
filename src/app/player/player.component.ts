@@ -141,10 +141,10 @@ export class PlayerComponent implements OnInit {
     if (!this.playerService.getCurrentSong()) {
       var song = this.playerService.getSongs()[0];
       this.playerService.currentSongTitle = song.title;
-      return 'http://obon.aio.kg/song/' + song.uuid + '/stream';
+      return 'http://localhost:8000/' + song.uuid + '/stream';
     }
     else
-      return 'http://obon.aio.kg/song/' + this.playerService.getCurrentSong().uuid + '/stream';
+      return 'http://127.0.0.1:8000/song/' + this.playerService.getCurrentSong().uuid + '/stream';
 
   }
 
