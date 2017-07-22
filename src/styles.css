@@ -15,6 +15,10 @@ html {
   background-color: white;
 }
 
+#song-lyrics {
+  padding-left: 0 !important;
+}
+
 #song-lyrics pre {
   background-color: white;
   border: none;
@@ -22,4 +26,28 @@ html {
 
 .bg-black.auto .list-group-item:hover, .bg-black.auto .list-group-item:focus, .bg-black.auto .list-group-item:active, .bg-black.auto .list-group-item.active, .bg-black .auto .list-group-item:hover, .bg-black .auto .list-group-item:focus, .bg-black .auto .list-group-item:active, .bg-black .auto .list-group-item.active {
   background-color: #691A99 !important;
+}
+
+#main-content {
+  margin: 15px 0 15px 0;
+}
+
+#main-content .list-group-item {
+  cursor: pointer;
+}
+
+.fa-1-5x {
+  font-size: 1.5em;
+}
+
+.bg-muzyka.dk, .bg-muzyka .dk {
+  cursor: pointer;
+}
+
+.content {
+  overflow-y: auto;
+}
+
+#volume-bar {
+  background-color: white;
 }
