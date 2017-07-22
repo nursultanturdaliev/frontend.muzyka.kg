@@ -36,11 +36,4 @@ export class SongsComponent implements OnInit {
   currentSong() {
     return this.playerService.getCurrentSong();
   }
-
-  isCurrentSong(song:Song) {
-    if (!this.playerService.getCurrentSong()) {
-      return false;
-    }
-    return this.playerService.getCurrentSong().uuid == song.uuid;
-  }
 }

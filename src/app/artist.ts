@@ -4,5 +4,6 @@ export class Artist {
     public name;
     public lastname;
     public instagram;
+    public profile;
     songs: Song[];
 }

@@ -5,14 +5,14 @@ import {count} from 'rxjs/operator/count';
 
 @Injectable()
 export class PlayerService {
-  private currentSong: Song;
-  private callbacks: any;
-  private songs: any;
-  private index: any;
-  public currentTime: any;
-  public currentSongTitle: any;
+  private currentSong:Song;
+  private callbacks:any;
+  private songs:any;
+  private index:any;
+  public currentTime:any;
+  public currentSongTitle:any;
 
-  setCurrentSong(song: Song) {
+  setCurrentSong(song:Song) {
     this.currentSong = song;
     this.currentSongChanged();
   }
@@ -34,11 +34,11 @@ export class PlayerService {
     this.callbacks.push(f);
   }
 
-  setSongs(songs: any) {
+  setSongs(songs:any) {
     this.songs = songs;
   }
 
-  setIndex(index: any) {
+  setIndex(index:any) {
     this.index = index;
   }
 
@@ -86,5 +86,12 @@ export class PlayerService {
 
   getSongs() {
     return this.songs;
+  }
+
+  isCurrentSong(song:Song) {
+    if (!this.getCurrentSong()) {
+      return false;
+    }
+    return this.getCurrentSong().uuid == song.uuid;
   }
 }

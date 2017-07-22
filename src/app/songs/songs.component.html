@@ -15,8 +15,8 @@
                       (click)="play(song, songs,i )">
                     <div class="row">
                       <div class="col-md-1 col-xs-2">
-                        <i class="fa fa-play fa-1-5x" *ngIf="!isCurrentSong(song)"></i>
-                        <i class="fa fa-pause fa-1-5x" *ngIf="isCurrentSong(song)"></i>
+                        <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
+                        <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
                       </div>
                       <div class="col-md-5 col-xs-4">
                         <strong>{{song.artist_as_one}}</strong>

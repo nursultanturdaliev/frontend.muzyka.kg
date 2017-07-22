@@ -14,7 +14,7 @@
                                         </div>
                                     </div>
                                     <a href="http://aio.kg">
-                                        <img src="http://flatfull.com/themes/musik/images/m1.jpg" alt="{{artist.name}}"
+                                        <img src="{{artist.profile}}" alt="{{artist.name}}"
                                              class="r r-2x img-full">
                                     </a>
                                 </div>
@@ -22,7 +22,9 @@
                                     <a
                                             href="http://aio.kg"
                                             data-bjax="" data-target="#bjax-target" data-el="#bjax-el"
-                                            data-replace="true" class="text-ellipsis">{{artist.name}}</a>
+                                            data-replace="true" class="text-ellipsis">
+                                      {{artist.name}} {{artist.lastname}}
+                                    </a>
                                     <a href="http://aio.kg"
                                        data-bjax="" data-target="#bjax-target" data-el="#bjax-el"
                                        data-replace="true" class="text-ellipsis text-xs text-muted">{{artist.id}}</a>

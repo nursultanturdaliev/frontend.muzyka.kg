@@ -2,17 +2,16 @@ import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
 import {Artist} from "./artist";
 import 'rxjs/add/operator/toPromise';
+import {ConfigService} from "./services/config.service";
 
 @Injectable()
 export class ArtistsService {
 
-    private artistsUrl = 'http://api.aio.kg/app_dev.php/api/artist/0/100';
-
-  constructor(private http: Http) {
+  constructor(private http: Http, private configService:ConfigService) {
   }
 
   getArtists(): Promise<Artist[]> {
-    return this.http.get(this.artistsUrl)
+    return this.http.get(this.configService.API_URL + '/artist')
       .toPromise()
       .then(response => response.json() as Artist[])
       .catch(this.handleError);

@@ -16,8 +16,9 @@ import {SongsService} from "./songs.service";
 import { TopsongsComponent } from './topsongs/topsongs.component';
 import { NewsongsComponent } from './newsongs/newsongs.component';
 import {RandomsongsComponent} from "./randomsongs/randomsongs.component";
+import {ConfigService} from "./services/config.service";
 
-const appRoutes: Routes = [
+const appRoutes:Routes = [
   {
     path: 'artists',
     component: ArtistsComponent,
@@ -68,7 +69,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [PlayerService, ArtistService, SongsService],
+  providers: [PlayerService, ArtistService, SongsService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 import {PlayerService} from '../player.service';
 import {Http} from '@angular/http';
 import {SongsService} from '../songs.service';
+import {ConfigService} from "../services/config.service";
 
 
 @Component({
@@ -30,7 +31,10 @@ export class PlayerComponent implements OnInit {
   volumeBarWidth: any;
   progressBarWidth: any;
 
-  constructor(private playerService: PlayerService, private songService: SongsService, private ref: ChangeDetectorRef, private http: Http) {
+  constructor(private playerService: PlayerService,
+              private songService: SongsService,
+              private ref: ChangeDetectorRef,
+              private configService: ConfigService) {
     this.audio = new Audio();
     this.playerService.onCurrentSongChange(() => {
       this.play();
@@ -141,10 +145,10 @@ export class PlayerComponent implements OnInit {
     if (!this.playerService.getCurrentSong()) {
       var song = this.playerService.getSongs()[0];
       this.playerService.currentSongTitle = song.title;
-      return 'http://localhost:8000/' + song.uuid + '/stream';
+      return this.configService.API_URL + song.uuid + '/stream';
     }
     else
-      return 'http://127.0.0.1:8000/song/' + this.playerService.getCurrentSong().uuid + '/stream';
+      return this.configService.API_URL+ '/song/' + this.playerService.getCurrentSong().uuid + '/stream';
 
   }
 
