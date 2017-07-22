@@ -51,3 +51,15 @@ html {
 #volume-bar {
   background-color: white;
 }
+
+.vertical-middle {
+  margin-top: 10px;;
+}
+
+.bg-muzyka.bg, .bg-muzyka .bg, .bg-muzyka.lter, .bg-muzyka .lter {
+  background-color: #4cb6cb !important;
+}
+
+.bg-muzyka .text-muted {
+  color: #4cb6cb !important;
+}

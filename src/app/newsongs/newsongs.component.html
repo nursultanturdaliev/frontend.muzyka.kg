@@ -1,22 +1,29 @@
-            <div class="col-md-7">
-                <h3 class="font-thin">Жаңы ырлар</h3>
-                <div class="row row-sm">
-                    <div *ngFor="let song of newSongs; let i = index;" class="col-xs-6 col-sm-3">
-                        <div class="item">
-                            <div class="pos-rlt">
-                                <div class="item-overlay opacity r r-2x bg-black">
-                                    <div class="center text-center m-t-n">
-                                        <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                    </div>
-                                </div>
-                                <a href="#"><img src="http://flatfull.com/themes/musik/images/a2.png" alt=""
-                                                 class="r r-2x img-full"></a>
-                            </div>
-                            <div class="padder-v">
-                                <a href="#" class="text-ellipsis">{{song.title}}</a>
-                                <a href="#" class="text-ellipsis text-xs text-muted">{{song.uuid}}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="row row-sm" id="main-content">
+
+  <div *ngFor="let song of newSongs; let i = index;" (click)="play(song, songs,i )"
+       class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+    <div class="item">
+      <div class="pos-rlt">
+        <div class="bottom">
+          <span class="badge bg-info m-l-sm m-b-sm">{{song.duration}}</span>
+        </div>
+        <div class="item-overlay opacity r r-2x bg-black">
+          <div class="center text-center m-t-n" (click)="play(song, songs,i )">
+            <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
+            <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
+          </div>
+        </div>
+        <a href="#" (click)="play(song, songs,i)">
+          <img src="{{song.artists[0].profile}}" alt=""
+               class="r r-2x img-full">
+        </a>
+      </div>
+      <div class="padder-v" (click)="play(song, songs,i )"><a href="#" class="text-ellipsis">
+        <div><strong>{{song.artist_as_one}}</strong></div>
+        {{song.title}}
+      </a>
+      </div>
+    </div>
+  </div>
+</div>
+

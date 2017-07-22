@@ -12,17 +12,27 @@
                 </header>
                 <ul class="list-group alt">
                   <li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"
-                      (click)="play(song, songs,i )">
+                      (click)="play(song, songs,i )" [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="row">
-                      <div class="col-md-1 col-xs-2">
-                        <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
-                        <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
+                      <div class="col-md-1 col-xs-2"><span _ngcontent-lon-7="" class="pull-left thumb-sm avatar m-r">
+                            <img alt="{{song.artist_as_one}}" src="{{song.artists[0].profile}}">
+                        </span>
                       </div>
                       <div class="col-md-5 col-xs-4">
-                        <strong>{{song.artist_as_one}}</strong>
+                        <div class="vertical-middle"><strong>{{song.artist_as_one}}</strong></div>
                       </div>
-                      <div class="col-xs-4">{{song.title}}</div>
-                      <div class="text-muted col-md-1 col-xs-2">{{song.duration}}</div>
+                      <div class="col-xs-4">
+                        <div class="vertical-middle">{{song.title}}</div>
+                      </div>
+                      <div class="text-muted col-md-1 col-xs-2">
+                        <div class="vertical-middle">{{song.duration}}</div>
+                      </div>
+                      <div class="col-xs-1">
+                        <div class="vertical-middle">
+                          <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
+                          <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
+                        </div>
+                      </div>
                     </div>
                   </li>
                 </ul>
@@ -47,6 +57,6 @@
           </div>
         </section>
       </section>
-    </aside> <!-- / side content -->
+    </aside>
   </section>
 </section>

@@ -27,4 +27,26 @@ export class SongsService {
       .toPromise()
       .then(response => response.json());
   }
+
+  getRandomSongs():Promise<Song[]> {
+    return this.http.get(this.configService.API_URL + '/song/random/5')
+      .toPromise()
+      .then(response => response.json() as Song[])
+      .catch(this.handleError);
+  }
+
+  getTopSongs():Promise<Song[]> {
+    return this.http.get(this.configService.API_URL + '/song/top/0/10')
+      .toPromise()
+      .then(response => response.json() as Song[])
+      .catch(this.handleError);
+  }
+
+
+  getNewSongs():Promise<Song[]> {
+    return this.http.get(this.configService.API_URL + '/song/newreleases/3')
+      .toPromise()
+      .then(response => response.json() as Song[])
+      .catch(this.handleError);
+  }
 }

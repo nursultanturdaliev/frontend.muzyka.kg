@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {NewSongsService} from "../newSongs.service";
 import {Song} from "../song";
 import {PlayerService} from "../player.service";
+import {SongsService} from "../songs.service";
 
 @Component({
   selector: 'app-newsongs',
   templateUrl: './newsongs.component.html',
-  styleUrls: ['./newsongs.component.css'],
-  providers: [NewSongsService]
+  styleUrls: ['./newsongs.component.css']
 })
 export class NewsongsComponent implements OnInit {
 
   private newSongs: Song[];
-  constructor(private newSongsService: NewSongsService, private playerService: PlayerService) {
+  constructor(private newSongsService: SongsService, private playerService: PlayerService) {
   }
 
   play(song: Song, songs, index) {
