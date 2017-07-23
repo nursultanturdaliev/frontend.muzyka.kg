@@ -83,9 +83,16 @@ html {
 .bg-primary {
   background-color: #691a99;
 }
-.bg-primary.dk, .bg-primary .dk{
+
+.bg-primary.dk, .bg-primary .dk {
   background-color: #9b26af;
 }
-.list-group-item.active{
+
+.list-group-item.active {
   background-color: #9b26af !important;
+}
+
+#songs .fa-instagram {
+  margin-left: 10px;
+  margin-top: 5px;
 }

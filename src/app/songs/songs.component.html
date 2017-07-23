@@ -10,13 +10,15 @@
                   <input #searchInput type="text" class="input-md form-control" name="searchText"
                          placeholder="Издөө" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
                 </header>
-                <ul class="list-group alt">
+                <ul class="list-group alt" id="songs">
                   <li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"
                       (click)="playerService.play(song, songs,i )" [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="row">
-                      <div class="col-md-1 col-xs-2"><span _ngcontent-lon-7="" class="pull-left thumb-sm avatar m-r">
+                      <div class="col-md-1 col-xs-2">
+                        <span class="pull-left thumb-sm avatar m-r" *ngIf="song.artists[0].profile">
                             <img alt="{{song.artist_as_one}}" src="{{song.artists[0].profile}}">
                         </span>
+                        <i class="fa fa-instagram fa-2x" *ngIf="!song.artists[0].profile"></i>
                       </div>
                       <div class="col-md-5 col-xs-4">
                         <div class="vertical-middle"><strong>{{song.artist_as_one}}</strong></div>
