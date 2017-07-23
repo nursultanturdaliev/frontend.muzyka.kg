@@ -1,27 +1,25 @@
 <div class="row row-sm" id="main-content">
 
-  <div *ngFor="let song of randomSongs; let i = index;" (click)="play(song, songs,i )"
+  <div *ngFor="let song of randomSongs; let i = index;"
        class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
     <div class="item">
-      <div class="pos-rlt">
+      <div class="pos-rlt" (click)="playerService.play(song, songs,i )">
         <div class="bottom">
           <span class="badge bg-info m-l-sm m-b-sm">{{song.duration}}</span>
         </div>
         <div class="item-overlay opacity r r-2x bg-black">
-          <div class="center text-center m-t-n" (click)="play(song, songs,i )">
+          <div class="center text-center m-t-n">
             <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
             <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
           </div>
         </div>
-        <a href="#" (click)="play(song, songs,i)">
-          <img src="{{song.artists[0].profile}}" alt=""
-               class="r r-2x img-full">
-        </a>
+        <img src="{{song.artists[0].profile}}" alt="{{song.artists[0].name}}" class="r r-2x img-full">
       </div>
-      <div class="padder-v" (click)="play(song, songs,i )"><a href="#" class="text-ellipsis">
-        <div><strong>{{song.artist_as_one}}</strong></div>
+      <div class="padder-v">
+        <a class="text-ellipsis" *ngFor="let artist of song.artists" routerLink="/artist/{{artist.id}}">
+          <strong>{{artist.name}} {{artist.lastname}}</strong>
+        </a>
         {{song.title}}
-      </a>
       </div>
     </div>
   </div>

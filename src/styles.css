@@ -86,3 +86,6 @@ html {
 .bg-primary.dk, .bg-primary .dk{
   background-color: #9b26af;
 }
+.list-group-item.active{
+  background-color: #9b26af !important;
+}
