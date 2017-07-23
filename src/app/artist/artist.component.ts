@@ -3,6 +3,9 @@ import {ArtistService} from "../artist.service";
 import {Artist} from "../artist";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
+import {SongsService} from "../songs.service";
+import {Song} from "../song";
+import {PlayerService} from "../player.service";
 
 @Component({
   selector: 'app-artist',
@@ -11,11 +14,15 @@ import {Subscription} from "rxjs";
 })
 export class ArtistComponent implements OnInit, OnDestroy {
 
-  private artist: Artist;
-  private artistId: number;
-  private sub: Subscription;
+  private artist:Artist;
+  private artistId:number;
+  private randomSongs:Song[];
+  private sub:Subscription;
 
-  constructor(private artistService: ArtistService, private route: ActivatedRoute) {
+  constructor(private artistService:ArtistService,
+              private songService:SongsService,
+              private playerService:PlayerService,
+              private route:ActivatedRoute) {
   }
 
 
@@ -27,10 +34,14 @@ export class ArtistComponent implements OnInit, OnDestroy {
     this.artistService.getArtist(this.artistId)
       .then(artist => {
         this.artist = artist;
-      })
+      });
+    this.songService.getRandomSongs()
+      .then(randomSongs => {
+        this.randomSongs = randomSongs
+      });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy():void {
     this.sub.unsubscribe();
   }
 

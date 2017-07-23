@@ -42,7 +42,10 @@
               <div *ngIf="playerService.currentSong">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <strong>{{playerService.currentSong.artist_as_one}}</strong>
+                    <a *ngFor="let artist of playerService.currentSong.artists; let last=last;"
+                       routerLink="/artist/{{artist.id}}">
+                      <strong>{{artist.name}} {{artist.lastname}}<span *ngIf="!last">, </span></strong>
+                    </a>
                     -
                     <span>{{playerService.currentSong.title}}</span>
                   </div>

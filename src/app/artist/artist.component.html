@@ -1,38 +1,69 @@
-<section id="content" *ngIf="artist">
+<section id="main-content" *ngIf="artist" class="container-fluid">
   <section class="vbox">
     <section class="w-f-md">
       <section class="hbox stretch bg-black dker row"> <!-- side content -->
-        <aside class="col-sm-5 no-padder" id="sidebar">
+        <aside class="col-sm-5" id="sidebar">
           <section class="vbox animated fadeInUp">
-            <section class="scrollable">
-              <div class="m-t-n-xxs item pos-rlt">
-                <div class="bottom gd bg-info wrapper-lg">
-                  <span class="pull-right text-sm">
-                    <a href="{{artist.instagram}}" class="btn btn-sm btn-icon btn-dark"><i
-                      class="fa fa-2-5x fa-instagram"></i></a>
-                  </span>
-                  <span class="h2 font-thin">{{artist.name}} {{artist.lastname}}</span></div>
-                <img class="img-full" src="../../assets/img/artist_page.jpg" alt="...">
-              </div>
-              <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
-                <li *ngFor="let song of artist.songs; let i = index" class="list-group-item"
-                    (click)="play(song, songs,i )">
-                  <div class="pull-right m-l">
-                    <a href="#" class="m-r-sm">
-                      <i class="icon-cloud-download"></i>
-                    </a>
+            <section class="panel panel-default">
+              <header class="panel-heading">
+                <div class="m-t-n-xxs item pos-rlt">
+                  <div class="row content">
+                    <div class="col-md-6">
+                      <img class="img-full" src="{{artist.profile}}" alt="{{artist.name}}">
+                    </div>
+                    <div class="col-md-6">
+                      <a href="{{artist.instagram}}" target="_blank" class="btn btn-icon">
+                        <i class="fa fa-instagram fa-2x"></i>
+                      </a>
+                    <span class="pull-right text-sm">
+                      <span class="h2 font-thin">{{artist.name}} {{artist.lastname}}</span>
+                    </span>
+                    </div>
                   </div>
-                  <a href="#" class="jp-play-me m-r-sm pull-left">
-                    <i class="icon-control-play text"></i>
-                    <i class="icon-control-pause text-active"></i>
-                  </a>
-                  <div class="clear text-ellipsis"><span>{{song.title}}</span> <span class="text-muted"> -- 04:35</span>
+                </div>
+              </header>
+              <ul class="list-group" *ngIf="artist">
+                <li class="list-group-item" *ngFor="let song of artist.songs">
+                  <div class="media"><span class="pull-left thumb-sm">
+                      <!--<img src="{{song.artists[0].profile}}" alt="..." class="img-circle">-->
+                    </span>
+                    <div class="pull-right text-success m-t-sm"><i class="fa fa-circle"></i></div>
+                    <div class="media-body">
+                      <div><a href="#">{{song.artist_as_one}}</a></div>
+                      <small class="text-muted">{{song.title}}</small>
+                    </div>
                   </div>
                 </li>
               </ul>
             </section>
           </section>
         </aside>
+        <section class="col-sm-4">
+          <section class="vbox">
+            <section class="scrollable hover">
+
+              <section class="panel panel-success portlet-item">
+                <header class="panel-heading"> Тыңшап көрүңүз</header>
+                <ul class="list-group alt" *ngIf="randomSongs">
+                  <li class="list-group-item" *ngFor="let song of randomSongs">
+                    <div class="media"><span class="pull-left thumb-sm">
+                      <img src="{{song.artists[0].profile}}" alt="..." class="img-circle">
+                    </span>
+                      <div class="pull-right text-success m-t-sm"><i class="fa fa-circle"></i></div>
+                      <div class="media-body">
+                        <div><a href="#">{{song.artist_as_one}}</a></div>
+                        <small class="text-muted">{{song.title}}</small>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+            </section>
+          </section>
+        </section>
+        <section class="col-sm-3 lt" id="song-lyrics">
+
+        </section>
       </section>
     </section>
   </section>

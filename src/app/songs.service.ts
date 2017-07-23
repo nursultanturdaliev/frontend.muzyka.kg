@@ -46,7 +46,7 @@ export class SongsService {
   }
 
   search(text:string):Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/search?text=' + text)
+    return this.http.get(this.configService.API_URL + '/song/search/' + text)
       .toPromise()
       .then(response => response.json() as Song[])
       .catch(this.handleError);

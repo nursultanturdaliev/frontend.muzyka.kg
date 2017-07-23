@@ -67,3 +67,15 @@ html {
 .jp-volume {
   width: 100px !important;
 }
+
+#song-lyrics .panel-heading a {
+  color: #691a99;
+}
+
+#song-lyrics .panel-heading a:hover {
+  color: #9b26af;
+}
+
+#main-content .list-group-item:hover {
+  background: rgb(247, 250, 250);
+}

@@ -145,10 +145,10 @@ export class PlayerComponent implements OnInit {
     if (!this.playerService.getCurrentSong()) {
       var song = this.playerService.getSongs()[0];
       this.playerService.currentSongTitle = song.title;
-      return this.configService.API_URL + song.uuid + '/stream';
+      return this.configService.API_URL + '/song/stream/' + song.uuid ;
     }
     else
-      return this.configService.API_URL+ '/song/' + this.playerService.getCurrentSong().uuid + '/stream';
+      return this.configService.API_URL + '/song/stream/' + this.playerService.getCurrentSong().uuid ;
 
   }
 
