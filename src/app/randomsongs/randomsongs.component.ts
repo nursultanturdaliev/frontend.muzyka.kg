@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {TopSongsService} from "../topSongs.service";
 import {Song} from "../song";
 import {PlayerService} from "../player.service";
 import {SongsService} from "../songs.service";

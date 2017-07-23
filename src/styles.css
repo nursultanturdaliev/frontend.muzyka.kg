@@ -63,3 +63,7 @@ html {
 .bg-muzyka .text-muted {
   color: #4cb6cb !important;
 }
+
+.jp-volume {
+  width: 100px !important;
+}

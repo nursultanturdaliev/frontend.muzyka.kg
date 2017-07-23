@@ -7,8 +7,8 @@
             <div class="col-md-8">
               <section class="panel panel-default">
                 <header class="panel-heading">
-                  <input type="text" class="input-md form-control"
-                         placeholder="Издөө">
+                  <input #searchInput type="text" class="input-md form-control" name="searchText"
+                         placeholder="Издөө" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
                 </header>
                 <ul class="list-group alt">
                   <li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"
@@ -27,7 +27,7 @@
                       <div class="text-muted col-md-1 col-xs-2">
                         <div class="vertical-middle">{{song.duration}}</div>
                       </div>
-                      <div class="col-xs-1">
+                      <div class="col-sm-1 hidden-xs">
                         <div class="vertical-middle">
                           <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
                           <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
