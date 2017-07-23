@@ -27,6 +27,14 @@ export class PlayerService {
     });
   }
 
+  play(song:Song, songs, index) {
+    this.currentTime = 0;
+    this.currentSongTitle = song.title;
+    this.setCurrentSong(song);
+    this.setSongs(songs);
+    this.setIndex(index);
+  }
+
   public onCurrentSongChange(f) {
     if (!this.callbacks) {
       this.callbacks = [];

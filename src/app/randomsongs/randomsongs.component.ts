@@ -24,7 +24,7 @@ export class RandomsongsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.songsService.getRandomSongs()
+    this.songsService.getRandomSongs({})
       .then(randomSongs => {
         this.randomSongs = randomSongs;
         this.playerService.currentTime = 0;

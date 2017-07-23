@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers,RequestOptions} from "@angular/http";
 import {Song} from "./song";
 import 'rxjs/add/operator/toPromise';
+import { URLSearchParams } from '@angular/http';
 import {ConfigService} from "./services/config.service";
 
 @Injectable()
@@ -23,8 +24,15 @@ export class SongsService {
       .then(response => response.json());
   }
 
-  getRandomSongs():Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/random/5')
+  getRandomSongs(options):Promise<Song[]> {
+    let params = new URLSearchParams();
+    for (let key in options) {
+      if (options.hasOwnProperty(key)) {
+        params.set(key, options[key]);
+      }
+    }
+    let requestOptions = new RequestOptions({search: params});
+    return this.http.get(this.configService.API_URL + '/song/random/5', requestOptions)
       .toPromise()
       .then(response => response.json() as Song[])
       .catch(this.handleError);

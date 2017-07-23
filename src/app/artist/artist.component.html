@@ -5,25 +5,52 @@
         <aside class="col-sm-5" id="sidebar">
           <section class="vbox animated fadeInUp">
             <section class="panel panel-default">
-              <header class="panel-heading">
-                <div class="m-t-n-xxs item pos-rlt">
-                  <div class="row content">
-                    <div class="col-md-6">
-                      <img class="img-full" src="{{artist.profile}}" alt="{{artist.name}}">
+              <div class="panel-body">
+                <div class="clearfix text-center m-t">
+                  <div class="inline">
+                    <div class="easypiechart easyPieChart" data-percent="75" data-line-width="5"
+                         data-bar-color="#4cc0c1" data-track-color="#f5f5f5" data-scale-color="false"
+                         data-size="134" data-line-cap="butt" data-animate="1000"
+                         style="width: 134px; height: 134px; line-height: 134px;">
+                      <div class="thumb-lg"><img src="{{artist.profile}}" class="img-circle" alt="..."></div>
+                      <canvas width="268" height="268" style="width: 134px; height: 134px;"></canvas>
                     </div>
-                    <div class="col-md-6">
-                      <a href="{{artist.instagram}}" target="_blank" class="btn btn-icon">
-                        <i class="fa fa-instagram fa-2x"></i>
-                      </a>
-                    <span class="pull-right text-sm">
-                      <span class="h2 font-thin">{{artist.name}} {{artist.lastname}}</span>
-                    </span>
-                    </div>
+                    <div class="h4 m-t m-b-xs">{{artist.name}} {{artist.lastname}}</div>
                   </div>
                 </div>
-              </header>
+              </div>
+              <footer class="panel-footer bg-primary text-center">
+                <div class="row pull-out">
+                  <div class="col-xs-4">
+                    <div class="padder-v"><span class="m-b-xs h3 block text-white">245</span>
+                      <small class="text-muted">Followers</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 dk">
+                    <div class="padder-v"><span class="m-b-xs h3 block text-white">{{artist.songs.length}}</span>
+                      <small class="text-muted">Ырларым</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <a href="{{artist.instagram}}" target="_blank">
+                      <div class="padder-v">
+
+                        <span class="m-b-xs h3 block text-white">
+                          <i class="fa fa-instagram"></i>
+                        </span>
+                        <small class="text-muted">Инстаграм</small>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </footer>
+            </section>
+            <section class="panel panel-default">
+              <header class="panel-heading">Ырларым</header>
               <ul class="list-group" *ngIf="artist">
-                <li class="list-group-item" *ngFor="let song of artist.songs">
+                <li class="list-group-item" *ngFor="let song of artist.songs; let index = index"
+                    (click)="playerService.play(song, artist.songs,index )"
+                    [ngClass]="{active: playerService.isCurrentSong(song)}">
                   <div class="media"><span class="pull-left thumb-sm">
                       <!--<img src="{{song.artists[0].profile}}" alt="..." class="img-circle">-->
                     </span>
@@ -38,14 +65,16 @@
             </section>
           </section>
         </aside>
-        <section class="col-sm-4">
+        <section class="col-sm-4 no-padder">
           <section class="vbox">
             <section class="scrollable hover">
 
-              <section class="panel panel-success portlet-item">
+              <section class="panel panel-default portlet-item">
                 <header class="panel-heading"> Тыңшап көрүңүз</header>
                 <ul class="list-group alt" *ngIf="randomSongs">
-                  <li class="list-group-item" *ngFor="let song of randomSongs">
+                  <li class="list-group-item" *ngFor="let song of randomSongs; let index=index;"
+                      (click)="playerService.play(song, randomSongs,index )"
+                      [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="media"><span class="pull-left thumb-sm">
                       <img src="{{song.artists[0].profile}}" alt="..." class="img-circle">
                     </span>
@@ -61,7 +90,7 @@
             </section>
           </section>
         </section>
-        <section class="col-sm-3 lt" id="song-lyrics">
+        <section class="col-sm-3" id="song-lyrics">
 
         </section>
       </section>

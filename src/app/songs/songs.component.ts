@@ -16,14 +16,6 @@ export class SongsComponent implements OnInit {
   constructor(private songsService:SongsService, private playerService:PlayerService) {
   }
 
-  play(song:Song, songs, index) {
-    this.playerService.currentTime = 0;
-    this.playerService.currentSongTitle = song.title;
-    this.playerService.setCurrentSong(song);
-    this.playerService.setSongs(songs);
-    this.playerService.setIndex(index);
-  }
-
   ngOnInit() {
     this.songsService.getSongs()
       .then(songs => {

@@ -35,7 +35,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
       .then(artist => {
         this.artist = artist;
       });
-    this.songService.getRandomSongs()
+    this.songService.getRandomSongs({'artistId':this.artistId})
       .then(randomSongs => {
         this.randomSongs = randomSongs
       });
