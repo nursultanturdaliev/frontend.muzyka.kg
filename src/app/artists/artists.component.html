@@ -3,7 +3,7 @@
         <section>
             <section class="vbox">
                 <section class="scrollable padder-lg"><h2 class="font-thin m-b">Ырчылар</h2>
-                    <div class="row row-sm">
+                    <div class="row">
                         <div *ngFor="let artist of artists;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2" id="artists">
                             <div class="item">
                                 <div class="pos-rlt">
@@ -14,7 +14,7 @@
                                         </div>
                                     </div>
                                     <a >
-                                        <img src="{{artist.profile}}" alt="{{artist.name}}"
+                                        <img *ngIf="artist.profileLocal" src="http://localhost:8000/uploads/artist/profile/{{artist.profileLocal}}.jpg" alt="{{artist.name}}"
                                              class="r r-2x img-full">
                                     </a>
                                 </div>
@@ -24,7 +24,7 @@
                                     </a>
                                     <a href="http://aio.kg"
                                        data-bjax="" data-target="#bjax-target" data-el="#bjax-el"
-                                       data-replace="true" class="text-ellipsis text-xs text-muted">Ырларым <span class="badge bg-info pull-right">{{artist.songs.length}}</span></a>
+                                       data-replace="true" class="text-ellipsis text-xs text-muted">Ырларым <span class="badge bg-info pull-right">{{artist.numberOfSongs}}</span></a>
                                 </div>
                             </div>
                         </div>

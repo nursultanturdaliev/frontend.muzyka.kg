@@ -96,3 +96,9 @@ html {
   margin-left: 10px;
   margin-top: 5px;
 }
+
+.social-buttons {
+  position: absolute;
+  bottom: 65px;
+  left: 35px;
+}
