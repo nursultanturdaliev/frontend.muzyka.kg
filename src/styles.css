@@ -102,3 +102,22 @@ html {
   bottom: 65px;
   left: 35px;
 }
+
+.list-group-item.active .text-muted {
+  color: #DDDDDD !important;
+}
+
+.bg-black a:hover {
+  color: #691a99;
+}
+
+.text-accent {
+  color: #4cb6cb !important
+}
+
+.bg-muzyka .text-muted {
+  color: white !important;
+}
+#progress-bar{
+  background-color: #9b26af;
+}

@@ -7,13 +7,7 @@
                         <div *ngFor="let artist of artists;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2" id="artists">
                             <div class="item">
                                 <div class="pos-rlt">
-                                    <div class="item-overlay opacity r r-2x bg-black">
-                                        <div class="center text-center m-t-n">
-                                            <a href="http://aio.kg">
-                                                <i class="fa fa-play-circle i-2x"></i></a>
-                                        </div>
-                                    </div>
-                                    <a >
+                                    <a routerLink="/artist/{{artist.id}}" class="artist-link" >
                                         <img *ngIf="artist.profileLocal" src="http://localhost:8000/uploads/artist/profile/{{artist.profileLocal}}.jpg" alt="{{artist.name}}"
                                              class="r r-2x img-full">
                                     </a>
@@ -22,9 +16,8 @@
                                     <a routerLink="/artist/{{artist.id}}" class="artist-link">
                                       {{artist.name}} {{artist.lastname}}
                                     </a>
-                                    <a href="http://aio.kg"
-                                       data-bjax="" data-target="#bjax-target" data-el="#bjax-el"
-                                       data-replace="true" class="text-ellipsis text-xs text-muted">Ырларым <span class="badge bg-info pull-right">{{artist.numberOfSongs}}</span></a>
+                                    <p class="text-ellipsis text-xs text-muted">Ырларым <span class="badge bg-info pull-right">{{artist.numberOfSongs}}</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>

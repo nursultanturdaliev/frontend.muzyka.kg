@@ -12,7 +12,11 @@
                          data-bar-color="#4cc0c1" data-track-color="#f5f5f5" data-scale-color="false"
                          data-size="134" data-line-cap="butt" data-animate="1000"
                          style="width: 134px; height: 134px; line-height: 134px;">
-                      <div class="thumb-lg"><img src="http://localhost:8000/uploads/artist/profile/{{artist.profileLocal}}.jpg" class="img-circle" alt="..."></div>
+                      <div class="thumb-lg">
+                        <img *ngIf="artist.profileLocal"
+                             src="http://localhost:8000/uploads/artist/profile/{{artist.profileLocal}}.jpg"
+                             class="img-circle" alt="...">
+                      </div>
                       <canvas width="268" height="268" style="width: 134px; height: 134px;"></canvas>
                     </div>
                     <div class="h4 m-t m-b-xs">{{artist.name}} {{artist.lastname}}</div>
@@ -47,12 +51,13 @@
                     (click)="playerService.play(song, artist.songs,index )"
                     [ngClass]="{active: playerService.isCurrentSong(song)}">
                   <div class="media"><span class="pull-left thumb-sm">
-                      <!--<img src="{{song.artists[0].profile}}" alt="..." class="img-circle">-->
                     </span>
-                    <div class="pull-right text-success m-t-sm"><i class="fa fa-circle"></i></div>
+                    <div class="pull-right text-accent m-t-sm">
+                      <i class="fa fa-play" [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>
+                    </div>
                     <div class="media-body">
-                      <div><a href="#">{{song.artist_as_one}}</a></div>
-                      <small class="text-muted">{{song.title}}</small>
+                      <div><strong>{{song.title}}</strong></div>
+                      <small class="text-muted">{{song.artist_as_one}}</small>
                     </div>
                   </div>
                 </li>
@@ -64,19 +69,25 @@
           <section class="vbox">
             <section class="scrollable hover">
 
-              <section class="panel panel-default portlet-item">
+              <section class="panel panel-default portlet-item" id="songs">
                 <header class="panel-heading"> Тыңшап көрүңүз</header>
                 <ul class="list-group alt" *ngIf="randomSongs">
                   <li class="list-group-item" *ngFor="let song of randomSongs; let index=index;"
                       (click)="playerService.play(song, randomSongs,index )"
                       [ngClass]="{active: playerService.isCurrentSong(song)}">
-                    <div class="media"><span class="pull-left thumb-sm">
-                      <img src="{{song.artists[0].profile}}" alt="..." class="img-circle">
-                    </span>
-                      <div class="pull-right text-success m-t-sm"><i class="fa fa-circle"></i></div>
+                    <div class="media">
+                      <span class="pull-left thumb-sm">
+                      <img *ngIf="song.profileLocal"
+                           src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg"
+                           alt="..." class="img-circle">
+                      <i class="fa fa-instagram fa-2x" *ngIf="!song.profileLocal"></i>
+                      </span>
+                      <div class="pull-right text-accent m-t-sm">
+                        <i class="fa fa-play" [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>
+                      </div>
                       <div class="media-body">
-                        <div><a href="#">{{song.artist_as_one}}</a></div>
-                        <small class="text-muted">{{song.title}}</small>
+                        <div><strong>{{song.title}}</strong></div>
+                        <small class="text-muted">{{song.artist_as_one}}</small>
                       </div>
                     </div>
                   </li>
