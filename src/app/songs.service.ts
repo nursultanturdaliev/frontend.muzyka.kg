@@ -47,7 +47,7 @@ export class SongsService {
 
 
   getNewSongs():Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/newreleases/3')
+    return this.http.get(this.configService.API_URL + '/song/status/new/50')
       .toPromise()
       .then(response => response.json() as Song[])
       .catch(this.handleError);

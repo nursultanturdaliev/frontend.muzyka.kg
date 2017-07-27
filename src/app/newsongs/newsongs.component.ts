@@ -10,11 +10,12 @@ import {SongsService} from "../songs.service";
 })
 export class NewsongsComponent implements OnInit {
 
-  private newSongs: Song[];
-  constructor(private newSongsService: SongsService, private playerService: PlayerService) {
+  private newSongs:Song[];
+
+  constructor(private songsService:SongsService, private playerService:PlayerService) {
   }
 
-  play(song: Song, songs, index) {
+  play(song:Song, songs, index) {
     this.playerService.currentTime = 0;
     this.playerService.currentSongTitle = song.title;
     this.playerService.setCurrentSong(song);
@@ -23,13 +24,13 @@ export class NewsongsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.newSongsService.getNewSongs()
-        .then(newSongs => {
-          this.newSongs = newSongs;
-          this.playerService.currentTime = 0;
-          this.playerService.setIndex(0);
-          this.playerService.setSongs(newSongs);
-        });
+    this.songsService.getNewSongs()
+      .then(newSongs => {
+        this.newSongs = newSongs;
+        this.playerService.currentTime = 0;
+        this.playerService.setIndex(0);
+        this.playerService.setSongs(newSongs);
+      });
   }
 
 }
