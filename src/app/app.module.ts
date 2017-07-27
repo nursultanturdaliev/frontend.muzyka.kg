@@ -17,8 +17,8 @@ import { TopsongsComponent } from './topsongs/topsongs.component';
 import { NewsongsComponent } from './newsongs/newsongs.component';
 import {RandomsongsComponent} from "./randomsongs/randomsongs.component";
 import {ConfigService} from "./services/config.service";
-import {InfiniteScrollDirective} from "ngx-infinite-scroll/src/modules/infinite-scroll.directive";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 const appRoutes:Routes = [
   {
@@ -77,3 +77,4 @@ const appRoutes:Routes = [
 })
 export class AppModule {
 }
+platformBrowserDynamic().bootstrapModule(AppModule);

@@ -4,7 +4,11 @@
             <section class="vbox">
                 <section class="scrollable padder-lg"><h2 class="font-thin m-b">Ырчылар</h2>
                     <div class="row">
-                        <div *ngFor="let artist of artists;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2" id="artists">
+                        <div *ngFor="let artist of artists;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2"
+                             infiniteScroll
+                             [infiniteScrollDistance]="2"
+                             [infiniteScrollThrottle]="300"
+                             (scrolled)="onScrollDown()">
                             <div class="item">
                                 <div class="pos-rlt">
                                     <a routerLink="/artist/{{artist.id}}" class="artist-link" >

@@ -10,8 +10,8 @@ export class ArtistsService {
   constructor(private http: Http, private configService:ConfigService) {
   }
 
-  getArtists(): Promise<Artist[]> {
-    return this.http.get(this.configService.API_URL + '/artist')
+  getArtists(page:number): Promise<Artist[]> {
+    return this.http.get(this.configService.API_URL + '/artist/page/' + page )
       .toPromise()
       .then(response => response.json() as Artist[])
       .catch(this.handleError);

@@ -3,12 +3,11 @@ import {Song} from '../song';
 import {SongsService} from '../songs.service';
 import {PlayerService} from '../player.service';
 import {PlayerComponent} from "../player/player.component";
-import {InfiniteScrollDirective} from "ngx-infinite-scroll/src/modules/infinite-scroll.directive";
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
   styleUrls: ['./songs.component.css'],
-  providers: [SongsService]
+  providers: [SongsService],
 })
 export class SongsComponent implements OnInit {
   public songs:Song[];
