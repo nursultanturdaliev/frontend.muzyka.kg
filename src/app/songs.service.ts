@@ -11,8 +11,8 @@ export class SongsService {
   constructor(private http:Http, private configService:ConfigService) {
   };
 
-  getSongs():Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/0/100')
+  getSongs(page:number):Promise<Song[]> {
+    return this.http.get(this.configService.API_URL + '/song/page/' + page)
       .toPromise()
       .then(response => response.json() as Song[])
       .catch(this.handleError);
@@ -47,7 +47,7 @@ export class SongsService {
 
 
   getNewSongs():Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/status/new/50')
+    return this.http.get(this.configService.API_URL + '/song/status/new')
       .toPromise()
       .then(response => response.json() as Song[])
       .catch(this.handleError);

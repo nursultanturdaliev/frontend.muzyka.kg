@@ -3,6 +3,7 @@ import {Song} from '../song';
 import {SongsService} from '../songs.service';
 import {PlayerService} from '../player.service';
 import {PlayerComponent} from "../player/player.component";
+import {InfiniteScrollDirective} from "ngx-infinite-scroll/src/modules/infinite-scroll.directive";
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
@@ -11,13 +12,15 @@ import {PlayerComponent} from "../player/player.component";
 })
 export class SongsComponent implements OnInit {
   public songs:Song[];
+  public page:number;
   searchText:string;
 
   constructor(private songsService:SongsService, private playerService:PlayerService) {
+    this.page = 1;
   }
 
   ngOnInit() {
-    this.songsService.getSongs()
+    this.songsService.getSongs(this.page)
       .then(songs => {
         this.songs = songs;
         this.playerService.currentTime = 0;
@@ -34,6 +37,14 @@ export class SongsComponent implements OnInit {
     this.songsService.search(value)
       .then(songs => {
         this.songs = songs;
+      });
+  }
+
+  onScrollDown() {
+    this.page += 1;
+    this.songsService.getSongs(this.page)
+      .then(songs => {
+        Array.prototype.push.apply(this.songs, songs);
       });
   }
 }

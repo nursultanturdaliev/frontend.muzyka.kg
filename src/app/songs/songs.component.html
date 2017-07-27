@@ -10,7 +10,10 @@
                   <input #searchInput type="text" class="input-md form-control" name="searchText"
                          placeholder="Издөө" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
                 </header>
-                <ul class="list-group alt" id="songs" *ngIf="songs">
+                <ul class="list-group alt" id="songs" *ngIf="songs" infiniteScroll
+                    [infiniteScrollDistance]="2"
+                    [infiniteScrollThrottle]="300"
+                    (scrolled)="onScrollDown()">
                   <li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"
                       (click)="playerService.play(song, songs,i )" [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="row">

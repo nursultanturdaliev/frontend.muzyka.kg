@@ -17,6 +17,8 @@ import { TopsongsComponent } from './topsongs/topsongs.component';
 import { NewsongsComponent } from './newsongs/newsongs.component';
 import {RandomsongsComponent} from "./randomsongs/randomsongs.component";
 import {ConfigService} from "./services/config.service";
+import {InfiniteScrollDirective} from "ngx-infinite-scroll/src/modules/infinite-scroll.directive";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 const appRoutes:Routes = [
   {
@@ -65,6 +67,7 @@ const appRoutes:Routes = [
   imports: [
     AlertModule.forRoot(),
     BrowserModule,
+    InfiniteScrollModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)
