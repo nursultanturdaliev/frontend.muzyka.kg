@@ -19,8 +19,13 @@ import {RandomsongsComponent} from "./randomsongs/randomsongs.component";
 import {ConfigService} from "./services/config.service";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { HomeComponent } from './home/home.component';
 
-const appRoutes:Routes = [
+const appRoutes:Routes = <Routes>[
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'artists',
     component: ArtistsComponent,
@@ -61,7 +66,8 @@ const appRoutes:Routes = [
     ArtistComponent,
     TopsongsComponent,
     NewsongsComponent,
-    RandomsongsComponent
+    RandomsongsComponent,
+    HomeComponent
   ],
 
   imports: [

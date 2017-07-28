@@ -32,14 +32,14 @@ export class SongsService {
       }
     }
     let requestOptions = new RequestOptions({search: params});
-    return this.http.get(this.configService.API_URL + '/song/random/5', requestOptions)
+    return this.http.get(this.configService.API_URL + '/song/random/20', requestOptions)
       .toPromise()
       .then(response => response.json() as Song[])
       .catch(this.handleError);
   }
 
   getTopSongs():Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/top/0/10')
+    return this.http.get(this.configService.API_URL + '/song/top/1')
       .toPromise()
       .then(response => response.json() as Song[])
       .catch(this.handleError);
