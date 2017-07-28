@@ -20,6 +20,7 @@ import {ConfigService} from "./services/config.service";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HomeComponent } from './home/home.component';
+import {FilterPipeModule} from "ngx-filter-pipe/dist/src/ngx-filter.module";
 
 const appRoutes:Routes = <Routes>[
   {
@@ -76,7 +77,8 @@ const appRoutes:Routes = <Routes>[
     InfiniteScrollModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FilterPipeModule
   ],
   providers: [PlayerService, ArtistService, SongsService, ConfigService],
   bootstrap: [AppComponent]

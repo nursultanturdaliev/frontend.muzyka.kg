@@ -18,6 +18,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
   private artistId:number;
   private randomSongs:Song[];
   private sub:Subscription;
+  private songFilter:any = {title: ''};
 
   constructor(private artistService:ArtistService,
               private songService:SongsService,
@@ -35,7 +36,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
       .then(artist => {
         this.artist = artist;
       });
-    this.songService.getRandomSongs({'artistId':this.artistId})
+    this.songService.getRandomSongs({'artistId': this.artistId})
       .then(randomSongs => {
         this.randomSongs = randomSongs
       });

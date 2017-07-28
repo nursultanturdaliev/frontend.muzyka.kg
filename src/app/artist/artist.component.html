@@ -45,9 +45,13 @@
               </footer>
             </section>
             <section class="panel panel-default">
-              <header class="panel-heading">Ырларым</header>
+              <header class="panel-heading">
+                <p>Ырларым</p>
+                <input #searchInput type="text" class="input-md form-control" name="searchText"
+                       placeholder="Издөө" [(ngModel)]="songFilter.title">
+              </header>
               <ul class="list-group" *ngIf="artist">
-                <li class="list-group-item" *ngFor="let song of artist.songs; let index = index"
+                <li class="list-group-item" *ngFor="let song of artist.songs| filterBy: songFilter; let index = index"
                     (click)="playerService.play(song, artist.songs,index )"
                     [ngClass]="{active: playerService.isCurrentSong(song)}">
                   <div class="media"><span class="pull-left thumb-sm">

@@ -107,11 +107,11 @@ html {
   color: #DDDDDD !important;
 }
 
-.bg-black a:hover, a.link-primary:hover {
+.bg-black a:hover, a.link-primary:hover, .artists a:hover {
   color: #691a99;
 }
 
-.text-accent {
+.text-accent, .jp-pause, .jp-play {
   color: #4cb6cb !important
 }
 
