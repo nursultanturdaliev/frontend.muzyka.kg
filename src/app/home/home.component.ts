@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SongsService} from "../songs.service";
 import {ArtistService} from "../artist.service";
 import {Song} from "../song";
+import {PlayerService} from "../player.service";
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,13 @@ export class HomeComponent implements OnInit {
   public newSongs:Song[];
   public topSongs:Song[];
 
-  constructor(private songService:SongsService, private artistService:ArtistService) {
+  constructor(private songService:SongsService, private artistService:ArtistService, private playerService:PlayerService) {
   }
 
   ngOnInit() {
     this.songService.getRandomSongs({})
       .then(songs => {
-        this.discoverSongs = songs.slice(0,12);
+        this.discoverSongs = songs.slice(0, 12);
       });
 
     this.songService.getNewSongs()

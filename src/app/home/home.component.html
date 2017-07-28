@@ -1,42 +1,36 @@
 <section class="vbox">
-  <section class="scrollable padder-lg w-f-md" id="bjax-target"><a href="#" class="pull-right text-muted m-t-lg"
-                                                                   data-toggle="class:fa-spin"><i
-    class="icon-refresh i-lg inline" id="refresh"></i></a>
-    <h2 class="font-thin m-b">Discover <span class="musicbar inline m-l-sm" style="width:20px;height:20px"> <span
-      class="bar1 a1 bg-primary lter"></span> <span class="bar2 a2 bg-info lt"></span> <span
-      class="bar3 a3 bg-success"></span> <span class="bar4 a4 bg-warning dk"></span> <span
-      class="bar5 a5 bg-danger dker"></span> </span></h2>
+  <section class="scrollable padder-lg w-f-md" id="bjax-target">
+    <h2 class="font-thin m-b">Ырлар дүйнөсүндө ачылыш жасаңыз
+      <span class="musicbar inline m-l-sm" style="width:20px;height:20px">
+      <span class="bar1 a1 bg-primary lter"></span>
+      <span class="bar2 a2 bg-info lt"></span>
+      <span class="bar3 a3 bg-success"></span>
+      <span class="bar4 a4 bg-warning dk"></span>
+      <span class="bar5 a5 bg-danger dker">
+    </span>
+    </span>
+    </h2>
     <div class="row row-sm">
-      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let song of discoverSongs">
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let song of discoverSongs; let index=index;">
         <div class="item">
-          <div class="pos-rlt">
-            <div class="bottom"><span class="badge bg-info m-l-sm m-b-sm">03:20</span></div>
-            <div class="item-overlay opacity r r-2x bg-black">
-              <div class="text-info padder m-t-sm text-sm">
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                <i class="fa fa-star-o text-muted"></i></div>
+          <div class="pos-rlt discover-song">
+            <div class="item-overlay opacity r r-2x bg-black" (click)="playerService.play(song,discoverSongs,index)">
               <div class="center text-center m-t-n">
-                <a href="#">
-                  <i class="icon-control-play i-2x"></i>
-                </a>
-              </div>
-              <div class="bottom padder m-b-sm">
-                <a href="#" class="pull-right">
-                  <i class="fa fa-heart-o"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-plus-circle"></i>
+                <a>
+                  <i class="icon-control-play i-2x"
+                     [ngClass]="{'icon-control-pause': playerService.isCurrentSong(song), 'icon-control-play': !playerService.isCurrentSong(song)}"></i>
                 </a>
               </div>
             </div>
-            <a href="#">
-              <img src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg" alt=""
-                   class="r r-2x img-full"></a>
+            <img src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg"
+                 alt="" class="r r-2x img-full">
           </div>
           <div class="padder-v">
-            <a href="#" class="text-ellipsis">{{song.title}}</a>
-            <a href="#" class="text-ellipsis text-xs text-muted">{{song.artist_as_one}}</a>
+            <a class="text-ellipsis">{{song.title}}</a>
+            <a class="text-ellipsis text-xs text-muted link-primary" *ngFor="let artist of song.artists"
+               routerLink="/artist/{{artist.id}}">
+              {{artist.name}} {{artist.lastname}}
+            </a>
           </div>
         </div>
       </div>
@@ -46,16 +40,21 @@
         <div class="row row-sm">
           <div class="col-xs-6 col-sm-3" *ngFor="let song of newSongs">
             <div class="item">
-              <div class="pos-rlt">
+              <div class="pos-rlt discover-song" (click)="playerService.play(song,discoverSongs,index)">
                 <div class="item-overlay opacity r r-2x bg-black">
-                  <div class="center text-center m-t-n"><a href="#"><i class="fa fa-play-circle i-2x"></i></a></div>
+                  <div class="center text-center m-t-n">
+                    <a>
+                      <i class="fa fa-play-circle i-2x" [ngClass]="{'fa-pause-circle': playerService.isCurrentSong(song), 'fa-play-circle': !playerService.isCurrentSong(song)}"></i>
+                    </a>
+                  </div>
                 </div>
-                <a href="#"><img src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg" alt=""
+                <a ><img src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg" alt=""
                                  class="r r-2x img-full"></a>
               </div>
               <div class="padder-v">
-                <a href="#" class="text-ellipsis">{{song.title}}</a>
-                <a href="#" class="text-ellipsis text-xs text-muted">{{song.artist_as_one}}</a>
+                <a class="text-ellipsis">{{song.title}}</a>
+                <a class="text-ellipsis text-xs text-muted" *ngFor="let artist of song.artists"
+                   routerLink="/artist/{{artist.id}}">{{song.artist_as_one}}</a>
               </div>
             </div>
           </div>
@@ -63,8 +62,8 @@
       </div>
       <div class="col-md-5"><h3 class="font-thin">Эң популярлуу ырлар</h3>
         <div class="list-group bg-white list-group-lg no-bg auto">
-          <a href="#" class="list-group-item clearfix" *ngFor="let song of topSongs">
-            <span class="pull-right h2 text-muted m-l">1</span>
+          <a class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;" (click)="playerService.play(song,discoverSongs,index)" [ngClass]="{active: playerService.isCurrentSong(song)}">
+            <span class="pull-right h2 text-muted m-l">{{index + 1}}</span>
             <span class="pull-left thumb-sm avatar m-r">
               <img src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg" alt="...">
             </span>
@@ -74,18 +73,6 @@
           </span>
           </a>
         </div>
-      </div>
-    </div>
-    <div class="row m-t-lg m-b-lg">
-      <div class="col-sm-6">
-        <div class="bg-primary wrapper-md r"><a href="#"> <span class="h4 m-b-xs block"><i
-          class=" icon-user-follow i-lg"></i> Login or Create account</span> <span class="text-muted">Save and share your playlist with your friends when you log in or create an account.</span>
-        </a></div>
-      </div>
-      <div class="col-sm-6">
-        <div class="bg-black wrapper-md r"><a href="#"> <span class="h4 m-b-xs block"><i
-          class="icon-cloud-download i-lg"></i> Download our app</span> <span class="text-muted">Get the apps for desktop and mobile to start listening music at anywhere and anytime.</span>
-        </a></div>
       </div>
     </div>
   </section>

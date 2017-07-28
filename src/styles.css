@@ -107,7 +107,7 @@ html {
   color: #DDDDDD !important;
 }
 
-.bg-black a:hover {
+.bg-black a:hover, a.link-primary:hover {
   color: #691a99;
 }
 
@@ -118,6 +118,11 @@ html {
 .bg-muzyka .text-muted {
   color: white !important;
 }
-#progress-bar{
+
+#progress-bar {
   background-color: #9b26af;
+}
+
+.discover-song:hover {
+  cursor: pointer !important;
 }
