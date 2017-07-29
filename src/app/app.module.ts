@@ -30,6 +30,8 @@ import { FavouriteComponent } from './favourite/favourite.component';
 import {FavouriteService} from "./services/favourite.service";
 import {AuthModule} from "./auth.module";
 import {AuthGuard} from "./services/auth-guard.service";
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes:Routes = <Routes>[
   {
@@ -100,7 +102,9 @@ const appRoutes:Routes = <Routes>[
     RouterModule.forRoot(appRoutes),
     FilterPipeModule,
     LazyLoadImageModule,
-    AuthModule
+    AuthModule,
+    ToastrModule.forRoot({timeOut: 5000, closeButton: true, progressBar: true}),
+    BrowserAnimationsModule
   ],
   providers: [
     PlayerService,

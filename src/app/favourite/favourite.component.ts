@@ -16,7 +16,7 @@ export class FavouriteComponent implements OnInit {
     this.favouriteService.all()
       .then(favourites => {
         this.favourites = favourites;
-      })
+      });
   }
 
 }
