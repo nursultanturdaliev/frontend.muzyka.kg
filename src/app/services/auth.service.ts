@@ -4,7 +4,7 @@ import {Http, URLSearchParams} from "@angular/http";
 import {ConfigService} from "./config.service";
 import {AuthResponse} from "../Models/AuthResponse";
 import {BaseService} from "./BaseService";
-
+import { tokenNotExpired } from 'angular2-jwt';
 @Injectable()
 export class AuthService extends BaseService {
 
@@ -21,9 +21,13 @@ export class AuthService extends BaseService {
       .then(response => response.json() as AuthResponse);
   }
 
-  saveToLocalStorage(authResponse:AuthResponse):void {
+  public saveToLocalStorage(authResponse:AuthResponse):void {
     localStorage.setItem('token', authResponse.token);
     localStorage.setItem('refresh_token', authResponse.refresh_token);
     localStorage.setItem('email', authResponse.user);
+  }
+
+  loggedIn() {
+    return tokenNotExpired();
   }
 }

@@ -25,6 +25,7 @@ import { SongListComponent } from './song-list/song-list.component';
 import { SongListRowBasedComponent } from './song-list-row-based/song-list-row-based.component';
 import { LoginComponent } from './login/login.component';
 import {AuthService} from "./services/auth.service";
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes:Routes = <Routes>[
   {
@@ -58,6 +59,10 @@ const appRoutes:Routes = <Routes>[
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ];
 
@@ -74,7 +79,8 @@ const appRoutes:Routes = <Routes>[
     HomeComponent,
     SongListComponent,
     SongListRowBasedComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
 
   imports: [

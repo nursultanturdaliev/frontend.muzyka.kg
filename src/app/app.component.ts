@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {PlayerService} from "./player.service";
 import {SongsService} from "./songs.service";
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import {SongsService} from "./songs.service";
 export class AppComponent {
   title = 'MUZYKA.KG';
 
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService:PlayerService, public authService:AuthService) {
 
   }
 }
