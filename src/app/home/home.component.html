@@ -1,71 +1,18 @@
 <section class="vbox">
   <section class="scrollable padder-lg w-f-md" id="bjax-target">
-    <h2 class="font-thin m-b">Ырлар дүйнөсүндө ачылыш жасаңыз
-      <span class="musicbar inline m-l-sm" style="width:20px;height:20px">
-      <span class="bar1 a1 bg-primary lter"></span>
-      <span class="bar2 a2 bg-info lt"></span>
-      <span class="bar3 a3 bg-success"></span>
-      <span class="bar4 a4 bg-warning dk"></span>
-      <span class="bar5 a5 bg-danger dker">
-    </span>
-    </span>
-    </h2>
-    <div class="row row-sm">
-      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let song of discoverSongs; let index=index;">
-        <div class="item">
-          <div class="pos-rlt discover-song">
-            <div class="item-overlay opacity r r-2x bg-black" (click)="playerService.play(song,discoverSongs,index)">
-              <div class="center text-center m-t-n">
-                <a>
-                  <i class="icon-control-play i-2x"
-                     [ngClass]="{'icon-control-pause': playerService.isCurrentSong(song), 'icon-control-play': !playerService.isCurrentSong(song)}"></i>
-                </a>
-              </div>
-            </div>
-            <img src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg"
-                 alt="" class="r r-2x img-full">
-          </div>
-          <div class="padder-v">
-            <a class="text-ellipsis">{{song.title}}</a>
-            <a class="text-ellipsis text-xs text-muted link-primary" *ngFor="let artist of song.artists"
-               routerLink="/artist/{{artist.id}}">
-              {{artist.name}} {{artist.lastname}}
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h2 class="font-thin m-b">Ырлар дүйнөсүндө ачылыш жасаңыз</h2>
+    <app-song-list [songs]="discoverSongs"></app-song-list>
     <div class="row">
-      <div class="col-md-7"><h3 class="font-thin">Жаңы ырлар</h3>
-        <div class="row row-sm">
-          <div class="col-xs-6 col-sm-3" *ngFor="let song of newSongs">
-            <div class="item">
-              <div class="pos-rlt discover-song" (click)="playerService.play(song,discoverSongs,index)">
-                <div class="item-overlay opacity r r-2x bg-black">
-                  <div class="center text-center m-t-n">
-                    <a>
-                      <i class="fa fa-play-circle i-2x" [ngClass]="{'fa-pause-circle': playerService.isCurrentSong(song), 'fa-play-circle': !playerService.isCurrentSong(song)}"></i>
-                    </a>
-                  </div>
-                </div>
-                <a ><img src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg" alt=""
-                                 class="r r-2x img-full"></a>
-              </div>
-              <div class="padder-v">
-                <a class="text-ellipsis">{{song.title}}</a>
-                <a class="text-ellipsis text-xs text-muted" *ngFor="let artist of song.artists"
-                   routerLink="/artist/{{artist.id}}">{{song.artist_as_one}}</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-md-8"><h3 class="font-thin">Жаңы ырлар</h3>
+        <app-song-list [songs]="newSongs"></app-song-list>
       </div>
-      <div class="col-md-5"><h3 class="font-thin">Эң популярлуу ырлар</h3>
+      <div class="col-md-4"><h3 class="font-thin">Эң популярлуу ырлар</h3>
         <div class="list-group bg-white list-group-lg no-bg auto">
-          <a class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;" (click)="playerService.play(song,discoverSongs,index)" [ngClass]="{active: playerService.isCurrentSong(song)}">
+          <a class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;" (click)="playerService.play(song,topSongs,index)" [ngClass]="{active: playerService.isCurrentSong(song)}">
             <span class="pull-right h2 text-muted m-l">{{index + 1}}</span>
             <span class="pull-left thumb-sm avatar m-r">
-              <img src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg" alt="...">
+              <img src="http://localhost:8000/uploads/artist/profile/placeholder_one.jpg"
+                   [lazyLoad]="song.profileLocal" alt="...">
             </span>
             <span class="clear">
             <span>{{song.title}}</span>
