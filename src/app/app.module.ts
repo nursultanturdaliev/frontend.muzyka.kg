@@ -26,11 +26,19 @@ import { SongListRowBasedComponent } from './song-list-row-based/song-list-row-b
 import { LoginComponent } from './login/login.component';
 import {AuthService} from "./services/auth.service";
 import { ProfileComponent } from './profile/profile.component';
+import { FavouriteComponent } from './favourite/favourite.component';
+import {FavouriteService} from "./services/favourite.service";
+import {AuthModule} from "./auth.module";
+import {AuthGuard} from "./services/auth-guard.service";
 
 const appRoutes:Routes = <Routes>[
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'favourite',
+    component: FavouriteComponent, canActivate: [AuthGuard]
   },
   {
     path: 'artists',
@@ -62,7 +70,7 @@ const appRoutes:Routes = <Routes>[
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent, canActivate: [AuthGuard]
   }
 ];
 
@@ -80,20 +88,29 @@ const appRoutes:Routes = <Routes>[
     SongListComponent,
     SongListRowBasedComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    FavouriteComponent
   ],
 
   imports: [
-    AlertModule.forRoot(),
     BrowserModule,
     InfiniteScrollModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FilterPipeModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    AuthModule
   ],
-  providers: [PlayerService, ArtistService, SongsService, ConfigService, AuthService],
+  providers: [
+    PlayerService,
+    ArtistService,
+    SongsService,
+    ConfigService,
+    AuthService,
+    FavouriteService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -30,4 +30,8 @@ export class AuthService extends BaseService {
   loggedIn() {
     return tokenNotExpired();
   }
+
+  logout() {
+    localStorage.clear();
+  }
 }

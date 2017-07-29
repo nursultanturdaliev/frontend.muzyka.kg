@@ -123,7 +123,7 @@ html {
   background-color: #9b26af;
 }
 
-.discover-song:hover {
+.discover-song .fa:hover {
   cursor: pointer !important;
 }
 

@@ -25,14 +25,14 @@
           <a href="#modal-form" data-toggle="modal">Кирүү</a>
         </li>
 
-        <li class="dropdown">
+        <li class="dropdown" *ngIf="authService.loggedIn()">
           <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
             John.Smith <b class="caret"></b>
           </a>
           <ul class="dropdown-menu animated fadeInRight">
             <li><a routerLink="profile">Профиль</a></li>
             <li class="divider"></li>
-            <li><a href="modal.lockme.html" data-toggle="ajaxModal">Logout</a></li>
+            <li><a (click)="authService.logout()" data-toggle="ajaxModal">Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -70,6 +70,11 @@
                   <li>
                     <a routerLink="/randomsongs" routerLinkActive="active">
                       <span class="font-bold">Туш келди</span>
+                    </a>
+                  </li>
+                  <li *ngIf="authService.loggedIn()">
+                    <a routerLink="/favourite" routerLinkActive="active">
+                      <span class="font-bold">Сүйгөн ырлар</span>
                     </a>
                   </li>
                   <li class="m-b hidden-nav-xs"></li>

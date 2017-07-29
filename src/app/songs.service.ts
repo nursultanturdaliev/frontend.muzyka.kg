@@ -4,11 +4,13 @@ import {Song} from "./song";
 import 'rxjs/add/operator/toPromise';
 import { URLSearchParams } from '@angular/http';
 import {ConfigService} from "./services/config.service";
+import {BaseService} from "./services/BaseService";
 
 @Injectable()
-export class SongsService {
+export class SongsService extends BaseService {
 
   constructor(private http:Http, private configService:ConfigService) {
+    super();
   };
 
   getSongs(page:number):Promise<Song[]> {
@@ -60,8 +62,4 @@ export class SongsService {
       .catch(this.handleError);
   }
 
-  private handleError(error:any):Promise<any> {
-    console.error('Error!', error);
-    return Promise.reject(error.message || error);
-  }
 }

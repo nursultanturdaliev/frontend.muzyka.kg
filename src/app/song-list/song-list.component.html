@@ -1,6 +1,6 @@
 <div class="row row-sm">
 
-  <div *ngFor="let song of songs; let i = index;" (click)="playerService.play(song, songs,i )"
+  <div *ngFor="let song of songs; let i = index;"
        class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
     <div class="item">
       <div class="pos-rlt discover-song">
@@ -8,9 +8,14 @@
           <span class="badge bg-info m-l-sm m-b-sm">{{song.duration}}</span>
         </div>
         <div class="item-overlay opacity r r-2x bg-black">
-          <div class="center text-center m-t-n" (click)="play(song, songs,i )">
+          <div class="center text-center m-t-n" (click)="playerService.play(song, songs,i )">
             <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
             <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
+          </div>
+          <div class="bottom padder m-b-sm">
+            <a (click)="favourite(song)" class="pull-right">
+              <i class="fa fa-heart-o"></i>
+            </a>
           </div>
         </div>
         <a (click)="playerService.play(song, songs,i)">
@@ -19,7 +24,7 @@
                class="r r-2x img-full">
         </a>
       </div>
-      <div class="padder-v" (click)="playerService.play(song, songs,i )">
+      <div class="padder-v">
         <div>
           <a *ngFor="let artist of song.artists" routerLink="/artist/{{artist.id}}" class="text-ellipsis">
             <strong>{{artist.name}} {{artist.lastname}}</strong>
