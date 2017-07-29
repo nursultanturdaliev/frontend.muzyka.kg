@@ -22,6 +22,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HomeComponent } from './home/home.component';
 import {FilterPipeModule} from "ngx-filter-pipe/dist/src/ngx-filter.module";
 import {LazyLoadImageModule} from "ng-lazyload-image/index";
+import { SongListComponent } from './song-list/song-list.component';
+import { SongListRowBasedComponent } from './song-list-row-based/song-list-row-based.component';
 
 const appRoutes:Routes = <Routes>[
   {
@@ -69,7 +71,9 @@ const appRoutes:Routes = <Routes>[
     TopsongsComponent,
     NewsongsComponent,
     RandomsongsComponent,
-    HomeComponent
+    HomeComponent,
+    SongListComponent,
+    SongListRowBasedComponent
   ],
 
   imports: [

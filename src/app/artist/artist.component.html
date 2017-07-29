@@ -1,4 +1,4 @@
-<section id="main-content" *ngIf="artist" class="container-fluid">
+<section *ngIf="artist" class="main-content">
   <section class="vbox">
     <section class="w-f-md">
       <section class="hbox stretch bg-black dker row"> <!-- side content -->
@@ -44,58 +44,13 @@
                 </div>
               </footer>
             </section>
-            <section class="panel panel-default">
-              <header class="panel-heading">
-                <p>Ырларым</p>
-                <input #searchInput type="text" class="input-md form-control" name="searchText"
-                       placeholder="Издөө" [(ngModel)]="songFilter.title">
-              </header>
-              <ul class="list-group" *ngIf="artist">
-                <li class="list-group-item" *ngFor="let song of artist.songs| filterBy: songFilter; let index = index"
-                    (click)="playerService.play(song, artist.songs,index )"
-                    [ngClass]="{active: playerService.isCurrentSong(song)}">
-                  <div class="media"><span class="pull-left thumb-sm">
-                    </span>
-                    <div class="pull-right text-accent m-t-sm">
-                      <i class="fa fa-play" [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>
-                    </div>
-                    <div class="media-body">
-                      <div><strong>{{song.title}}</strong></div>
-                      <small class="text-muted">{{song.artist_as_one}}</small>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </section>
+              <app-song-list-row-based [songs]="artist.songs" [title]="artistSongs"></app-song-list-row-based>
           </section>
         </aside>
-        <section class="col-sm-4 no-padder">
+        <section class="col-sm-4">
           <section class="vbox">
             <section class="scrollable hover">
-
-              <section class="panel panel-default portlet-item" id="songs">
-                <header class="panel-heading"> Тыңшап көрүңүз</header>
-                <ul class="list-group alt" *ngIf="randomSongs">
-                  <li class="list-group-item" *ngFor="let song of randomSongs; let index=index;"
-                      (click)="playerService.play(song, randomSongs,index )"
-                      [ngClass]="{active: playerService.isCurrentSong(song)}">
-                    <div class="media">
-                      <span class="pull-left thumb-sm">
-                      <img [lazyLoad]="song.profileLocal"
-                           src="http://localhost:8000/uploads/artist/profile/placeholder_one.jpg"
-                           alt="..." class="img-circle">
-                      </span>
-                      <div class="pull-right text-accent m-t-sm">
-                        <i class="fa fa-play" [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>
-                      </div>
-                      <div class="media-body">
-                        <div><strong>{{song.title}}</strong></div>
-                        <small class="text-muted">{{song.artist_as_one}}</small>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </section>
+              <app-song-list-row-based [songs]="randomSongs" [title]="listen"></app-song-list-row-based>
             </section>
           </section>
         </section>

@@ -4,29 +4,21 @@ import {PlayerService} from "../player.service";
 import {SongsService} from "../songs.service";
 
 @Component({
-  selector: 'app-newsongs',
-  templateUrl: './newsongs.component.html',
-  styleUrls: ['./newsongs.component.css']
+  selector: 'app-newSongs',
+  templateUrl: './newSongs.component.html',
+  styleUrls: ['./newSongs.component.css']
 })
 export class NewsongsComponent implements OnInit {
 
-  private newSongs:Song[];
+  private songs:Song[];
 
   constructor(private songsService:SongsService, private playerService:PlayerService) {
-  }
-
-  play(song:Song, songs, index) {
-    this.playerService.currentTime = 0;
-    this.playerService.currentSongTitle = song.title;
-    this.playerService.setCurrentSong(song);
-    this.playerService.setSongs(songs);
-    this.playerService.setIndex(index);
   }
 
   ngOnInit() {
     this.songsService.getNewSongs()
       .then(newSongs => {
-        this.newSongs = newSongs;
+        this.songs = newSongs;
         this.playerService.currentTime = 0;
         this.playerService.setIndex(0);
         this.playerService.setSongs(newSongs);

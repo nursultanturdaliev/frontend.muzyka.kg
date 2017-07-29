@@ -18,12 +18,15 @@ export class ArtistComponent implements OnInit, OnDestroy {
   private artistId:number;
   private randomSongs:Song[];
   private sub:Subscription;
-  private songFilter:any = {title: ''};
+  public artistSongs:string;
+  public listen:string;
 
   constructor(private artistService:ArtistService,
               private songService:SongsService,
               private playerService:PlayerService,
               private route:ActivatedRoute) {
+    this.artistSongs = 'Ырларым';
+    this.listen = 'Тыңшап көрүңүз';
   }
 
 

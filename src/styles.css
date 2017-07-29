@@ -28,11 +28,11 @@ html {
   background-color: #691A99 !important;
 }
 
-#main-content {
-  margin: 15px 0 15px 0;
+.main-content {
+  margin: 15px;
 }
 
-#main-content .list-group-item {
+.main-content .list-group-item {
   cursor: pointer;
 }
 

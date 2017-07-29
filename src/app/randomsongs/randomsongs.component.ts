@@ -10,18 +10,15 @@ import {SongsService} from "../songs.service";
 })
 export class RandomsongsComponent implements OnInit {
 
-  private randomSongs:Song[];
+  private songs:Song[];
 
-  constructor(private songsService:SongsService, public playerService:PlayerService) {
+  constructor(private songsService:SongsService) {
   }
 
   ngOnInit() {
     this.songsService.getRandomSongs({})
       .then(randomSongs => {
-        this.randomSongs = randomSongs;
-        this.playerService.currentTime = 0;
-        this.playerService.setIndex(0);
-        this.playerService.setSongs(randomSongs);
+        this.songs = randomSongs;
       });
   }
 
