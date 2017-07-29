@@ -13,8 +13,8 @@
                          data-size="134" data-line-cap="butt" data-animate="1000"
                          style="width: 134px; height: 134px; line-height: 134px;">
                       <div class="thumb-lg">
-                        <img *ngIf="artist.profileLocal"
-                             src="http://localhost:8000/uploads/artist/profile/{{artist.profileLocal}}.jpg"
+                        <img [lazyLoad]="artist.profileLocal"
+                             src="http://localhost:8000/uploads/artist/profile/placeholder_one.jpg"
                              class="img-circle" alt="...">
                       </div>
                       <canvas width="268" height="268" style="width: 134px; height: 134px;"></canvas>
@@ -81,10 +81,9 @@
                       [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="media">
                       <span class="pull-left thumb-sm">
-                      <img *ngIf="song.profileLocal"
-                           src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg"
+                      <img [lazyLoad]="song.profileLocal"
+                           src="http://localhost:8000/uploads/artist/profile/placeholder_one.jpg"
                            alt="..." class="img-circle">
-                      <i class="fa fa-instagram fa-2x" *ngIf="!song.profileLocal"></i>
                       </span>
                       <div class="pull-right text-accent m-t-sm">
                         <i class="fa fa-play" [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>

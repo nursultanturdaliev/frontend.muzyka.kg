@@ -1,33 +1,36 @@
 <section class="w-f-md" id="bjax-target">
-    <section class="hbox stretch dker"> <!-- side content -->
-        <section class="artists">
-            <section class="vbox">
-                <section class="scrollable padder-lg"><h2 class="font-thin m-b">Ырчылар</h2>
-                    <div class="row">
-                        <div *ngFor="let artist of artists;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2"
-                             infiniteScroll
-                             [infiniteScrollDistance]="2"
-                             [infiniteScrollThrottle]="300"
-                             (scrolled)="onScrollDown()">
-                            <div class="item">
-                                <div class="pos-rlt">
-                                    <a routerLink="/artist/{{artist.id}}" class="artist-link" >
-                                        <img *ngIf="artist.profileLocal" src="http://localhost:8000/uploads/artist/profile/{{artist.profileLocal}}.jpg" alt="{{artist.name}}"
-                                             class="r r-2x img-full">
-                                    </a>
-                                </div>
-                                <div class="padder-v">
-                                    <a routerLink="/artist/{{artist.id}}" class="artist-link">
-                                      {{artist.name}} {{artist.lastname}}
-                                    </a>
-                                    <p class="text-ellipsis text-xs text-muted">Ырларым <span class="badge bg-info pull-right">{{artist.numberOfSongs}}</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </section>
+  <section class="hbox stretch dker"> <!-- side content -->
+    <section class="artists">
+      <section class="vbox">
+        <section class="scrollable padder-lg"><h2 class="font-thin m-b">Ырчылар</h2>
+          <div class="row">
+            <div *ngFor="let artist of artists;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2"
+                 infiniteScroll
+                 [infiniteScrollDistance]="2"
+                 [infiniteScrollThrottle]="300"
+                 (scrolled)="onScrollDown()">
+              <div class="item">
+                <div class="pos-rlt">
+                  <a routerLink="/artist/{{artist.id}}" class="artist-link">
+                    <img
+                         [lazyLoad]="artist.profileLocal"
+                         src="http://localhost:8000/uploads/artist/profile/placeholder_one.jpg"
+
+                         class="r r-2x img-full">
+                  </a>
+                </div>
+                <div class="padder-v">
+                  <a routerLink="/artist/{{artist.id}}" class="artist-link">
+                    {{artist.name}} {{artist.lastname}}
+                  </a>
+                  <p class="text-ellipsis text-xs text-muted">Ырларым <span class="badge bg-info pull-right">{{artist.numberOfSongs}}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
+      </section>
     </section>
+  </section>
 </section>

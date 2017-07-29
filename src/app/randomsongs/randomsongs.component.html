@@ -13,7 +13,8 @@
             <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
           </div>
         </div>
-        <img src="{{song.artists[0].profile}}" alt="{{song.artists[0].name}}" class="r r-2x img-full">
+        <img [lazyLoad]="song.profileLocal"
+             src="http://localhost:8000/uploads/artist/profile/placeholder_one.jpg" alt="{{song.artists[0].name}}" class="r r-2x img-full">
       </div>
       <div class="padder-v">
         <a class="text-ellipsis" *ngFor="let artist of song.artists" routerLink="/artist/{{artist.id}}">

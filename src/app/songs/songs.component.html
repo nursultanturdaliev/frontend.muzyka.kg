@@ -15,13 +15,14 @@
                     [infiniteScrollThrottle]="300"
                     (scrolled)="onScrollDown()">
                   <li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"
-                      (click)="playerService.play(song, songs,i )" [ngClass]="{active: playerService.isCurrentSong(song)}">
+                      (click)="playerService.play(song, songs,i )"
+                      [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="row">
                       <div class="col-md-1 col-xs-2">
-                        <span class="pull-left thumb-sm avatar m-r" *ngIf="song.profileLocal">
-                            <img alt="{{song.artist_as_one}}" src="http://localhost:8000/uploads/artist/profile/{{song.profileLocal}}.jpg">
+                        <span class="pull-left thumb-sm avatar m-r" >
+                            <img alt="{{song.artist_as_one}}" [lazyLoad]="song.profileLocal"
+                                 src="http://localhost:8000/uploads/artist/profile/placeholder_one.jpg">
                         </span>
-                        <i class="fa fa-instagram fa-2x" *ngIf="!song.profileLocal"></i>
                       </div>
                       <div class="col-md-5 col-xs-4">
                         <div class="vertical-middle"><strong>{{song.artist_as_one}}</strong></div>

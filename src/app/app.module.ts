@@ -21,6 +21,7 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HomeComponent } from './home/home.component';
 import {FilterPipeModule} from "ngx-filter-pipe/dist/src/ngx-filter.module";
+import {LazyLoadImageModule} from "ng-lazyload-image/index";
 
 const appRoutes:Routes = <Routes>[
   {
@@ -78,7 +79,8 @@ const appRoutes:Routes = <Routes>[
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FilterPipeModule
+    FilterPipeModule,
+    LazyLoadImageModule
   ],
   providers: [PlayerService, ArtistService, SongsService, ConfigService],
   bootstrap: [AppComponent]
