@@ -1,0 +1,24 @@
+<div class="modal fade in" id="modal-form" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body wrapper-lg">
+        <h3 class="m-t-none m-b text-center">Кирүү</h3>
+        <form role="form" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group"><label>Электрондук кат</label>
+            <input type="email" class="form-control" placeholder="Enter email" [(ngModel)]="loginUser.email" name="email" required>
+          </div>
+          <div class="form-group"><label>Купуя сөз</label>
+            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="loginUser.password" name="password" required>
+          </div>
+          <div class="checkbox m-t-lg">
+            <button type="submit" class="btn btn-success pull-right text-uc m-t-n-xs" [disabled]="!loginForm.form.valid">
+              <strong>Кирүү</strong>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

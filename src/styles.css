@@ -126,3 +126,7 @@ html {
 .discover-song:hover {
   cursor: pointer !important;
 }
+
+.text-center {
+  text-align: center;
+}

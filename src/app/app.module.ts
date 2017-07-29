@@ -24,6 +24,7 @@ import {FilterPipeModule} from "ngx-filter-pipe/dist/src/ngx-filter.module";
 import {LazyLoadImageModule} from "ng-lazyload-image/index";
 import { SongListComponent } from './song-list/song-list.component';
 import { SongListRowBasedComponent } from './song-list-row-based/song-list-row-based.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes:Routes = <Routes>[
   {
@@ -57,6 +58,10 @@ const appRoutes:Routes = <Routes>[
   {
     path: 'artist/:id',
     component: ArtistComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
@@ -73,7 +78,8 @@ const appRoutes:Routes = <Routes>[
     RandomsongsComponent,
     HomeComponent,
     SongListComponent,
-    SongListRowBasedComponent
+    SongListRowBasedComponent,
+    LoginComponent
   ],
 
   imports: [
