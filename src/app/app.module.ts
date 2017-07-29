@@ -8,7 +8,6 @@ import {ArtistsComponent} from './artists/artists.component';
 import {SongsComponent} from './songs/songs.component';
 import {PlayerComponent} from './player/player.component';
 import {AlertModule} from 'ng2-bootstrap';
-import {SearchComponent} from './search/search.component';
 import {PlayerService} from './player.service';
 import {ArtistComponent} from './artist/artist.component';
 import {ArtistService} from './artist.service';
@@ -25,6 +24,7 @@ import {LazyLoadImageModule} from "ng-lazyload-image/index";
 import { SongListComponent } from './song-list/song-list.component';
 import { SongListRowBasedComponent } from './song-list-row-based/song-list-row-based.component';
 import { LoginComponent } from './login/login.component';
+import {AuthService} from "./services/auth.service";
 
 const appRoutes:Routes = <Routes>[
   {
@@ -52,10 +52,6 @@ const appRoutes:Routes = <Routes>[
     component: RandomsongsComponent,
   },
   {
-    path: 'search',
-    component: SearchComponent,
-  },
-  {
     path: 'artist/:id',
     component: ArtistComponent,
   },
@@ -71,7 +67,6 @@ const appRoutes:Routes = <Routes>[
     ArtistsComponent,
     SongsComponent,
     PlayerComponent,
-    SearchComponent,
     ArtistComponent,
     TopsongsComponent,
     NewsongsComponent,
@@ -92,7 +87,7 @@ const appRoutes:Routes = <Routes>[
     FilterPipeModule,
     LazyLoadImageModule
   ],
-  providers: [PlayerService, ArtistService, SongsService, ConfigService],
+  providers: [PlayerService, ArtistService, SongsService, ConfigService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

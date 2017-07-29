@@ -23,7 +23,6 @@ export class ArtistComponent implements OnInit, OnDestroy {
 
   constructor(private artistService:ArtistService,
               private songService:SongsService,
-              private playerService:PlayerService,
               private route:ActivatedRoute) {
     this.artistSongs = 'Ырларым';
     this.listen = 'Тыңшап көрүңүз';
