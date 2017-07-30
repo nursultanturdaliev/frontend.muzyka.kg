@@ -1,0 +1,27 @@
+<section class="panel panel-default" *ngIf="histories">
+  <header class="panel-heading">
+    <p>{{title}}</p>
+    <input #searchInput type="text" class="input-md form-control" name="searchText"
+           placeholder="Издөө" [(ngModel)]="songFilter.title">
+  </header>
+  <ul class="list-group">
+    <li class="list-group-item song-list-row-based" *ngFor="let history of histories; let index = index"
+        [ngClass]="{active: playerService.isCurrentSong(history.song)}">
+      <div class="media">
+        <span class="pull-left thumb-sm">
+          <a (click)="appService.favourite(history.song)">
+            <i class="fa fa-heart-o"></i>
+          </a>
+        </span>
+        <div class="pull-right text-accent m-t-sm">
+          <i class="fa fa-play"
+             [ngClass]="{'fa-play': !playerService.isCurrentSong(history.song), 'fa-pause': playerService.isCurrentSong(history.song)}"></i>
+        </div>
+        <div class="media-body">
+          <div><strong>{{history.song.title}}</strong></div>
+          <small class="text-muted">{{history.song.artist_as_one}}</small>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>

@@ -11,7 +11,7 @@
           <a class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;" (click)="playerService.play(song,topSongs,index)" [ngClass]="{active: playerService.isCurrentSong(song)}">
             <span class="pull-right h2 text-muted m-l">{{index + 1}}</span>
             <span class="pull-left thumb-sm avatar m-r">
-              <img src="http://localhost:8000/uploads/artist/profile/placeholder_one.jpg"
+              <img src="http://muzyka.api/uploads/artist/profile/placeholder_one.jpg"
                    [lazyLoad]="song.profileLocal" alt="...">
             </span>
             <span class="clear">

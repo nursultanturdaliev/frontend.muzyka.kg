@@ -12,7 +12,7 @@ export class SongListRowBasedComponent implements OnInit {
 
   @Input() songs:Song[];
   @Input() title:string;
-  private songFilter:any = {title: ''};
+  public songFilter:any = {title: ''};
 
   constructor(public playerService:PlayerService,
               public appService:AppService) {

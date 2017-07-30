@@ -34,6 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HistoryService} from "./services/history.service";
 import {AppService} from "./services/app.service";
+import { HistoryListComponent } from './history-list/history-list.component';
 
 const appRoutes:Routes = <Routes>[
   {
@@ -93,7 +94,8 @@ const appRoutes:Routes = <Routes>[
     SongListRowBasedComponent,
     LoginComponent,
     ProfileComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    HistoryListComponent
   ],
 
   imports: [
