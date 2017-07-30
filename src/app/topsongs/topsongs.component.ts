@@ -10,7 +10,7 @@ import {SongsService} from "../songs.service";
 })
 export class TopsongsComponent implements OnInit {
 
-  private topSongs: Song[];
+  public songs: Song[];
   constructor(private topSongsService: SongsService, private playerService: PlayerService) {
   }
 
@@ -25,7 +25,7 @@ export class TopsongsComponent implements OnInit {
   ngOnInit() {
     this.topSongsService.getTopSongs()
         .then(topSongs => {
-          this.topSongs = topSongs;
+          this.songs = topSongs;
           this.playerService.currentTime = 0;
           this.playerService.setIndex(0);
           this.playerService.setSongs(topSongs);

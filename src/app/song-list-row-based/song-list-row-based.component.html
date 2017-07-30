@@ -5,16 +5,19 @@
            placeholder="Издөө" [(ngModel)]="songFilter.title">
   </header>
   <ul class="list-group" *ngIf="songs">
-    <li class="list-group-item" *ngFor="let song of songs| filterBy: songFilter; let index = index"
-        (click)="playerService.play(song, songs,index )"
+    <li class="list-group-item song-list-row-based" *ngFor="let song of songs| filterBy: songFilter; let index = index"
         [ngClass]="{active: playerService.isCurrentSong(song)}">
-      <div class="media"><span class="pull-left thumb-sm">
-                    </span>
-        <div class="pull-right text-accent m-t-sm">
+      <div class="media">
+        <span class="pull-left thumb-sm">
+          <a (click)="appService.favourite(song)">
+            <i class="fa fa-heart-o"></i>
+          </a>
+        </span>
+        <div class="pull-right text-accent m-t-sm" (click)="playerService.play(song, songs,index )">
           <i class="fa fa-play"
              [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>
         </div>
-        <div class="media-body">
+        <div class="media-body" (click)="playerService.play(song, songs,index )">
           <div><strong>{{song.title}}</strong></div>
           <small class="text-muted">{{song.artist_as_one}}</small>
         </div>

@@ -14,17 +14,28 @@ export class HistoryService extends BaseService {
     super();
   }
 
-  start(song:Song) {
-    this.authHttp.post(this.configService.APIS_URL + '/history/start/' + song.uuid, {})
+  start(uuid:string) {
+    return this.authHttp.post(this.configService.APIS_URL + '/history/start/' + uuid, {})
       .toPromise()
       .then(response => response)
       .catch(this.handleError);
   }
 
-  stop(song:Song) {
-    this.authHttp.put(this.configService.APIS_URL + '/history/stop/' + song.uuid, {})
+  stop(uuid:string) {
+    return this.authHttp.put(this.configService.APIS_URL + '/history/stop/' + uuid, {})
       .toPromise()
       .then(response => response)
       .catch(this.handleError)
+  }
+
+  updateHistory(currentUuid:string, nextUuid:string):void {
+    if (currentUuid) {
+      this.stop(currentUuid)
+        .then(()=> {
+          this.start(nextUuid)
+        });
+    } else {
+      this.start(nextUuid);
+    }
   }
 }

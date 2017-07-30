@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Song} from "../song";
 import {PlayerService} from "../player.service";
+import {AppService} from "../services/app.service";
 
 @Component({
   selector: 'app-song-list-row-based',
@@ -13,7 +14,8 @@ export class SongListRowBasedComponent implements OnInit {
   @Input() title:string;
   private songFilter:any = {title: ''};
 
-  constructor(public playerService:PlayerService) {
+  constructor(public playerService:PlayerService,
+              public appService:AppService) {
   }
 
   ngOnInit() {

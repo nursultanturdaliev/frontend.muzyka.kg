@@ -13,8 +13,8 @@
             <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
           </div>
           <div class="bottom padder m-b-sm">
-            <a (click)="favourite(song)" class="pull-right">
-              <i class="fa fa-heart-o"></i>
+            <a (click)="appService.favourite(song)" class="pull-right">
+              <i class="fa fa-heart-o fa-1-5x"></i>
             </a>
           </div>
         </div>

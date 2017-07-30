@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Song} from './song';
 import {count} from 'rxjs/operator/count';
+import {HistoryService} from "./services/history.service";
 
 
 @Injectable()
@@ -12,7 +13,14 @@ export class PlayerService {
   public currentTime:any;
   public currentSongTitle:any;
 
+  constructor(private historyService:HistoryService) {
+
+  }
+
   setCurrentSong(song:Song) {
+    let currentUuid = this.currentSong ? this.currentSong.uuid : null;
+    let nextUuid = song.uuid;
+    this.historyService.updateHistory(currentUuid, nextUuid);
     this.currentSong = song;
     this.currentSongChanged();
   }

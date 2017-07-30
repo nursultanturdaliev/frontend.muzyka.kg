@@ -50,7 +50,6 @@ export class PlayerComponent implements OnInit {
     }, 1000);
 
     this.audio.addEventListener('ended', () => {
-      this.songService.incrementPlayCount(this.playerService.getCurrentSong());
       this.next(this.repeat);
     });
   }
