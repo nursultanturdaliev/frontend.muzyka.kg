@@ -87,7 +87,6 @@ export class PlayerService {
       } else {
         this.index = this.index + random;
       }
-      console.log(this.getCurrentSong());
       return this.songs[this.index];
     }
   }

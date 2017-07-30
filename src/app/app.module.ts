@@ -32,6 +32,7 @@ import {AuthModule} from "./auth.module";
 import {AuthGuard} from "./services/auth-guard.service";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HistoryService} from "./services/history.service";
 
 const appRoutes:Routes = <Routes>[
   {
@@ -113,6 +114,7 @@ const appRoutes:Routes = <Routes>[
     ConfigService,
     AuthService,
     FavouriteService,
+    HistoryService,
     AuthGuard
   ],
   bootstrap: [AppComponent]
