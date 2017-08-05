@@ -5,8 +5,8 @@ import {Injectable} from '@angular/core'
 import {AuthService} from "./auth.service";
 import {ToastrService} from "ngx-toastr/index";
 import {FavouriteService} from "./favourite.service";
-import {PlayerService} from "../player.service";
-import {Song} from "../song";
+import {PlayerService} from '../services/player.service';
+import {Song} from '../Models/song';
 import {ToastConfig} from "ngx-toastr/index";
 import {Favourite} from "../Models/Favourite";
 @Injectable()

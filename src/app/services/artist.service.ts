@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Artist} from "./artist";
+import {Artist} from '../Models/artist';
 import {Http} from "@angular/http";
-import {ConfigService} from "./services/config.service";
+import {ConfigService} from "./config.service";
 import {AuthHttp} from "angular2-jwt/angular2-jwt";
 
 @Injectable()

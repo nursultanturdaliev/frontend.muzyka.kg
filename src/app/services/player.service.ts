@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Song} from './song';
 import {count} from 'rxjs/operator/count';
-import {HistoryService} from "./services/history.service";
+import {HistoryService} from "./history.service";
+import {Song} from '../Models/song';
 
 
 @Injectable()

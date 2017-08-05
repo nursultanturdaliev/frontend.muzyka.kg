@@ -8,10 +8,10 @@ import {ArtistsComponent} from './artists/artists.component';
 import {SongsComponent} from './songs/songs.component';
 import {PlayerComponent} from './player/player.component';
 import {AlertModule} from 'ng2-bootstrap';
-import {PlayerService} from './player.service';
+import {PlayerService} from './services/player.service';
 import {ArtistComponent} from './artist/artist.component';
-import {ArtistService} from './artist.service';
-import {SongsService} from "./songs.service";
+import {ArtistService} from './services/artist.service';
+import {SongService} from "./services/song.service";
 import { TopsongsComponent } from './topsongs/topsongs.component';
 import { NewsongsComponent } from './newsongs/newsongs.component';
 import {RandomsongsComponent} from "./randomsongs/randomsongs.component";
@@ -125,7 +125,7 @@ const appRoutes:Routes = <Routes>[
   providers: [
     PlayerService,
     ArtistService,
-    SongsService,
+    SongService,
     ConfigService,
     AuthService,
     FavouriteService,

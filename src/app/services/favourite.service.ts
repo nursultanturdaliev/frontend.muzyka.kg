@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import { AuthHttp } from 'angular2-jwt';
 import {ConfigService} from "./config.service";
 import {Favourite} from "../Models/Favourite";
-import {Song} from "../song";
+import {Song} from '../Models/song';
 /**
  * Created by nursultan on 7/29/17.
  */

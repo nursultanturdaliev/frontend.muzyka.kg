@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Song} from "../song";
-import {PlayerService} from "../player.service";
-import {SongsService} from "../songs.service";
+import {Song} from '../Models/song';
+import {PlayerService} from "../services/player.service";
+import {SongService} from '../services/song.service';
 
 @Component({
   selector: 'app-newSongs',
@@ -12,11 +12,11 @@ export class NewsongsComponent implements OnInit {
 
   private songs:Song[];
 
-  constructor(private songsService:SongsService, private playerService:PlayerService) {
+  constructor(private SongService:SongService, private playerService:PlayerService) {
   }
 
   ngOnInit() {
-    this.songsService.getNewSongs()
+    this.SongService.getNewSongs()
       .then(newSongs => {
         this.songs = newSongs;
         this.playerService.currentTime = 0;

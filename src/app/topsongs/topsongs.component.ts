@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Song} from "../song";
-import {PlayerService} from "../player.service";
-import {SongsService} from "../songs.service";
+import {Song} from '../Models/song';
+import {PlayerService} from "../services/player.service";
+import {SongService} from '../services/song.service';
 
 @Component({
   selector: 'app-topsongs',
@@ -11,7 +11,7 @@ import {SongsService} from "../songs.service";
 export class TopsongsComponent implements OnInit {
 
   public songs: Song[];
-  constructor(private topSongsService: SongsService, private playerService: PlayerService) {
+  constructor(private topSongService: SongService, private playerService: PlayerService) {
   }
 
   play(song: Song, songs, index) {
@@ -23,7 +23,7 @@ export class TopsongsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.topSongsService.getTopSongs()
+    this.topSongService.getTopSongs()
         .then(topSongs => {
           this.songs = topSongs;
           this.playerService.currentTime = 0;

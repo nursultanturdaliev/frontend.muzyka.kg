@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {PlayerService} from "./player.service";
-import {SongsService} from "./songs.service";
+import {PlayerService} from './services/player.service';
+import {SongService} from "./services/song.service";
 import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [SongsService]
+  providers: [SongService]
 })
 
 export class AppComponent {

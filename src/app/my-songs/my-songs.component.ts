@@ -1,7 +1,7 @@
 import { Component, OnInit,Input,OnChanges } from '@angular/core';
-import {Song} from "../song";
-import {ArtistService} from "../artist.service";
-import {Artist} from "../artist";
+import {Song} from '../Models/song';
+import {ArtistService} from "../services/artist.service";
+import {Artist} from '../Models/artist';
 
 @Component({
   selector: 'app-my-songs',

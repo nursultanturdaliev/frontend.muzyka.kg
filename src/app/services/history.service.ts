@@ -3,7 +3,7 @@
  */
 import {BaseService} from "./BaseService";
 import {AuthHttp} from "angular2-jwt";
-import {Song} from "../song";
+import {Song} from '../Models/song';
 import {Injectable } from '@angular/core';
 import {ConfigService} from "./config.service";
 

@@ -2,7 +2,7 @@
  * Created by nursultan on 7/31/17.
  */
 import {Injectable} from '@angular/core'
-import {Song} from "../song";
+import {Song} from '../Models/song';
 
 @Injectable()
 export class History {

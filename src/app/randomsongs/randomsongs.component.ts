@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Song} from "../song";
-import {PlayerService} from "../player.service";
-import {SongsService} from "../songs.service";
+import {Song} from '../Models/song';
+import {PlayerService} from "../services/player.service";
+import {SongService} from '../services/song.service';
 
 @Component({
   selector: 'app-randomsongs',
@@ -12,11 +12,11 @@ export class RandomsongsComponent implements OnInit {
 
   private songs:Song[];
 
-  constructor(private songsService:SongsService) {
+  constructor(private SongService:SongService) {
   }
 
   ngOnInit() {
-    this.songsService.getRandomSongs({})
+    this.SongService.getRandomSongs({})
       .then(randomSongs => {
         this.songs = randomSongs;
       });

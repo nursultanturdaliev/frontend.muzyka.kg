@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {PlayerService} from '../player.service';
+import {PlayerService} from '../services/player.service';
 import {Http} from '@angular/http';
-import {SongsService} from '../songs.service';
+import {SongService} from '../services/song.service';
 import {ConfigService} from "../services/config.service";
 import {HistoryService} from "../services/history.service";
 
@@ -33,7 +33,7 @@ export class PlayerComponent implements OnInit {
   progressBarWidth: any;
 
   constructor(private playerService: PlayerService,
-              private songService: SongsService,
+              private songService: SongService,
               private ref: ChangeDetectorRef,
               private configService: ConfigService) {
     this.audio = new Audio();

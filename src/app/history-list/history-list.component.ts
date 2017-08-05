@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {History} from "../Models/History";
-import {PlayerService} from "../player.service";
+import {PlayerService} from '../services/player.service';
 
 @Component({
   selector: 'app-history-list',

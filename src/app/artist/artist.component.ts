@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ArtistService} from "../artist.service";
-import {Artist} from "../artist";
+import {ArtistService} from "../services/artist.service";
+import {Artist} from '../Models/artist';
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
-import {SongsService} from "../songs.service";
-import {Song} from "../song";
-import {PlayerService} from "../player.service";
+import {SongService} from '../services/song.service';
+import {Song} from '../Models/song';
+import {PlayerService} from '../services/player.service';
 
 @Component({
   selector: 'app-artist',
@@ -22,7 +22,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
   public listen:string;
 
   constructor(private artistService:ArtistService,
-              private songService:SongsService,
+              private songService:SongService,
               private route:ActivatedRoute) {
     this.artistSongs = 'Ырларым';
     this.listen = 'Тыңшап көрүңүз';

@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Song} from '../song';
-import {SongsService} from '../songs.service';
-import {PlayerService} from '../player.service';
+import {Song} from '../Models/song';
+import {SongService} from '../services/song.service';
+import {PlayerService} from '../services/player.service';
 import {PlayerComponent} from "../player/player.component";
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
   styleUrls: ['./songs.component.css'],
-  providers: [SongsService],
+  providers: [SongService],
 })
 export class SongsComponent implements OnInit {
   songs:Song[];
@@ -15,12 +15,12 @@ export class SongsComponent implements OnInit {
   page:number;
   playingSong:Song;
 
-  constructor(private songsService:SongsService, private playerService:PlayerService) {
+  constructor(private SongService:SongService, private playerService:PlayerService) {
     this.page = 1;
   }
 
   ngOnInit() {
-    this.songsService.getSongs(this.page)
+    this.SongService.getSongs(this.page)
       .then(songs => {
         this.songs = songs;
         this.playerService.currentTime = 0;
@@ -39,7 +39,7 @@ export class SongsComponent implements OnInit {
   }
 
   search(value) {
-    this.songsService.search(value)
+    this.SongService.search(value)
       .then(songs => {
         this.songs = songs;
       });
@@ -47,7 +47,7 @@ export class SongsComponent implements OnInit {
 
   onScrollDown() {
     this.page += 1;
-    this.songsService.getSongs(this.page)
+    this.SongService.getSongs(this.page)
       .then(songs => {
         Array.prototype.push.apply(this.songs, songs);
       });
