@@ -4,7 +4,7 @@
       <section class="vbox animated fadeInUp">
         <section class="scrollable">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
               <section class="panel panel-default">
                 <header class="panel-heading">
                   <input #searchInput type="text" class="input-md form-control" name="searchText"
@@ -18,20 +18,15 @@
                       (click)="play(song, songs,i )"
                       [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="row">
-                      <div class="col-md-1 col-xs-2">
+                      <div class="col-md-2 col-xs-2">
                         <span class="pull-left thumb-sm avatar m-r">
                             <img alt="{{song.artist_as_one}}" [lazyLoad]="song.profileLocal"
                                  src="http://muzyka.api/uploads/artist/profile/placeholder_one.jpg">
                         </span>
                       </div>
-                      <div class="col-md-5 col-xs-4">
-                        <div class="vertical-middle"><strong>{{song.artist_as_one}}</strong></div>
-                      </div>
-                      <div class="col-xs-4">
-                        <div class="vertical-middle">{{song.title}}</div>
-                      </div>
-                      <div class="text-muted col-md-1 col-xs-2">
-                        <div class="vertical-middle">{{song.duration}}</div>
+                      <div class="col-md-8 col-xs-4">
+                        <div class="vertical-middle"><strong>{{song.title}}</strong></div>
+                        <small class="vertical-middle">{{song.artist_as_one}}</small>
                       </div>
                       <div class="col-sm-1 hidden-xs">
                         <div class="vertical-middle" >
