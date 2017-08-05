@@ -4,47 +4,8 @@
       <section class="hbox stretch bg-black dker row"> <!-- side content -->
         <aside class="col-sm-5" id="sidebar">
           <section class="vbox animated fadeInUp">
-            <section class="panel panel-default">
-              <div class="panel-body">
-                <div class="clearfix text-center m-t">
-                  <div class="inline">
-                    <div class="easypiechart easyPieChart" data-percent="75" data-line-width="5"
-                         data-bar-color="#4cc0c1" data-track-color="#f5f5f5" data-scale-color="false"
-                         data-size="134" data-line-cap="butt" data-animate="1000"
-                         style="width: 134px; height: 134px; line-height: 134px;">
-                      <div class="thumb-lg">
-                        <img [lazyLoad]="artist.profileLocal"
-                             src="http://muzyka.api/uploads/artist/profile/placeholder_one.jpg"
-                             class="img-circle" alt="...">
-                      </div>
-                      <canvas width="268" height="268" style="width: 134px; height: 134px;"></canvas>
-                    </div>
-                    <div class="h4 m-t m-b-xs">{{artist.name}} {{artist.lastname}}</div>
-                  </div>
-                </div>
-              </div>
-              <footer class="panel-footer bg-primary text-center">
-                <div class="row pull-out">
-                  <div class="col-xs-6 dk">
-                    <div class="padder-v"><span class="m-b-xs h3 block text-white">{{artist.numberOfSongs}}</span>
-                      <small class="text-muted">Ырларым</small>
-                    </div>
-                  </div>
-                  <div class="col-xs-6" *ngIf="artist.instagram">
-                    <a href="{{artist.instagram}}" target="_blank">
-                      <div class="padder-v">
-
-                        <span class="m-b-xs h3 block text-white">
-                          <i class="fa fa-instagram"></i>
-                        </span>
-                        <small class="text-muted">Инстаграм</small>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </footer>
-            </section>
-              <app-song-list-row-based [songs]="artist.songs" [title]="artistSongs"></app-song-list-row-based>
+            <app-artist-info [artist]="artist"></app-artist-info>
+            <app-song-list-row-based [songs]="artist.songs" [title]="artistSongs"></app-song-list-row-based>
           </section>
         </aside>
         <section class="col-sm-4">

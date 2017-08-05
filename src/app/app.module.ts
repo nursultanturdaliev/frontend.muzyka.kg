@@ -38,6 +38,7 @@ import { HistoryListComponent } from './history-list/history-list.component';
 import {ReactiveFormsModule } from '@angular/forms';
 import {UserRegisterComponent } from './user-register/user-register.component';
 import { MySongsComponent } from './my-songs/my-songs.component';
+import { ArtistInfoComponent } from './artist-info/artist-info.component';
 
 const appRoutes:Routes = <Routes>[
   {
@@ -104,7 +105,8 @@ const appRoutes:Routes = <Routes>[
     FavouriteComponent,
     HistoryListComponent,
     UserRegisterComponent,
-    MySongsComponent
+    MySongsComponent,
+    ArtistInfoComponent
   ],
 
   imports: [

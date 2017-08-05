@@ -11,6 +11,7 @@ import {Artist} from "../artist";
 export class MySongsComponent implements OnInit,OnChanges {
   @Input() song:Song;
   public songs:Song[];
+  public artist:Artist;
 
   constructor(private artistService:ArtistService) {
   }
@@ -20,13 +21,14 @@ export class MySongsComponent implements OnInit,OnChanges {
 
   ngOnChanges() {
     this.songs = [];
-    this.song.artists.forEach((artist:Artist) => {
-      this.artistService.getArtist(artist.id)
+    this.artist = this.song.artists[0];
+
+      this.artistService.getArtist(this.artist.id)
         .then(((artist:Artist) => {
+          this.artist = artist;
           artist.songs.forEach((song:Song) => {
             this.songs.push(song);
           });
         }));
-    });
   }
 }

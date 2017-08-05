@@ -10,9 +10,10 @@ import {PlayerComponent} from "../player/player.component";
   providers: [SongsService],
 })
 export class SongsComponent implements OnInit {
-  public songs:Song[];
-  public page:number;
+  songs:Song[];
   searchText:string;
+  page:number;
+  playingSong:Song;
 
   constructor(private songsService:SongsService, private playerService:PlayerService) {
     this.page = 1;
@@ -26,6 +27,11 @@ export class SongsComponent implements OnInit {
         this.playerService.setIndex(0);
         this.playerService.setSongs(songs);
       });
+  }
+
+  play(song:Song, songs:Song[], i:number) {
+    this.playerService.play(song, songs, i);
+    this.playingSong = song;
   }
 
   currentSong() {

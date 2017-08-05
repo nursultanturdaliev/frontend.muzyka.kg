@@ -11,6 +11,7 @@
         <span class="pull-left thumb-sm">
           <a (click)="appService.favourite(song)">
             <i class="fa fa-heart-o"></i>
+            <div>{{song.statistics.favourite}}</div>
           </a>
         </span>
         <div class="pull-right text-accent m-t-sm" (click)="playerService.play(song, songs,index )">

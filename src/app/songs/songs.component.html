@@ -15,7 +15,7 @@
                     [infiniteScrollThrottle]="300"
                     (scrolled)="onScrollDown()">
                   <li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"
-                      (click)="playerService.play(song, songs,i )"
+                      (click)="play(song, songs,i )"
                       [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="row">
                       <div class="col-md-1 col-xs-2">
@@ -34,9 +34,9 @@
                         <div class="vertical-middle">{{song.duration}}</div>
                       </div>
                       <div class="col-sm-1 hidden-xs">
-                        <div class="vertical-middle">
-                          <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
-                          <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
+                        <div class="vertical-middle" >
+                          <i class="fa fa-play fa-1-5x text-accent" *ngIf="!playerService.isCurrentSong(song)"></i>
+                          <i class="fa fa-pause fa-1-5x text-accent" *ngIf="playerService.isCurrentSong(song)"></i>
                         </div>
                       </div>
                     </div>
@@ -45,7 +45,7 @@
               </section>
             </div>
             <div class="col-md-4 hidden-xs" id="song-lyrics" *ngIf="playerService.currentSong">
-              <app-my-songs [song]="playerService.currentSong"></app-my-songs>
+              <app-my-songs [song]="playingSong"></app-my-songs>
             </div>
           </div>
         </section>
