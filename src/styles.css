@@ -380,6 +380,10 @@ button.toast-close-button {
   background-color: #691a99;
   border-color: #691a99;
 }
+.bg-primary {
+  color: #fff !important;
+  background-color: #691a99 !important;
+}
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
   color: #fff !important;
