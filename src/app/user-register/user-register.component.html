@@ -1,0 +1,26 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-sm-6">
+      <section class="panel panel-default">
+        <header class="panel-heading font-bold">Катталуу</header>
+        <div class="panel-body">
+          <form role="form" [formGroup]="registrationForm" novalidate>
+            <div class="form-group"><label>Электрондук адрес</label>
+              <input type="email" class="form-control" placeholder="ташмат@muzyka.kg" formControlName="email"></div>
+            <div class="form-group"><label>Купуя сөз</label>
+              <input type="password" class="form-control" placeholder="Купуя сөз" formControlName="password">
+            </div>
+
+            <div class="form-group"><label>Купуя сөздү кайталап коюңуз</label>
+              <input type="password" class="form-control" placeholder="Купуя сөз жогорудагынын өзү" formControlName="repeatPassword">
+            </div>
+            <button type="submit" class="btn btn-primary">Каттоо</button>
+          </form>
+        </div>
+        {{registrationForm.value | json}}
+        {{registrationForm.status | json}}
+      </section>
+    </div>
+  </div>
+
+</div>

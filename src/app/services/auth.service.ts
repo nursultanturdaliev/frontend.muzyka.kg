@@ -21,6 +21,16 @@ export class AuthService extends BaseService {
       .then(response => response.json() as AuthResponse);
   }
 
+  public register(loginUser:LoginUser) {
+    let body = new URLSearchParams();
+    body.append('email', loginUser.email);
+    body.append('password', loginUser.password);
+
+    return this.http.post(this.configService.URL + '/register', body)
+      .toPromise()
+      .then(response => response.json() as AuthResponse);
+  }
+
   public saveToLocalStorage(authResponse:AuthResponse):void {
     localStorage.setItem('token', authResponse.token);
     localStorage.setItem('refresh_token', authResponse.refresh_token);

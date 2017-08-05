@@ -22,6 +22,9 @@
     <div class="navbar-right ">
       <ul class="nav navbar-nav m-n hidden-xs nav-user user">
         <li *ngIf="!authService.loggedIn()">
+          <a routerLink="/register">Катталуу</a>
+        </li>
+        <li *ngIf="!authService.loggedIn()">
           <a href="#modal-form" data-toggle="modal">Кирүү</a>
         </li>
 

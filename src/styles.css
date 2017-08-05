@@ -371,6 +371,19 @@ button.toast-close-button {
 * TOAST END
 */
 
-.song-list-row-based .fa-heart-o{
+.song-list-row-based .fa-heart-o {
   margin-top: 5px;
 }
+
+.btn-primary {
+  color: #fff !important;
+  background-color: #691a99;
+  border-color: #691a99;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+  color: #fff !important;
+  background-color: #9b26af;
+  border-color: #9b26af;
+}
+

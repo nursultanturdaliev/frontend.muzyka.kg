@@ -35,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HistoryService} from "./services/history.service";
 import {AppService} from "./services/app.service";
 import { HistoryListComponent } from './history-list/history-list.component';
+import {ReactiveFormsModule } from '@angular/forms';
+import {UserRegisterComponent } from './user-register/user-register.component';
 
 const appRoutes:Routes = <Routes>[
   {
@@ -76,6 +78,10 @@ const appRoutes:Routes = <Routes>[
   {
     path: 'profile',
     component: ProfileComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'register',
+    component: UserRegisterComponent
   }
 ];
 
@@ -95,11 +101,13 @@ const appRoutes:Routes = <Routes>[
     LoginComponent,
     ProfileComponent,
     FavouriteComponent,
-    HistoryListComponent
+    HistoryListComponent,
+    UserRegisterComponent
   ],
 
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     InfiniteScrollModule,
     FormsModule,
     HttpModule,
