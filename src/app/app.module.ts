@@ -37,6 +37,7 @@ import {AppService} from "./services/app.service";
 import { HistoryListComponent } from './history-list/history-list.component';
 import {ReactiveFormsModule } from '@angular/forms';
 import {UserRegisterComponent } from './user-register/user-register.component';
+import { MySongsComponent } from './my-songs/my-songs.component';
 
 const appRoutes:Routes = <Routes>[
   {
@@ -102,7 +103,8 @@ const appRoutes:Routes = <Routes>[
     ProfileComponent,
     FavouriteComponent,
     HistoryListComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    MySongsComponent
   ],
 
   imports: [

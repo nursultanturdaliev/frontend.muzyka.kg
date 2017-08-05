@@ -19,7 +19,7 @@
                       [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="row">
                       <div class="col-md-1 col-xs-2">
-                        <span class="pull-left thumb-sm avatar m-r" >
+                        <span class="pull-left thumb-sm avatar m-r">
                             <img alt="{{song.artist_as_one}}" [lazyLoad]="song.profileLocal"
                                  src="http://muzyka.api/uploads/artist/profile/placeholder_one.jpg">
                         </span>
@@ -44,24 +44,8 @@
                 </ul>
               </section>
             </div>
-            <div class="col-md-6 hidden-xs" id="song-lyrics">
-              <div *ngIf="playerService.currentSong">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <a *ngFor="let artist of playerService.currentSong.artists; let last=last;"
-                       routerLink="/artist/{{artist.id}}">
-                      <strong>{{artist.name}} {{artist.lastname}}<span *ngIf="!last">, </span></strong>
-                    </a>
-                    -
-                    <span>{{playerService.currentSong.title}}</span>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse in">
-                    <div class="panel-body text-sm">
-                      <pre>{{playerService.currentSong.lyrics}}</pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-4 hidden-xs" id="song-lyrics" *ngIf="playerService.currentSong">
+              <app-my-songs [song]="playerService.currentSong"></app-my-songs>
             </div>
           </div>
         </section>
