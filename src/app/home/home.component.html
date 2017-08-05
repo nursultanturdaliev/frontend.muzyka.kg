@@ -1,12 +1,8 @@
 <section class="vbox">
   <section class="scrollable padder-lg w-f-md" id="bjax-target">
-    <h2 class="font-thin m-b">Ырлар дүйнөсүндө ачылыш жасаңыз</h2>
-    <app-song-list [songs]="discoverSongs"></app-song-list>
     <div class="row">
-      <div class="col-md-8"><h3 class="font-thin">Жаңы ырлар</h3>
-        <app-song-list [songs]="newSongs"></app-song-list>
-      </div>
-      <div class="col-md-4"><h3 class="font-thin">Эң популярлуу ырлар</h3>
+      <div class="col-md-3">
+        <h3 class="font-thin">Эң популярлуу ырлар</h3>
         <div class="list-group bg-white list-group-lg no-bg auto">
           <a class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;" (click)="playerService.play(song,topSongs,index)" [ngClass]="{active: playerService.isCurrentSong(song)}">
             <span class="pull-right h2 text-muted m-l">{{index + 1}}</span>
@@ -20,6 +16,12 @@
           </span>
           </a>
         </div>
+      </div>
+      <div class="col-md-9">
+        <h3 class="font-thin">Ырлар дүйнөсүндө ачылыш жасаңыз</h3>
+        <app-song-list [songs]="discoverSongs"></app-song-list>
+        <h3 class="font-thin">Жаңы ырлар</h3>
+        <app-song-list [songs]="newSongs"></app-song-list>
       </div>
     </div>
   </section>

@@ -7,6 +7,10 @@ html {
   background-color: white;
 }
 
+body {
+  background-color: #f2f4f8 !important;
+}
+
 .bg-black.auto .list-group-item, .bg-black .auto .list-group-item {
   background-color: white;
 }
@@ -380,6 +384,7 @@ button.toast-close-button {
   background-color: #691a99;
   border-color: #691a99;
 }
+
 .bg-primary {
   color: #fff !important;
   background-color: #691a99 !important;

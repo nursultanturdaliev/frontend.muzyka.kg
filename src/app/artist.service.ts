@@ -10,6 +10,13 @@ export class ArtistService {
   constructor(private http:AuthHttp, private configService:ConfigService) {
   }
 
+  getArtists(page:number):Promise<Artist[]> {
+    return this.http.get(this.configService.API_URL + '/artist/page/' + page)
+      .toPromise()
+      .then(response => response.json() as Artist[])
+      .catch(this.handleError);
+  }
+
   getArtist(artistId):Promise<Artist> {
     return this.http.get(this.configService.API_URL + '/artist/' + artistId)
       .toPromise()
