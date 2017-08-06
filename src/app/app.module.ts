@@ -39,53 +39,8 @@ import {ReactiveFormsModule } from '@angular/forms';
 import {UserRegisterComponent } from './user-register/user-register.component';
 import { MySongsComponent } from './my-songs/my-songs.component';
 import { ArtistInfoComponent } from './artist-info/artist-info.component';
+import {AppRoutingModule} from "./routing/app-routing.module";
 
-const appRoutes:Routes = <Routes>[
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'favourite',
-    component: FavouriteComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'artists',
-    component: ArtistsComponent,
-  },
-  {
-    path: 'songs',
-    component: SongsComponent,
-  },
-  {
-    path: 'topsongs',
-    component: TopsongsComponent,
-  },
-  {
-    path: 'newsongs',
-    component: NewsongsComponent,
-  },
-  {
-    path: 'randomsongs',
-    component: RandomsongsComponent,
-  },
-  {
-    path: 'artist/:id',
-    component: ArtistComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'register',
-    component: UserRegisterComponent
-  }
-];
 
 @NgModule({
   declarations: [
@@ -115,7 +70,7 @@ const appRoutes:Routes = <Routes>[
     InfiniteScrollModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     FilterPipeModule,
     LazyLoadImageModule,
     AuthModule,
