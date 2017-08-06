@@ -21,10 +21,10 @@ export class AuthService extends BaseService {
       .then(response => response.json() as AuthResponse);
   }
 
-  public register(loginUser:LoginUser) {
+  public register(email:string, password:string) {
     let body = new URLSearchParams();
-    body.append('email', loginUser.email);
-    body.append('password', loginUser.password);
+    body.append('email', email);
+    body.append('password', password);
 
     return this.http.post(this.configService.URL + '/register', body)
       .toPromise()
