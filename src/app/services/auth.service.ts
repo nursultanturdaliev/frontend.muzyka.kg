@@ -44,4 +44,8 @@ export class AuthService extends BaseService {
   logout() {
     localStorage.clear();
   }
+
+  public userEmail() {
+    return localStorage.getItem('email');
+  }
 }

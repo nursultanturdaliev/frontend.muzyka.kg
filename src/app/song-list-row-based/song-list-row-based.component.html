@@ -10,8 +10,7 @@
       <div class="media">
         <span class="pull-left thumb-sm">
           <a (click)="appService.favourite(song)">
-            <i class="fa fa-heart-o"></i>
-            <div>{{song.statistics.favourite}}</div>
+            <i class="fa fa-heart-o fa-1-5x"></i>
           </a>
         </span>
         <div class="pull-right text-accent m-t-sm" (click)="playerService.play(song, songs,index )">
@@ -19,8 +18,13 @@
              [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>
         </div>
         <div class="media-body" (click)="playerService.play(song, songs,index )">
-          <div><strong>{{song.title}}</strong></div>
+          <div>
+            <strong>{{song.title}}</strong>
+          </div>
           <small class="text-muted">{{song.artist_as_one}}</small>
+          <div>
+            <span class="label label-info" *ngIf="song.is_new">Жаңы</span>
+          </div>
         </div>
       </div>
     </li>

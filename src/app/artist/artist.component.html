@@ -1,23 +1,22 @@
 <section *ngIf="artist" class="main-content">
   <section class="vbox">
     <section class="w-f-md">
-      <section class="hbox stretch row"> <!-- side content -->
-        <aside class="col-sm-5" id="sidebar">
-          <section class="vbox animated fadeInUp">
-            <app-artist-info [artist]="artist"></app-artist-info>
-            <app-song-list-row-based [songs]="artist.songs" [title]="artistSongs"></app-song-list-row-based>
-          </section>
-        </aside>
-        <section class="col-sm-4">
-          <section class="vbox">
-            <section class="scrollable hover">
-              <app-song-list-row-based [songs]="randomSongs" [title]="listen"></app-song-list-row-based>
+      <section class="hbox stretch">
+        <div class="row">
+          <div class="col-sm-5">
+            <section class="vbox animated fadeInUp">
+              <app-artist-info [artist]="artist"></app-artist-info>
+              <app-song-list-row-based [songs]="artist.songs" [title]="artistSongs"></app-song-list-row-based>
             </section>
-          </section>
-        </section>
-        <section class="col-sm-3" id="song-lyrics">
-
-        </section>
+          </div>
+          <div class="col-sm-4">
+            <section class="vbox">
+              <section class="scrollable hover">
+                <app-song-list-row-based [songs]="randomSongs" [title]="listen"></app-song-list-row-based>
+              </section>
+            </section>
+          </div>
+        </div>
       </section>
     </section>
   </section>

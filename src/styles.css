@@ -61,11 +61,11 @@ body {
 }
 
 .bg-muzyka.bg, .bg-muzyka .bg, .bg-muzyka.lter, .bg-muzyka .lter {
-  background-color: #4cb6cb !important;
+  background-color: #FF5722 !important;
 }
 
 .bg-muzyka .text-muted {
-  color: #4cb6cb !important;
+  color: #FF5722 !important;
 }
 
 .jp-volume {
@@ -116,7 +116,7 @@ body {
 }
 
 .text-accent, .jp-pause, .jp-play {
-  color: #4cb6cb !important
+  color: #FF5722 !important
 }
 
 .bg-muzyka .text-muted {
@@ -124,7 +124,9 @@ body {
 }
 
 #progress-bar {
-  background-color: #9b26af;
+  border-right: 2px solid #9b26af;
+  border-left: 2px solid #9b26af;
+  background-color: #691a99;
 }
 
 .discover-song .fa:hover {
@@ -322,8 +324,8 @@ button.toast-close-button {
   background-color: #BD362F;
 }
 
-.toast-info {
-  background-color: #2F96B4;
+.toast-info, .label-info {
+  background-color: #FF5722;
 }
 
 .toast-warning {
@@ -376,7 +378,7 @@ button.toast-close-button {
 */
 
 .song-list-row-based .fa-heart-o {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .btn-primary {
@@ -395,4 +397,17 @@ button.toast-close-button {
   background-color: #9b26af;
   border-color: #9b26af;
 }
+
+.bg-primary.bg,
+.bg-primary .bg,
+.bg-primary .nav > li > a:hover,
+.bg-primary .nav > li > a:focus,
+.bg-primary .nav > li > a.active {
+  background-color: #9b26af !important;
+}
+
+#songs .fa-heart-o {
+  margin-top: 15px;
+}
+
 

@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Song} from '../Models/song';
 import {SongService} from '../services/song.service';
 import {PlayerService} from '../services/player.service';
-import {PlayerComponent} from "../player/player.component";
+import {PlayerComponent} from '../player/player.component';
+import {AppService} from '../services/app.service';
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
@@ -15,7 +16,9 @@ export class SongsComponent implements OnInit {
   page:number;
   playingSong:Song;
 
-  constructor(private SongService:SongService, private playerService:PlayerService) {
+  constructor(private SongService:SongService,
+              public playerService:PlayerService,
+              public appService:AppService) {
     this.page = 1;
   }
 
