@@ -48,7 +48,7 @@
             <a routerLink="/register">Катталуу</a>
           </li>
           <li *ngIf="!authService.loggedIn()">
-            <a href="#modal-form" data-toggle="modal">Кирүү</a>
+            <a routerLink="/login">Кирүү</a>
           </li>
 
           <li class="dropdown" *ngIf="authService.loggedIn()">
@@ -81,6 +81,5 @@
   </section>
 </section>
 <app-player></app-player>
-<app-login></app-login>
 
 

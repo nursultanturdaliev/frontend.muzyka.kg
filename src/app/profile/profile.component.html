@@ -3,27 +3,32 @@
     <section class="scrollable">
       <section class="hbox stretch">
 
-        <aside class="bg-white">
-          <section class="vbox">
-            <header class="header bg-light lt">
-              <ul class="nav nav-tabs nav-white">
-                <li class="active"><a href="#activity" data-toggle="tab">Сүйгөн ырларым</a></li>
-                <li class=""><a href="#events" data-toggle="tab">Сиз уккан ырлар</a></li>
-              </ul>
-            </header>
-            <section class="scrollable">
-              <div class="tab-content">
-                <div class="tab-pane active" id="activity" *ngIf="favourite">
-                  <app-song-list-row-based [songs]="favourite.songs" [title]="favouriteTitle"></app-song-list-row-based>
-                </div>
-                <div class="tab-pane" id="events">
-                  <div class="text-center wrapper"><i class="fa fa-spinner fa fa-spin fa fa-large"></i></div>
-                  <app-history-list [histories]="histories"></app-history-list>
-                </div>
-              </div>
-            </section>
-          </section>
-        </aside>
+        <div class="row">
+          <div class="col-md-6">
+            <aside class="bg-white">
+              <section class="vbox">
+                <header class="header bg-light lt">
+                  <ul class="nav nav-tabs nav-white">
+                    <li class="active"><a href="#activity" data-toggle="tab">Сүйгөн ырларым</a></li>
+                    <li class=""><a href="#events" data-toggle="tab">Сиз уккан ырлар</a></li>
+                  </ul>
+                </header>
+                <section class="scrollable">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="activity" *ngIf="favourite">
+                      <app-song-list-row-based [songs]="favourite.songs"
+                                               [title]="favouriteTitle"></app-song-list-row-based>
+                    </div>
+                    <div class="tab-pane" id="events">
+                      <div class="text-center wrapper"><i class="fa fa-spinner fa fa-spin fa fa-large"></i></div>
+                      <app-history-list [histories]="histories"></app-history-list>
+                    </div>
+                  </div>
+                </section>
+              </section>
+            </aside>
+          </div>
+        </div>
       </section>
     </section>
   </section>
