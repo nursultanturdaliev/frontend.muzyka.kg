@@ -12,10 +12,10 @@ export class AuthService extends BaseService {
     super();
   }
 
-  public login(loginUser:LoginUser) {
+  public login(email:string, password:string) {
     let body = new URLSearchParams();
-    body.append('email', loginUser.email);
-    body.append('password', loginUser.password);
+    body.append('email', email);
+    body.append('password', password);
     return this.http.post(this.configService.URL + '/login', body)
       .toPromise()
       .then(response => response.json() as AuthResponse);
