@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {SongService} from '../services/song.service';
-import {ArtistService} from "../services/artist.service";
-import {Song} from '../Models/song';
-import {PlayerService} from "../services/player.service";
+import {SongService} from '../../services/song.service';
+import {ArtistService} from '../../services/artist.service';
+import {Song} from '../../Models/song';
+import {PlayerService} from '../../services/player.service';
 
 @Component({
   selector: 'app-home',

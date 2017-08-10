@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ArtistService} from "../services/artist.service";
-import {Artist} from '../Models/artist';
-import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs";
-import {SongService} from '../services/song.service';
-import {Song} from '../Models/song';
-import {PlayerService} from '../services/player.service';
+import {ArtistService} from '../../services/artist.service';
+import {Artist} from '../../Models/artist';
+import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {SongService} from '../../services/song.service';
+import {Song} from '../../Models/song';
+import {PlayerService} from '../../services/player.service';
 
 @Component({
   selector: 'app-artist',

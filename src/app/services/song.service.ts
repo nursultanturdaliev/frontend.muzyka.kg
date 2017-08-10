@@ -20,12 +20,6 @@ export class SongService extends BaseService {
       .catch(this.handleError);
   }
 
-  incrementPlayCount(song:Song) {
-    return this.http.put(this.configService.API_URL + '/song/' + song.id + '/increase_count_play', {})
-      .toPromise()
-      .then(response => response.json());
-  }
-
   getRandomSongs(options):Promise<Song[]> {
     let params = new URLSearchParams();
     for (let key in options) {

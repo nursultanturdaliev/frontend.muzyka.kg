@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FavouriteService} from "../services/favourite.service";
+import {FavouriteService} from '../../services/favourite.service';
 
 @Component({
   selector: 'app-profile',
