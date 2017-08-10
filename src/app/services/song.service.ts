@@ -4,13 +4,12 @@ import 'rxjs/add/operator/toPromise';
 import { URLSearchParams } from '@angular/http';
 import {ConfigService} from "./config.service";
 import {BaseService} from "./BaseService";
-import {AuthHttp} from "angular2-jwt/angular2-jwt";
 import {Song} from '../Models/song';
 
 @Injectable()
 export class SongService extends BaseService {
 
-  constructor(private http:AuthHttp, private configService:ConfigService) {
+  constructor(private http:Http, private configService:ConfigService) {
     super();
   };
 

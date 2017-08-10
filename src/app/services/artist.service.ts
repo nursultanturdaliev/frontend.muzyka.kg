@@ -2,12 +2,11 @@ import {Injectable} from '@angular/core';
 import {Artist} from '../Models/artist';
 import {Http} from "@angular/http";
 import {ConfigService} from "./config.service";
-import {AuthHttp} from "angular2-jwt/angular2-jwt";
 
 @Injectable()
 export class ArtistService {
 
-  constructor(private http:AuthHttp, private configService:ConfigService) {
+  constructor(private http:Http, private configService:ConfigService) {
   }
 
   getArtists(page:number):Promise<Artist[]> {
