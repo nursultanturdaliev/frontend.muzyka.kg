@@ -21,8 +21,10 @@ export class AuthService extends BaseService {
       .then(response => response.json() as AuthResponse);
   }
 
-  public register(email:string, password:string) {
+  public register(firstName:string, lastName:string, email:string, password:string) {
     let body = new URLSearchParams();
+    body.append('firstName', firstName);
+    body.append('lastName', lastName);
     body.append('email', email);
     body.append('password', password);
 
@@ -35,6 +37,8 @@ export class AuthService extends BaseService {
     localStorage.setItem('token', authResponse.token);
     localStorage.setItem('refresh_token', authResponse.refresh_token);
     localStorage.setItem('email', authResponse.user);
+    localStorage.setItem('first_name',authResponse.first_name);
+    localStorage.setItem('last_name',authResponse.last_name);
   }
 
   loggedIn() {

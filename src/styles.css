@@ -5,10 +5,12 @@ aside.aside .vbox {
 
 html {
   background-color: white;
+  height: 100%;
 }
 
 body {
   background-color: #f2f4f8 !important;
+  min-height: 100%;
 }
 
 .bg-black.auto .list-group-item, .bg-black .auto .list-group-item {

@@ -2,30 +2,11 @@
   <section class="vbox">
     <section class="scrollable">
       <section class="hbox stretch">
-
         <div class="row">
           <div class="col-md-6">
-            <aside class="bg-white">
-              <section class="vbox">
-                <header class="header bg-light lt">
-                  <ul class="nav nav-tabs nav-white">
-                    <li class="active"><a href="#activity" data-toggle="tab">Сүйгөн ырларым</a></li>
-                  </ul>
-                </header>
-                <section class="scrollable">
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="activity" *ngIf="favourite">
-                      <app-song-list-row-based [songs]="favourite.songs"
-                                               [title]="favouriteTitle"></app-song-list-row-based>
-                    </div>
-                  </div>
-                </section>
-              </section>
-            </aside>
           </div>
         </div>
       </section>
     </section>
   </section>
-  <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
 </section>

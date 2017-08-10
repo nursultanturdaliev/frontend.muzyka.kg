@@ -23,6 +23,8 @@ export class UserRegisterComponent {
 
   private createForm():void {
     this.registrationForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
@@ -34,6 +36,8 @@ export class UserRegisterComponent {
 
   public onSubmit() {
     this.authService.register(
+      this.registrationForm.get('firstName').value,
+      this.registrationForm.get('lastName').value,
       this.registrationForm.get('email').value,
       this.registrationForm.get('password').value
       )
