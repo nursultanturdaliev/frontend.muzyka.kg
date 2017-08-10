@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Song} from '../../Models/song';
 import {SongService} from '../../services/song.service';
 import {PlayerService} from '../../services/player.service';
-import {PlayerComponent} from '../../player/player.component';
+import {PlayerComponent} from '../../components/index';
 import {AppService} from '../../services/app.service';
 @Component({
   selector: 'app-songs',

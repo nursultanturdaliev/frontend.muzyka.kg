@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {PlayerService} from '../services/player.service';
+import {PlayerService} from '../../services/player.service';
 import {Http} from '@angular/http';
-import {SongService} from '../services/song.service';
-import {ConfigService} from "../services/config.service";
-import {HistoryService} from "../services/history.service";
+import {SongService} from '../../services/song.service';
+import {ConfigService} from "../../services/config.service";
+import {HistoryService} from "../../services/history.service";
 
 
 @Component({
