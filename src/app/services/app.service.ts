@@ -21,8 +21,8 @@ export class AppService {
   favourite(song:Song) {
     if (!this.authService.loggedIn()) {
       let config = new ToastConfig();
-      config.timeOut = 15000;
-      config.closeButton = true;
+      config.timeOut = 5000;
+      config.positionClass='toast-bottom-right';
       this.toastrService.warning('Ырларды сүйгөн ырларым тизмегине кошуу мүмкүнчүлүгү катталган колдоуучулар үчүн гана иштейт.', 'Кечиресиз', config);
       return;
     }

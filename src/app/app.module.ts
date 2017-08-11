@@ -76,7 +76,7 @@ import {RandomsongsComponent} from './pages/index';
     FilterPipeModule,
     LazyLoadImageModule,
     AuthModule,
-    ToastrModule.forRoot({timeOut: 5000, closeButton: true, progressBar: true}),
+    ToastrModule.forRoot({timeOut: 5000, closeButton: true, progressBar: false, maxOpened:3, positionClass:"toast-bottom-right"}),
     BrowserAnimationsModule
   ],
   providers: [

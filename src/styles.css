@@ -412,4 +412,29 @@ button.toast-close-button {
   margin-top: 15px;
 }
 
+.nav > li {
+  display: inline-block;
+}
+
+.mobile-menu-title {
+  font-size: 10px;
+}
+
+.mobile-menu-icon {
+  font-size: 1.5em;
+  text-align: center;
+  display: block;
+}
+
+.mobile-menu-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mobile-menu {
+  text-align: center;
+}
+
+
+
 
