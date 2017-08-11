@@ -10,7 +10,7 @@
           </div>
           <div class="line line-dashed b-b line-lg pull-in"></div>
           <div class="row">
-            <div *ngFor="let artist of artists| filterBy: songFilter;" class="col-xs-6 col-sm-4 col-md-3 col-lg-2"
+            <div *ngFor="let artist of artists| filterBy: songFilter;" class="col-xs-6 col-sm-4 col-lg-2"
                  infiniteScroll
                  [infiniteScrollDistance]="2"
                  [infiniteScrollThrottle]="300"

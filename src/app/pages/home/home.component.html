@@ -4,7 +4,8 @@
       <div class="col-md-3">
         <h3 class="font-thin">Эң популярлуу ырлар</h3>
         <div class="list-group bg-white list-group-lg no-bg auto">
-          <a class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;" (click)="playerService.play(song,topSongs,index)" [ngClass]="{active: playerService.isCurrentSong(song)}">
+          <a class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;"
+             (click)="playerService.play(song,topSongs,index)" [ngClass]="{active: playerService.isCurrentSong(song)}">
             <span class="pull-right h2 text-muted m-l">{{index + 1}}</span>
             <span class="pull-left thumb-sm avatar m-r">
               <img src="http://muzyka.api/uploads/artist/profile/placeholder_one.jpg"
@@ -18,9 +19,11 @@
         </div>
       </div>
       <div class="col-md-9">
-        <h3 class="font-thin">Ырлар дүйнөсүндө ачылыш жасаңыз</h3>
+        <h3 class="font-thin" *ngIf="discoverSongs"><a routerLink="/randomsongs">Ырлар дүйнөсүндө ачылыш жасаңыз</a> </h3>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
         <app-song-list [songs]="discoverSongs"></app-song-list>
-        <h3 class="font-thin">Жаңы ырлар</h3>
+        <h3 class="font-thin" *ngIf="newSongs"><a routerLink="/newsongs">Жаңы ырлар</a> </h3>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
         <app-song-list [songs]="newSongs"></app-song-list>
       </div>
     </div>

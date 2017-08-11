@@ -8,7 +8,7 @@ import {PlayerService} from '../../services/player.service';
   templateUrl: './song-list.component.html',
   styleUrls: ['./song-list.component.css']
 })
-export class SongListComponent implements OnInit {
+export class SongListComponent {
 
   @Input() songs:Song[];
 
@@ -16,8 +16,8 @@ export class SongListComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  public isDivisible(divident:number, divider:number) {
+    return divident % divider == 0;
   }
-
 
 }

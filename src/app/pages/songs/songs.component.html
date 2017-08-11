@@ -21,12 +21,12 @@
                         <i class="fa fa-heart-o fa-1-5x"></i>
                       </div>
                       <div class="col-md-2 col-xs-2" (click)="play(song, songs,i )">
-                        <span class="pull-left thumb-sm avatar m-r">
+                        <span class="pull-left thumb-sm avatar m-r artist-profile">
                             <img alt="{{song.artist_as_one}}" [lazyLoad]="song.profileLocal"
                                  src="http://muzyka.api/uploads/artist/profile/placeholder_one.jpg">
                         </span>
                       </div>
-                      <div class="col-md-7 col-xs-4" (click)="play(song, songs,i )">
+                      <div class="col-md-7 col-xs-4 no-padder" (click)="play(song, songs,i )">
                         <div class="vertical-middle"><strong>{{song.title}}</strong></div>
                         <small class="vertical-middle">{{song.artist_as_one}}</small>
                         <div><span class="label label-info" *ngIf="song.is_new">Жаңы</span></div>
