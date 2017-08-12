@@ -7,9 +7,9 @@ import {ArtistService} from '../../services/artist.service';
   styleUrls: ['./artists.component.css'],
 })
 export class ArtistsComponent implements OnInit {
-  private artists:Artist[];
-  private page:number;
-  private noMoreArtists:boolean;
+  public artists:Artist[];
+  public page:number;
+  public noMoreArtists:boolean;
   public songFilter:any = {name: ''};
   constructor(private artistService:ArtistService) {
     this.page = 1;

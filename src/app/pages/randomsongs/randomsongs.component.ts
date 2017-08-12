@@ -10,7 +10,7 @@ import {SongService} from '../../services/song.service';
 })
 export class RandomsongsComponent implements OnInit {
 
-  private songs:Song[];
+  public songs:Song[];
 
   constructor(private SongService:SongService) {
   }

@@ -6,7 +6,7 @@ import {Song} from '../Models/song';
 
 @Injectable()
 export class PlayerService {
-  private currentSong:Song;
+  public currentSong:Song;
   private callbacks:any;
   private songs:any;
   private index:any;

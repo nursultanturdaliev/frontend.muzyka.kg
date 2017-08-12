@@ -94,4 +94,3 @@ import {RandomsongsComponent} from './pages/index';
 })
 export class AppModule {
 }
-platformBrowserDynamic().bootstrapModule(AppModule);

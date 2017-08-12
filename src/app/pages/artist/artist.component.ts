@@ -14,9 +14,9 @@ import {PlayerService} from '../../services/player.service';
 })
 export class ArtistComponent implements OnInit, OnDestroy {
 
-  private artist:Artist;
-  private artistId:number;
-  private randomSongs:Song[];
+  public artist:Artist;
+  public artistId:number;
+  public randomSongs:Song[];
   private sub:Subscription;
   public artistSongs:string;
   public listen:string;

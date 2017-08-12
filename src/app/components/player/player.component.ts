@@ -32,7 +32,7 @@ export class PlayerComponent implements OnInit {
   volumeBarWidth: any;
   progressBarWidth: any;
 
-  constructor(private playerService: PlayerService,
+  constructor(public playerService: PlayerService,
               private songService: SongService,
               private ref: ChangeDetectorRef,
               private configService: ConfigService) {
