@@ -8,7 +8,7 @@
               <span class="font-bold" routerLinkActive="active">Башкы бет</span>
             </a>
           </li>
-          </ul>
+        </ul>
       </div>
       <div class="navbar-right">
         <ul class="nav navbar-nav hidden-xs">
@@ -62,32 +62,62 @@
             </ul>
           </li>
         </ul>
-        <div class="mobile-menu-container visible-xs">
-          <div class="row">
-            <div class="col-xs-3 mobile-menu">
-              <a routerLink="/songs">
-                <i class="fa fa-music mobile-menu-icon"></i>
-                <span class="mobile-menu-title">Ырлар</span>
-              </a>
-            </div>
-            <div class="col-xs-3 mobile-menu">
-              <a routerLink="/artists" routerLinkActive="active">
-                <i class="fa fa-microphone mobile-menu-icon"></i>
-                <span class="mobile-menu-title">Ырчылар</span>
-              </a>
-            </div>
-            <div class="col-xs-3 mobile-menu">
-              <a routerLink="/topsongs" routerLinkActive="active">
-                <i class="fa fa-fire mobile-menu-icon" aria-hidden="true"></i>
-                <span class="mobile-menu-title">Тренд</span>
-              </a>
-            </div>
-            <div class="col-xs-3 mobile-menu">
-              <a routerLink="/randomsongs" routerLinkActive="active">
-                <i class="fa fa-random mobile-menu-icon" aria-hidden="true"></i>
-                <span class="mobile-menu-title">Туш келди</span>
-              </a>
-            </div>
+      </div>
+    </div>
+    <div class="mobile-menu-container visible-xs">
+      <div class="row">
+        <div class="col-xs-3 mobile-menu">
+          <a routerLink="/" routerLinkActive="active">
+            <i class="fa fa-home mobile-menu-icon" aria-hidden="true"></i>
+            <span class="mobile-menu-title">Башкы бет</span>
+          </a>
+        </div>
+
+        <div class="col-xs-3 mobile-menu">
+          <a routerLink="/favourite" routerLinkActive="active">
+            <i class="fa fa-heart-o mobile-menu-icon" aria-hidden="true"></i>
+            <span class="mobile-menu-title">Сүйгөн</span>
+          </a>
+        </div>
+
+        <div class="col-xs-3 mobile-menu">
+          <a routerLink="/topsongs" routerLinkActive="active">
+            <i class="fa fa-fire mobile-menu-icon" aria-hidden="true"></i>
+            <span class="mobile-menu-title">Тренд</span>
+          </a>
+        </div>
+        <div class="col-xs-3 mobile-menu">
+          <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".menu-more">
+            <i class="fa fa-bars mobile-menu-icon"></i>
+          </a>
+
+        </div>
+      </div>
+      <div class="row ">
+        <div class="nav navbar-nav m-n nav-user menu-more hidden-xs">
+          <div class="col-xs-3 mobile-menu">
+            <a routerLink="/newsongs" routerLinkActive="active">
+              <i class="fa fa-globe mobile-menu-icon" aria-hidden="true"></i>
+              <span class="mobile-menu-title">Жаңы</span>
+            </a>
+          </div>
+          <div class="col-xs-3 mobile-menu">
+            <a routerLink="/randomsongs" routerLinkActive="active">
+            <i class="fa fa-random mobile-menu-icon" aria-hidden="true"></i>
+            <span class="mobile-menu-title">Туш келди</span>
+            </a>
+          </div>
+          <div class="col-xs-3 mobile-menu">
+            <a routerLink="/songs">
+              <i class="fa fa-music mobile-menu-icon"></i>
+              <span class="mobile-menu-title">Ырлар</span>
+            </a>
+          </div>
+          <div class="col-xs-3 mobile-menu">
+            <a routerLink="/artists" routerLinkActive="active">
+              <i class="fa fa-microphone mobile-menu-icon"></i>
+              <span class="mobile-menu-title">Ырчылар</span>
+            </a>
           </div>
         </div>
       </div>
@@ -98,7 +128,6 @@
       <section id="content">
         <section class="vbox">
           <router-outlet></router-outlet>
-
         </section>
         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
            data-target="#nav,html"></a>

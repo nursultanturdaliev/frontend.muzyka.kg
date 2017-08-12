@@ -3,13 +3,13 @@
     <section class="w-f-md">
       <section class="hbox stretch">
         <div class="row">
-          <div class="col-sm-5">
+          <div class="col-sm-6">
             <section class="vbox animated fadeInUp">
               <app-artist-info [artist]="artist"></app-artist-info>
               <app-song-list-row-based [songs]="artist.songs" [title]="artistSongs"></app-song-list-row-based>
             </section>
           </div>
-          <div class="col-sm-4 hidden-xs">
+          <div class="col-sm-6 hidden-xs">
             <section class="vbox">
               <section class="scrollable hover">
                 <app-song-list-row-based [songs]="randomSongs" [title]="listen"></app-song-list-row-based>

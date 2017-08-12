@@ -4,7 +4,7 @@
       <section class="vbox animated fadeInUp">
         <section class="scrollable">
           <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-5 col-sm-6">
               <section class="panel panel-default">
                 <header class="panel-heading">
                   <input #searchInput type="text" class="input-md form-control" name="searchText"
@@ -17,21 +17,21 @@
                   <li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"
                       [ngClass]="{active: playerService.isCurrentSong(song)}">
                     <div class="row">
-                      <div class="col-xs-1" (click)="appService.favourite(song)">
+                      <div class="col-xs-1 col-sm-2" (click)="appService.favourite(song)">
                         <i class="fa fa-heart-o fa-1-5x"></i>
                       </div>
-                      <div class="col-sm-2 col-xs-3" (click)="play(song, songs,i )">
+                      <div class="col-xs-3 col-sm-2 " (click)="play(song, songs,i )">
                         <span class="pull-left thumb-sm avatar m-r artist-profile">
                             <img alt="{{song.artist_as_one}}" [lazyLoad]="song.profileLocal"
                                  src="http://muzyka.api/uploads/artist/profile/placeholder_one.jpg">
                         </span>
                       </div>
-                      <div class="col-xs-5 no-padder" (click)="play(song, songs,i )">
+                      <div class="col-xs-5 col-sm-6 no-padder" (click)="play(song, songs,i )">
                         <div class="vertical-middle"><strong>{{song.title}}</strong></div>
                         <small class="vertical-middle">{{song.artist_as_one}}</small>
                         <div><span class="label label-info" *ngIf="song.is_new">Жаңы</span></div>
                       </div>
-                      <div class="col-xs-2" (click)="play(song, songs,i )">
+                      <div class="col-xs-2 col-sm-2" (click)="play(song, songs,i )">
                         <div class="vertical-middle" >
                           <i class="fa fa-play fa-1-5x text-accent" *ngIf="!playerService.isCurrentSong(song)"></i>
                           <i class="fa fa-pause fa-1-5x text-accent" *ngIf="playerService.isCurrentSong(song)"></i>
@@ -42,7 +42,7 @@
                 </ul>
               </section>
             </div>
-            <div class="col-md-4 hidden-xs" id="song-lyrics" *ngIf="playingSong">
+            <div class="col-md-4 col-sm-6 hidden-xs" id="song-lyrics" *ngIf="playingSong">
               <app-my-songs [song]="playingSong"></app-my-songs>
             </div>
           </div>
