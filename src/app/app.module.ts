@@ -30,6 +30,7 @@ import {PlayerComponent} from './components/index';
 import { SongListComponent } from './components/index';
 import { SongListRowBasedComponent } from './components/index';
 import { HistoryListComponent } from './components/index';
+import {UserFormComponent} from "./components/index";
 
 import {UserRegisterComponent } from './pages/index';
 import { ProfileComponent } from './pages/index';
@@ -42,6 +43,7 @@ import { NewsongsComponent } from './pages/index';
 import {SongsComponent} from './pages/index';
 import {ArtistsComponent} from './pages/index';
 import {RandomsongsComponent} from './pages/index';
+import {ToastrConfig} from "ngx-toastr/index";
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import {RandomsongsComponent} from './pages/index';
     HistoryListComponent,
     UserRegisterComponent,
     MySongsComponent,
-    ArtistInfoComponent
+    ArtistInfoComponent,
+    UserFormComponent
   ],
 
   imports: [
@@ -76,7 +79,13 @@ import {RandomsongsComponent} from './pages/index';
     FilterPipeModule,
     LazyLoadImageModule,
     AuthModule,
-    ToastrModule.forRoot({timeOut: 5000, closeButton: true, progressBar: false, maxOpened:3, positionClass:"toast-bottom-right"}),
+    ToastrModule.forRoot(<ToastrConfig>{
+      timeOut: 5000,
+      closeButton: true,
+      progressBar: false,
+      maxOpened: 3,
+      positionClass: "toast-bottom-right"
+    }),
     BrowserAnimationsModule
   ],
   providers: [

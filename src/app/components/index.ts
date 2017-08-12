@@ -7,3 +7,4 @@ export {ArtistInfoComponent} from './artist-info/artist-info.component';
 export {MySongsComponent} from './my-songs/my-songs.component';
 export {HistoryListComponent} from './history-list/history-list.component';
 export {PlayerComponent} from './player/player.component';
+export {UserFormComponent} from './user-form/user-form.component';
