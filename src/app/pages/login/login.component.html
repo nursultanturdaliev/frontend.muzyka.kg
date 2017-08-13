@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="wrapper-lg">
   <div class="row">
     <div class="col-md-offset-2 col-md-8">
       <div class="row">
@@ -19,7 +19,7 @@
               эмес. <br/>Кайрадан текшерип көрүңүз
               <a href="#" class="alert-link"></a>
             </div>
-            <div class="checkbox m-t-lg">
+            <div class="m-t-lg">
               <button type="submit" class="btn btn-primary pull-right text-uc m-t-n-xs"
                       [disabled]="!loginForm.valid">
                 <strong>Кирүү</strong>
@@ -28,17 +28,13 @@
           </form>
         </div>
         <div class="col-sm-6"><h4>Мүчө эмессизби?</h4>
-          <p>Жаңы эсепти <a routerLink="/register" class="text-info">бул</a> жерден ача аласыз</p>
+          <p>Жаңы эсепти <a routerLink="/register" class="text-info">бул</a> жерден ачыңыз</p>
           <p>ЖЕ</p>
           <a (click)="loginWithFacebook()" class="btn btn-facebook btn-block m-b-sm">
             <i class="fa fa-facebook pull-left"></i>
             <strong>Facebook</strong> менен кирүү
           </a>
-          <a class="btn btn-info btn-block m-b-sm">
-            <i class="fa fa-twitter pull-left"></i>
-            <strong>Twitter</strong> менен кирүү
-          </a>
-          <a href="#" class="btn btn-danger btn-block">
+          <a (click)="signInWithGoogle()" class="btn btn-danger btn-block">
             <i class="fa fa-google-plus pull-left"></i><strong>Google+</strong> менен кирүү</a>
         </div>
       </div>

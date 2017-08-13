@@ -34,7 +34,7 @@ export class AuthService extends BaseService {
   }
 
   public loginWithFacebook(requestBody) {
-    return this.http.post(this.configService.API_URL + '/oauth/login', requestBody)
+    return this.http.post(this.configService.API_URL + '/oauth/login/facebook', requestBody)
       .toPromise()
       .then(response => response.json() as AuthResponse);
   }

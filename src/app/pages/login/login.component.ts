@@ -6,6 +6,9 @@ import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import { LoginResponse, FacebookService,LoginOptions } from 'ngx-facebook';
 import {ToastrService} from "ngx-toastr/index";
+import {GoogleService} from "../../services/GoogleService";
+import {AuthGoogleService} from "../../services/AuthGoogleService";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +25,9 @@ export class LoginComponent implements OnInit {
               private formBuilder:FormBuilder,
               private router:Router,
               private facebookService:FacebookService,
-              private toastrService:ToastrService) {
+              private toastrService:ToastrService,
+              private googleService:GoogleService,
+              private authGoogleService:AuthGoogleService) {
     this.createForm();
   }
 
@@ -51,6 +56,30 @@ export class LoginComponent implements OnInit {
 
   }
 
+  signInWithGoogle():void {
+    this.googleService.signIn()
+      .then(()=> {
+        let currentUser = this.googleService.auth2.currentUser.get();
+        let basicProfile = currentUser.getBasicProfile();
+        let authResponse = currentUser.getAuthResponse();
+        let requestBody = {
+          id: basicProfile.getId(),
+          firstName: basicProfile.getGivenName(),
+          lastName: basicProfile.getFamilyName(),
+          email: basicProfile.getEmail(),
+          accessToken: authResponse.access_token
+        };
+        this.authGoogleService.save(requestBody)
+          .then((response:AuthResponse)=> {
+            this.authService.saveToLocalStorage(response);
+            this.router.navigate(['/'])
+          })
+          .then(()=> {
+            this.toastrService.info('Кош келиңиз!')
+          });
+      });
+  }
+
   saveFacebookCredentials() {
     this.facebookService.api("/me?fields=id,name,email")
       .then((response)=> {
@@ -61,9 +90,9 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/']);
           })
           .then(()=> {
-            this.toastrService.info('Кош келиңиз');
+            this.toastrService.info('Кош келиңиз!');
           })
-          .catch((error)=>{
+          .catch((error)=> {
             console.log(error);
             this.toastrService.warning('Фейсбук аркылуу үзгүлтүккө учурады. Кайрадан кирип көрүңүз.');
           });
@@ -74,9 +103,10 @@ export class LoginComponent implements OnInit {
     let authResponse = this.facebookService.getAuthResponse();
     return {
       email: apiResponse.email,
-      name: apiResponse.name,
+      firstName: apiResponse.name,
+      lastName: apiResponse.name,
       accessToken: authResponse.accessToken,
-      facebookId: authResponse.userID
+      id: authResponse.userID
     }
   }
 

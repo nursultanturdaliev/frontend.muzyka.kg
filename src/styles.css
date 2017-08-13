@@ -393,6 +393,7 @@ button.toast-close-button {
   color: #fff !important;
   background-color: #691a99 !important;
 }
+
 .btn-facebook {
   color: #FFFFFF;
   background-color: #4267B2;
@@ -440,6 +441,11 @@ button.toast-close-button {
   text-align: center;
 }
 
+.btn-facebook:hover, .btn-facebook:focus, .btn-facebook:active, .btn-facebook.active, .open .dropdown-toggle.btn-facebook {
+  color: #fff !important;
+  background-color: #435ba7;
+  border-color: #435ba7;
+}
 
 
 

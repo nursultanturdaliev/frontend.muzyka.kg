@@ -47,6 +47,8 @@ import {ToastrConfig} from "ngx-toastr/index";
 import {UserService} from "./services/user.service";
 
 import { FacebookModule } from 'ngx-facebook';
+import {GoogleService} from "./services/GoogleService";
+import {AuthGoogleService} from "./services/AuthGoogleService";
 
 
 @NgModule({
@@ -102,7 +104,9 @@ import { FacebookModule } from 'ngx-facebook';
     HistoryService,
     SongService,
     PlayerService,
-    UserService
+    UserService,
+    GoogleService,
+    AuthGoogleService
   ],
   bootstrap: [AppComponent]
 })
