@@ -1,7 +1,7 @@
 /**
  * Created by nursultan on 8/12/17.
  */
-import {Component,EventEmitter, Output} from '@angular/core';
+import {Component,EventEmitter, Output, Input, OnInit} from '@angular/core';
 import {Validators,FormGroup, FormBuilder} from '@angular/forms';
 import {PasswordValidation} from '../../validation/PasswordValidation';
 import {AuthService} from '../../services/auth.service';
@@ -14,10 +14,11 @@ import {User} from "../../Models/user";
   selector: 'app-user-form',
   templateUrl: './user-form.component.html'
 })
-export class UserFormComponent {
-  public registrationForm:FormGroup;
-  public user:User;
+export class UserFormComponent implements OnInit{
 
+  public registrationForm:FormGroup;
+
+  @Input() user:User;
   @Output() userUpdated = new EventEmitter();
 
   constructor(private formBuilder:FormBuilder,
@@ -25,7 +26,6 @@ export class UserFormComponent {
               private userService:UserService,
               private router:Router) {
     this.createForm();
-    this.populateUser();
   }
 
   private createForm():void {
@@ -35,15 +35,15 @@ export class UserFormComponent {
     });
   }
 
-  private populateUser() {
-    this.userService.getUser()
-      .then((user) => {
-        this.user = user;
-        this.registrationForm.setValue({
-          firstName: this.user.first_name,
-          lastName: this.user.last_name
-        });
-      });
+  ngOnInit():void {
+    this.populateForm();
+  }
+
+  private populateForm() {
+    this.registrationForm.setValue({
+      firstName: this.user.first_name,
+      lastName: this.user.last_name
+    });
   }
 
   public onSubmit() {

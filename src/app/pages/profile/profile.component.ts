@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FavouriteService} from '../../services/favourite.service';
 import {UserService} from "../../services/user.service";
 import {User} from "../../Models/user";
+import {ToastrService} from "ngx-toastr/index";
 
 @Component({
   selector: 'app-profile',
@@ -11,9 +12,11 @@ import {User} from "../../Models/user";
 export class ProfileComponent implements OnInit {
   public favourite:any;
   public favouriteTitle:string;
+  private user:any;
 
   constructor(private favouriteService:FavouriteService,
-              private userService:UserService) {
+              private userService:UserService,
+              private toastrService:ToastrService) {
   }
 
   ngOnInit() {
@@ -23,11 +26,18 @@ export class ProfileComponent implements OnInit {
       .then(favourite => {
         this.favourite = favourite;
       });
+    this.populateUser();
+  }
 
-
+  private populateUser() {
+    this.userService.getUser()
+      .then((user) => {
+        this.user = user;
+      });
   }
 
   handleUserUpdate(user:any) {
+    this.toastrService.info('Ийгиликтүү сакталды');
   }
 
 }

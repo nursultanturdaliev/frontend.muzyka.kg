@@ -86,7 +86,7 @@ import {UserService} from "./services/user.service";
       closeButton: true,
       progressBar: false,
       maxOpened: 3,
-      positionClass: "toast-bottom-right"
+      positionClass: 'toast-bottom-right'
     }),
   ],
   providers: [

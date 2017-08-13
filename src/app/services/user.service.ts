@@ -16,7 +16,6 @@ export class UserService extends BaseService {
   }
 
   public update(user:User) {
-    debugger;
     return this.authHttp.put(this.configService.APIS_URL + '/user/update', user)
       .toPromise()
       .then(response => response.json() as User);

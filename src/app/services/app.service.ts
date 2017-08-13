@@ -22,7 +22,6 @@ export class AppService {
     if (!this.authService.loggedIn()) {
       let config = new ToastConfig();
       config.timeOut = 5000;
-      config.positionClass='toast-bottom-right';
       this.toastrService.warning('Ырларды сүйгөн ырларым тизмегине кошуу мүмкүнчүлүгү катталган колдоуучулар үчүн гана иштейт.', 'Кечиресиз', config);
       return;
     }
