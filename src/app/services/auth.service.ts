@@ -33,12 +33,19 @@ export class AuthService extends BaseService {
       .then(response => response.json() as AuthResponse);
   }
 
+  public loginWithFacebook(requestBody) {
+    this.http.post(this.configService.API_URL + '/oauth/login', requestBody)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
   public saveToLocalStorage(authResponse:AuthResponse):void {
     localStorage.setItem('token', authResponse.token);
     localStorage.setItem('refresh_token', authResponse.refresh_token);
     localStorage.setItem('email', authResponse.user);
-    localStorage.setItem('first_name',authResponse.first_name);
-    localStorage.setItem('last_name',authResponse.last_name);
+    localStorage.setItem('first_name', authResponse.first_name);
+    localStorage.setItem('last_name', authResponse.last_name);
   }
 
   loggedIn() {

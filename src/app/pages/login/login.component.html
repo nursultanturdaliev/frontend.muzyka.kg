@@ -1,34 +1,39 @@
 <div class="main-content">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-<section class="panel panel-default">
-  <header class="panel-heading font-bold">Кирүү</header>
-  <div class="panel-body">
-    <form role="form" [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
-      <div class="form-group"><label>Электрондук адрес</label>
-        <input type="email" class="form-control" name="email" placeholder="muzyka@muzyka.kg"
-               formControlName="email">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="row">
+        <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">Кирүү</h3>
+          <p>Sign in to meet your friends.</p>
+          <form role="form" [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+            <div class="form-group"><label>Электрондук адрес</label>
+              <input type="email" class="form-control" name="email" placeholder="muzyka@muzyka.kg"
+                     formControlName="email">
+            </div>
+            <div class="form-group"><label>Купуя сөз</label>
+              <input type="password" class="form-control" placeholder="Купуя сөз"
+                     name="password" formControlName="password">
+            </div>
+            <div class="alert alert-danger" *ngIf="errorOccurred">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <i class="fa fa-ban-circle"></i><strong>Купуя сөз</strong> же <strong>электрондук адресиңиз</strong> туура
+              эмес. <br/>Кайрадан текшерип көрүңүз
+              <a href="#" class="alert-link"></a>
+            </div>
+            <div class="checkbox m-t-lg">
+              <button type="submit" class="btn btn-primary pull-right text-uc m-t-n-xs"
+                      [disabled]="!loginForm.valid">
+                <strong>Кирүү</strong>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-6"><h4>Мүчө эмессизби?</h4>
+          <p>You can create an account <a href="#" class="text-info">here</a></p>
+          <p>ЖЕ</p> <a (click)="loginWithFacebook()" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in
+            with Facebook</a> <a class="btn btn-info btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>Sign
+            in with Twitter</a> <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>Sign
+            in with Google+</a></div>
       </div>
-      <div class="form-group"><label>Купуя сөз</label>
-        <input type="password" class="form-control" placeholder="Купуя сөз"
-               name="password" formControlName="password">
-      </div>
-      <div class="alert alert-danger" *ngIf="errorOccurred">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <i class="fa fa-ban-circle"></i><strong>Купуя сөз</strong> же <strong>электрондук адресиңиз</strong> туура
-        эмес. <br/>Кайрадан текшерип көрүңүз
-        <a href="#" class="alert-link"></a>
-      </div>
-      <div class="checkbox m-t-lg">
-        <button type="submit" class="btn btn-primary pull-right text-uc m-t-n-xs"
-                [disabled]="!loginForm.valid">
-          <strong>Кирүү</strong>
-        </button>
-      </div>
-    </form>
-  </div>
-</section>
     </div>
   </div>
-
 </div>

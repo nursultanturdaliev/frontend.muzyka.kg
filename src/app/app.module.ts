@@ -46,6 +46,8 @@ import {RandomsongsComponent} from './pages/index';
 import {ToastrConfig} from "ngx-toastr/index";
 import {UserService} from "./services/user.service";
 
+import { FacebookModule } from 'ngx-facebook';
+
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import {UserService} from "./services/user.service";
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FacebookModule.forRoot(),
     FilterPipeModule,
     FormsModule,
     InfiniteScrollModule,
