@@ -1,36 +1,38 @@
 <div class="main-content">
   <div class="row">
     <div class="col-md-6">
-      <section class="panel panel-default">
-        <header class="panel-heading font-bold">Катталуу</header>
-        <div class="panel-body">
-          <form role="form" [formGroup]="registrationForm" novalidate (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label>Атыңыз</label>
-              <input type="text" class="form-control" placeholder="Азамат" formControlName="firstName">
-            </div>
-            <div class="form-group">
-              <label>Фамилияңыз</label>
-              <input type="text" class="form-control" placeholder="Алиев" formControlName="lastName">
-            </div>
-            <div class="form-group">
-              <label>Электрондук адрес</label>
-              <input type="email" class="form-control" placeholder="азамат@muzyka.kg" formControlName="email"></div>
-            <div class="form-group">
-              <label>Купуя сөз</label>
-              <input type="password" class="form-control" placeholder="Купуя сөз" formControlName="password">
-            </div>
-
-            <div class="form-group">
-              <label>Купуя сөздү кайталап коюңуз</label>
-              <input type="password" class="form-control" placeholder="Купуя сөз жогорудагынын өзү"
-                     formControlName="confirmPassword">
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">Катталуу</button>
-          </form>
+      <header class="panel-heading font-bold">Катталуу</header>
+      <form role="form" [formGroup]="registrationForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Атыңыз</label>
+          <input type="text" class="form-control" placeholder="Азамат" formControlName="firstName">
         </div>
-      </section>
+        <div class="form-group">
+          <label>Фамилияңыз</label>
+          <input type="text" class="form-control" placeholder="Алиев" formControlName="lastName">
+        </div>
+        <div class="form-group">
+          <label>Электрондук адрес</label>
+          <input type="email" class="form-control" placeholder="азамат@muzyka.kg" formControlName="email"></div>
+        <div class="form-group">
+          <label>Купуя сөз</label>
+          <input type="password" class="form-control" placeholder="Купуя сөз" formControlName="password">
+        </div>
+
+        <div class="form-group">
+          <label>Купуя сөздү кайталап коюңуз</label>
+          <input type="password" class="form-control" placeholder="Купуя сөз жогорудагынын өзү"
+                 formControlName="confirmPassword">
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">Катталуу</button>
+          </div>
+          <div class="col-md-6">
+            <p class="m-t-sm">Эчак эле мүчө болгонсузбу? <a routerLink="/login" class="login-link">кирүү</a></p>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-
 </div>

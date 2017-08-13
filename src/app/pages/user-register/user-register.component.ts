@@ -43,7 +43,7 @@ export class UserRegisterComponent {
       )
       .then((response:AuthResponse)=> {
         this.authService.saveToLocalStorage(response);
-        this.router.navigate(['/profile'])
+        this.router.navigate(['/'])
       })
       .catch((error) => {
         //TODO: Handle error properly!

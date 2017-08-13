@@ -20,22 +20,23 @@
               <a href="#" class="alert-link"></a>
             </div>
             <div class="m-t-lg">
-              <button type="submit" class="btn btn-primary pull-right text-uc m-t-n-xs"
+              <button type="submit" class="btn btn-primary btn-block"
                       [disabled]="!loginForm.valid">
                 <strong>Кирүү</strong>
               </button>
             </div>
           </form>
-        </div>
-        <div class="col-sm-6"><h4>Мүчө эмессизби?</h4>
-          <p>Жаңы эсепти <a routerLink="/register" class="text-info">бул</a> жерден ачыңыз</p>
-          <p>ЖЕ</p>
+          <div class="line line-dashed b-b line-lg pull-in"></div>
+          <p class="login-or">ЖЕ</p>
+          <div class="line line-dashed b-b line-lg pull-in"></div>
           <a (click)="loginWithFacebook()" class="btn btn-facebook btn-block m-b-sm">
             <i class="fa fa-facebook pull-left"></i>
             <strong>Facebook</strong> менен кирүү
           </a>
           <a (click)="signInWithGoogle()" class="btn btn-danger btn-block">
             <i class="fa fa-google-plus pull-left"></i><strong>Google+</strong> менен кирүү</a>
+          <h6>Мүчө эмессизби?</h6>
+          <p>Жаңы эсепти <a routerLink="/register" class="text-info">бул</a> жерден ачыңыз</p>
         </div>
       </div>
     </div>

@@ -75,7 +75,10 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/'])
           })
           .then(()=> {
-            this.toastrService.info('Кош келиңиз!')
+            this.toastrService.info('Кош келиңиз!');
+          })
+          .catch(()=> {
+            this.toastrService.error('Катталуу үзгүлтүккө учурады. Кайрадан аракет кылып көрүңүз.')
           });
       });
   }
@@ -91,10 +94,11 @@ export class LoginComponent implements OnInit {
           })
           .then(()=> {
             this.toastrService.info('Кош келиңиз!');
+
           })
           .catch((error)=> {
             console.log(error);
-            this.toastrService.warning('Фейсбук аркылуу үзгүлтүккө учурады. Кайрадан кирип көрүңүз.');
+            this.toastrService.error('Катталуу үзгүлтүккө учурады. Кайрадан аракет кылып көрүңүз.');
           });
       });
   }

@@ -12,7 +12,7 @@ import {ToastrService} from "ngx-toastr/index";
 export class ProfileComponent implements OnInit {
   public favourite:any;
   public favouriteTitle:string;
-  private user:any;
+  public user:any;
 
   constructor(private favouriteService:FavouriteService,
               private userService:UserService,

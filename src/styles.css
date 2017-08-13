@@ -447,5 +447,15 @@ button.toast-close-button {
   border-color: #435ba7;
 }
 
+.login-or {
+  font-weight: 700;
+  text-align: center;
+}
+
+.login-link {
+  font-weight: 700;
+  color: #691a99;
+}
+
 
 
