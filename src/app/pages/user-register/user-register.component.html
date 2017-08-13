@@ -4,7 +4,30 @@
       <section class="panel panel-default">
         <header class="panel-heading font-bold">Катталуу</header>
         <div class="panel-body">
-          <app-user-form></app-user-form>
+          <form role="form" [formGroup]="registrationForm" novalidate (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>Атыңыз</label>
+              <input type="text" class="form-control" placeholder="Азамат" formControlName="firstName">
+            </div>
+            <div class="form-group">
+              <label>Фамилияңыз</label>
+              <input type="text" class="form-control" placeholder="Алиев" formControlName="lastName">
+            </div>
+            <div class="form-group">
+              <label>Электрондук адрес</label>
+              <input type="email" class="form-control" placeholder="азамат@muzyka.kg" formControlName="email"></div>
+            <div class="form-group">
+              <label>Купуя сөз</label>
+              <input type="password" class="form-control" placeholder="Купуя сөз" formControlName="password">
+            </div>
+
+            <div class="form-group">
+              <label>Купуя сөздү кайталап коюңуз</label>
+              <input type="password" class="form-control" placeholder="Купуя сөз жогорудагынын өзү"
+                     formControlName="confirmPassword">
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">Катталуу</button>
+          </form>
         </div>
       </section>
     </div>

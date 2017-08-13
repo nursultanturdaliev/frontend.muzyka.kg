@@ -44,41 +44,43 @@ import {SongsComponent} from './pages/index';
 import {ArtistsComponent} from './pages/index';
 import {RandomsongsComponent} from './pages/index';
 import {ToastrConfig} from "ngx-toastr/index";
+import {UserService} from "./services/user.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArtistsComponent,
-    SongsComponent,
-    PlayerComponent,
     ArtistComponent,
-    TopsongsComponent,
-    NewsongsComponent,
-    RandomsongsComponent,
-    HomeComponent,
-    SongListComponent,
-    SongListRowBasedComponent,
-    LoginComponent,
-    ProfileComponent,
+    ArtistInfoComponent,
+    ArtistsComponent,
     FavouriteComponent,
     HistoryListComponent,
-    UserRegisterComponent,
+    HomeComponent,
+    LoginComponent,
     MySongsComponent,
-    ArtistInfoComponent,
-    UserFormComponent
+    NewsongsComponent,
+    PlayerComponent,
+    ProfileComponent,
+    RandomsongsComponent,
+    SongListComponent,
+    SongListRowBasedComponent,
+    SongsComponent,
+    TopsongsComponent,
+    UserFormComponent,
+    UserRegisterComponent
   ],
 
   imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    InfiniteScrollModule,
-    FormsModule,
-    HttpModule,
-    AppRoutingModule,
-    FilterPipeModule,
-    LazyLoadImageModule,
     AuthModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FilterPipeModule,
+    FormsModule,
+    InfiniteScrollModule,
+    HttpModule,
+    LazyLoadImageModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(<ToastrConfig>{
       timeOut: 5000,
       closeButton: true,
@@ -86,18 +88,18 @@ import {ToastrConfig} from "ngx-toastr/index";
       maxOpened: 3,
       positionClass: "toast-bottom-right"
     }),
-    BrowserAnimationsModule
   ],
   providers: [
-    PlayerService,
+    AppService,
     ArtistService,
-    SongService,
-    ConfigService,
+    AuthGuard,
     AuthService,
+    ConfigService,
     FavouriteService,
     HistoryService,
-    AuthGuard,
-    AppService
+    SongService,
+    PlayerService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
