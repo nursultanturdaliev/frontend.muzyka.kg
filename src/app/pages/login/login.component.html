@@ -3,7 +3,7 @@
     <div class="col-md-offset-2 col-md-8">
       <div class="row">
         <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">Кирүү</h3>
-          <p>Sign in to meet your friends.</p>
+          <p>Ырлар дүйнөсүнө кощ келиңиз.</p>
           <form role="form" [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
             <div class="form-group"><label>Электрондук адрес</label>
               <input type="email" class="form-control" name="email" placeholder="muzyka@muzyka.kg"
@@ -28,11 +28,19 @@
           </form>
         </div>
         <div class="col-sm-6"><h4>Мүчө эмессизби?</h4>
-          <p>You can create an account <a href="#" class="text-info">here</a></p>
-          <p>ЖЕ</p> <a (click)="loginWithFacebook()" class="btn btn-primary btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in
-            with Facebook</a> <a class="btn btn-info btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>Sign
-            in with Twitter</a> <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i>Sign
-            in with Google+</a></div>
+          <p>Жаңы эсепти <a routerLink="/register" class="text-info">бул</a> жерден ача аласыз</p>
+          <p>ЖЕ</p>
+          <a (click)="loginWithFacebook()" class="btn btn-facebook btn-block m-b-sm">
+            <i class="fa fa-facebook pull-left"></i>
+            <strong>Facebook</strong> менен кирүү
+          </a>
+          <a class="btn btn-info btn-block m-b-sm">
+            <i class="fa fa-twitter pull-left"></i>
+            <strong>Twitter</strong> менен кирүү
+          </a>
+          <a href="#" class="btn btn-danger btn-block">
+            <i class="fa fa-google-plus pull-left"></i><strong>Google+</strong> менен кирүү</a>
+        </div>
       </div>
     </div>
   </div>

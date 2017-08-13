@@ -34,10 +34,9 @@ export class AuthService extends BaseService {
   }
 
   public loginWithFacebook(requestBody) {
-    this.http.post(this.configService.API_URL + '/oauth/login', requestBody)
-      .subscribe((response) => {
-        console.log(response);
-      });
+    return this.http.post(this.configService.API_URL + '/oauth/login', requestBody)
+      .toPromise()
+      .then(response => response.json() as AuthResponse);
   }
 
   public saveToLocalStorage(authResponse:AuthResponse):void {

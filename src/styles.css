@@ -393,6 +393,11 @@ button.toast-close-button {
   color: #fff !important;
   background-color: #691a99 !important;
 }
+.btn-facebook {
+  color: #FFFFFF;
+  background-color: #4267B2;
+  border-color: #4267B2;
+}
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
   color: #fff !important;

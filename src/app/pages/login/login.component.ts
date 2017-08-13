@@ -5,6 +5,7 @@ import {AuthResponse} from '../../Models/AuthResponse';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import { LoginResponse, FacebookService,LoginOptions } from 'ngx-facebook';
+import {ToastrService} from "ngx-toastr/index";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService:AuthService,
               private formBuilder:FormBuilder,
               private router:Router,
-              private facebookService:FacebookService) {
+              private facebookService:FacebookService,
+              private toastrService:ToastrService) {
     this.createForm();
   }
 
@@ -43,10 +45,9 @@ export class LoginComponent implements OnInit {
     };
     this.facebookService.login(options)
       .then((response:LoginResponse) => {
-        console.log(response);
         this.saveFacebookCredentials();
       })
-      .catch((error:any) => console.error(error));
+      .catch((error:any) => console.log(error));
 
   }
 
@@ -54,7 +55,18 @@ export class LoginComponent implements OnInit {
     this.facebookService.api("/me?fields=id,name,email")
       .then((response)=> {
         let requestBody = this.prepareFacebookData(response);
-        this.authService.loginWithFacebook(requestBody);
+        this.authService.loginWithFacebook(requestBody)
+          .then((response:AuthResponse) => {
+            this.authService.saveToLocalStorage(response);
+            this.router.navigate(['/']);
+          })
+          .then(()=> {
+            this.toastrService.info('Кош келиңиз');
+          })
+          .catch((error)=>{
+            console.log(error);
+            this.toastrService.warning('Фейсбук аркылуу үзгүлтүккө учурады. Кайрадан кирип көрүңүз.');
+          });
       });
   }
 
@@ -76,6 +88,7 @@ export class LoginComponent implements OnInit {
       )
       .then(authResponse=> {
         this.authService.saveToLocalStorage(authResponse);
+        this.toastrService.info('Кош келиңиз');
         this.router.navigate(['/']);
       })
       .catch((error:Response)=> {
