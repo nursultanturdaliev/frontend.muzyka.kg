@@ -22,12 +22,17 @@ export class AppService {
     if (!this.authService.loggedIn()) {
       let config = new ToastConfig();
       config.timeOut = 5000;
-      this.toastrService.warning('Ырларды сүйгөн ырларым тизмегине кошуу мүмкүнчүлүгү катталган колдоуучулар үчүн гана иштейт.', 'Кечиресиз', config);
+      this.toastrService.warning('Ырларды сүйгөн ырларым тизмегине кошуу мүмкүнчүлүгү катталган колдонуучулар үчүн гана иштейт.', 'Кечиресиз', config);
       return;
     }
     this.favouriteService.favourite(song)
       .then((favourite:Favourite)=> {
         this.toastrService.info('Сиз сүйгөн ырлар тизмегине кошулду', favourite.song.artist_as_one + ' ' + favourite.song.title);
+      })
+      .catch((response) => {
+        if(response.status == 409){
+          this.toastrService.warning('Сүйгөн ырлар тизмегинде эчак эле кошулган.');
+        }
       })
   }
 }

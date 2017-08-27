@@ -38,9 +38,6 @@ body {
   margin: 15px;
 }
 
-.main-content .list-group-item {
-  cursor: pointer;
-}
 
 .fa-1-5x {
   font-size: 1.5em;
@@ -110,7 +107,7 @@ body {
 }
 
 .list-group-item.active .text-muted {
-  color: #DDDDDD !important;
+  color: #DDDDDD;
 }
 
 .bg-black a:hover, a.link-primary:hover, .artists a:hover {
@@ -457,5 +454,14 @@ button.toast-close-button {
   color: #691a99;
 }
 
+.accent-link:hover {
+  color: #FF5722 !important;
+}
 
+.fa-play, .fa-pause, .fa-heart-o {
+  cursor: pointer;
+}
 
+.item-overlay.active {
+  display: block;
+}

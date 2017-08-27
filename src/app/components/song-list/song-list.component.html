@@ -5,7 +5,7 @@
       <div class="item">
         <div class="pos-rlt discover-song">
 
-          <div class="item-overlay opacity r r-2x bg-black">
+          <div class="item-overlay opacity r r-2x bg-black" [ngClass]="{'active': playerService.isCurrentSong(song)}">
             <div class="center text-center m-t-n" (click)="playerService.play(song, songs,i )">
               <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
               <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
@@ -23,7 +23,7 @@
           </a>
         </div>
         <div class="padder-v">
-          <a *ngFor="let artist of song.artists" routerLink="/artist/{{artist.id}}" class="text-ellipsis">
+          <a *ngFor="let artist of song.artists" routerLink="/artist/{{artist.id}}" class="text-ellipsis accent-link">
             <strong>{{artist.name}} {{artist.lastname}}</strong>
           </a>
           <div>{{song.title}}</div>
