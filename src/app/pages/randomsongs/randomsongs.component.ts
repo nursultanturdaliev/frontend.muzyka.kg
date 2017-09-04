@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Song} from '../../Models/song';
 import {PlayerService} from '../../services/player.service';
 import {SongService} from '../../services/song.service';
@@ -10,9 +10,9 @@ import {SongService} from '../../services/song.service';
 })
 export class RandomsongsComponent implements OnInit {
 
-  public songs:Song[];
+  public songs: Song[];
 
-  constructor(private SongService:SongService) {
+  constructor(private SongService: SongService) {
   }
 
   ngOnInit() {

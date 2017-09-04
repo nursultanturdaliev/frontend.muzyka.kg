@@ -76,9 +76,9 @@ export class PlayerComponent implements OnInit {
     this.audio.play();
     this.audio.currentTime = this.playerService.currentTime;
     this.promise = new Promise((resolve, reject) => {
-    this.playing = true;
-    this.paused = false;
-    this.currentTime = this.formatTime(this.playerService.currentTime);
+      this.playing = true;
+      this.paused = false;
+      this.currentTime = this.formatTime(this.playerService.currentTime);
       this.audio.addEventListener('playing', () => {
         resolve(true);
       });
@@ -144,11 +144,12 @@ export class PlayerComponent implements OnInit {
   private getCurrentURL() {
     if (!this.playerService.getCurrentSong()) {
       var song = this.playerService.getSongs()[0];
+      this.playerService.setCurrentSong(song);
       this.playerService.currentSongTitle = song.title;
-      return this.configService.API_URL + '/song/stream/' + song.uuid ;
+      return this.configService.API_URL + '/song/stream/' + song.uuid;
     }
     else
-      return this.configService.API_URL + '/song/stream/' + this.playerService.getCurrentSong().uuid ;
+      return this.configService.API_URL + '/song/stream/' + this.playerService.getCurrentSong().uuid;
 
   }
 

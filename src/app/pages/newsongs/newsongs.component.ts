@@ -1,27 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Song} from '../../Models/song';
 import {PlayerService} from '../../services/player.service';
 import {SongService} from '../../services/song.service';
 
 @Component({
-  selector: 'app-newSongs',
-  templateUrl: './newSongs.component.html',
-  styleUrls: ['./newSongs.component.css']
+  selector: 'app-newsongs',
+  templateUrl: './newsongs.component.html',
+  styleUrls: ['./newsongs.component.css']
 })
 export class NewsongsComponent implements OnInit {
 
-  public songs:Song[];
+  public songs: Song[];
 
-  constructor(private SongService:SongService, private playerService:PlayerService) {
+  constructor(private SongService: SongService, private playerService: PlayerService) {
   }
 
   ngOnInit() {
     this.SongService.getNewSongs()
       .then(newSongs => {
         this.songs = newSongs;
-        this.playerService.currentTime = 0;
-        this.playerService.setIndex(0);
-        this.playerService.setSongs(newSongs);
+        if (!this.playerService.getCurrentSong()) {
+          this.playerService.currentTime = 0;
+          this.playerService.setIndex(0);
+          this.playerService.setSongs(newSongs);
+        }
       });
   }
 

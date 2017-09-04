@@ -11,14 +11,14 @@ import {AppService} from '../../services/app.service';
   providers: [SongService],
 })
 export class SongsComponent implements OnInit {
-  songs:Song[];
-  searchText:string;
-  page:number;
-  playingSong:Song;
+  songs: Song[];
+  searchText: string;
+  page: number;
+  playingSong: Song;
 
-  constructor(private SongService:SongService,
-              public playerService:PlayerService,
-              public appService:AppService) {
+  constructor(private SongService: SongService,
+              public playerService: PlayerService,
+              public appService: AppService) {
     this.page = 1;
   }
 
@@ -26,13 +26,15 @@ export class SongsComponent implements OnInit {
     this.SongService.getSongs(this.page)
       .then(songs => {
         this.songs = songs;
-        this.playerService.currentTime = 0;
-        this.playerService.setIndex(0);
-        this.playerService.setSongs(songs);
+        if (!this.playerService.getCurrentSong()) {
+          this.playerService.currentTime = 0;
+          this.playerService.setIndex(0);
+          this.playerService.setSongs(songs);
+        }
       });
   }
 
-  play(song:Song, songs:Song[], i:number) {
+  play(song: Song, songs: Song[], i: number) {
     this.playerService.play(song, songs, i);
     this.playingSong = song;
   }
