@@ -1,17 +1,18 @@
 <section class="vbox">
     <section class="scrollable padder-lg w-f-md" id="bjax-target">
         <div class="row">
-            <div class="col-md-7"><h3 class="font-thin">Жаңы ырлар
-                <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-                                        <span class="bar1 a1 bg-primary lter"></span>
-                                        <span class="bar2 a2 bg-info lt"></span>
-                                        <span class="bar3 a3 bg-success"></span>
-                                        <span class="bar4 a4 bg-warning dk"></span>
-                                        <span class="bar5 a5 bg-danger dker"></span>
-                                    </span>
-            </h3>
+            <div class="col-md-7">
+                <h3 class="font-thin">Жаңы ырлар
+                    <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                        <span class="bar1 a1 bg-primary lter"></span>
+                        <span class="bar2 a2 bg-info lt"></span>
+                        <span class="bar3 a3 bg-success"></span>
+                        <span class="bar4 a4 bg-warning dk"></span>
+                        <span class="bar5 a5 bg-danger dker"></span>
+                    </span>
+                </h3>
                 <div class="row row-sm">
-                    <div class="col-xs-6 col-sm-4" *ngFor="let song of topSongs; let index=index;"
+                    <div class="col-xs-6 col-sm-4" *ngFor="let song of newSongs; let index=index;"
                          [ngClass]="{active: playerService.isCurrentSong(song)}">
                         <div class="item">
                             <div class="pos-rlt">
@@ -44,400 +45,156 @@
                             </div>
                             <div class="padder-v">
                                 <a href="#" class="text-ellipsis">{{song.title}}</a>
-                                <a href="#" class="text-ellipsis text-xs text-muted">{{song.uuid}}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4">
-                        <div class="item">
-                            <div class="pos-rlt">
-                                <div class="bottom">
-                                    <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
-                                </div>
-                                <div class="item-overlay opacity r r-2x bg-black">
-                                    <div class="text-info padder m-t-sm text-sm">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o text-muted"></i>
-                                    </div>
-                                    <div class="center text-center m-t-n">
-                                        <a href="#">
-                                            <i class="icon-control-play i-2x"></i>
-                                        </a>
-                                    </div>
-                                    <div class="bottom padder m-b-sm">
-                                        <a href="#" class="pull-right">
-                                            <i class="fa fa-heart-o"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-plus-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <a href="#"><img src="images/singers/omar.jpg" alt="" class="r r-2x img-full"></a>
-                            </div>
-                            <div class="padder-v">
-                                <a href="#" class="text-ellipsis">Сени сүйөм</a>
-                                <a href="#" class="text-ellipsis text-xs text-muted">Омар</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4">
-                        <div class="item">
-                            <div class="pos-rlt">
-                                <div class="bottom">
-                                    <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
-                                </div>
-                                <div class="item-overlay opacity r r-2x bg-black">
-                                    <div class="text-info padder m-t-sm text-sm">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o text-muted"></i>
-                                    </div>
-                                    <div class="center text-center m-t-n">
-                                        <a href="#">
-                                            <i class="icon-control-play i-2x"></i>
-                                        </a>
-                                    </div>
-                                    <div class="bottom padder m-b-sm">
-                                        <a href="#" class="pull-right">
-                                            <i class="fa fa-heart-o"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-plus-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <a href="#"><img src="images/singers/gulnur-satylganova.jpg" alt="" class="r r-2x img-full"></a>
-                            </div>
-                            <div class="padder-v">
-                                <a href="#" class="text-ellipsis">Тоолор</a>
-                                <a href="#" class="text-ellipsis text-xs text-muted">Гульнур Сатылганова</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4">
-                        <div class="item">
-                            <div class="pos-rlt">
-                                <div class="bottom">
-                                    <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
-                                </div>
-                                <div class="item-overlay opacity r r-2x bg-black">
-                                    <div class="text-info padder m-t-sm text-sm">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o text-muted"></i>
-                                    </div>
-                                    <div class="center text-center m-t-n">
-                                        <a href="#">
-                                            <i class="icon-control-play i-2x"></i>
-                                        </a>
-                                    </div>
-                                    <div class="bottom padder m-b-sm">
-                                        <a href="#" class="pull-right">
-                                            <i class="fa fa-heart-o"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-plus-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <a href="#"><img src="images/singers/ayana-kasymova.jpg" alt="" class="r r-2x img-full"></a>
-                            </div>
-                            <div class="padder-v">
-                                <a href="#" class="text-ellipsis">Сүрөтүңө</a>
-                                <a href="#" class="text-ellipsis text-xs text-muted">Аяна Касымова</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4">
-                        <div class="item">
-                            <div class="pos-rlt">
-                                <div class="bottom">
-                                    <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
-                                </div>
-                                <div class="item-overlay opacity r r-2x bg-black">
-                                    <div class="text-info padder m-t-sm text-sm">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o text-muted"></i>
-                                    </div>
-                                    <div class="center text-center m-t-n">
-                                        <a href="#">
-                                            <i class="icon-control-play i-2x"></i>
-                                        </a>
-                                    </div>
-                                    <div class="bottom padder m-b-sm">
-                                        <a href="#" class="pull-right">
-                                            <i class="fa fa-heart-o"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-plus-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <a href="#"><img src="images/singers/nurlan-nasip.jpg" alt="" class="r r-2x img-full"></a>
-                            </div>
-                            <div class="padder-v">
-                                <a href="#" class="text-ellipsis">Айылым</a>
-                                <a href="#" class="text-ellipsis text-xs text-muted">Нурлан Насип</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4">
-                        <div class="item">
-                            <div class="pos-rlt">
-                                <div class="bottom">
-                                    <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
-                                </div>
-                                <div class="item-overlay opacity r r-2x bg-black">
-                                    <div class="text-info padder m-t-sm text-sm">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o text-muted"></i>
-                                    </div>
-                                    <div class="center text-center m-t-n">
-                                        <a href="#">
-                                            <i class="icon-control-play i-2x"></i>
-                                        </a>
-                                    </div>
-                                    <div class="bottom padder m-b-sm">
-                                        <a href="#" class="pull-right">
-                                            <i class="fa fa-heart-o"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-plus-circle"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <a href="#"><img src="images/singers/nazgul-toktokunova.jpg" alt="" class="r r-2x img-full"></a>
-                            </div>
-                            <div class="padder-v">
-                                <a href="#" class="text-ellipsis">Кусалык</a>
-                                <a href="#" class="text-ellipsis text-xs text-muted">Назгуль Токтакунова</a>
+                                <a  *ngFor="let artist of song.artists;" href="" routerLink="/artist/{{artist.id}}" class="text-ellipsis text-xs text-muted">{{artist.name}}</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!--Популярдуу ырлар-->
             <div class="col-md-5">
                 <h3 class="font-thin">Популярдуу ырлар</h3>
                 <div class="list-group bg-white list-group-lg no-bg auto">
-                    <a href="#" class="list-group-item clearfix">
-                        <span class="pull-right h2 text-muted m-l">1</span>
-                        <span class="pull-left thumb-sm avatar m-r">
-                                        <img src="images/profile/mirbek_atabekov.jpg" alt="">
-                                    </span>
-                        <span class="clear">
-                                        <span>Унуталбайм</span>
-                                        <small class="text-muted clear text-ellipsis">Мирбек Атабеков</small>
-                                    </span>
-                    </a>
-                    <a href="#" class="list-group-item clearfix">
-                        <span class="pull-right h2 text-muted m-l">2</span>
-                        <span class="pull-left thumb-sm avatar m-r">
-                                        <img src="images/profile/temir_nazarov.jpg" alt="">
-                                    </span>
-                        <span class="clear">
-                                        <span>Туулган жер</span>
-                                        <small class="text-muted clear text-ellipsis">Темир Назаров</small>
-                                    </span>
-                    </a>
-                    <a href="#" class="list-group-item clearfix">
-                        <span class="pull-right h2 text-muted m-l">3</span>
-                        <span class="pull-left thumb-sm avatar m-r">
-                                        <img src="images/profile/sezdbek_iskenaliev.jpg" alt="">
-                                    </span>
-                        <span class="clear">
-                                        <span>Мына минтип</span>
-                                        <small class="text-muted clear text-ellipsis">Съездбек Искеналиев</small>
-                                    </span>
-                    </a>
-                    <a href="#" class="list-group-item clearfix">
-                        <span class="pull-right h2 text-muted m-l">4</span>
-                        <span class="pull-left thumb-sm avatar m-r">
-                                        <img src="images/profile/nonstop.jpg" alt="">
-                                    </span>
-                        <span class="clear">
-                                        <span>Сени сүйөм</span>
-                                        <small class="text-muted clear text-ellipsis">Non Stop</small>
-                                    </span>
-                    </a>
-                    <a href="#" class="list-group-item clearfix">
-                        <span class="pull-right h2 text-muted m-l">5</span>
-                        <span class="pull-left thumb-sm avatar m-r">
-                                        <img src="images/profile/isaomurkulov_official.jpg" alt="">
-                                    </span>
-                        <span class="clear">
-                                        <span>Гүлзар</span>
-                                        <small class="text-muted clear text-ellipsis">Иса Өмүркулов</small>
-                                    </span>
-                    </a>
+
+                    <li class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;"
+                        [ngClass]="{active: playerService.isCurrentSong(song)}">
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="pull-left thumb-sm avatar m-r">
+                                  <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
+                                       [lazyLoad]="song.profileLocal"
+                                       alt="...">
+                                  </span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="clear"></span>
+                                <a class="accent-link text-ellipsis" href="#"><span>{{song.title}}</span></a>
+                                <a *ngFor="let artist of song.artists;" class="accent-link text-ellipsis" href=""
+                                   routerLink="/artist/{{artist.id}}">
+                                    {{artist.name}}
+                                </a>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="vertical-middle" (click)="playerService.play(song,topSongs,index)">
+                                    <i class="fa fa-play fa-1-5x text-accent"
+                                       *ngIf="!playerService.isCurrentSong(song)"></i>
+                                    <i class="fa fa-pause fa-1-5x text-accent"
+                                       *ngIf="playerService.isCurrentSong(song)"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="pull-right h2 m-l accent-link text-ellipsis">{{index + 1}}</span>
+                            </div>
+                        </div>
+                    </li>
+
                 </div>
             </div>
         </div>
+
         <div class="row m-t-lg m-b-lg">
             <div class="col-sm-7">
                 <div class="bg-primary wrapper-md r">
                     <a href="#">
-                                    <span class="h4 m-b-xs block">
-                                        <i class=" icon-user-follow i-lg"></i>
-                                        Кирүү же Катталуу
-                                    </span>
+                        <span class="h4 m-b-xs block">
+                            <i class=" icon-user-follow i-lg"></i>
+                            Кирүү же Катталуу
+                        </span>
                         <span class="text-muted">
-                                        Порталга катталуу менен Сиз көптөгөн кошумча мүмкүнчүлүктөргө
-                                        ээ болосуз. Ошондой эле Сизде, социалдык тармактардагы баракчаларыңыз менен кирүү
-                                        мүмкүнчүлүгү бар
-                                    </span>
+                            Порталга катталуу менен Сиз көптөгөн кошумча мүмкүнчүлүктөргө
+                            ээ болосуз. Ошондой эле Сизде, социалдык тармактардагы баракчаларыңыз менен кирүү
+                            мүмкүнчүлүгү бар
+                        </span>
                     </a>
                 </div>
             </div>
             <div class="col-sm-5">
                 <div class="bg-black wrapper-md r">
                     <a href="#">
-                                    <span class="h4 m-b-xs block">
-                                        <i class="icon-cloud-download i-lg"></i>
-                                        Музыка мобилдик тиркемеси
-                                    </span>
+                        <span class="h4 m-b-xs block">
+                            <i class="icon-cloud-download i-lg"></i>
+                            Музыка мобилдик тиркемеси
+                        </span>
                         <span class="text-muted">
-                                        Google play сервисинен өзүңүздүн андроид телефонугузга
-                                        музыка мобилдик тиркемесин акысыз көчүрүп алсаңыз болот
-                                    </span>
+                            Google play сервисинен өзүңүздүн андроид телефонугузга
+                            музыка мобилдик тиркемесин акысыз көчүрүп алсаңыз болот
+                        </span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
-    <!--<footer class="footer bg-dark">-->
-        <!--<div id="jp_container_N">-->
-            <!--<div class="jp-type-playlist">-->
-                <!--<div id="jplayer_N" class="jp-jplayer hide"></div>-->
-                <!--<div class="jp-gui">-->
-                    <!--<div class="jp-video-play hide"><a class="jp-video-play-icon">play</a></div>-->
-                    <!--<div class="jp-interface">-->
-                        <!--<div class="jp-controls">-->
-                            <!--<div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a>-->
-                            <!--</div>-->
-                            <!--<div><a class="jp-play"><i class="icon-control-play i-2x"></i></a>-->
-                                <!--<a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>-->
-                            <!--</div>-->
-                            <!--<div><a class="jp-next"><i-->
-                                    <!--class="icon-control-forward i-lg"></i></a></div>-->
-                            <!--<div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a>-->
-                            <!--</div>-->
-                            <!--<div><a class="" data-toggle="dropdown" data-target="#playlist"><i-->
-                                    <!--class="icon-list"></i></a></div>-->
-                            <!--<div class="jp-progress hidden-xs">-->
-                                <!--<div class="jp-seek-bar dk">-->
-                                    <!--<div class="jp-play-bar bg-info"></div>-->
-                                    <!--<div class="jp-title text-lt">-->
-                                        <!--<ul>-->
-                                            <!--<li></li>-->
-                                        <!--</ul>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>-->
-                            <!--<div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>-->
-                            <!--<div class="hidden-xs hidden-sm"><a class="jp-mute" title="mute"><i-->
-                                    <!--class="icon-volume-2"></i></a> <a class="jp-unmute hid"-->
-                                                                      <!--title="unmute"><i-->
-                                    <!--class="icon-volume-off"></i></a></div>-->
-                            <!--<div class="hidden-xs hidden-sm jp-volume">-->
-                                <!--<div class="jp-volume-bar dk">-->
-                                    <!--<div class="jp-volume-bar-value lter"></div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div><a class="jp-shuffle" title="shuffle"><i-->
-                                    <!--class="icon-shuffle text-muted"></i></a> <a-->
-                                    <!--class="jp-shuffle-off hid" title="shuffle off"><i-->
-                                    <!--class="icon-shuffle text-lt"></i></a></div>-->
-                            <!--<div><a class="jp-repeat" title="repeat"><i-->
-                                    <!--class="icon-loop text-muted"></i></a> <a-->
-                                    <!--class="jp-repeat-off hid" title="repeat off"><i-->
-                                    <!--class="icon-loop text-lt"></i></a></div>-->
-                            <!--<div class="hide"><a class="jp-full-screen" title="full screen"><i-->
-                                    <!--class="fa fa-expand"></i></a> <a class="jp-restore-screen"-->
-                                                                     <!--title="restore screen"><i-->
-                                    <!--class="fa fa-compress text-lt"></i></a></div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="jp-playlist dropup" id="playlist">-->
-                    <!--<ul class="dropdown-menu aside-xl dker">-->
-                        <!--&lt;!&ndash; The method Playlist.displayPlaylist() uses this unordered list &ndash;&gt;-->
-                        <!--<li class="list-group-item"></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-                <!--<div class="jp-no-solution hide"><span>Update Required</span> To play the media-->
-                    <!--you will need to either update your browser to a recent version or update-->
-                    <!--your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash-->
-                        <!--plugin</a>.-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</footer>-->
-</section>
 
-<section class="vbox">
-  <section class="scrollable padder-lg w-f-md" id="bjax-target">
-    <div class="row">
-      <div class="col-md-4">
-        <h3 class="font-thin">Эң популярлуу ырлар</h3>
-        <ul class="list-group bg-white list-group-lg no-bg auto">
-          <li class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;"
-              [ngClass]="{active: playerService.isCurrentSong(song)}">
-
-            <div class="row">
-
-              <div class="col-md-2">
-                <span class="pull-right h2 text-muted m-l">{{index + 1}}</span>
-              </div>
-
-              <div class="col-md-2">
-            <span class="pull-left thumb-sm avatar m-r">
-              <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" [lazyLoad]="song.profileLocal"
-                   alt="...">
-              </span>
-              </div>
-
-              <div class="col-md-6">
-                <span class="clear"></span>
-                <span>{{song.title}}</span>
-                <a  *ngFor="let artist of song.artists;" class="accent-link text-ellipsis" href="" routerLink="/artist/{{artist.id}}">
-                  {{artist.name}}
-                </a>
-              </div>
-
-              <div class="col-md-2">
-                <div class="vertical-middle" (click)="playerService.play(song,topSongs,index)">
-                  <i class="fa fa-play fa-1-5x text-accent" *ngIf="!playerService.isCurrentSong(song)"></i>
-                  <i class="fa fa-pause fa-1-5x text-accent" *ngIf="playerService.isCurrentSong(song)"></i>
+    <!--PLAYER-->
+    <footer class="footer bg-dark">
+        <div id="jp_container_N">
+            <div class="jp-type-playlist">
+                <div id="jplayer_N" class="jp-jplayer hide"></div>
+                <div class="jp-gui">
+                    <div class="jp-video-play hide"><a class="jp-video-play-icon">play</a></div>
+                    <div class="jp-interface">
+                        <div class="jp-controls">
+                            <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a>
+                            </div>
+                            <div><a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+                                <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                            </div>
+                            <div><a class="jp-next"><i
+                                    class="icon-control-forward i-lg"></i></a></div>
+                            <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a>
+                            </div>
+                            <div><a class="" data-toggle="dropdown" data-target="#playlist"><i
+                                    class="icon-list"></i></a></div>
+                            <div class="jp-progress hidden-xs">
+                                <div class="jp-seek-bar dk">
+                                    <div class="jp-play-bar bg-info"></div>
+                                    <div class="jp-title text-lt">
+                                        <ul>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                            <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                            <div class="hidden-xs hidden-sm"><a class="jp-mute" title="mute"><i
+                                    class="icon-volume-2"></i></a> <a class="jp-unmute hid"
+                                                                      title="unmute"><i
+                                    class="icon-volume-off"></i></a></div>
+                            <div class="hidden-xs hidden-sm jp-volume">
+                                <div class="jp-volume-bar dk">
+                                    <div class="jp-volume-bar-value lter"></div>
+                                </div>
+                            </div>
+                            <div><a class="jp-shuffle" title="shuffle"><i
+                                    class="icon-shuffle text-muted"></i></a> <a
+                                    class="jp-shuffle-off hid" title="shuffle off"><i
+                                    class="icon-shuffle text-lt"></i></a></div>
+                            <div><a class="jp-repeat" title="repeat"><i
+                                    class="icon-loop text-muted"></i></a> <a
+                                    class="jp-repeat-off hid" title="repeat off"><i
+                                    class="icon-loop text-lt"></i></a></div>
+                            <div class="hide"><a class="jp-full-screen" title="full screen"><i
+                                    class="fa fa-expand"></i></a> <a class="jp-restore-screen"
+                                                                     title="restore screen"><i
+                                    class="fa fa-compress text-lt"></i></a></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="jp-playlist dropup" id="playlist">
+                    <ul class="dropdown-menu aside-xl dker">
+                        <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                        <li class="list-group-item"></li>
+                    </ul>
+                </div>
+                <div class="jp-no-solution hide"><span>Update Required</span> To play the media
+                    you will need to either update your browser to a recent version or update
+                    your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash
+                        plugin</a>.
+                </div>
             </div>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-8">
-        <h3 class="font-thin" *ngIf="discoverSongs"><a routerLink="/randomsongs">Ырлар дүйнөсүндө ачылыш жасаңыз</a>
-        </h3>
-        <div class="line line-dashed b-b line-lg pull-in"></div>
-        <app-song-list [songs]="discoverSongs"></app-song-list>
-        <h3 class="font-thin" *ngIf="newSongs"><a routerLink="/newsongs">Жаңы ырлар</a></h3>
-        <div class="line line-dashed b-b line-lg pull-in"></div>
-        <app-song-list [songs]="newSongs"></app-song-list>
-      </div>
-    </div>
-  </section>
+        </div>
+    </footer>
 </section>
