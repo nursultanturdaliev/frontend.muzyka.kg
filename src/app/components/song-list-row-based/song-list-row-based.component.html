@@ -8,9 +8,12 @@
     <li class="list-group-item song-list-row-based" *ngFor="let song of songs| filterBy: songFilter; let index = index"
         [ngClass]="{active: playerService.isCurrentSong(song)}">
       <div class="media">
-        <span class="pull-left thumb-sm">
-          <a (click)="appService.favourite(song)">
+        <span class="pull-left ">
+          <a  (click)="appService.favourite(song)">
             <i class="fa fa-heart-o fa-1-5x"></i>
+          </a>
+          <a  (click)="appService.download(song)">
+            <i class="fa fa-download fa-1-5x"></i>
           </a>
         </span>
         <div class="pull-right text-accent m-t-sm" (click)="playerService.play(song, songs,index )">

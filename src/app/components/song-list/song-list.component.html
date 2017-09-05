@@ -6,6 +6,7 @@
         <div class="pos-rlt discover-song">
 
           <div class="item-overlay opacity r r-2x bg-black" [ngClass]="{'active': playerService.isCurrentSong(song)}">
+
             <div class="center text-center m-t-n" (click)="playerService.play(song, songs,i )">
               <i class="fa fa-play fa-1-5x" *ngIf="!playerService.isCurrentSong(song)"></i>
               <i class="fa fa-pause fa-1-5x" *ngIf="playerService.isCurrentSong(song)"></i>
@@ -13,6 +14,9 @@
             <div class="bottom padder m-b-sm">
               <a (click)="appService.favourite(song)" class="pull-right">
                 <i class="fa fa-heart-o fa-1-5x"></i>
+              </a>
+              <a (click)="appService.download(song)" class="pull-left">
+                <i class="fa fa-download fa-1-5x"></i>
               </a>
             </div>
           </div>

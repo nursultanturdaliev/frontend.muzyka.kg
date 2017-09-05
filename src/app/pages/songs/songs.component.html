@@ -37,6 +37,9 @@
                           <i class="fa fa-pause fa-1-5x text-accent" *ngIf="playerService.isCurrentSong(song)"></i>
                         </div>
                       </div>
+                        <div class="col-xs-1 col-sm-2"  (click)="appService.download(song)">
+                          <i class="fa fa-download fa-1-5x"></i>
+                        </div>
                     </div>
                   </li>
                 </ul>

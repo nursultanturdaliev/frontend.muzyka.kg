@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SongService} from '../../services/song.service';
 import {ArtistService} from '../../services/artist.service';
 import {Song} from '../../Models/song';
 import {PlayerService} from '../../services/player.service';
+import {AppService} from '../../services/app.service';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,11 @@ import {PlayerService} from '../../services/player.service';
 })
 export class HomeComponent implements OnInit {
 
-  public discoverSongs:Song[];
-  public newSongs:Song[];
-  public topSongs:Song[];
+  public discoverSongs: Song[];
+  public newSongs: Song[];
+  public topSongs: Song[];
 
-  constructor(private songService:SongService, private artistService:ArtistService, private playerService:PlayerService) {
+  constructor(private songService: SongService, private artistService: ArtistService, private playerService: PlayerService, private appService: AppService) {
   }
 
   ngOnInit() {

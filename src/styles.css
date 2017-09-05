@@ -458,7 +458,7 @@ button.toast-close-button {
   color: #FF5722 !important;
 }
 
-.fa-play, .fa-pause, .fa-heart-o {
+.fa-play, .fa-pause, .fa-heart-o, .fa-download {
   cursor: pointer;
 }
 
