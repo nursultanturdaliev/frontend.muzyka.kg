@@ -1,6 +1,6 @@
 <section class="panel panel-default">
   <header class="panel-heading">
-    <p>{{title}}</p>
+    <!--<p>{{title}}</p>-->
     <input #searchInput type="text" class="input-md form-control" name="searchText"
            placeholder="Издөө" [(ngModel)]="songFilter.name">
   </header>
@@ -8,7 +8,7 @@
     <li class="list-group-item song-list-row-based" *ngFor="let song of songs| filterBy: songFilter; let index = index"
         [ngClass]="{active: playerService.isCurrentSong(song)}">
       <div class="media">
-        <span class="pull-left thumb-sm">
+        <span class="pull-left thumb-sm" style="margin-left: 5px; margin-right: -3px;">
           <a (click)="appService.favourite(song)">
             <i class="fa fa-heart-o fa-1-5x"></i>
           </a>
@@ -26,6 +26,7 @@
             <span class="label label-info" *ngIf="song.is_new">Жаңы</span>
           </div>
         </div>
+
       </div>
     </li>
   </ul>
