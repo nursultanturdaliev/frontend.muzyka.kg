@@ -1,1 +1,1 @@
-.music-player {    position: fixed;}
+@media (min-width: 768px) {    .header-md .navbar-brand img {        max-height: 50px;    }}@media (max-width: 769px) {    .music-player {        position: fixed;        bottom: 0;    }    .link-to-mob-app {        margin-bottom: 70px;    }}.navbar-brand {    width: 100%;}.navbar-brand img {    max-height: 50px;}

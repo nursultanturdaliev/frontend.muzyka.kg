@@ -26,12 +26,12 @@ export class HomeComponent implements OnInit {
 
     this.songService.getNewSongs()
       .then(songs => {
-        this.newSongs = songs.slice(0, 6);
+        this.newSongs = songs.slice(0, 9);
       });
 
     this.songService.getTopSongs()
       .then(songs => {
-        this.topSongs = songs.slice(0, 6);
+        this.topSongs = songs.slice(0, 9);
       })
   }
 
