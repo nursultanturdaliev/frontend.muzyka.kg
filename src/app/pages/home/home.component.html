@@ -66,7 +66,7 @@
                     alt="...">
                 </span>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="col-md-7 col-sm-7 col-xs-7">
               <span class="clear"></span>
               <a class="accent-link text-ellipsis" href="#"><span>{{song.title}}</span></a>
               <a *ngFor="let artist of song.artists;" class="accent-link text-ellipsis" href=""
@@ -74,17 +74,18 @@
                 {{artist.name}}
               </a>
             </div>
-            <div class="col-md-2 col-sm-2 col-xs-2">
-              <div class="vertical-middle" (click)="playerService.play(song,topSongs,index)">
-                <i class="fa fa-play fa-1-5x text-accent"
-                   *ngIf="!playerService.isCurrentSong(song)"></i>
-                <i class="fa fa-pause fa-1-5x text-accent"
-                   *ngIf="playerService.isCurrentSong(song)"></i>
+              <div class="col-md-1 col-sm-1 col-xs-1 no-padder">
+                  <div (click)="playerService.play(song,topSongs,index)">
+                      <i class="fa fa-play fa-1-5x text-accent"
+                         *ngIf="!playerService.isCurrentSong(song)"></i>
+                      <i class="fa fa-pause fa-1-5x text-accent"
+                         *ngIf="playerService.isCurrentSong(song)"></i>
+                  </div>
               </div>
-            </div>
             <div class="col-md-2 col-sm-2 col-xs-2">
-              <span class="pull-right h2 m-l accent-link text-ellipsis">{{index + 1}}</span>
+                <span class="pull-right h2 m-l text-ellipsis">{{index + 1}}</span>
             </div>
+
           </div>
         </li>
 
