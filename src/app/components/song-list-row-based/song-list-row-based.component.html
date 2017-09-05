@@ -2,7 +2,7 @@
   <header class="panel-heading">
     <p>{{title}}</p>
     <input #searchInput type="text" class="input-md form-control" name="searchText"
-           placeholder="Издөө" [(ngModel)]="songFilter.name">
+           placeholder="Издөө" [(ngModel)]="songFilter.title">
   </header>
   <ul class="list-group" *ngIf="songs">
     <li class="list-group-item song-list-row-based" *ngFor="let song of songs| filterBy: songFilter; let index = index"
