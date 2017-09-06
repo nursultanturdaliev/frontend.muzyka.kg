@@ -1,166 +1,168 @@
 <section class="vbox">
-  <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-    <div class="navbar-header aside">
-      <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
-        <i class="icon-list"></i>
-      </a>
-      <a routerLink="/" class="navbar-brand">
-        <img class="nav-xs logo-m" src="assets/img/logo-m.png" alt="logo-m">
-        <img class="hidden-nav-xs logo-part" src="assets/img/logo-part.png" alt="logo-part">
-      </a>
-      <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
-        <i class="icon-settings"></i>
-      </a>
-    </div>
-    <ul class="nav navbar-nav hidden-xs">
-      <li>
-        <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
-          <i class="fa fa-dedent text"></i>
-          <i class="fa fa-indent text-active"></i>
-        </a>
-      </li>
-    </ul>
-    <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
-      <div class="form-group">
-        <div class="input-group">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+        <div class="navbar-header aside">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                <i class="icon-list"></i>
+            </a>
+            <a routerLink="/" class="navbar-brand">
+                <img class="nav-xs logo-m" src="assets/img/logo-m.png" alt="logo-m">
+                <img class="hidden-nav-xs logo-part" src="assets/img/logo-part.png" alt="logo-part">
+            </a>
+            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                <i class="icon-settings"></i>
+            </a>
+        </div>
+        <ul class="nav navbar-nav hidden-xs">
+            <li>
+                <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+                    <i class="fa fa-dedent text"></i>
+                    <i class="fa fa-indent text-active"></i>
+                </a>
+            </li>
+        </ul>
+        <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+            <div class="form-group">
+                <div class="input-group">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-sm bg-white btn-icon rounded">
                             <i class="fa fa-search"></i>
                         </button>
                     </span>
-          <input type="text" class="form-control input-sm no-border rounded" placeholder="Издөө...">
-        </div>
-      </div>
-    </form>
-    <div class="navbar-right">
-      <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                            <img src="images/bekturomurov.jpg" alt="">
-                        </span>
-            Бектур Өмүров <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu animated fadeInRight">
-            <li><span class="arrow top"></span> <a href="#">Өзгөртүү</a></li>
-            <li><a href="#">Баракчам</a></li>
-            <li><a href="#">Жардам</a></li>
-            <li class="divider"></li>
-            <li><a href="#" data-toggle="ajaxModal">Чыгуу</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </header>
-  <section>
-    <section class="hbox stretch">
-      <aside class="bg-black dk aside hidden-print" id="nav">
-        <section class="vbox">
-          <section class="w-f-md scrollable">
-            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
-                 data-size="10px" data-railOpacity="0.2">
-              <nav class="nav-primary hidden-xs">
-                <ul class="nav bg clearfix">
-                  <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">Ырлар дүйнөсү</li>
-                  <li>
-                    <a routerLink="/">
-                      <i class="icon-home icon text-success"></i>
-                      <span class="font-bold" routerLinkActive="active">Башкы бет</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/songs">
-                      <i class="icon-playlist icon text-info"></i>
-                      <span class="font-bold" routerLinkActive="active">Ырлар</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/artists" routerLinkActive="active">
-                      <i class="icon-user icon text-primary-lter"></i>
-                      <span class="font-bold">Аткаруучу</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/topsongs" routerLinkActive="active">
-                      <i class="icon-heart icon text-info-dker"></i>
-                      <span class="font-bold">Тренд</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/newsongs" routerLinkActive="active">
-                      <i class="icon-plus icon text-primary"></i>
-                      <span class="font-bold">Жаңы ырлар</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/randomsongs" routerLinkActive="active">
-                      <i class="icon-shuffle icon"></i>
-                      <span class="font-bold">Туш келди</span>
-                    </a>
-                  </li>
-                  <li *ngIf="authService.loggedIn()">
-                    <a routerLink="/favourite" routerLinkActive="active">
-                      <i class="icon-heart icon text-danger-dker"></i>
-                      <span class="font-bold">Сүйгөн ырларым</span>
-                    </a>
-                  </li>
-                </ul>
-                <ul class="nav" data-ride="collapse">
-                  <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">Пайдалуу шилтемелер</li>
-                  <li>
-                    <a href="#" class="auto">
-                      <i class="icon-music-tone-alt icon"></i>
-                      <span>Портал тууралуу</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="auto">
-                      <i class="icon-call-in icon"></i>
-                      <span>Байланыш</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+                    <input type="text" class="form-control input-sm no-border rounded" placeholder="Издөө...">
+                </div>
             </div>
-          </section>
-          <footer class="footer hidden-xs no-padder text-center-nav-xs">
-            <div class="bg hidden-xs ">
-              <div class="dropdown dropup wrapper-sm clearfix">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        </form>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                            <img src="assets/img/bekturomurov.jpg" alt="">
+                        </span>
+                        Бектур Өмүров <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight">
+                        <li><span class="arrow top"></span> <a href="#">Өзгөртүү</a></li>
+                        <li><a href="#">Баракчам</a></li>
+                        <li><a href="#">Жардам</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-toggle="ajaxModal">Чыгуу</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <section class="hbox stretch">
+            <aside class="bg-black dk aside hidden-print" id="nav">
+                <section class="vbox">
+                    <section class="w-f-md scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                             data-size="10px" data-railOpacity="0.2">
+                            <nav class="nav-primary hidden-xs">
+                                <ul class="nav bg clearfix">
+                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">Ырлар дүйнөсү</li>
+                                    <li>
+                                        <a routerLink="/">
+                                            <i class="icon-home icon text-success"></i>
+                                            <span class="font-bold" routerLinkActive="active">Башкы бет</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/songs">
+                                            <i class="icon-playlist icon text-info"></i>
+                                            <span class="font-bold" routerLinkActive="active">Ырлар</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/artists" routerLinkActive="active">
+                                            <i class="icon-user icon text-primary-lter"></i>
+                                            <span class="font-bold">Аткаруучу</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/topsongs" routerLinkActive="active">
+                                            <i class="icon-heart icon text-info-dker"></i>
+                                            <span class="font-bold">Тренд</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/newsongs" routerLinkActive="active">
+                                            <i class="icon-plus icon text-primary"></i>
+                                            <span class="font-bold">Жаңы ырлар</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/randomsongs" routerLinkActive="active">
+                                            <i class="icon-shuffle icon"></i>
+                                            <span class="font-bold">Туш келди</span>
+                                        </a>
+                                    </li>
+                                    <li *ngIf="authService.loggedIn()">
+                                        <a routerLink="/favourite" routerLinkActive="active">
+                                            <i class="icon-heart icon text-danger-dker"></i>
+                                            <span class="font-bold">Сүйгөн ырларым</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav" data-ride="collapse">
+                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">Пайдалуу шилтемелер
+                                    </li>
+                                    <li>
+                                        <a href="#" class="auto">
+                                            <i class="icon-music-tone-alt icon"></i>
+                                            <span>Портал тууралуу</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="auto">
+                                            <i class="icon-call-in icon"></i>
+                                            <span>Байланыш</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                        <div class="bg hidden-xs ">
+                            <div class="dropdown dropup wrapper-sm clearfix">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="thumb-sm avatar pull-left m-l-xs">
-                                        <img src="images/profile/bek_borbiev.jpg" alt="">
+                                        <img src="assets/img/bek_borbiev.jpg" alt="">
                                         <i class="on b-black"></i>
                                     </span>
-                  <span class="hidden-nav-xs clear">
-                                    <span class="block m-l">
-                                        <strong class="font-bold text-lt">Бек Борбиев</strong>
+                                    <span class="hidden-nav-xs clear">
+                                        <span class="block m-l">
+                                            <strong class="font-bold text-lt">Бек Борбиев</strong>
+                                        </span>
+                                        <span class="text-muted text-xs block m-l">Байчечекей</span>
                                     </span>
-                                    <span class="text-muted text-xs block m-l">Байчечекей</span>
-                                </span>
-                </a>
-              </div>
-            </div>
-          </footer>
-        </section>
-      </aside>
-      <section id="content">
-        <section class="hbox stretch">
-          <section>
-            <section class="vbox">
-              <section class="scrollable padder-lg w-f-md" id="bjax-target">
-                <router-outlet></router-outlet>
-              </section>
-              <footer class="footer bg-primary music-player">
-                <app-player></app-player>
+                                </a>
+                            </div>
+                        </div>
+                    </footer>
+                </section>
+            </aside>
+            <section id="content">
+                <section class="hbox stretch">
+                    <section>
+                        <section class="vbox">
+                            <section class="scrollable padder-lg w-f-md" id="bjax-target">
+                                <router-outlet></router-outlet>
+                            </section>
+                            <footer class="footer bg-primary music-player">
+                                <app-player></app-player>
 
-              </footer>
+                            </footer>
+                        </section>
+                    </section>
+                </section>
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                   data-target="#nav,html"></a>
             </section>
-          </section>
         </section>
-        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
-      </section>
     </section>
-  </section>
 </section>
 
 
