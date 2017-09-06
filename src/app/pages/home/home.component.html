@@ -18,25 +18,34 @@
                 <span class="badge bg-info m-l-sm m-b-sm">{{song.duration}}</span>
               </div>
               <div class="item-overlay opacity r r-2x bg-black">
-                <div class="text-info padder m-t-sm text-sm">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o text-muted"></i>
-                </div>
-                <div class="center text-center m-t-n">
+                <!--<div class="text-info padder m-t-sm text-sm">-->
+                  <!--<i class="fa fa-star"></i>-->
+                  <!--<i class="fa fa-star"></i>-->
+                  <!--<i class="fa fa-star"></i>-->
+                  <!--<i class="fa fa-star"></i>-->
+                  <!--<i class="fa fa-star-o text-muted"></i>-->
+                <!--</div>-->
+                <div class="center text-center m-t-n" (click)="playerService.play(song,newSongs,index)">
                   <a href="#">
-                    <i class="icon-control-play i-2x"></i>
+                      <i class="icon-control-play i-2x"
+                         *ngIf="!playerService.isCurrentSong(song)"></i>
+                      <i class="icon-control-pause i-2x"
+                         *ngIf="playerService.isCurrentSong(song)"></i>
                   </a>
                 </div>
+                  <!--<div (click)="playerService.play(song,newSongs,index)">-->
+                      <!--<i class="icon-control-play i-2x text-accent"-->
+                         <!--*ngIf="!playerService.isCurrentSong(song)"></i>-->
+                      <!--<i class="icon-control-pause i-2x text-accent"-->
+                         <!--*ngIf="playerService.isCurrentSong(song)"></i>-->
+                  <!--</div>-->
                 <div class="bottom padder m-b-sm">
                   <a href="#" class="pull-right">
                     <i class="fa fa-heart-o"></i>
                   </a>
-                  <a href="#">
-                    <i class="fa fa-plus-circle"></i>
-                  </a>
+                  <!--<a href="#">-->
+                    <!--<i class="fa fa-plus-circle"></i>-->
+                  <!--</a>-->
                 </div>
               </div>
               <a href="#"><img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" [lazyLoad]="song.profileLocal" alt="" class="r r-2x img-full"></a>
