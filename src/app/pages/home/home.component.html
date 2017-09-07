@@ -33,24 +33,18 @@
                          *ngIf="playerService.isCurrentSong(song)"></i>
                   </a>
                 </div>
-                  <!--<div (click)="playerService.play(song,newSongs,index)">-->
-                      <!--<i class="icon-control-play i-2x text-accent"-->
-                         <!--*ngIf="!playerService.isCurrentSong(song)"></i>-->
-                      <!--<i class="icon-control-pause i-2x text-accent"-->
-                         <!--*ngIf="playerService.isCurrentSong(song)"></i>-->
-                  <!--</div>-->
                 <div class="bottom padder m-b-sm">
                   <a href="#" class="pull-right">
                     <i class="fa fa-heart-o"></i>
                   </a>
                     <div (click)="appService.download(song)">
-                        <a href="#" >
-                            <i class="fa fa-download"></i>
+                        <a>
+                            <i class="icon-cloud-download"></i>
                         </a>
                     </div>
                 </div>
               </div>
-              <a href="#"><img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" [lazyLoad]="song.profileLocal" alt="" class="r r-2x img-full"></a>
+              <a><img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" [lazyLoad]="song.profileLocal" alt="" class="r r-2x img-full"></a>
             </div>
             <div class="padder-v">
               <a href="#" class="text-ellipsis">{{song.title}}</a>
@@ -66,45 +60,36 @@
       <h3 class="font-thin">Популярдуу ырлар</h3>
       <div class="list-group bg-white list-group-lg no-bg auto">
 
-        <li class="list-group-item clearfix discover-song" *ngFor="let song of topSongs; let index=index;"
-            [ngClass]="{active: playerService.isCurrentSong(song)}">
-
-          <div class="row">
-            <div class="col-md-2 col-sm-2 col-xs-2">
-                <span class="pull-left thumb-sm avatar m-r">
-                    <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
-                    [lazyLoad]="song.profileLocal"
-                    alt="...">
-                </span>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-6">
-              <span class="clear"></span>
-              <a class="accent-link text-ellipsis" href="#"><span>{{song.title}}</span></a>
-              <a *ngFor="let artist of song.artists;" class="accent-link text-ellipsis" href=""
-                 routerLink="/artist/{{artist.id}}">
-                {{artist.name}}
-              </a>
-            </div>
-              <div class="col-md-1 col-sm-1 col-xs-1 no-padder">
+          <ul class="list-group list-group-lg bg-white auto m-b-none">
+              <li class="list-group-item clearfix" *ngFor="let song of topSongs; let index=index;">
+                  <span class="pull-left h2 text-muted m-r">{{index + 1}}</span>
                   <div (click)="appService.download(song,topSongs,index)">
-                      <i class="fa fa-download fa-1-5x text-accent"></i>
+                      <a class="pull-right m-t-sm m-l text-md text-accent">
+                          <i class="icon-cloud-download text"></i>
+                      </a>
                   </div>
-              </div>
-              <div class="col-md-1 col-sm-1 col-xs-1 no-padder">
                   <div (click)="playerService.play(song,topSongs,index)">
-                      <i class="fa fa-play fa-1-5x text-accent"
-                         *ngIf="!playerService.isCurrentSong(song)"></i>
-                      <i class="fa fa-pause fa-1-5x text-accent"
-                         *ngIf="playerService.isCurrentSong(song)"></i>
+                      <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
+                          <i class="icon-control-play text"
+                             *ngIf="!playerService.isCurrentSong(song)"></i>
+                          <i class="icon-control-pause text"
+                             *ngIf="playerService.isCurrentSong(song)"></i>
+                      </a>
                   </div>
-              </div>
-            <div class="col-md-2 col-sm-2 col-xs-2">
-                <span class="pull-right h2 m-l text-ellipsis">{{index + 1}}</span>
-            </div>
-
-          </div>
-        </li>
-
+                  <a href="#" class="pull-left thumb-sm m-r">
+                      <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
+                           [lazyLoad]="song.profileLocal"
+                           alt="..." class="img-circle">
+                  </a>
+                  <a class="clear" href="#">
+                      <a routerLink="/artist/{{artist.id}}" class="block text-ellipsis"
+                         *ngFor="let artist of song.artists;">
+                          {{artist.name}}
+                      </a>
+                      <small class="text-muted">{{song.title}}</small>
+                  </a>
+              </li>
+          </ul>
       </div>
     </div>
   </div>
