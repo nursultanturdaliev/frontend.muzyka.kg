@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild, Renderer} from '@angular/core';
 import {PlayerService} from './services/player.service';
 import {SongService} from "./services/song.service";
 import {AuthService} from "./services/auth.service";
@@ -12,11 +12,13 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent {
+  @ViewChild('toggleBtn') toggleBtn: ElementRef;
 
   constructor(private playerService:PlayerService,
               public authService:AuthService,
               private fb:FacebookService,
-              private router:Router) {
+              private router:Router,
+              private renderer: Renderer) {
     let initParams:InitParams = {
       appId: '1974598029436106',
       cookie: true,
@@ -26,6 +28,11 @@ export class AppComponent {
 
     fb.init(initParams);
 
+  }
+
+  public menuItemClick(){
+    this.renderer.invokeElementMethod(this.toggleBtn.nativeElement,'click');
+   console.log(this.toggleBtn);
   }
 
   public logout() {

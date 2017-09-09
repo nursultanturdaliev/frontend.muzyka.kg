@@ -1,7 +1,7 @@
 <section class="vbox">
     <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
         <div class="navbar-header aside">
-            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html" #toggleBtn>
                 <i class="icon-list"></i>
             </a>
             <a routerLink="/" class="navbar-brand">
@@ -72,43 +72,43 @@
                                 <ul class="nav bg clearfix">
                                     <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">Ырлар дүйнөсү</li>
                                     <li>
-                                        <a routerLink="/">
+                                        <a routerLink="/" (click)="menuItemClick()">
                                             <i class="icon-home icon text-success"></i>
                                             <span class="font-bold" routerLinkActive="active">Башкы бет</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a routerLink="/songs">
+                                        <a routerLink="/songs" (click)="menuItemClick()">
                                             <i class="icon-playlist icon text-info"></i>
                                             <span class="font-bold" routerLinkActive="active">Ырлар</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a routerLink="/artists" routerLinkActive="active">
+                                        <a routerLink="/artists" routerLinkActive="active" (click)="menuItemClick()">
                                             <i class="icon-user icon text-primary-lter"></i>
                                             <span class="font-bold">Аткаруучу</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a routerLink="/topsongs" routerLinkActive="active">
+                                        <a routerLink="/topsongs" routerLinkActive="active" (click)="menuItemClick()">
                                             <i class="icon-heart icon text-info-dker"></i>
                                             <span class="font-bold">Тренд</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a routerLink="/newsongs" routerLinkActive="active">
+                                        <a routerLink="/newsongs" routerLinkActive="active" (click)="menuItemClick()">
                                             <i class="icon-plus icon text-primary"></i>
                                             <span class="font-bold">Жаңы ырлар</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a routerLink="/randomsongs" routerLinkActive="active">
+                                        <a routerLink="/randomsongs" routerLinkActive="active" (click)="menuItemClick()">
                                             <i class="icon-shuffle icon"></i>
                                             <span class="font-bold">Туш келди</span>
                                         </a>
                                     </li>
                                     <li *ngIf="authService.loggedIn()">
-                                        <a routerLink="/favourite" routerLinkActive="active">
+                                        <a routerLink="/favourite" routerLinkActive="active" (click)="menuItemClick()">
                                             <i class="icon-heart icon text-danger-dker"></i>
                                             <span class="font-bold">Сүйгөн ырларым</span>
                                         </a>
@@ -118,13 +118,13 @@
                                     <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">Пайдалуу шилтемелер
                                     </li>
                                     <li>
-                                        <a href="#" class="auto">
+                                        <a href="#" class="auto" (click)="menuItemClick()">
                                             <i class="icon-music-tone-alt icon"></i>
                                             <span>Портал тууралуу</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="auto">
+                                        <a href="#" class="auto" (click)="menuItemClick()">
                                             <i class="icon-call-in icon"></i>
                                             <span>Байланыш</span>
                                         </a>
