@@ -86,7 +86,7 @@ export class PlayerComponent implements OnInit {
         reject(false);
       });
     });
-
+    document.getElementById('musicbar').className += ' animate';
     return this.promise;
   }
 
@@ -110,6 +110,7 @@ export class PlayerComponent implements OnInit {
     this.playerService.currentTime = currentTime;
     this.toggle();
     this.audio.pause();
+    document.getElementById('musicbar').classList.remove('animate');
   }
 
   changeCurrentTime(event) {
