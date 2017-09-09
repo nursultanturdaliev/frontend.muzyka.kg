@@ -135,17 +135,19 @@
                     </section>
                     <footer class="footer hidden-xs no-padder text-center-nav-xs">
                         <div class="bg hidden-xs ">
-                            <div class="dropdown dropup wrapper-sm clearfix">
+                            <div class="dropdown dropup wrapper-sm clearfix" *ngIf="playerService.currentSong">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="thumb-sm avatar pull-left m-l-xs">
-                                        <img src="assets/img/bek_borbiev.jpg" alt="">
+                                      <img [lazyLoad]="playerService.currentSong.profileLocal"
+                                           src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
+                                           class="r r-2x img-full">
                                         <i class="on b-black"></i>
                                     </span>
                                     <span class="hidden-nav-xs clear">
                                         <span class="block m-l">
-                                            <strong class="font-bold text-lt">Бек Борбиев</strong>
+                                            <strong class="font-bold text-lt">{{playerService.currentSong.artist_as_one}}</strong>
                                         </span>
-                                        <span class="text-muted text-xs block m-l">Байчечекей</span>
+                                        <span class="text-muted text-xs block m-l">{{playerService.currentSong.title}}</span>
                                     </span>
                                 </a>
                             </div>
@@ -173,140 +175,3 @@
         </section>
     </section>
 </section>
-
-
-<!-- Bootstrap --> <!-- App -->
-
-<!--<section class="vbox">-->
-<!--<header class="bg-primary lter header header-sm navbar navbar-fixed-top-xs">-->
-<!--<div class="container" id="header-content">-->
-<!--<div class="navbar-right">-->
-<!--<ul class="nav navbar-nav hidden-xs">-->
-<!--<li>-->
-<!--<a routerLink="/">-->
-<!--<span class="font-bold" routerLinkActive="active">Башкы бет</span>-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a routerLink="/songs">-->
-<!--<span class="font-bold" routerLinkActive="active">Ырлар</span>-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a routerLink="/artists" routerLinkActive="active">-->
-<!--<span class="font-bold hidden-xs">Ырчылар</span>-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a routerLink="/topsongs" routerLinkActive="active">-->
-<!--<span class="font-bold">Тренд</span>-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a routerLink="/newsongs" routerLinkActive="active">-->
-<!--<span class="font-bold">Жаңы ырлар</span>-->
-<!--</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a routerLink="/randomsongs" routerLinkActive="active">-->
-<!--<span class="font-bold">Туш келди</span>-->
-<!--</a>-->
-<!--</li>-->
-<!--<li *ngIf="authService.loggedIn()">-->
-<!--<a routerLink="/favourite" routerLinkActive="active">-->
-<!--<span class="font-bold">Сүйгөн ырларым</span>-->
-<!--</a>-->
-<!--</li>-->
-<!--</ul>-->
-<!--<ul class="nav navbar-nav m-n hidden-xs nav-user user">-->
-<!--<li *ngIf="!authService.loggedIn()">-->
-<!--<a routerLink="/login">Кирүү</a>-->
-<!--</li>-->
-
-<!--<li class="dropdown" *ngIf="authService.loggedIn()">-->
-<!--<a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">-->
-<!--{{authService.userEmail()}}<b class="caret"></b>-->
-<!--</a>-->
-<!--<ul class="dropdown-menu animated fadeInRight">-->
-<!--<li><a routerLink="profile">Профиль</a></li>-->
-<!--<li class="divider"></li>-->
-<!--<li><a (click)="logout()" data-toggle="ajaxModal">Чыгуу</a></li>-->
-<!--</ul>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="mobile-menu-container visible-xs">-->
-<!--<div class="row">-->
-<!--<div class="col-xs-3 mobile-menu">-->
-<!--<a routerLink="/" routerLinkActive="active">-->
-<!--<i class="fa fa-home mobile-menu-icon" aria-hidden="true"></i>-->
-<!--<span class="mobile-menu-title">Башкы бет</span>-->
-<!--</a>-->
-<!--</div>-->
-
-<!--<div class="col-xs-3 mobile-menu">-->
-<!--<a routerLink="/favourite" routerLinkActive="active">-->
-<!--<i class="fa fa-heart-o mobile-menu-icon" aria-hidden="true"></i>-->
-<!--<span class="mobile-menu-title">Сүйгөн</span>-->
-<!--</a>-->
-<!--</div>-->
-
-<!--<div class="col-xs-3 mobile-menu">-->
-<!--<a routerLink="/topsongs" routerLinkActive="active">-->
-<!--<i class="fa fa-fire mobile-menu-icon" aria-hidden="true"></i>-->
-<!--<span class="mobile-menu-title">Тренд</span>-->
-<!--</a>-->
-<!--</div>-->
-<!--<div class="col-xs-3 mobile-menu">-->
-<!--<a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".menu-more">-->
-<!--<i class="fa fa-bars mobile-menu-icon"></i>-->
-<!--</a>-->
-
-<!--</div>-->
-<!--</div>-->
-<!--<div class="row ">-->
-<!--<div class="nav navbar-nav m-n nav-user menu-more hidden-xs">-->
-<!--<div class="col-xs-3 mobile-menu">-->
-<!--<a routerLink="/newsongs" routerLinkActive="active">-->
-<!--<i class="fa fa-globe mobile-menu-icon" aria-hidden="true"></i>-->
-<!--<span class="mobile-menu-title">Жаңы</span>-->
-<!--</a>-->
-<!--</div>-->
-<!--<div class="col-xs-3 mobile-menu">-->
-<!--<a routerLink="/randomsongs" routerLinkActive="active">-->
-<!--<i class="fa fa-random mobile-menu-icon" aria-hidden="true"></i>-->
-<!--<span class="mobile-menu-title">Туш келди</span>-->
-<!--</a>-->
-<!--</div>-->
-<!--<div class="col-xs-3 mobile-menu">-->
-<!--<a routerLink="/songs">-->
-<!--<i class="fa fa-music mobile-menu-icon"></i>-->
-<!--<span class="mobile-menu-title">Ырлар</span>-->
-<!--</a>-->
-<!--</div>-->
-<!--<div class="col-xs-3 mobile-menu">-->
-<!--<a routerLink="/artists" routerLinkActive="active">-->
-<!--<i class="fa fa-microphone mobile-menu-icon"></i>-->
-<!--<span class="mobile-menu-title">Ырчылар</span>-->
-<!--</a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</header>-->
-<!--<section>-->
-<!--<section class="hbox stretch"> &lt;!&ndash; .aside &ndash;&gt;-->
-<!--<section id="content">-->
-<!--<section class="vbox">-->
-<!--<router-outlet></router-outlet>-->
-<!--</section>-->
-<!--<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"-->
-<!--data-target="#nav,html"></a>-->
-<!--</section>-->
-<!--</section>-->
-<!--</section>-->
-<!--</section>-->
-<!--<app-player></app-player>-->
-
-
