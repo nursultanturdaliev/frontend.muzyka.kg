@@ -38,48 +38,11 @@
                       </a>
                     </div>
                   <div class="clear text-ellipsis">
-                    <span *ngFor="let artist of song.artists; let  last=last;">{{artist.name}}</span>
+                    <span *ngFor="let artist of song.artists; let  last=last; let index=index;">{{artist.name}}<span *ngIf="last!=true">, </span></span>
                     <span class="text-muted">{{song.title}}</span>
                   </div>
                 </li>
                 </ul>
-
-                <!--<ul class="list-group alt" id="songs" *ngIf="songs" infiniteScroll-->
-                    <!--[infiniteScrollDistance]="2"-->
-                    <!--[infiniteScrollThrottle]="300"-->
-                    <!--(scrolled)="onScrollDown()">-->
-                  <!--<li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"-->
-                      <!--[ngClass]="{active: playerService.isCurrentSong(song)}">-->
-                    <!--<div class="row">-->
-
-                      <!--<div class="col-xs-2 col-sm-2 col-md-2">-->
-                        <!--<span class="pull-left thumb-sm avatar m-r artist-profile">-->
-                            <!--<img alt="{{song.artist_as_one}}" [lazyLoad]="song.profileLocal"-->
-                                 <!--src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg">-->
-                        <!--</span>-->
-                      <!--</div>-->
-                      <!--<div class="col-xs-8 col-sm-6 col-md-6">-->
-                        <!--<div class="vertical-middle"><strong>{{song.title}}</strong></div>-->
-                        <!--<a routerLink="/artist/{{artist.id}}" class="vertical-middle accent-link" *ngFor="let artist of song.artists; let  last=last;">{{artist.name}}<span *ngIf="!last">, </span></a>-->
-                        <!--<div><span class="label label-info" *ngIf="song.is_new">Жаңы</span></div>-->
-                      <!--</div>-->
-                      <!--<div class="col-xs-1 col-sm-2 no-padder col-md-2" (click)="appService.favourite(song)">-->
-                        <!--<div class="vertical-middle">-->
-                          <!--<i class="fa fa-heart fa-1-5x "></i>-->
-                          <!--<i class="fa fa-heart-o fa-1-5x text-accent" *ngIf="!playerService.isFavouriteSong(song)"></i>-->
-                          <!--<i class="fa fa-heart fa-1-5x text-accent" *ngIf="playerService.isFavouriteSong(song)"></i>-->
-                        <!--</div>-->
-                      <!--</div>-->
-                      <!--<div class="col-xs-1 col-sm-2 no-padder col-md-2" (click)="play(song, songs,i )">-->
-                        <!--<div class="vertical-middle" >-->
-                          <!--<i class="fa fa-play fa-1-5x text-accent" *ngIf="!playerService.isCurrentSong(song)"></i>-->
-                          <!--<i class="fa fa-pause fa-1-5x text-accent" *ngIf="playerService.isCurrentSong(song)"></i>-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</li>-->
-                <!--</ul>-->
-              <!--</section>-->
             </div>
             <!--<div class="col-md-6 col-sm-6 hidden-xs" id="song-lyrics" *ngIf="playingSong">-->
               <!--<app-my-songs [song]="playingSong"></app-my-songs>-->
