@@ -49,6 +49,8 @@ import {UserService} from "./services/user.service";
 import { FacebookModule } from 'ngx-facebook';
 import {GoogleService} from "./services/GoogleService";
 import {AuthGoogleService} from "./services/AuthGoogleService";
+import {ContactComponent} from "./pages/index";
+import {AboutComponent} from "./pages/index";
 
 
 @NgModule({
@@ -71,7 +73,9 @@ import {AuthGoogleService} from "./services/AuthGoogleService";
     SongsComponent,
     TopsongsComponent,
     UserFormComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    ContactComponent,
+    AboutComponent
   ],
 
   imports: [

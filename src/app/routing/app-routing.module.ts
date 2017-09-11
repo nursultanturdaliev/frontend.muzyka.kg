@@ -16,7 +16,9 @@ import {
   SongsComponent,
   TopsongsComponent
 } from '../pages/index';
-import {UserRegisterComponent} from '../pages/user-register/user-register.component';
+import {UserRegisterComponent} from '../pages/index';
+import {ContactComponent} from "../pages/index";
+import {AboutComponent} from "../pages/index";
 
 const appRoutes:Routes = <Routes>[
   {
@@ -62,6 +64,14 @@ const appRoutes:Routes = <Routes>[
   {
     path: 'register',
     component: UserRegisterComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
   }
 ];
 
