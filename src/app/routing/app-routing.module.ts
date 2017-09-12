@@ -14,7 +14,8 @@ import {
   ProfileComponent,
   RandomsongsComponent,
   SongsComponent,
-  TopsongsComponent
+  TopsongsComponent,
+  SongComponent
 } from '../pages/index';
 import {UserRegisterComponent} from '../pages/index';
 import {ContactComponent} from "../pages/index";
@@ -64,6 +65,10 @@ const appRoutes:Routes = <Routes>[
   {
     path: 'register',
     component: UserRegisterComponent
+  },
+  {
+    path: 'song/:uuid',
+    component: SongComponent
   },
   {
     path: 'contact',

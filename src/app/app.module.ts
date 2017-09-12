@@ -31,12 +31,14 @@ import { SongListComponent } from './components/index';
 import { SongListRowBasedComponent } from './components/index';
 import { HistoryListComponent } from './components/index';
 import {UserFormComponent} from "./components/index";
+import {SongInfoComponent} from './components/index';
 
 import {UserRegisterComponent } from './pages/index';
 import { ProfileComponent } from './pages/index';
 import { FavouriteComponent } from './pages/index';
 import { HomeComponent } from './pages/index';
 import {ArtistComponent} from './pages/index';
+import {SongComponent} from './pages/index';
 import { LoginComponent } from './pages/index';
 import { TopsongsComponent } from './pages/index';
 import { NewsongsComponent } from './pages/index';
@@ -58,6 +60,7 @@ import {AboutComponent} from "./pages/index";
     AppComponent,
     ArtistComponent,
     ArtistInfoComponent,
+    SongInfoComponent,
     ArtistsComponent,
     FavouriteComponent,
     HistoryListComponent,
@@ -73,6 +76,9 @@ import {AboutComponent} from "./pages/index";
     SongsComponent,
     TopsongsComponent,
     UserFormComponent,
+    UserRegisterComponent,
+    SongComponent,
+    SongInfoComponent,
     UserRegisterComponent,
     ContactComponent,
     AboutComponent

@@ -69,6 +69,8 @@
                              *ngIf="playerService.isCurrentSong(song)"></i>
                       </a>
                   </div>
+                  <!--<p class="text-muted">{{song.uuid}}|||</p>-->
+                  <!--<p class="text-muted">{{song.id}}</p>-->
                   <a href="#" class="pull-left thumb-sm m-r">
                       <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
                            [lazyLoad]="song.profileLocal"
@@ -79,7 +81,11 @@
                          *ngFor="let artist of song.artists;">
                           {{artist.name}}
                       </a>
-                      <small class="text-muted">{{song.title}}</small>
+                      <a routerLink="/song/{{song.uuid}}" class="block text-ellipsis">
+                          <small class="text-muted">{{song.title}}</small>
+
+                      </a>
+
                   </a>
               </li>
           </ul>

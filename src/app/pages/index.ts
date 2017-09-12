@@ -8,6 +8,7 @@ export {LoginComponent} from './login/login.component';
 export {NewsongsComponent } from './newsongs/newsongs.component';
 export {ProfileComponent } from './profile/profile.component';
 export {RandomsongsComponent} from './randomsongs/randomsongs.component';
+export {SongComponent} from './song/song.component';
 export {SongsComponent} from './songs/songs.component';
 export {TopsongsComponent} from './topsongs/topsongs.component';
 export {UserRegisterComponent} from './user-register/user-register.component';
