@@ -32,8 +32,11 @@ export class ArtistComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.artistId = +params['id'];
+      this.onUrlChange();
     });
+  }
 
+  onUrlChange(){
     this.artistService.getArtist(this.artistId)
       .then(artist => {
         this.artist = artist;

@@ -1,84 +1,82 @@
-<!--<section>-->
-    <!--<section class="vbox">-->
-        <!--<section class="padder-lg w-f-md" id="bjax-target">-->
-            <div class="row">
-                <div class="col-md-12 m-t-lg m-b-lg">
-                    <div class="row row-sm">
-                        <div class="col-md-6">
-                            <div class="text-center m-b-md">
-                                <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
-                                     [lazyLoad]="song.profileLocal"
-                                     alt="..." class="thumb-lg img-circle avatar">
-                            </div>
-                            <h1 class="song-title text-center">
-                                <span>{{song.title}}</span>
-                                <div *ngFor="let artist of song.artists;" class="text-muted">
-                                    {{artist.name}}
-                                </div>
-                            </h1>
-                            <div class="panel wrapper m-t-md">
-                                <div class="row text-center">
-                                    <div class="col-xs-4">
-                                        <div (click)="playerService.play(song,song,1)">
-                                            <a class="jp-play-me m-r-sm pull-left">
-                                                <i class="icon-control-play"
-                                                   *ngIf="!playerService.isCurrentSong(song)">
-                                                    <span class="font-default text-md">Ойнотуу</span>
-                                                </i>
-                                                <i class="icon-control-pause text"
-                                                   *ngIf="playerService.isCurrentSong(song)">
-                                                    <span class="font-default text-md">Токтотуу</span>
-                                                </i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <a (click)="appService.download(song,song,1)" class="m-r-sm">
-                                            <i class="icon-cloud-download text-lg"> <span class="font-default text-md">Көчүрүү</span></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <a href="#" class="m-r-sm">
-                                            <i class="icon-heart text-lg"> <span
-                                                    class="font-default text-md">Жакты</span> </i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="share-on-social-network">
-                                Бөлүшүү:
-                                <a href="#"><i class="fa fa-facebook-square"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-twitter-square"></i></a>
-                                <a href="#"><i class="fa fa-google-plus-square"></i></a>
-                                <a href="#"><i class="fa fa-vk"></i></a>
-                            </div>
-                            <div *ngIf="youtube">
-                                <h3>Видеоклип</h3>
-                                <div id="ytplayer" class="m-t-sm videoclip" (onready)="onYouTubePlayerAPIReady(youtube);">
-                                    <!--{{youtube}}-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <!--*ngIf="song.lyrics">-->
-                            <div class="panel panel-default lyrics">
-                                 <!--*ngIf="song.writtenBy || song.composedBy || song.lyrics">-->
-                                <div class="panel-heading">
-                                    <!--<h4 class="center text-center">«{{song.title}}»</h4>-->
-                                    <p *ngIf="writtenBy"><strong>Сөзү:</strong> {{writtenBy}}</p>
-                                    <p *ngIf="composedBy"><strong>Обону:</strong> {{composedBy}}</p>
-                                </div>
-                                <div class="panel-body" *ngIf="lyrics">
-                                    <p>
-                                        {{lyrics}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<section class="vbox" *ngIf="song">
+  <section class="padder-lg w-f-md" id="bjax-target">
+    <div class="row">
+      <div class="col-md-12 m-t-lg m-b-lg">
+        <div class="row row-sm">
+          <div class="col-md-6">
+            <div class="text-center m-b-md">
+              <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
+                   [lazyLoad]="song.profileLocal"
+                   alt="..." class="thumb-lg img-circle avatar">
             </div>
-        <!--</section>-->
-    <!--</section>-->
-<!--</section>-->
+            <h1 class="song-title text-center">
+              <span>{{song.title}}</span>
+              <div *ngFor="let artist of song.artists;" class="text-muted">
+                {{artist.name}}
+              </div>
+            </h1>
+            <div class="panel wrapper m-t-md">
+              <div class="row text-center">
+                <div class="col-xs-4">
+                  <div (click)="playerService.play(song,song,1)">
+                    <a class="jp-play-me m-r-sm pull-left">
+                      <i class="icon-control-play"
+                         *ngIf="!playerService.isCurrentSong(song)">
+                        <span class="font-default text-md">Ойнотуу</span>
+                      </i>
+                      <i class="icon-control-pause text"
+                         *ngIf="playerService.isCurrentSong(song)">
+                        <span class="font-default text-md">Токтотуу</span>
+                      </i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <a (click)="appService.download(song,song,1)" class="m-r-sm">
+                    <i class="icon-cloud-download text-lg"> <span class="font-default text-md">Көчүрүү</span></i>
+                  </a>
+                </div>
+                <div class="col-xs-4">
+                  <a href="#" class="m-r-sm">
+                    <i class="icon-heart text-lg"> <span
+                      class="font-default text-md">Жакты</span> </i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="share-on-social-network">
+              Бөлүшүү:
+              <a href="#"><i class="fa fa-facebook-square"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-twitter-square"></i></a>
+              <a href="#"><i class="fa fa-google-plus-square"></i></a>
+              <a href="#"><i class="fa fa-vk"></i></a>
+            </div>
+            <div *ngIf="youtube">
+              <h3>Видеоклип</h3>
+              <div id="ytplayer" class="m-t-sm videoclip" (onready)="onYouTubePlayerAPIReady(youtube);">
+                <!--{{youtube}}-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!--*ngIf="song.lyrics">-->
+            <div class="panel panel-default lyrics">
+              <!--*ngIf="song.writtenBy || song.composedBy || song.lyrics">-->
+              <div class="panel-heading">
+                <!--<h4 class="center text-center">«{{song.title}}»</h4>-->
+                <p *ngIf="writtenBy"><strong>Сөзү:</strong> {{writtenBy}}</p>
+                <p *ngIf="composedBy"><strong>Обону:</strong> {{composedBy}}</p>
+              </div>
+              <div class="panel-body" *ngIf="lyrics">
+                <p>
+                  {{lyrics}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

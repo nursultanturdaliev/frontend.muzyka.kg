@@ -17,32 +17,25 @@ export class SongComponent implements OnInit, OnDestroy {
   private song:Song;
   public artist:Artist;
   private songId:any;
-  public artistId:number;
-  public randomSongs:Song[];
   private sub:Subscription;
-  public artistSongs:string;
-  public listen:string;
+
 
   constructor(private songService:SongService,
               private route:ActivatedRoute) {
-    // this.artistSongs = 'Ырларым';
-    // this.listen = 'Тыңшап көрүңүз';
   }
 
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params: Params) => {
       this.songId = params['uuid'];
+      this.onUrlChange();
     });
-
+  }
+  onUrlChange(){
     this.songService.getSong(this.songId)
       .then(song => {
         this.song = song;
       });
-    // this.songService.getRandomSongs({'songId': this.songId})
-    //   .then(randomSongs => {
-    //     this.randomSongs = randomSongs
-    //   });
   }
 
   ngOnDestroy():void {
