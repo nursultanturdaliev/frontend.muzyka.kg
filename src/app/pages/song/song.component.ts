@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {SongService} from '../../services/song.service';
 import {Song} from '../../Models/song';
 import {PlayerService} from '../../services/player.service';
+import {AppService} from "../../services/app.service";
 
 @Component({
   selector: 'app-song',
@@ -21,7 +22,8 @@ export class SongComponent implements OnInit, OnDestroy {
 
 
   constructor(private songService:SongService,
-              private route:ActivatedRoute) {
+              private route:ActivatedRoute,
+              private appService:AppService) {
   }
 
 
