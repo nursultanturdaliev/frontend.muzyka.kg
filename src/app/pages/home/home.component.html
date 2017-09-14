@@ -19,7 +19,7 @@
                   <!--<i class="fa fa-star-o text-muted"></i>-->
                 <!--</div>-->
                 <div class="center text-center m-t-n" (click)="playerService.play(song,newSongs,index)">
-                  <a href="#">
+                  <a>
                       <i class="icon-control-play i-2x"
                          *ngIf="!playerService.isCurrentSong(song)"></i>
                       <i class="icon-control-pause i-2x"
@@ -40,8 +40,8 @@
               <a><img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" [lazyLoad]="song.profileLocal" alt="" class="r r-2x img-full"></a>
             </div>
             <div class="padder-v">
-              <a href="#" class="text-ellipsis">{{song.title}}</a>
-              <a  *ngFor="let artist of song.artists;" href="" routerLink="/artist/{{artist.id}}" class="text-ellipsis text-xs text-muted">{{artist.name}}</a>
+              <a routerLink="/song/{{song.uuid}}" class="text-ellipsis">{{song.title}}</a>
+              <a  *ngFor="let artist of song.artists;" routerLink="/artist/{{artist.id}}" class="text-ellipsis text-xs text-muted">{{artist.name}}</a>
             </div>
           </div>
         </div>
