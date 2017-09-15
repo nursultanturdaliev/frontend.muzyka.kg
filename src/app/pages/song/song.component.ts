@@ -6,7 +6,7 @@ import {Subscription} from 'rxjs';
 import {SongService} from '../../services/song.service';
 import {Song} from '../../Models/song';
 import {PlayerService} from '../../services/player.service';
-import {AppService} from "../../services/app.service";
+import {AppService} from '../../services/app.service';
 
 @Component({
   selector: 'app-song',
@@ -15,15 +15,16 @@ import {AppService} from "../../services/app.service";
 })
 export class SongComponent implements OnInit, OnDestroy {
 
-  private song:Song;
-  public artist:Artist;
-  private songId:any;
-  private sub:Subscription;
+  public song: Song;
+  public artist: Artist;
+  private songId: any;
+  private sub: Subscription;
 
 
-  constructor(private songService:SongService,
-              private route:ActivatedRoute,
-              private appService:AppService) {
+  constructor(private songService: SongService,
+              private playerService: PlayerService,
+              private route: ActivatedRoute,
+              private appService: AppService) {
   }
 
 
@@ -33,14 +34,20 @@ export class SongComponent implements OnInit, OnDestroy {
       this.onUrlChange();
     });
   }
-  onUrlChange(){
+
+  onUrlChange() {
     this.songService.getSong(this.songId)
       .then(song => {
         this.song = song;
+        if (!this.playerService.getCurrentSong()) {
+          this.playerService.currentTime = 0;
+          this.playerService.setIndex(0);
+          this.playerService.setSongs([song]);
+        }
       });
   }
 
-  ngOnDestroy():void {
+  ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 
