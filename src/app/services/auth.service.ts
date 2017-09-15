@@ -45,6 +45,7 @@ export class AuthService extends BaseService {
     localStorage.setItem('email', authResponse.user);
     localStorage.setItem('first_name', authResponse.first_name);
     localStorage.setItem('last_name', authResponse.last_name);
+    //localStorage.setItem('photo', authResponse.photo);
   }
 
   loggedIn() {
@@ -55,7 +56,17 @@ export class AuthService extends BaseService {
     localStorage.clear();
   }
 
-  public userEmail() {
+  public userName() {
+      if( localStorage.getItem('first_name') || localStorage.getItem('last_name') ){
+          return (localStorage.getItem('first_name') + ' ' + localStorage.getItem('last_name'));
+      }
     return localStorage.getItem('email');
+  }
+
+  public userPhoto() {
+      if ( localStorage.getItem('photo') ){
+          return this.configService.URL + '/uploads/users/' + localStorage.getItem('photo');
+      }
+    return this.configService.URL + '/uploads/users/profile.jpg';
   }
 }

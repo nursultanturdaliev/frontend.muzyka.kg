@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
           firstName: basicProfile.getGivenName(),
           lastName: basicProfile.getFamilyName(),
           email: basicProfile.getEmail(),
+          photo: basicProfile.getImageUrl(),
           accessToken: authResponse.access_token
         };
         this.authGoogleService.save(requestBody)
@@ -84,7 +85,7 @@ export class LoginComponent implements OnInit {
   }
 
   saveFacebookCredentials() {
-    this.facebookService.api("/me?fields=id,name,email")
+    this.facebookService.api("/me?fields=id,name,first_name,last_name,email,picture.width(100).height(100)")
       .then((response)=> {
         let requestBody = this.prepareFacebookData(response);
         this.authService.loginWithFacebook(requestBody)
@@ -107,9 +108,10 @@ export class LoginComponent implements OnInit {
     let authResponse = this.facebookService.getAuthResponse();
     return {
       email: apiResponse.email,
-      firstName: apiResponse.name,
-      lastName: apiResponse.name,
+      firstName: apiResponse.first_name,
+      lastName: apiResponse.last_name,
       accessToken: authResponse.accessToken,
+      photo: apiResponse.picture.data.url,
       id: authResponse.userID
     }
   }
