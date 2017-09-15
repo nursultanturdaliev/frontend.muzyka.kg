@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SongService} from '../../services/song.service';
 import {ArtistService} from '../../services/artist.service';
 import {Song} from '../../Models/song';
 import {PlayerService} from '../../services/player.service';
-import {AppService} from "../../services/app.service";
+import {AppService} from '../../services/app.service';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +12,14 @@ import {AppService} from "../../services/app.service";
 })
 export class HomeComponent implements OnInit {
 
-  public discoverSongs:Song[];
-  public newSongs:Song[];
-  public topSongs:Song[];
+  public discoverSongs: Song[];
+  public newSongs: Song[];
+  public topSongs: Song[];
 
-  constructor(private songService:SongService,
-              private artistService:ArtistService,
-              private playerService:PlayerService,
-              private appService:AppService) {
+  constructor(private songService: SongService,
+              private artistService: ArtistService,
+              private playerService: PlayerService,
+              private appService: AppService) {
   }
 
   ngOnInit() {
@@ -36,7 +36,12 @@ export class HomeComponent implements OnInit {
     this.songService.getTopSongs()
       .then(songs => {
         this.topSongs = songs.slice(0, 9);
-      })
+        if (!this.playerService.getCurrentSong()) {
+          this.playerService.currentTime = 0;
+          this.playerService.setIndex(0);
+          this.playerService.setSongs(songs);
+        }
+      });
   }
 
 }
