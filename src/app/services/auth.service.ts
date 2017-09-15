@@ -43,9 +43,9 @@ export class AuthService extends BaseService {
     localStorage.setItem('token', authResponse.token);
     localStorage.setItem('refresh_token', authResponse.refresh_token);
     localStorage.setItem('email', authResponse.user);
-    localStorage.setItem('first_name', authResponse.first_name);
-    localStorage.setItem('last_name', authResponse.last_name);
-    localStorage.setItem('photo', authResponse.photo);
+    localStorage.setItem('first_name', authResponse.firstName ? authResponse.firstName : '' );
+    localStorage.setItem('last_name', authResponse.lastName ? authResponse.lastName : '' );
+    localStorage.setItem('photo', authResponse.photo ? authResponse.photo : 'profile.png');
   }
 
   loggedIn() {
@@ -64,9 +64,6 @@ export class AuthService extends BaseService {
   }
 
   public userPhoto() {
-      if ( localStorage.getItem('photo') != 'null' ){
-          return this.configService.URL + '/uploads/users/' + localStorage.getItem('photo');
-      }
-    return this.configService.URL + '/uploads/users/profile.png';
+      return this.configService.URL + '/uploads/users/' + localStorage.getItem('photo');
   }
 }
