@@ -53,6 +53,7 @@ import {GoogleService} from "./services/GoogleService";
 import {AuthGoogleService} from "./services/AuthGoogleService";
 import {ContactComponent} from "./pages/index";
 import {AboutComponent} from "./pages/index";
+import {LocalStorageService} from "./services/LocalStorageService";
 
 
 @NgModule({
@@ -116,7 +117,8 @@ import {AboutComponent} from "./pages/index";
     PlayerService,
     UserService,
     GoogleService,
-    AuthGoogleService
+    AuthGoogleService,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })

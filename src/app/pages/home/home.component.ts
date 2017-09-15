@@ -4,6 +4,7 @@ import {ArtistService} from '../../services/artist.service';
 import {Song} from '../../Models/song';
 import {PlayerService} from '../../services/player.service';
 import {AppService} from '../../services/app.service';
+import {LocalStorageService} from "../../services/LocalStorageService";
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
   constructor(private songService: SongService,
               private artistService: ArtistService,
               private playerService: PlayerService,
-              private appService: AppService) {
+              private appService: AppService,
+              private localStorageService : LocalStorageService) {
   }
 
   ngOnInit() {

@@ -4,6 +4,7 @@ import {SongService} from '../../services/song.service';
 import {PlayerService} from '../../services/player.service';
 import {PlayerComponent} from '../../components/index';
 import {AppService} from '../../services/app.service';
+import {LocalStorageService} from "../../services/LocalStorageService";
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
@@ -18,7 +19,8 @@ export class SongsComponent implements OnInit {
 
   constructor(private SongService: SongService,
               public playerService: PlayerService,
-              public appService: AppService) {
+              public appService: AppService,
+              public localStorageService:LocalStorageService) {
     this.page = 1;
   }
 

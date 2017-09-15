@@ -21,7 +21,8 @@
                         <i class="icon-cloud-download"></i>
                     </a>
                     <a class="m-r-sm" (click)="appService.favourite(song)">
-                        <i class="icon-heart"></i>
+                        <i class="icon-heart text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
+                        <i class="icon-heart" *ngIf="!localStorageService.isFavorite(song.id)"></i>
                         <!--<i class="fa fa-heart-o fa-1-5x text-accent" *ngIf="!playerService.isFavouriteSong(song)"></i>-->
                         <!--<i class="fa fa-heart fa-1-5x text-accent" *ngIf="playerService.isFavouriteSong(song)"></i>-->
                     </a>

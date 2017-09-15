@@ -27,8 +27,9 @@
                   </a>
                 </div>
                 <div class="bottom padder m-b-sm">
-                  <a href="#" class="pull-right">
-                    <i class="fa fa-heart-o"></i>
+                  <a (click)="appService.favourite(song)" class="pull-right">
+                    <i class="fa fa-heart-o" *ngIf="!localStorageService.isFavorite(song.id)"></i>
+                    <i class="fa fa-heart-o text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
                   </a>
                     <div (click)="appService.download(song)">
                         <a>

@@ -10,7 +10,8 @@
       <div class="media">
         <span class="pull-left thumb-sm" style="margin-left: 5px; margin-right: -3px;">
           <a (click)="appService.favourite(song)">
-            <i class="fa fa-heart-o fa-1-5x"></i>
+            <i class="fa fa-heart-o fa-1-5x  text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
+            <i class="fa fa-heart-o fa-1-5x"  *ngIf="!localStorageService.isFavorite(song.id)"></i>
           </a>
         </span>
         <div class="pull-right text-accent m-t-sm" (click)="playerService.play(song, songs,index )">

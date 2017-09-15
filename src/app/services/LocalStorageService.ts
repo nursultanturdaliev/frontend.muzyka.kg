@@ -5,62 +5,29 @@ import { URLSearchParams } from '@angular/http';
 import {ConfigService} from "./config.service";
 import {BaseService} from "./BaseService";
 import {Song} from '../Models/song';
+import {Favourite} from 'app/Models/Favourite';
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Injectable()
-export class SongService extends BaseService {
+export class LocalStorageService {
 
-  constructor(private http:Http, private configService:ConfigService) {
-    super();
-  };
 
-  getSongs(page:number):Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/page/' + page)
-      .toPromise()
-      .then(response => response.json() as Song[])
-      .catch(this.handleError);
-  }
+  public  setLocalFavorites(favorites){
 
-  getSong(songId):Promise<Song> {
-    return this.http.get(this.configService.API_URL + '/song/' + songId)
-        .toPromise()
-        .then(response => response.json() as Song)
-        .catch(this.handleError)
-  }
-
-  getRandomSongs(options):Promise<Song[]> {
-    let params = new URLSearchParams();
-    for (let key in options) {
-      if (options.hasOwnProperty(key)) {
-        params.set(key, options[key]);
-      }
+    for(var i = 0, len = favorites['songs'].length; i < len; i++){
+      localStorage.setItem(favorites['songs'][i]['id'].toString(), '1');
     }
-    let requestOptions = new RequestOptions({search: params});
-    return this.http.get(this.configService.API_URL + '/song/random/20', requestOptions)
-      .toPromise()
-      .then(response => response.json() as Song[])
-      .catch(this.handleError);
   }
 
-  getTopSongs():Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/top/1')
-      .toPromise()
-      .then(response => response.json() as Song[])
-      .catch(this.handleError);
+  public isFavorite(index : number){
+    return localStorage.getItem(index.toString()) ? true : false;
   }
 
-
-  getNewSongs():Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/status/new')
-      .toPromise()
-      .then(response => response.json() as Song[])
-      .catch(this.handleError);
+  public addFavorite(index : number){
+    localStorage.setItem(index.toString(), '1')
   }
 
-  search(text:string):Promise<Song[]> {
-    return this.http.get(this.configService.API_URL + '/song/search/' + text)
-      .toPromise()
-      .then(response => response.json() as Song[])
-      .catch(this.handleError);
+  public removeFavorite(index : number){
+    localStorage.removeItem(index.toString());
   }
-
 }

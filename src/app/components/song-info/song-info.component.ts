@@ -4,6 +4,7 @@ import {Song} from '../../Models/song';
 import {SongService} from '../../services/song.service';
 import {PlayerService} from "../../services/player.service";
 import {AppService} from "../../services/app.service";
+import {LocalStorageService} from "../../services/LocalStorageService";
 
 @Component({
   selector: 'app-song-info',
@@ -16,7 +17,8 @@ export class SongInfoComponent {
 
   constructor(private songService:SongService,
               private playerService:PlayerService,
-              public  appService:AppService) {
+              public  appService:AppService,
+              public localStorageService : LocalStorageService) {
   }
 
 }
