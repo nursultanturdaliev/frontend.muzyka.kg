@@ -52,6 +52,8 @@ export class UserFormComponent implements OnInit{
     this.userService.update(this.user)
       .then((response:User)=> {
         this.userUpdated.emit(response);
+        localStorage.setItem('first_name', response.first_name );
+        localStorage.setItem('last_name', response.last_name );
       })
       .catch((error) => {
         //TODO: Handle error properly!
