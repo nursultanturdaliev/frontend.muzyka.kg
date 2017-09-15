@@ -67,6 +67,6 @@ export class AuthService extends BaseService {
       if ( localStorage.getItem('photo') ){
           return this.configService.URL + '/uploads/users/' + localStorage.getItem('photo');
       }
-    return this.configService.URL + '/uploads/users/profile.jpg';
+    return this.configService.URL + '/uploads/users/profile.png';
   }
 }
