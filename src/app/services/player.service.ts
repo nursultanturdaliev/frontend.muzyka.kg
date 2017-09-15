@@ -6,22 +6,24 @@ import {Song} from '../Models/song';
 
 @Injectable()
 export class PlayerService {
-  public currentSong:Song;
-  private callbacks:any;
-  private songs:any;
-  private index:any;
-  public currentTime:any;
-  public currentSongTitle:any;
+  public currentSong: Song;
+  public artist_truncated: string;
+  private callbacks: any;
+  private songs: any;
+  private index: any;
+  public currentTime: any;
+  public currentSongTitle: any;
 
-  constructor(private historyService:HistoryService) {
+  constructor(private historyService: HistoryService) {
 
   }
 
-  setCurrentSong(song:Song) {
+  setCurrentSong(song: Song) {
     let currentUuid = this.currentSong ? this.currentSong.uuid : null;
     let nextUuid = song.uuid;
     this.historyService.updateHistory(currentUuid, nextUuid);
     this.currentSong = song;
+    this.artist_truncated = this.trunc(song.artist_as_one, 20);
     this.currentSongChanged();
   }
 
@@ -35,7 +37,7 @@ export class PlayerService {
     });
   }
 
-  play(song:Song, songs, index) {
+  play(song: Song, songs, index) {
     this.currentTime = 0;
     this.currentSongTitle = song.title;
     this.setCurrentSong(song);
@@ -50,11 +52,11 @@ export class PlayerService {
     this.callbacks.push(f);
   }
 
-  setSongs(songs:any) {
+  setSongs(songs: any) {
     this.songs = songs;
   }
 
-  setIndex(index:any) {
+  setIndex(index: any) {
     this.index = index;
   }
 
@@ -103,10 +105,14 @@ export class PlayerService {
     return this.songs;
   }
 
-  isCurrentSong(song:Song) {
+  isCurrentSong(song: Song) {
     if (!this.getCurrentSong()) {
       return false;
     }
     return this.getCurrentSong().uuid == song.uuid;
   }
+
+  trunc(str, n) {
+    return (str.length > n) ? str.substr(0, n - 1) + '...' : str;
+  };
 }
