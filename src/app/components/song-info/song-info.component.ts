@@ -14,7 +14,9 @@ export class SongInfoComponent {
 
   @Input() song:Song;
 
-  constructor(private songService:SongService, private playerService:PlayerService, private appService:AppService) {
+  constructor(private songService:SongService,
+              private playerService:PlayerService,
+              public  appService:AppService) {
   }
 
 }
