@@ -46,10 +46,12 @@ export class SongsComponent implements OnInit {
   }
 
   search(value) {
-    this.SongService.search(value)
-      .then(songs => {
-        this.songs = songs;
-      });
+    if (value.length > 2){
+      this.SongService.search(value)
+        .then(songs => {
+          this.songs = songs;
+        });
+    }
   }
 
   onScrollDown() {
