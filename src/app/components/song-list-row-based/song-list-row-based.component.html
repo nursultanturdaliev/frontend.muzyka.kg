@@ -14,7 +14,7 @@
             <i class="fa fa-heart-o fa-1-5x"  *ngIf="!localStorageService.isFavorite(song.id)"></i>
           </a>
         </span>
-        <div class="pull-right text-accent m-t-sm" (click)="playerService.play(song, songs,index )">
+        <div class="pull-right text-accent m-t-sm" (click)="setCurrentSong.emit(song)">
           <i class="fa fa-play fa-1-5x"
              [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>
         </div>

@@ -54,8 +54,8 @@ import {AuthGoogleService} from "./services/AuthGoogleService";
 import {ContactComponent} from "./pages/index";
 import {AboutComponent} from "./pages/index";
 import {LocalStorageService} from "./services/LocalStorageService";
-
-
+import { StoreModule } from '@ngrx/store';
+import {reducers} from './reducer/index';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,6 +104,7 @@ import {LocalStorageService} from "./services/LocalStorageService";
       maxOpened: 3,
       positionClass: 'toast-bottom-right'
     }),
+    StoreModule.forRoot(reducers),
   ],
   providers: [
     AppService,

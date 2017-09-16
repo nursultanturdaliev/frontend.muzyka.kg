@@ -1,9 +1,10 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, Input} from '@angular/core';
 import {PlayerService} from '../../services/player.service';
 import {Http} from '@angular/http';
 import {SongService} from '../../services/song.service';
 import {ConfigService} from "../../services/config.service";
 import {HistoryService} from "../../services/history.service";
+import {Song} from "../../Models/song";
 
 
 @Component({
@@ -14,28 +15,30 @@ import {HistoryService} from "../../services/history.service";
 })
 
 export class PlayerComponent implements OnInit {
-  audio: any;
-  song: any;
-  promise: any;
-  playing: boolean;
-  paused: boolean;
-  random: boolean;
-  notRandom: boolean;
-  repeat: boolean;
-  notRepeat: boolean;
-  muted: boolean;
-  unMuted: boolean;
-  currentTime: any;
-  progressBar: any;
-  volume: any;
-  tempVolume: any;
-  volumeBarWidth: any;
-  progressBarWidth: any;
+  audio:any;
+  song:any;
+  promise:any;
+  playing:boolean;
+  paused:boolean;
+  random:boolean;
+  notRandom:boolean;
+  repeat:boolean;
+  notRepeat:boolean;
+  muted:boolean;
+  unMuted:boolean;
+  currentTime:any;
+  progressBar:any;
+  volume:any;
+  tempVolume:any;
+  volumeBarWidth:any;
+  progressBarWidth:any;
 
-  constructor(public playerService: PlayerService,
-              private songService: SongService,
-              private ref: ChangeDetectorRef,
-              private configService: ConfigService) {
+  @Input() currentSong:Song;
+
+  constructor(public playerService:PlayerService,
+              private songService:SongService,
+              private ref:ChangeDetectorRef,
+              private configService:ConfigService) {
     this.audio = new Audio();
     this.playerService.onCurrentSongChange(() => {
       this.play();
