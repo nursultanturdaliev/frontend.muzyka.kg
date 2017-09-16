@@ -56,6 +56,7 @@ import {AboutComponent} from "./pages/index";
 import {LocalStorageService} from "./services/LocalStorageService";
 import { StoreModule } from '@ngrx/store';
 import {reducers} from './reducer/index';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,6 +106,9 @@ import {reducers} from './reducer/index';
       positionClass: 'toast-bottom-right'
     }),
     StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 //  Retains last 25 states
+    })
   ],
   providers: [
     AppService,

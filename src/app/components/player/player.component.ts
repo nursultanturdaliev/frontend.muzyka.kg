@@ -5,7 +5,9 @@ import {SongService} from '../../services/song.service';
 import {ConfigService} from "../../services/config.service";
 import {HistoryService} from "../../services/history.service";
 import {Song} from "../../Models/song";
-
+import {AppState} from "../../app.component";
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-player',
@@ -33,18 +35,17 @@ export class PlayerComponent implements OnInit {
   volumeBarWidth:any;
   progressBarWidth:any;
 
-  @Input() currentSong:Song;
+  currentSong:Observable<Song>;
+  duration:string;
 
   constructor(public playerService:PlayerService,
               private songService:SongService,
               private ref:ChangeDetectorRef,
-              private configService:ConfigService) {
+              private configService:ConfigService,
+              private store:Store<AppState>) {
     this.audio = new Audio();
-    this.playerService.onCurrentSongChange(() => {
-      this.play();
-    });
+
     setInterval(() => {
-      this.currentTime = this.formatTime(this.audio.currentTime);
       this.progressBar = this.formatTime(this.audio.currentTime);
       this.progressBar = this.getProgressBar();
       this.progressBarWidth = document.getElementById('progress-bar').offsetWidth;
@@ -55,6 +56,18 @@ export class PlayerComponent implements OnInit {
     this.audio.addEventListener('ended', () => {
       this.next(this.repeat);
     });
+
+    this.audio.addEventListener('durationchange', (event)=> {
+      this.duration = this.formatTime(this.audio.duration);
+    });
+    this.audio.addEventListener('timeupdate',(event) => {
+      this.currentTime = this.formatTime(this.audio.currentTime)
+    });
+
+    this.currentSong = store.select('currentSong');
+    this.currentSong.subscribe((song:Song) => {
+      this.play(song);
+    })
   }
 
   ngOnInit() {
@@ -69,26 +82,14 @@ export class PlayerComponent implements OnInit {
     this.progressBar = 0;
     this.volume = 90;
     this.playerService.currentTime = '00:00';
-    this.currentTime = this.playerService.currentTime;
     this.progressBarWidth = document.getElementById('progress-bar').offsetWidth;
     this.volumeBarWidth = document.getElementById('volume-bar').offsetWidth;
   }
 
-  play() {
-    this.audio.src = this.getCurrentURL();
+  play(song:Song) {
+    this.audio.src = this.getCurrentURL(song);
     this.audio.play();
-    this.audio.currentTime = this.playerService.currentTime;
-    this.promise = new Promise((resolve, reject) => {
-      this.playing = true;
-      this.paused = false;
-      this.currentTime = this.formatTime(this.playerService.currentTime);
-      this.audio.addEventListener('playing', () => {
-        resolve(true);
-      });
-      this.audio.addEventListener('error', () => {
-        reject(false);
-      });
-    });
+    this.audio.currentTime = 0;
     document.getElementById('musicbar').className += ' animate';
     return this.promise;
   }
@@ -145,16 +146,8 @@ export class PlayerComponent implements OnInit {
     this.playerService.setCurrentSong(song);
   }
 
-  private getCurrentURL() {
-    if (!this.playerService.getCurrentSong()) {
-      var song = this.playerService.getSongs()[0];
-      this.playerService.setCurrentSong(song);
-      this.playerService.currentSongTitle = song.title;
-      return this.configService.API_URL + '/song/stream/' + song.uuid;
-    }
-    else
-      return this.configService.API_URL + '/song/stream/' + this.playerService.getCurrentSong().uuid;
-
+  private getCurrentURL(song:Song) {
+    return this.configService.API_URL + '/song/stream/' + song.uuid;
   }
 
   private toggle() {

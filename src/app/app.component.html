@@ -165,10 +165,10 @@
                     <section>
                         <section class="vbox">
                             <section class="scrollable padder-lg w-f-md" id="bjax-target">
-                                <router-outlet (setCurrentSong)="setCurrentSong($event)"></router-outlet>
+                                <router-outlet></router-outlet>
                             </section>
                             <footer class="footer bg-primary music-player">
-                                <app-player [currentSong]="currentSong |async"></app-player>
+                                <app-player></app-player>
 
                             </footer>
                         </section>

@@ -8,7 +8,7 @@ import {Store} from '@ngrx/store';
 import {Song} from "./Models/song";
 import * as songActions from "./actions/currentSong.action";
 
-interface AppState {
+export interface AppState {
   currentSong:Song;
 }
 

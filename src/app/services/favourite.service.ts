@@ -30,6 +30,9 @@ export class FavouriteService extends BaseService {
     return this.authHttp.post(this.configService.APIS_URL + '/favourite/song/' + song.uuid, {})
       .toPromise()
       .then(response => response.json() as Favourite)
+      .then((favourite:Favourite) =>{
+        this.localSorageService.addFavorite(favourite.song.id)
+      })
       .catch(this.handleError);
   }
 }
