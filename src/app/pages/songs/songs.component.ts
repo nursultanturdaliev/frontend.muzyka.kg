@@ -32,7 +32,7 @@ export class SongsComponent implements OnInit {
   }
 
   play(song: Song, songs: Song[], i: number) {
-    this.playerService.play(song, songs, i);
+    this.playerService.play(song);
     this.playingSong = song;
   }
 

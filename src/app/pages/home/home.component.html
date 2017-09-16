@@ -12,8 +12,8 @@
               <div class="item-overlay opacity r r-2x bg-black">
                 <div class="center text-center m-t-n">
                   <a>
-                      <i class="icon-control-play i-2x" (click)="playerService.setCurrentSong(song)"  *ngIf="!playerService.isCurrentSong(song)"></i>
-                      <i class="icon-control-pause i-2x" *ngIf="playerService.isCurrentSong(song)"></i>
+                      <i class="icon-control-play i-2x" (click)="playerService.play(song)"  *ngIf="!playerService.isCurrentSong(song)"></i>
+                      <i class="icon-control-pause i-2x" (click)="playerService.pause()"  *ngIf="playerService.isCurrentSong(song)"></i>
                   </a>
                 </div>
                 <div class="bottom padder m-b-sm">
@@ -52,10 +52,10 @@
                           <i class="icon-cloud-download text"></i>
                       </a>
                   </div>
-                  <div (click)="playerService.play(song,topSongs,index)">
-                      <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
-                          <i class="icon-control-play text"></i>
-                          <i class="icon-control-pause text"></i>
+                  <div>
+                      <a class="jp-play-me pull-right m-t-sm m-l text-md">
+                          <i class="icon-control-play text" (click)="playerService.play(song)" *ngIf="!playerService.isCurrentSong(song)"></i>
+                          <i class="icon-control-pause text" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
                       </a>
                   </div>
                   <a href="#" class="pull-left thumb-sm m-r">

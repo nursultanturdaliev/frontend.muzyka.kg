@@ -55,8 +55,8 @@ import {ContactComponent} from "./pages/index";
 import {AboutComponent} from "./pages/index";
 import {LocalStorageService} from "./services/LocalStorageService";
 import { StoreModule } from '@ngrx/store';
-import {reducers} from './reducer/index';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {playerReducer} from "./reducer/player.reducer";
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,7 +105,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       maxOpened: 3,
       positionClass: 'toast-bottom-right'
     }),
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot({player: playerReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 25 //  Retains last 25 states
     })

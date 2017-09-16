@@ -6,10 +6,10 @@
           <div class="jp-controls">
             <div><a class="jp-previous" (click)="previous()"><i class="fa fa-backward"></i></a></div>
             <div>
-              <a class="jp-play" (click)="play()" [ngClass]="{'hid': playing}">
+              <a class="jp-play" (click)="play()" *ngIf="paused">
                 <i class="fa fa-play fa-2x"></i>
               </a>
-              <a class="jp-pause" (click)="pause()" [ngClass]="{'hid': paused}">
+              <a class="jp-pause" (click)="pause()" *ngIf="playing">
                 <i class="fa fa-pause fa-2x"></i></a>
             </div>
             <div><a class="jp-next" (click)="next(false)"><i class="fa fa-forward i-lg"></i></a></div>
@@ -26,11 +26,11 @@
             <div class="hdiv classhidden-sm jp-current-time text-xs text-muted">{{currentTime}}</div>
             <div class="hidden-xs hidden-sm jp-duration text-xs text-muted">{{duration}}</div>
             <div class="hidden-xs hidden-sm">
-              <a class="jp-mute" title="mute" (click)="toggleMute()" [ngClass]="{'hid': unMuted}">
-                <i class="icon-volume-2"></i>
-              </a>
-              <a class="jp-unmute" title="unmute" (click)="toggleMute()" [ngClass]="{'hid': muted}">
+              <a class="jp-unmute" title="unmute" (click)="toggleMute()" *ngIf="muted">
                 <i class="icon-volume-off"></i>
+              </a>
+              <a class="jp-mute" title="mute" (click)="toggleMute()" *ngIf="!muted">
+                <i class="icon-volume-2"></i>
               </a>
             </div>
             <div class="hidden-xs hidden-sm jp-volume">

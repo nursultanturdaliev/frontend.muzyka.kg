@@ -1,18 +1,23 @@
-import * as playerActions from '../actions/player.action';
+import * as PlayerActions from '../actions/player.action';
+import {Player} from '../Models/player';
 
-export interface PlayerState {
-  status:string;
-}
+export type Action = PlayerActions.All
 
-const initialState:PlayerState = {
-  status: null
+const initialState:Player = {
+  song: null,
+  command: 'IDLE'
 };
-export function playerReducer(state:PlayerState = initialState, action) {
+
+const newState = (state, newData) => {
+  return Object.assign({}, state, newData);
+};
+
+export function playerReducer(state:Player = initialState, action) {
   switch (action.type) {
-    case playerActions.PAUSE:
-      return {status: 'PAUSED'};
-    case playerActions.PLAY:
-      return {status: 'PLAYING'};
+    case PlayerActions.PAUSE:
+      return newState(state, {command: 'PAUSE'});
+    case PlayerActions.PLAY:
+      return newState(state, {command: 'PLAY', song: action.payload});
     default:
       return state;
   }

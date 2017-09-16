@@ -6,12 +6,10 @@ import {FacebookService, InitParams} from 'ngx-facebook';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Song} from "./Models/song";
-import * as songActions from "./actions/currentSong.action";
 import {Observable} from 'rxjs/Observable';
-import {PlayerState} from "./reducer/player.reducer";
+import {Player} from "./Models/player";
 export interface AppState {
-  currentSong:Song;
-  playerState:PlayerState
+  player:Player
 }
 
 @Component({
@@ -23,7 +21,7 @@ export interface AppState {
 export class AppComponent {
   @ViewChild('toggleBtn') toggleBtn:ElementRef;
 
-  public currentSong:Observable<Song>;
+  public player:Observable<Player>;
   private subscription;
 
   constructor(public playerService:PlayerService,
@@ -41,12 +39,7 @@ export class AppComponent {
 
     fb.init(initParams);
 
-    this.currentSong = this._store.select('currentSong');
-  }
-
-  setCurrentSong(song:Song) {
-    //noinspection TypeScriptValidateTypes
-    this._store.dispatch({type: songActions.SET_CURRENT_SONG, payload: song})
+    this.player = this._store.select('player');
   }
 
   public menuItemClick() {

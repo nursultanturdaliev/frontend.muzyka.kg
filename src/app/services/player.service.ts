@@ -4,45 +4,39 @@ import {HistoryService} from "./history.service";
 import {Song} from '../Models/song';
 import {AppState} from "../app.component";
 import {Store} from '@ngrx/store';
-import * as songActions from "../actions/currentSong.action";
 import * as playerActions from "../actions/player.action";
-import {getCurrentSong} from "../reducer/index";
+import {playerReducer} from "../reducer/player.reducer";
 import  {Observable} from 'rxjs/Observable';
+import {Player} from "../Models/player";
 @Injectable()
 export class PlayerService {
-  public currentSong:Observable<Song>;
+  public playerObservable:Observable<Player>;
   private songs:any;
   private index:any;
   public currentTime:any;
   public currentSongTitle:any;
-  public song:Song;
+  public player:Player;
+
   constructor(private historyService:HistoryService, private store:Store<AppState>) {
-    this.currentSong = store.select('currentSong');
-    this.currentSong.subscribe((song:Song)=> {
-      this.song = song;
+    this.playerObservable = store.select('player');
+    this.playerObservable.subscribe((player:Player)=> {
+      this.player = player;
     });
   }
 
-  setCurrentSong(song:Song) {
-    //noinspection TypeScriptValidateTypes
-    this.store.dispatch({type: songActions.SET_CURRENT_SONG, payload: song})
-  }
 
-  pause(){
+  pause() {
     //noinspection TypeScriptValidateTypes
-    this.store.dispatch({type:playerActions.PAUSE})
+    this.store.dispatch({type: playerActions.PAUSE})
   }
 
   isCurrentSong(song:Song) {
-    return this.song && this.song.id === song.id;
+    return this.player.song && this.player.song.id === song.id;
   }
 
-  play(song:Song, songs, index) {
-    this.currentTime = 0;
-    this.currentSongTitle = song.title;
-    this.setCurrentSong(song);
-    this.setSongs(songs);
-    this.setIndex(index);
+  play(song:Song) {
+    //noinspection TypeScriptValidateTypes
+    this.store.dispatch({type: playerActions.PLAY, payload: song});
   }
 
   setSongs(songs:any) {
