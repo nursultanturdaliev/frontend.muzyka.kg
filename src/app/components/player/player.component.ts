@@ -20,7 +20,6 @@ import {Player} from "../../Models/player";
 export class PlayerComponent implements OnInit {
   audio:any;
   song:any;
-  promise:any;
   playing:boolean;
   paused:boolean;
   random:boolean;
@@ -143,8 +142,12 @@ export class PlayerComponent implements OnInit {
     return this.configService.API_URL + '/song/stream/' + song.uuid;
   }
 
-  shuffle() {
-    this.random = true;
+  setRepeat(repeat:boolean) {
+    this.repeat = repeat;
+  }
+
+  setRandom(random:boolean) {
+    this.random = random;
   }
 
   toggleMute() {
