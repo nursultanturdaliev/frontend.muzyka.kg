@@ -31,8 +31,8 @@
                     <i class="fa fa-heart-o" *ngIf="!localStorageService.isFavorite(song.id)"></i>
                     <i class="fa fa-heart-o text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
                   </a>
-                    <div (click)="appService.download(song)">
-                        <a>
+                    <div>
+                        <a (click)="appService.download(song)">
                             <i class="icon-cloud-download"></i>
                         </a>
                     </div>
