@@ -5,8 +5,7 @@
            placeholder="Издөө" [(ngModel)]="songFilter.title">
   </header>
   <ul class="list-group">
-    <li class="list-group-item song-list-row-based" *ngFor="let history of histories; let index = index"
-        [ngClass]="{active: playerService.isCurrentSong(history.song)}">
+    <li class="list-group-item song-list-row-based" *ngFor="let history of histories; let index = index">
       <div class="media">
         <span class="pull-left thumb-sm">
           <a (click)="appService.favourite(history.song)">
@@ -14,8 +13,8 @@
           </a>
         </span>
         <div class="pull-right text-accent m-t-sm">
-          <i class="fa fa-play"
-             [ngClass]="{'fa-play': !playerService.isCurrentSong(history.song), 'fa-pause': playerService.isCurrentSong(history.song)}"></i>
+          <i class="fa fa-play"></i>
+          <i class="fa fa-pause"></i>
         </div>
         <div class="media-body">
           <div><strong>{{history.song.title}}</strong></div>

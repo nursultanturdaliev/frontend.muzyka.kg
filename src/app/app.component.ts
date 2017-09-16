@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Song} from "./Models/song";
 import * as songActions from "./actions/currentSong.action";
-
+import {Observable} from 'rxjs/Observable';
 export interface AppState {
   currentSong:Song;
 }
@@ -21,7 +21,7 @@ export interface AppState {
 export class AppComponent  {
   @ViewChild('toggleBtn') toggleBtn: ElementRef;
 
-  public currentSong;
+  public currentSong:Observable<Song>;
   private subscription;
 
   constructor(public playerService: PlayerService,

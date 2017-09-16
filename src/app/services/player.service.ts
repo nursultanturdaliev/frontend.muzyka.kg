@@ -5,9 +5,11 @@ import {Song} from '../Models/song';
 import {AppState} from "../app.component";
 import {Store} from '@ngrx/store';
 import * as songActions from "../actions/currentSong.action";
+import {getCurrentSong} from "../reducer/index";
+import  {Observable} from 'rxjs/Observable';
 @Injectable()
 export class PlayerService {
-  public currentSong:Song;
+  public currentSong:Observable<Song>;
   public artist_truncated:string;
   private callbacks:any;
   private songs:any;
@@ -16,31 +18,12 @@ export class PlayerService {
   public currentSongTitle:any;
 
   constructor(private historyService:HistoryService, private store:Store<AppState>) {
-
+    this.currentSong = store.select('currentSong');
   }
 
   setCurrentSong(song:Song) {
     //noinspection TypeScriptValidateTypes
     this.store.dispatch({type: songActions.SET_CURRENT_SONG, payload: song})
-  }
-
-  //setCurrentSong(song:Song) {
-  //  let currentUuid = this.currentSong ? this.currentSong.uuid : null;
-  //  let nextUuid = song.uuid;
-  //  this.historyService.updateHistory(currentUuid, nextUuid);
-  //  this.currentSong = song;
-  //  this.artist_truncated = this.trunc(song.artist_as_one, 20);
-  //  this.currentSongChanged();
-  //}
-
-  getCurrentSong() {
-    return this.currentSong;
-  }
-
-  private currentSongChanged() {
-    this.callbacks.forEach((callback) => {
-      callback();
-    });
   }
 
   play(song:Song, songs, index) {
@@ -102,13 +85,6 @@ export class PlayerService {
 
   getSongs() {
     return this.songs;
-  }
-
-  isCurrentSong(song:Song) {
-    if (!this.getCurrentSong()) {
-      return false;
-    }
-    return this.getCurrentSong().uuid == song.uuid;
   }
 
   trunc(str, n) {

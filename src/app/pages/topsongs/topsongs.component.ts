@@ -27,9 +27,6 @@ export class TopsongsComponent implements OnInit {
     this.topSongService.getTopSongs()
       .then(topSongs => {
         this.songs = topSongs;
-        this.playerService.currentTime = 0;
-        this.playerService.setIndex(0);
-        this.playerService.setSongs(topSongs);
       });
   }
 

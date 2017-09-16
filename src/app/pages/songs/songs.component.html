@@ -7,8 +7,7 @@
             [infiniteScrollThrottle]="300"
             (scrolled)="onScrollDown()">
             <li class="list-group-item"
-                *ngFor="let song of songs; let i = index" class="list-group-item"
-                [ngClass]="{active: playerService.isCurrentSong(song)}">
+                *ngFor="let song of songs; let i = index" class="list-group-item">
                 <div class="pull-right m-l">
                     <a class="m-r-sm" (click)="appService.download(song, songs, i)">
                         <i class="icon-cloud-download"></i>
@@ -16,8 +15,6 @@
                     <a class="m-r-sm" (click)="appService.favourite(song)">
                         <i class="icon-heart text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
                         <i class="icon-heart" *ngIf="!localStorageService.isFavorite(song.id)"></i>
-                        <!--<i class="fa fa-heart-o fa-1-5x text-accent" *ngIf="!playerService.isFavouriteSong(song)"></i>-->
-                        <!--<i class="fa fa-heart fa-1-5x text-accent" *ngIf="playerService.isFavouriteSong(song)"></i>-->
                     </a>
                     <a>
                         <i class="icon-doc"></i>
@@ -26,9 +23,7 @@
                 <div>
                     <a class="jp-play-me m-r-sm pull-left">
                         <i class="icon-control-play text" (click)="playerService.setCurrentSong(song)"></i>
-                        <i class="icon-control-pause text" *ngIf="playerService.isCurrentSong(song)"></i>
-                        <!--<i class="fa fa-play fa-1-5x text-accent" *ngIf="!playerService.isCurrentSong(song)"></i>-->
-                        <!--<i class="fa fa-pause fa-1-5x text-accent" *ngIf="playerService.isCurrentSong(song)"></i>-->
+                        <i class="icon-control-pause text"></i>
                     </a>
                 </div>
                 <div class="clear text-ellipsis">
@@ -44,7 +39,4 @@
             </li>
         </ul>
     </div>
-    <!--<div class="col-md-6 col-sm-6 hidden-xs" id="song-lyrics" *ngIf="playingSong">-->
-    <!--<app-my-songs [song]="playingSong"></app-my-songs>-->
-    <!--</div>-->
 </div>

@@ -3,27 +3,17 @@
       <h3 class="font-thin">Жаңы ырлар
       </h3>
       <div class="row row-sm">
-        <div class="col-xs-6 col-sm-4" *ngFor="let song of newSongs; let index=index;"
-             [ngClass]="{active: playerService.isCurrentSong(song)}">
+        <div class="col-xs-6 col-sm-4" *ngFor="let song of newSongs; let index=index;">
           <div class="item">
             <div class="pos-rlt">
               <div class="bottom">
                 <span class="badge bg-info m-l-sm m-b-sm">{{song.duration}}</span>
               </div>
               <div class="item-overlay opacity r r-2x bg-black">
-                <!--<div class="text-info padder m-t-sm text-sm">-->
-                  <!--<i class="fa fa-star"></i>-->
-                  <!--<i class="fa fa-star"></i>-->
-                  <!--<i class="fa fa-star"></i>-->
-                  <!--<i class="fa fa-star"></i>-->
-                  <!--<i class="fa fa-star-o text-muted"></i>-->
-                <!--</div>-->
                 <div class="center text-center m-t-n" (click)="playerService.play(song,newSongs,index)">
                   <a>
-                      <i class="icon-control-play i-2x"
-                         *ngIf="!playerService.isCurrentSong(song)"></i>
-                      <i class="icon-control-pause i-2x"
-                         *ngIf="playerService.isCurrentSong(song)"></i>
+                      <i class="icon-control-play i-2x"></i>
+                      <i class="icon-control-pause i-2x"></i>
                   </a>
                 </div>
                 <div class="bottom padder m-b-sm">
@@ -64,14 +54,10 @@
                   </div>
                   <div (click)="playerService.play(song,topSongs,index)">
                       <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
-                          <i class="icon-control-play text"
-                             *ngIf="!playerService.isCurrentSong(song)"></i>
-                          <i class="icon-control-pause text"
-                             *ngIf="playerService.isCurrentSong(song)"></i>
+                          <i class="icon-control-play text"></i>
+                          <i class="icon-control-pause text"></i>
                       </a>
                   </div>
-                  <!--<p class="text-muted">{{song.uuid}}|||</p>-->
-                  <!--<p class="text-muted">{{song.id}}</p>-->
                   <a href="#" class="pull-left thumb-sm m-r">
                       <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
                            [lazyLoad]="song.profileLocal"

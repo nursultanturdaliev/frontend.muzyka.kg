@@ -91,7 +91,6 @@ export class PlayerComponent implements OnInit {
     this.audio.play();
     this.audio.currentTime = 0;
     document.getElementById('musicbar').className += ' animate';
-    return this.promise;
   }
 
   formatTime(time) {
@@ -110,8 +109,7 @@ export class PlayerComponent implements OnInit {
     return currentPosition;
   }
 
-  pause(currentTime) {
-    this.playerService.currentTime = currentTime;
+  pause() {
     this.toggle();
     this.audio.pause();
     document.getElementById('musicbar').classList.remove('animate');
@@ -128,15 +126,6 @@ export class PlayerComponent implements OnInit {
   }
 
   next(isRepeat) {
-    this.playerService.currentTime = 0;
-    var song = null;
-    if (isRepeat) {
-      song = this.playerService.getCurrentSong();
-    } else {
-      song = this.playerService.getNextSong(this.random);
-    }
-    this.playerService.currentSongTitle = song.title;
-    this.playerService.setCurrentSong(song);
   }
 
   previous() {

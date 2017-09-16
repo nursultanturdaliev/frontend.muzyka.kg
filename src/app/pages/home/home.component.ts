@@ -38,11 +38,6 @@ export class HomeComponent implements OnInit {
     this.songService.getTopSongs()
       .then(songs => {
         this.topSongs = songs.slice(0, 9);
-        if (!this.playerService.getCurrentSong()) {
-          this.playerService.currentTime = 0;
-          this.playerService.setIndex(0);
-          this.playerService.setSongs(songs);
-        }
       });
   }
 
