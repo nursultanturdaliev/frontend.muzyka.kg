@@ -5,25 +5,36 @@ import {Song} from '../Models/song';
 import {AppState} from "../app.component";
 import {Store} from '@ngrx/store';
 import * as songActions from "../actions/currentSong.action";
+import * as playerActions from "../actions/player.action";
 import {getCurrentSong} from "../reducer/index";
 import  {Observable} from 'rxjs/Observable';
 @Injectable()
 export class PlayerService {
   public currentSong:Observable<Song>;
-  public artist_truncated:string;
-  private callbacks:any;
   private songs:any;
   private index:any;
   public currentTime:any;
   public currentSongTitle:any;
-
+  public song:Song;
   constructor(private historyService:HistoryService, private store:Store<AppState>) {
     this.currentSong = store.select('currentSong');
+    this.currentSong.subscribe((song:Song)=> {
+      this.song = song;
+    });
   }
 
   setCurrentSong(song:Song) {
     //noinspection TypeScriptValidateTypes
     this.store.dispatch({type: songActions.SET_CURRENT_SONG, payload: song})
+  }
+
+  pause(){
+    //noinspection TypeScriptValidateTypes
+    this.store.dispatch({type:playerActions.PAUSE})
+  }
+
+  isCurrentSong(song:Song) {
+    return this.song && this.song.id === song.id;
   }
 
   play(song:Song, songs, index) {
@@ -86,8 +97,4 @@ export class PlayerService {
   getSongs() {
     return this.songs;
   }
-
-  trunc(str, n) {
-    return (str.length > n) ? str.substr(0, n - 1) + '...' : str;
-  };
 }

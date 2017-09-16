@@ -10,10 +10,10 @@
                 <span class="badge bg-info m-l-sm m-b-sm">{{song.duration}}</span>
               </div>
               <div class="item-overlay opacity r r-2x bg-black">
-                <div class="center text-center m-t-n" (click)="playerService.play(song,newSongs,index)">
+                <div class="center text-center m-t-n">
                   <a>
-                      <i class="icon-control-play i-2x"></i>
-                      <i class="icon-control-pause i-2x"></i>
+                      <i class="icon-control-play i-2x" (click)="playerService.setCurrentSong(song)"  *ngIf="!playerService.isCurrentSong(song)"></i>
+                      <i class="icon-control-pause i-2x" *ngIf="playerService.isCurrentSong(song)"></i>
                   </a>
                 </div>
                 <div class="bottom padder m-b-sm">

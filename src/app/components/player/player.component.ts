@@ -8,6 +8,7 @@ import {Song} from "../../Models/song";
 import {AppState} from "../../app.component";
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
+import {PlayerState} from "../../reducer/player.reducer";
 
 @Component({
   selector: 'app-player',
@@ -36,6 +37,7 @@ export class PlayerComponent implements OnInit {
   progressBarWidth:any;
 
   currentSong:Observable<Song>;
+  playerState:Observable<PlayerState>;
   duration:string;
 
   constructor(public playerService:PlayerService,
@@ -65,9 +67,14 @@ export class PlayerComponent implements OnInit {
     });
 
     this.currentSong = store.select('currentSong');
+    this.playerState = store.select('playerState');
     this.currentSong.subscribe((song:Song) => {
       this.play(song);
-    })
+    });
+
+    this.playerState.subscribe((playerState:PlayerState) => {
+      this.pause();
+    });
   }
 
   ngOnInit() {

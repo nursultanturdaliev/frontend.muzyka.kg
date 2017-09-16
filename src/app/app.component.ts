@@ -8,8 +8,10 @@ import {Store} from '@ngrx/store';
 import {Song} from "./Models/song";
 import * as songActions from "./actions/currentSong.action";
 import {Observable} from 'rxjs/Observable';
+import {PlayerState} from "./reducer/player.reducer";
 export interface AppState {
   currentSong:Song;
+  playerState:PlayerState
 }
 
 @Component({
@@ -18,19 +20,19 @@ export interface AppState {
   styleUrls: ['./app.component.css'],
   providers: [SongService]
 })
-export class AppComponent  {
-  @ViewChild('toggleBtn') toggleBtn: ElementRef;
+export class AppComponent {
+  @ViewChild('toggleBtn') toggleBtn:ElementRef;
 
   public currentSong:Observable<Song>;
   private subscription;
 
-  constructor(public playerService: PlayerService,
-              public authService: AuthService,
-              private fb: FacebookService,
-              private router: Router,
-              private renderer: Renderer,
-              private _store: Store<AppState>) {
-    const initParams: InitParams = {
+  constructor(public playerService:PlayerService,
+              public authService:AuthService,
+              private fb:FacebookService,
+              private router:Router,
+              private renderer:Renderer,
+              private _store:Store<AppState>) {
+    const initParams:InitParams = {
       appId: '1974598029436106',
       cookie: true,
       xfbml: true,
@@ -42,9 +44,9 @@ export class AppComponent  {
     this.currentSong = this._store.select('currentSong');
   }
 
-  setCurrentSong(song:Song){
+  setCurrentSong(song:Song) {
     //noinspection TypeScriptValidateTypes
-    this._store.dispatch({type: songActions.SET_CURRENT_SONG, payload:song})
+    this._store.dispatch({type: songActions.SET_CURRENT_SONG, payload: song})
   }
 
   public menuItemClick() {
@@ -57,7 +59,7 @@ export class AppComponent  {
     this.router.navigate(['/']);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

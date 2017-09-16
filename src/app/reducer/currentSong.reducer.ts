@@ -1,6 +1,4 @@
-/**
- * Created by nursultan on 9/16/17.
- */
+
 import {Song} from "../Models/song";
 import * as songActions from '../actions/currentSong.action';
 
