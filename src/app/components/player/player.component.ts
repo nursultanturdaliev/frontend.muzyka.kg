@@ -91,6 +91,9 @@ export class PlayerComponent implements OnInit {
   }
 
   play(song:Song) {
+    if (!song) {
+      return;
+    }
     this.currentSong = song;
     this.audio.src = this.getCurrentURL(song);
     this.audio.play();

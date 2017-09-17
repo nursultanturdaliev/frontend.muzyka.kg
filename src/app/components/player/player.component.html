@@ -6,7 +6,7 @@
           <div class="jp-controls">
             <div><a class="jp-previous" (click)="previous()"><i class="fa fa-backward"></i></a></div>
             <div>
-              <a class="jp-play" (click)="play()" *ngIf="!playing">
+              <a class="jp-play" (click)="play(currentSong)" *ngIf="!playing">
                 <i class="fa fa-play fa-2x"></i>
               </a>
               <a class="jp-pause" (click)="pause()" *ngIf="playing">
