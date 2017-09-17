@@ -20,12 +20,10 @@
                 <div class="col-xs-4">
                   <div (click)="playerService.play(song,song,1)">
                     <a class="jp-play-me m-r-sm pull-left">
-                      <i class="icon-control-play"
-                         *ngIf="!playerService.isCurrentSong(song)">
+                      <i class="icon-control-play">
                         <span class="font-default text-md">Ойнотуу</span>
                       </i>
-                      <i class="icon-control-pause text"
-                         *ngIf="playerService.isCurrentSong(song)">
+                      <i class="icon-control-pause text">
                         <span class="font-default text-md">Токтотуу</span>
                       </i>
                     </a>

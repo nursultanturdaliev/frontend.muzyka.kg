@@ -54,8 +54,9 @@ import {AuthGoogleService} from "./services/AuthGoogleService";
 import {ContactComponent} from "./pages/index";
 import {AboutComponent} from "./pages/index";
 import {LocalStorageService} from "./services/LocalStorageService";
-
-
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {playerReducer} from "./reducer/player.reducer";
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,6 +105,10 @@ import {LocalStorageService} from "./services/LocalStorageService";
       maxOpened: 3,
       positionClass: 'toast-bottom-right'
     }),
+    StoreModule.forRoot({player: playerReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 //  Retains last 25 states
+    })
   ],
   providers: [
     AppService,

@@ -3,27 +3,17 @@
       <h3 class="font-thin">Жаңы ырлар
       </h3>
       <div class="row row-sm">
-        <div class="col-xs-6 col-sm-4" *ngFor="let song of newSongs; let index=index;"
-             [ngClass]="{active: playerService.isCurrentSong(song)}">
+        <div class="col-xs-6 col-sm-4" *ngFor="let song of newSongs; let index=index;" [ngClass]="{active: playerService.isCurrentSong(song)}">
           <div class="item">
             <div class="pos-rlt">
               <div class="bottom">
                 <span class="badge bg-info m-l-sm m-b-sm">{{song.duration}}</span>
               </div>
               <div class="item-overlay opacity r r-2x bg-black">
-                <!--<div class="text-info padder m-t-sm text-sm">-->
-                  <!--<i class="fa fa-star"></i>-->
-                  <!--<i class="fa fa-star"></i>-->
-                  <!--<i class="fa fa-star"></i>-->
-                  <!--<i class="fa fa-star"></i>-->
-                  <!--<i class="fa fa-star-o text-muted"></i>-->
-                <!--</div>-->
-                <div class="center text-center m-t-n" (click)="playerService.play(song,newSongs,index)">
+                <div class="center text-center m-t-n">
                   <a>
-                      <i class="icon-control-play i-2x"
-                         *ngIf="!playerService.isCurrentSong(song)"></i>
-                      <i class="icon-control-pause i-2x"
-                         *ngIf="playerService.isCurrentSong(song)"></i>
+                      <i class="icon-control-play i-2x" (click)="playerService.play(song,newSongs)"  *ngIf="!playerService.isCurrentSong(song)"></i>
+                      <i class="icon-control-pause i-2x" (click)="playerService.pause()"  *ngIf="playerService.isCurrentSong(song)"></i>
                   </a>
                 </div>
                 <div class="bottom padder m-b-sm">
@@ -55,39 +45,32 @@
       <div class="list-group bg-white list-group-lg no-bg auto">
 
           <ul class="list-group list-group-lg bg-white auto m-b-none">
-              <li class="list-group-item clearfix" *ngFor="let song of topSongs; let index=index;">
+              <li class="list-group-item clearfix" *ngFor="let song of topSongs; let index=index;" [ngClass]="{active: playerService.isCurrentSong(song)}">
                   <span class="pull-left h2 text-muted m-r">{{index + 1}}</span>
                   <div (click)="appService.download(song,topSongs,index)">
                       <a class="pull-right m-t-sm m-l text-md text-accent">
                           <i class="icon-cloud-download text"></i>
                       </a>
                   </div>
-                  <div (click)="playerService.play(song,topSongs,index)">
-                      <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
-                          <i class="icon-control-play text"
-                             *ngIf="!playerService.isCurrentSong(song)"></i>
-                          <i class="icon-control-pause text"
-                             *ngIf="playerService.isCurrentSong(song)"></i>
+                  <div>
+                      <a class="jp-play-me pull-right m-t-sm m-l text-md">
+                          <i class="icon-control-play text" (click)="playerService.play(song,topSongs)" *ngIf="!playerService.isCurrentSong(song)"></i>
+                          <i class="icon-control-pause text" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
                       </a>
                   </div>
-                  <!--<p class="text-muted">{{song.uuid}}|||</p>-->
-                  <!--<p class="text-muted">{{song.id}}</p>-->
-                  <a href="#" class="pull-left thumb-sm m-r">
+                  <a class="pull-left thumb-sm m-r">
                       <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
                            [lazyLoad]="song.profileLocal"
                            alt="..." class="img-circle">
                   </a>
-                  <a class="clear" href="#">
-                      <a routerLink="/artist/{{artist.id}}" class="block text-ellipsis"
-                         *ngFor="let artist of song.artists;">
-                          {{artist.name}}
-                      </a>
-                      <a routerLink="/song/{{song.uuid}}" class="block text-ellipsis">
-                          <small class="text-muted">{{song.title}}</small>
+                <a routerLink="/song/{{song.uuid}}" class="block text-ellipsis">
+                  <small class="text-muted">{{song.title}}</small>
 
-                      </a>
-
-                  </a>
+                </a>
+                <a routerLink="/artist/{{artist.id}}" class="block text-ellipsis"
+                   *ngFor="let artist of song.artists;">
+                  {{artist.name}}
+                </a>
               </li>
           </ul>
       </div>

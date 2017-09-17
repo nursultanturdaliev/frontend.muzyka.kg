@@ -15,7 +15,6 @@ export class SongsComponent implements OnInit {
   songs: Song[];
   searchText: string;
   page: number;
-  playingSong: Song;
 
   constructor(private SongService: SongService,
               public playerService: PlayerService,
@@ -28,21 +27,7 @@ export class SongsComponent implements OnInit {
     this.SongService.getSongs(this.page)
       .then(songs => {
         this.songs = songs;
-        if (!this.playerService.getCurrentSong()) {
-          this.playerService.currentTime = 0;
-          this.playerService.setIndex(0);
-          this.playerService.setSongs(songs);
-        }
       });
-  }
-
-  play(song: Song, songs: Song[], i: number) {
-    this.playerService.play(song, songs, i);
-    this.playingSong = song;
-  }
-
-  currentSong() {
-    return this.playerService.getCurrentSong();
   }
 
   search(value) {

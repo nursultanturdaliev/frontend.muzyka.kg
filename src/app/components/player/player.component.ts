@@ -1,10 +1,14 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, Input} from '@angular/core';
 import {PlayerService} from '../../services/player.service';
 import {Http} from '@angular/http';
 import {SongService} from '../../services/song.service';
 import {ConfigService} from "../../services/config.service";
 import {HistoryService} from "../../services/history.service";
-
+import {Song} from "../../Models/song";
+import {AppState} from "../../app.component";
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {Player} from "../../Models/player";
 
 @Component({
   selector: 'app-player',
@@ -14,34 +18,32 @@ import {HistoryService} from "../../services/history.service";
 })
 
 export class PlayerComponent implements OnInit {
-  audio: any;
-  song: any;
-  promise: any;
-  playing: boolean;
-  paused: boolean;
-  random: boolean;
-  notRandom: boolean;
-  repeat: boolean;
-  notRepeat: boolean;
-  muted: boolean;
-  unMuted: boolean;
-  currentTime: any;
-  progressBar: any;
-  volume: any;
-  tempVolume: any;
-  volumeBarWidth: any;
-  progressBarWidth: any;
+  audio:any;
+  currentSong:any;
+  playing:boolean;
+  paused:boolean;
+  random:boolean;
+  repeat:boolean;
+  muted:boolean;
+  currentTime:any;
+  progressBar:any;
+  volume:any;
+  tempVolume:any;
+  volumeBarWidth:any;
+  progressBarWidth:any;
 
-  constructor(public playerService: PlayerService,
-              private songService: SongService,
-              private ref: ChangeDetectorRef,
-              private configService: ConfigService) {
+  playerObservable:Observable<Player>;
+  player:Player;
+  duration:string;
+
+  constructor(public playerService:PlayerService,
+              private songService:SongService,
+              private ref:ChangeDetectorRef,
+              private configService:ConfigService,
+              private store:Store<AppState>) {
     this.audio = new Audio();
-    this.playerService.onCurrentSongChange(() => {
-      this.play();
-    });
+
     setInterval(() => {
-      this.currentTime = this.formatTime(this.audio.currentTime);
       this.progressBar = this.formatTime(this.audio.currentTime);
       this.progressBar = this.getProgressBar();
       this.progressBarWidth = document.getElementById('progress-bar').offsetWidth;
@@ -50,44 +52,51 @@ export class PlayerComponent implements OnInit {
     }, 1000);
 
     this.audio.addEventListener('ended', () => {
-      this.next(this.repeat);
+      this.next();
+    });
+
+    this.audio.addEventListener('durationchange', (event)=> {
+      this.duration = this.formatTime(this.audio.duration);
+    });
+    this.audio.addEventListener('timeupdate', (event) => {
+      this.currentTime = this.formatTime(this.audio.currentTime)
+    });
+
+    this.playerObservable = store.select('player');
+    this.playerObservable.subscribe((player:Player) => {
+      this.player = player;
+      console.log(player);
+      switch (player.command) {
+        case 'PAUSE':
+          this.pause();
+          return;
+        case 'PLAY':
+          this.play(player.song);
+          return;
+      }
     });
   }
 
   ngOnInit() {
     this.playing = false;
     this.paused = true;
-    this.muted = true;
-    this.unMuted = false;
+    this.muted = false;
     this.random = false;
-    this.notRandom = true;
     this.repeat = false;
-    this.notRepeat = true;
     this.progressBar = 0;
     this.volume = 90;
     this.playerService.currentTime = '00:00';
-    this.currentTime = this.playerService.currentTime;
     this.progressBarWidth = document.getElementById('progress-bar').offsetWidth;
     this.volumeBarWidth = document.getElementById('volume-bar').offsetWidth;
   }
 
-  play() {
-    this.audio.src = this.getCurrentURL();
+  play(song:Song) {
+    this.currentSong = song;
+    this.audio.src = this.getCurrentURL(song);
     this.audio.play();
-    this.audio.currentTime = this.playerService.currentTime;
-    this.promise = new Promise((resolve, reject) => {
-      this.playing = true;
-      this.paused = false;
-      this.currentTime = this.formatTime(this.playerService.currentTime);
-      this.audio.addEventListener('playing', () => {
-        resolve(true);
-      });
-      this.audio.addEventListener('error', () => {
-        reject(false);
-      });
-    });
+    this.audio.currentTime = 0;
+    this.playing = true;
     document.getElementById('musicbar').className += ' animate';
-    return this.promise;
   }
 
   formatTime(time) {
@@ -106,9 +115,9 @@ export class PlayerComponent implements OnInit {
     return currentPosition;
   }
 
-  pause(currentTime) {
-    this.playerService.currentTime = currentTime;
-    this.toggle();
+  pause() {
+    this.playing = false;
+    this.paused = true;
     this.audio.pause();
     document.getElementById('musicbar').classList.remove('animate');
   }
@@ -123,70 +132,86 @@ export class PlayerComponent implements OnInit {
     this.volume = this.audio.volume * 100;
   }
 
-  next(isRepeat) {
-    this.playerService.currentTime = 0;
-    var song = null;
-    if (isRepeat) {
-      song = this.playerService.getCurrentSong();
+  next() {
+    let song = null;
+    if (this.repeat) {
+      song = this.player.song;
+    } else if (this.random) {
+      song = this.getRandomSong();
     } else {
-      song = this.playerService.getNextSong(this.random);
+      song = this.getNextSong();
     }
-    this.playerService.currentSongTitle = song.title;
-    this.playerService.setCurrentSong(song);
+    this.playerService.play(song,this.player.songs);
+  }
+
+  getRandomSong() {
+    let songs = this.player.songs;
+    let randomIndex = Math.floor(songs.length * Math.random());
+    return songs[randomIndex];
+  }
+
+  getNextSong() {
+    let songs = this.player.songs;
+    let song = this.player.song;
+    let newIndex = 0;
+    for (let index = 0; index < songs.length; index++) {
+      if (song.id == songs[index].id) {
+        newIndex = (index + 1) % songs.length;
+        break;
+      }
+    }
+    return songs[newIndex];
   }
 
   previous() {
-    this.playerService.currentTime = 0;
-    var song = this.playerService.getPreviousSong(this.random);
-    this.playerService.currentSongTitle = song.title;
-    this.playerService.setCurrentSong(song);
-  }
-
-  private getCurrentURL() {
-    if (!this.playerService.getCurrentSong()) {
-      var song = this.playerService.getSongs()[0];
-      this.playerService.setCurrentSong(song);
-      this.playerService.currentSongTitle = song.title;
-      return this.configService.API_URL + '/song/stream/' + song.uuid;
+    let song = null;
+    if (this.repeat) {
+      song = this.player.song;
+    } else if (this.random) {
+      song = this.getRandomSong();
+    } else {
+      song = this.getPreviousSong();
     }
-    else
-      return this.configService.API_URL + '/song/stream/' + this.playerService.getCurrentSong().uuid;
-
+    this.playerService.play(song,this.player.songs);
   }
 
-  private toggle() {
-    this.playing = !this.playing;
-    this.paused = !this.paused;
+  getPreviousSong() {
+    let songs = this.player.songs;
+    let song = this.player.song;
+    let newIndex = 0;
+    for (let index = 0; index < songs.length; index++) {
+      if (song.id == songs[index].id) {
+        if (index === 0) {
+          index = songs.length;
+        }
+        newIndex = (index -1) % songs.length;
+        break;
+      }
+    }
+    return songs[newIndex];
   }
 
-  shuffle() {
-    this.random = !this.random;
-    this.notRandom = !this.notRandom;
+  private getCurrentURL(song:Song) {
+    return this.configService.API_URL + '/song/stream/' + song.uuid;
+  }
+
+  setRepeat(repeat:boolean) {
+    this.repeat = repeat;
+  }
+
+  setRandom(random:boolean) {
+    this.random = random;
   }
 
   toggleMute() {
-    if (this.muted) {
+    if (!this.muted) {
       this.audio.volume = 0;
       this.tempVolume = this.volume;
-      this.volume = this.audio.volume * 100;
+      this.volume = Math.round(this.audio.volume * 100);
     } else {
       this.volume = this.tempVolume;
-      this.audio.volume = this.volume / 100;
+      this.audio.volume = Math.round(this.volume / 100);
     }
     this.muted = !this.muted;
-    this.unMuted = !this.unMuted;
-  }
-
-  repeatOrNot() {
-    this.repeat = !this.repeat;
-    this.notRepeat = !this.notRepeat;
-  }
-
-  getCurrentSongTitle() {
-    return this.playerService.currentSongTitle;
-  }
-
-  getCurrentSongUuid() {
-    return this.playerService.currentSongTitle;
   }
 }

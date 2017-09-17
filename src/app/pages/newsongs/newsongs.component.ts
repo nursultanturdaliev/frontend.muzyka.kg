@@ -19,11 +19,6 @@ export class NewsongsComponent implements OnInit {
     this.SongService.getNewSongs()
       .then(newSongs => {
         this.songs = newSongs;
-        if (!this.playerService.getCurrentSong()) {
-          this.playerService.currentTime = 0;
-          this.playerService.setIndex(0);
-          this.playerService.setSongs(newSongs);
-        }
       });
   }
 

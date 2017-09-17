@@ -2,61 +2,48 @@ import {Injectable} from '@angular/core';
 import {count} from 'rxjs/operator/count';
 import {HistoryService} from "./history.service";
 import {Song} from '../Models/song';
-
-
+import {AppState} from "../app.component";
+import {Store} from '@ngrx/store';
+import * as playerActions from "../actions/player.action";
+import {playerReducer} from "../reducer/player.reducer";
+import  {Observable} from 'rxjs/Observable';
+import {Player} from "../Models/player";
 @Injectable()
 export class PlayerService {
-  public currentSong: Song;
-  public artist_truncated: string;
-  private callbacks: any;
-  private songs: any;
-  private index: any;
-  public currentTime: any;
-  public currentSongTitle: any;
+  public playerObservable:Observable<Player>;
+  private songs:any;
+  private index:any;
+  public currentTime:any;
+  public currentSongTitle:any;
+  public player:Player;
 
-  constructor(private historyService: HistoryService) {
-
-  }
-
-  setCurrentSong(song: Song) {
-    let currentUuid = this.currentSong ? this.currentSong.uuid : null;
-    let nextUuid = song.uuid;
-    this.historyService.updateHistory(currentUuid, nextUuid);
-    this.currentSong = song;
-    this.artist_truncated = this.trunc(song.artist_as_one, 20);
-    this.currentSongChanged();
-  }
-
-  getCurrentSong() {
-    return this.currentSong;
-  }
-
-  private currentSongChanged() {
-    this.callbacks.forEach((callback) => {
-      callback();
+  constructor(private historyService:HistoryService, private store:Store<AppState>) {
+    this.playerObservable = store.select('player');
+    this.playerObservable.subscribe((player:Player)=> {
+      this.player = player;
     });
   }
 
-  play(song: Song, songs, index) {
-    this.currentTime = 0;
-    this.currentSongTitle = song.title;
-    this.setCurrentSong(song);
-    this.setSongs(songs);
-    this.setIndex(index);
+
+  pause() {
+    //noinspection TypeScriptValidateTypes
+    this.store.dispatch({type: playerActions.PAUSE})
   }
 
-  public onCurrentSongChange(f) {
-    if (!this.callbacks) {
-      this.callbacks = [];
-    }
-    this.callbacks.push(f);
+  isCurrentSong(song:Song) {
+    return this.player.command == 'PLAY' && this.player.song && this.player.song.id === song.id;
   }
 
-  setSongs(songs: any) {
+  play(song:Song, songs) {
+    //noinspection TypeScriptValidateTypes
+    this.store.dispatch({type: playerActions.PLAY, payload: {song: song, songs: songs}});
+  }
+
+  setSongs(songs:any) {
     this.songs = songs;
   }
 
-  setIndex(index: any) {
+  setIndex(index:any) {
     this.index = index;
   }
 
@@ -104,15 +91,4 @@ export class PlayerService {
   getSongs() {
     return this.songs;
   }
-
-  isCurrentSong(song: Song) {
-    if (!this.getCurrentSong()) {
-      return false;
-    }
-    return this.getCurrentSong().uuid == song.uuid;
-  }
-
-  trunc(str, n) {
-    return (str.length > n) ? str.substr(0, n - 1) + '...' : str;
-  };
 }

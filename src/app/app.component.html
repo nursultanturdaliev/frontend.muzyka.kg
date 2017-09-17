@@ -140,19 +140,13 @@
                     </section>
                     <footer class="footer hidden-xs no-padder text-center-nav-xs">
                         <div class="bg hidden-xs ">
-                            <div class="dropdown dropup wrapper-sm clearfix" *ngIf="playerService.currentSong">
+                            <div class="dropdown dropup wrapper-sm clearfix" *ngIf="playerService.currentSong |async as song">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="thumb-sm avatar pull-left m-l-xs">
                                       <img [lazyLoad]="playerService.currentSong.profileLocal"
                                            src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
                                            class="r r-2x img-full">
                                         <i class="on b-black"></i>
-                                    </span>
-                                    <span class="hidden-nav-xs clear">
-                                        <span class="block m-l">
-                                            <strong class="font-bold text-lt">{{playerService.artist_truncated}}</strong>
-                                        </span>
-                                        <!--<span class="text-muted text-xs block m-l">{{playerService.currentSong.title}}</span>-->
                                     </span>
                                 </a>
                             </div>
