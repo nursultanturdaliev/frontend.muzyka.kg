@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild, Renderer,OnInit} from '@angular/core';
+import {Component, ElementRef, ViewChild, Renderer, OnInit, OnChanges} from '@angular/core';
 import {PlayerService} from './services/player.service';
 import {SongService} from './services/song.service';
 import {AuthService} from './services/auth.service';
