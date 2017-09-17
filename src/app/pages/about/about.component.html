@@ -1,39 +1,169 @@
-<h4>Команданын мүчөлөрү</h4>
 <div class="row">
-  <div class="col-md-3 col-lg-3" *ngFor="let teamMember of team.members">
-    <div class="item">
-      <div class="pos-rlt discover-song">
-        <div class="item-overlay opacity r r-2x bg-black">
-          <div class="bottom padder m-b-sm">
-            <a class="pull-right" target="_blank" href="{{teamMember.facebook}}">
-              <i class="fa fa-facebook fa-2x"></i>
-            </a>
+  <div class="col-md-12">
+    <div class="row row-sm">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12 m-b-sm">
+            <h3 class="font-thin">Эң мыкты музыкалык портал</h3>
+          </div>
+          <div class="col-sm-12">
+            <img src="assets/img/about.jpg" alt="" class="r r-2x img-full">
+          </div>
+          <div class="col-sm-12 m-t-md">
+            <p>МУЗЫКА - сизге эң мыкты маанайды тартуулоо менен бирге, жөн гана музыка укпастан, чыгармаларды өзүңүздүн
+              компьютер же уюлдук телефонуңузга жүктөп алуу мүмкүнчүлүгүн берүүчү, кыргыз эстрада аткаруучуларынын
+              чыгармаларын камтыган эң мыкты музыкалык портал!</p>
           </div>
         </div>
-        <img src="assets/img/members/{{teamMember.profile}}"
-             class="r r-2x img-full">
       </div>
-      <div class="padder-v">
-        <a href="track-detail.html" data-bjax="" data-target="#bjax-target" data-el="#bjax-el"
-           data-replace="true" class="text-ellipsis">
-          {{teamMember.name}} {{teamMember.lastname}}
-        </a>
-        <a
-          href="track-detail.html" data-bjax="" data-target="#bjax-target" data-el="#bjax-el" data-replace="true"
-          class="text-ellipsis text-xs text-muted">
-          {{teamMember.title}}
-        </a></div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12 m-b-sm">
+            <h3 class="font-thin">Мобилдик тиркеме</h3>
+          </div>
+          <div class="col-sm-12">
+            <a href="https://play.google.com/store/apps/details?id=io.penduline.kyrgyzmusic" target="_blank"><img src="assets/img/mobile-app.png" alt="" class="r r-2x img-full"></a>
+          </div>
+          <div class="col-sm-12 m-t-md">
+            <p>Порталдын уюлдук телефондорго ылайыкталган версиясынын бар экендигине карабастан, атайын андроид
+              операциондук системасында иштеген сиздин телефонуңузга тиркеме иштелип чыкты. Тиркемени
+              <a href="https://play.google.com/store/apps/details?id=io.penduline.kyrgyzmusic">бул шилтеме</a> аркылуу
+              көчүрүп алсаңыз болот </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 m-b-sm m-t-lg">
+        <h3 class="font-thin">Команда</h3>
+      </div>
+      <div class="col-xs-6 col-sm-3 m-b-md">
+        <div class="item developer">
+          <div class="pos-rlt">
+            <div class="item-overlay opacity r r-2x bg-black">
+              <div class="center text-center m-t-n">
+                <a href="https://www.facebook.com/AdiletEgemberdievv" target="_blank" class="developer-social-media">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="https://plus.google.com/u/0/+AdiletEgemberdievv" target="_blank" class="developer-social-media">
+                  <i class="fa fa-google-plus-square"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/adiletegemberdiev/" target="_blank" class="developer-social-media">
+                  <i class="fa fa-linkedin-square"></i>
+                </a>
+              </div>
+            </div>
+            <a href="#"><img src="assets/img/team/adi.jpg" alt="Адилет Эгембердиев" class="r r-2x img-full"></a>
+          </div>
+          <div class="padder-v">
+            <span class="text-ellipsis">Адилет Эгембердиев</span>
+            <span class="text-ellipsis text-xs text-muted pull-left">Программист</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3 m-b-md">
+        <div class="item developer">
+          <div class="pos-rlt">
+            <div class="item-overlay opacity r r-2x bg-black">
+              <div class="center text-center m-t-n">
+                <a href="https://www.facebook.com/Aykut.Konushbai" target="_blank" class="developer-social-media">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+              </div>
+            </div>
+            <a href="#"><img src="assets/img/team/aikut.jpg" alt="Айкут Конушбаев" class="r r-2x img-full"></a>
+          </div>
+          <div class="padder-v">
+            <span class="text-ellipsis">Айкут Конушбаев</span>
+            <span class="text-ellipsis text-xs text-muted pull-left">Программист</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3 m-b-md">
+        <div class="item developer">
+          <div class="pos-rlt">
+            <div class="item-overlay opacity r r-2x bg-black">
+              <div class="center text-center m-t-n">
+                <a href="https://plus.google.com/u/0/111237608479533139034" class="developer-social-media">
+                  <i class="fa fa-google-plus-square"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/akim-bolushbek-uulu-01b8b961/" target="_blank" class="developer-social-media">
+                  <i class="fa fa-linkedin-square"></i>
+                </a>
+              </div>
+            </div>
+            <a href="#"><img src="assets/img/team/akim.jpg" alt="Аким Болушбек уулу" class="r r-2x img-full"></a>
+          </div>
+          <div class="padder-v">
+            <span class="text-ellipsis">Аким Болушбек уулу</span>
+            <span class="text-ellipsis text-xs text-muted pull-left">Программист</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3 m-b-md">
+        <div class="item developer">
+          <div class="pos-rlt">
+            <div class="item-overlay opacity r r-2x bg-black">
+              <div class="center text-center m-t-n">
+                <a href="https://www.facebook.com/bekturomurov" target="_blank" class="developer-social-media">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="https://plus.google.com/106523391622153350523" target="_blank" class="developer-social-media">
+                  <i class="fa fa-google-plus-square"></i>
+                </a>
+                <a href="https://vk.com/bekturomurov" target="_blank" class="developer-social-media">
+                  <i class="fa fa-vk"></i>
+                </a>
+              </div>
+            </div>
+            <a href=""><img src="assets/img/team/bektur.jpg" alt="Бектур Өмүров" class="r r-2x img-full"></a>
+          </div>
+          <div class="padder-v">
+            <span class="text-ellipsis">Бектур Өмүров</span>
+            <span class="text-ellipsis text-xs text-muted pull-left">Программист</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3 m-b-md">
+        <div class="item developer">
+          <div class="pos-rlt">
+            <div class="item-overlay opacity r r-2x bg-black">
+              <div class="center text-center m-t-n">
+                <a href="https://www.facebook.com/turdaliev.nursultan" target="_blank" class="developer-social-media">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="https://plus.google.com/116751995195795748155" target="_blank" class="developer-social-media">
+                  <i class="fa fa-google-plus-square"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/nurolopher/" target="_blank" class="developer-social-media">
+                  <i class="fa fa-linkedin-square"></i>
+                </a>
+              </div>
+            </div>
+            <a href="#"><img src="assets/img/team/nurs.jpg" alt="Нурсултан Турдалиев" class="r r-2x img-full"></a>
+          </div>
+          <div class="padder-v">
+            <span class="text-ellipsis">Нурсултан Турдалиев</span>
+            <span class="text-ellipsis text-xs text-muted pull-left">Программист</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3 m-b-md">
+        <div class="item developer">
+          <div class="pos-rlt">
+            <div class="item-overlay opacity r r-2x bg-black">
+              <div class="center text-center m-t-n">
+                <a href="https://www.facebook.com/sheki92m" target="_blank" class="developer-social-media">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+              </div>
+            </div>
+            <a href="#"><img src="assets/img/team/sheki.jpg" alt="Шерказы Көкүмбаев" class="r r-2x img-full"></a>
+          </div>
+          <div class="padder-v">
+            <span class="text-ellipsis">Шерказы Көкүмбаев</span>
+            <span class="text-ellipsis text-xs text-muted pull-left">Программист</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<hr>
-<div class="center text-center m-t-n">
-  <p>
-    <a href="https://www.facebook.com/muzyka.kg" target="_blank" class="btn btn-sm btn-icon btn-primary"><i
-      class="fa fa-facebook"></i></a>
-    <a href="https://www.instagram.com/muzyka.kg" target="_blank" class="btn btn-sm btn-icon btn-danger">
-      <i class="fa fa-instagram"></i>
-    </a>
-  </p>
-</div>
-
