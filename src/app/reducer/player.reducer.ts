@@ -5,7 +5,7 @@ export type Action = PlayerActions.All
 
 const initialState:Player = {
   song: null,
-  command: 'IDLE'
+  command: 'IDLE',
 };
 
 const newState = (state, newData) => {
@@ -17,7 +17,7 @@ export function playerReducer(state:Player = initialState, action) {
     case PlayerActions.PAUSE:
       return newState(state, {command: 'PAUSE'});
     case PlayerActions.PLAY:
-      return newState(state, {command: 'PLAY', song: action.payload});
+      return newState(state, Object.assign({command: 'PLAY'},action.payload));
     default:
       return state;
   }

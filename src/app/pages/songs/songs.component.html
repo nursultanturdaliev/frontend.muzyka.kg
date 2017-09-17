@@ -22,8 +22,8 @@
                 </div>
                 <div>
                     <a class="jp-play-me m-r-sm pull-left">
-                        <i class="icon-control-play text" (click)="playerService.play(song)" *ngIf="!playerService.isCurrentSong(song)"></i>
-                        <i class="icon-control-pause text" *ngIf="playerService.isCurrentSong(song)"></i>
+                        <i class="icon-control-play text" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
+                        <i class="icon-control-pause text" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
                     </a>
                 </div>
                 <div class="clear text-ellipsis">

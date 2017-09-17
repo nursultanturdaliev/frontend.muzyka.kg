@@ -12,7 +12,7 @@
               <div class="item-overlay opacity r r-2x bg-black">
                 <div class="center text-center m-t-n">
                   <a>
-                      <i class="icon-control-play i-2x" (click)="playerService.play(song)"  *ngIf="!playerService.isCurrentSong(song)"></i>
+                      <i class="icon-control-play i-2x" (click)="playerService.play(song,songs)"  *ngIf="!playerService.isCurrentSong(song)"></i>
                       <i class="icon-control-pause i-2x" (click)="playerService.pause()"  *ngIf="playerService.isCurrentSong(song)"></i>
                   </a>
                 </div>
@@ -54,7 +54,7 @@
                   </div>
                   <div>
                       <a class="jp-play-me pull-right m-t-sm m-l text-md">
-                          <i class="icon-control-play text" (click)="playerService.play(song)" *ngIf="!playerService.isCurrentSong(song)"></i>
+                          <i class="icon-control-play text" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
                           <i class="icon-control-pause text" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
                       </a>
                   </div>

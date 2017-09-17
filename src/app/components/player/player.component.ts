@@ -32,7 +32,8 @@ export class PlayerComponent implements OnInit {
   volumeBarWidth:any;
   progressBarWidth:any;
 
-  player:Observable<Player>;
+  playerObservable:Observable<Player>;
+  player:Player;
   duration:string;
 
   constructor(public playerService:PlayerService,
@@ -51,7 +52,7 @@ export class PlayerComponent implements OnInit {
     }, 1000);
 
     this.audio.addEventListener('ended', () => {
-      this.next(this.repeat);
+      this.next();
     });
 
     this.audio.addEventListener('durationchange', (event)=> {
@@ -61,8 +62,9 @@ export class PlayerComponent implements OnInit {
       this.currentTime = this.formatTime(this.audio.currentTime)
     });
 
-    this.player = store.select('player');
-    this.player.subscribe((player:Player) => {
+    this.playerObservable = store.select('player');
+    this.playerObservable.subscribe((player:Player) => {
+      this.player = player;
       console.log(player);
       switch (player.command) {
         case 'PAUSE':
@@ -92,6 +94,7 @@ export class PlayerComponent implements OnInit {
     this.audio.src = this.getCurrentURL(song);
     this.audio.play();
     this.audio.currentTime = 0;
+    this.playing = true;
     document.getElementById('musicbar').className += ' animate';
   }
 
@@ -128,14 +131,13 @@ export class PlayerComponent implements OnInit {
     this.volume = this.audio.volume * 100;
   }
 
-  next(isRepeat) {
+  next() {
+    if (this.repeat) {
+      this.play(this.player.song);
+    }
   }
 
   previous() {
-    this.playerService.currentTime = 0;
-    var song = this.playerService.getPreviousSong(this.random);
-    this.playerService.currentSongTitle = song.title;
-    this.playerService.play(song);
   }
 
   private getCurrentURL(song:Song) {

@@ -7,7 +7,7 @@
           <div class="item-overlay opacity r r-2x bg-black">
             <div class="center text-center m-t-n">
               <a>
-                <i class="fa fa-play fa-1-5x" (click)="playerService.play(song)" *ngIf="!playerService.isCurrentSong(song)"></i>
+                <i class="fa fa-play fa-1-5x" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
                 <i class="fa fa-pause fa-1-5x" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
               </a>
             </div>

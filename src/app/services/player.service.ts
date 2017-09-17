@@ -31,12 +31,12 @@ export class PlayerService {
   }
 
   isCurrentSong(song:Song) {
-    return this.player.song && this.player.song.id === song.id;
+    return this.player.command == 'PLAY' && this.player.song && this.player.song.id === song.id;
   }
 
-  play(song:Song) {
+  play(song:Song, songs) {
     //noinspection TypeScriptValidateTypes
-    this.store.dispatch({type: playerActions.PLAY, payload: song});
+    this.store.dispatch({type: playerActions.PLAY, payload: {song: song, songs: songs}});
   }
 
   setSongs(songs:any) {
