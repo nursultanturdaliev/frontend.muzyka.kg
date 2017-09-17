@@ -9,8 +9,10 @@
         </header>
         <ul class="list-group list-group-lg no-border bg-info-ltest m-b-lg auto"
             id="songs" *ngIf="songs" infiniteScroll
-            [infiniteScrollDistance]="2"
+            [infiniteScrollDistance]="10"
             [infiniteScrollThrottle]="300"
+            [scrollWindow]="false"
+            [infiniteScrollContainer]='"#bjax-target"'
             (scrolled)="onScrollDown()">
             <li class="list-group-item"
                 *ngFor="let song of songs; let i = index" class="list-group-item"

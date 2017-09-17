@@ -6,7 +6,9 @@
                  infiniteScroll
                  [infiniteScrollDistance]="2"
                  [infiniteScrollThrottle]="300"
-                 (scrolled)="onScrollDown()">
+                 (scrolled)="onScrollDown()"
+                 [scrollWindow]="false"
+                 [infiniteScrollContainer]='"#bjax-target"'>
 
                 <div class="clearfix" *ngIf="index % 4 == 0"></div>
                 <div class="col-xs-6 col-sm-3 m-b-md">
@@ -21,10 +23,7 @@
                                 </div>
                             </div>
                             <a routerLink="/artist/{{artist.id}}">
-                                <img [lazyLoad]="artist.profileLocal"
-                                     src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
-                                     alt=""
-                                     class="r r-2x img-full">
+                                <img src="{{artist.profileLocal}}" alt="{{artist.name}}" class="r r-2x img-full">
                             </a>
                         </div>
                         <div class="padder-v">
