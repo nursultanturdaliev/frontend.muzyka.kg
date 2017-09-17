@@ -19,7 +19,7 @@ import {Player} from "../../Models/player";
 
 export class PlayerComponent implements OnInit {
   audio:any;
-  song:any;
+  currentSong:any;
   playing:boolean;
   paused:boolean;
   random:boolean;
@@ -91,6 +91,7 @@ export class PlayerComponent implements OnInit {
   }
 
   play(song:Song) {
+    this.currentSong = song;
     this.audio.src = this.getCurrentURL(song);
     this.audio.play();
     this.audio.currentTime = 0;
@@ -132,12 +133,62 @@ export class PlayerComponent implements OnInit {
   }
 
   next() {
+    let song = null;
     if (this.repeat) {
-      this.play(this.player.song);
+      song = this.player.song;
+    } else if (this.random) {
+      song = this.getRandomSong();
+    } else {
+      song = this.getNextSong();
     }
+    this.playerService.play(song,this.player.songs);
+  }
+
+  getRandomSong() {
+    let songs = this.player.songs;
+    let randomIndex = Math.floor(songs.length * Math.random());
+    return songs[randomIndex];
+  }
+
+  getNextSong() {
+    let songs = this.player.songs;
+    let song = this.player.song;
+    let newIndex = 0;
+    for (let index = 0; index < songs.length; index++) {
+      if (song.id == songs[index].id) {
+        newIndex = (index + 1) % songs.length;
+        break;
+      }
+    }
+    return songs[newIndex];
   }
 
   previous() {
+    let song = null;
+    if (this.repeat) {
+      song = this.player.song;
+    } else if (this.random) {
+      song = this.getRandomSong();
+    } else {
+      song = this.getPreviousSong();
+    }
+    this.playerService.play(song,this.player.songs);
+  }
+
+  getPreviousSong() {
+    let songs = this.player.songs;
+    let song = this.player.song;
+    let newIndex = 0;
+    for (let index = 0; index < songs.length; index++) {
+      if (song.id == songs[index].id) {
+        if (index === 0) {
+          index = songs.length;
+        }
+        newIndex = (index -1) % songs.length;
+        break;
+      }
+    }
+    return songs[newIndex];
   }
 
   private getCurrentURL(song:Song) {

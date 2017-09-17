@@ -17,9 +17,9 @@
             <div class="jp-progress hidden-xs">
               <div class="jp-seek-bar dk" id="progress-bar" (click)="changeCurrentTime($event)">
                 <div class="jp-play-bar bg" [style.width.%]="progressBar"></div>
-                  <div class="jp-title text-lt" *ngIf="currentSong |async as song" >
-                    {{song.artist_as_one}} -
-                    {{song.title}}
+                  <div class="jp-title text-lt" *ngIf="currentSong" >
+                    {{currentSong.artist_as_one}} -
+                    {{currentSong.title}}
                   </div>
               </div>
             </div>

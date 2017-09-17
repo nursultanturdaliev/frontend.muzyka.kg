@@ -6,6 +6,7 @@ export type Action = PlayerActions.All
 const initialState:Player = {
   song: null,
   command: 'IDLE',
+  songs:[]
 };
 
 const newState = (state, newData) => {
