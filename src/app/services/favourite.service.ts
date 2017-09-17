@@ -30,7 +30,8 @@ export class FavouriteService extends BaseService {
       .toPromise()
       .then(response => response.json() as Favourite)
       .then((favourite:Favourite) =>{
-        this.localSorageService.addFavorite(favourite.song.id)
+        this.localSorageService.addFavorite(favourite.song.id);
+        return favourite;
       })
       .catch(this.handleError);
   }
