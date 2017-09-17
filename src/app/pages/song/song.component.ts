@@ -39,15 +39,10 @@ export class SongComponent implements OnInit, OnDestroy {
     this.songService.getSong(this.songId)
       .then(song => {
         this.song = song;
-        if (!this.playerService.getCurrentSong()) {
-          this.playerService.currentTime = 0;
-          this.playerService.setIndex(0);
-          this.playerService.setSongs([song]);
-        }
       });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy():void {
     this.sub.unsubscribe();
   }
 

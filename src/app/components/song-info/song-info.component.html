@@ -20,13 +20,13 @@
             <div class="panel wrapper m-t-md">
               <div class="row text-center">
                 <div class="col-xs-4">
-                  <div (click)="playerService.play(song,song,1)">
+                  <div>
                     <a class="jp-play-me m-r-sm pull-left">
-                      <i class="icon-control-play">
-                        <span class="font-default text-md">Ойнотуу</span>
+                      <i class="icon-control-play" (click)="playerService.play(song)" *ngIf="!playerService.isCurrentSong(song)">
+                        <span class="font-default text-md"><br/>Ойнотуу</span>
                       </i>
-                      <i class="icon-control-pause text">
-                        <span class="font-default text-md">Токтотуу</span>
+                      <i class="icon-control-pause text" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)">
+                        <span class="font-default text-md"><br/>Токтотуу</span>
                       </i>
                     </a>
                   </div>
