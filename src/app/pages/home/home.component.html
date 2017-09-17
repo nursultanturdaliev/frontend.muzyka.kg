@@ -58,22 +58,19 @@
                           <i class="icon-control-pause text" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
                       </a>
                   </div>
-                  <a href="#" class="pull-left thumb-sm m-r">
+                  <a class="pull-left thumb-sm m-r">
                       <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
                            [lazyLoad]="song.profileLocal"
                            alt="..." class="img-circle">
                   </a>
-                  <a class="clear" href="#">
-                      <a routerLink="/artist/{{artist.id}}" class="block text-ellipsis"
-                         *ngFor="let artist of song.artists;">
-                          {{artist.name}}
-                      </a>
-                      <a routerLink="/song/{{song.uuid}}" class="block text-ellipsis">
-                          <small class="text-muted">{{song.title}}</small>
+                <a routerLink="/song/{{song.uuid}}" class="block text-ellipsis">
+                  <small class="text-muted">{{song.title}}</small>
 
-                      </a>
-
-                  </a>
+                </a>
+                <a routerLink="/artist/{{artist.id}}" class="block text-ellipsis"
+                   *ngFor="let artist of song.artists;">
+                  {{artist.name}}
+                </a>
               </li>
           </ul>
       </div>
