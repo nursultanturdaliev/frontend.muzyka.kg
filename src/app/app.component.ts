@@ -4,6 +4,8 @@ import {SongService} from './services/song.service';
 import {AuthService} from './services/auth.service';
 import {FacebookService, InitParams} from 'ngx-facebook';
 import {Router} from '@angular/router';
+import {FavouriteService} from "./services/favourite.service";
+import {LocalStorageService} from "./services/LocalStorageService";
 import {Store} from '@ngrx/store';
 import {Song} from "./Models/song";
 import {Observable} from 'rxjs/Observable';
@@ -29,7 +31,8 @@ export class AppComponent {
               private fb:FacebookService,
               private router:Router,
               private renderer:Renderer,
-              private _store:Store<AppState>) {
+              private localStorageService : LocalStorageService,
+  private _store:Store<AppState>) {
     const initParams:InitParams = {
       appId: '1974598029436106',
       cookie: true,
