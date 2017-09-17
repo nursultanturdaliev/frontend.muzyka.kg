@@ -1,3 +1,20 @@
 .artist-profile {
   margin-top: 5px;
 }
+.list-group-item > .row{
+  margin-right: 0;
+}
+.list-group-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.list-group-item i:hover{
+  cursor: pointer;
+}
+.list-group-item i{
+  display: inline-block;
+  margin-top: 15px;
+}
+.list-group-item a:hover{
+  cursor: pointer;
+}

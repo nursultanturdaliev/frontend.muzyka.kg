@@ -1,52 +1,51 @@
 <h3 class="font-thin m-b-md">Ырлар</h3>
 <div class="row">
-    <div class="col-md-7 col-sm-6 col-xs-12">
+  <div class="col-md-7 col-sm-6 col-xs-12">
 
-        <section class="panel panel-default">
-        <header class="panel-heading">
+    <section class="panel panel-default">
+      <header class="panel-heading">
         <input #searchInput type="text" class="input-md form-control" name="searchText"
-        placeholder="Издөө" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
-        </header>
-        <ul class="list-group list-group-lg no-border bg-info-ltest m-b-lg auto"
-            id="songs" *ngIf="songs" infiniteScroll
-            [infiniteScrollDistance]="10"
-            [infiniteScrollThrottle]="300"
-            [scrollWindow]="false"
-            [infiniteScrollContainer]='"#bjax-target"'
-            (scrolled)="onScrollDown()">
-            <li class="list-group-item"
-                *ngFor="let song of songs; let i = index" class="list-group-item"
-                [ngClass]="{active: playerService.isCurrentSong(song)}">
-                <div class="pull-right m-l">
-                    <a class="m-r-sm" (click)="appService.download(song, songs, i)">
-                        <i class="icon-cloud-download"></i>
-                    </a>
-                    <a class="m-r-sm" (click)="appService.favourite(song)">
-                        <i class="icon-heart text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
-                        <i class="icon-heart" *ngIf="!localStorageService.isFavorite(song.id)"></i>
-                    </a>
-                    <a>
-                        <i class="icon-doc"></i>
-                    </a>
-                </div>
-                <div>
-                    <a class="jp-play-me m-r-sm pull-left">
-                        <i class="icon-control-play text" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
-                        <i class="icon-control-pause text" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
-                    </a>
-                </div>
-                <div class="clear text-ellipsis">
-                  <span *ngFor="let artist of song.artists; let  last=last; let index=index;">
-                      <a routerLink="/artist/{{artist.id}}" class="link-to-mob-app">
-                        {{artist.name}}<span *ngIf="last!=true">, </span>
-                      </a>
-                  </span>
-                    <a routerLink="/song/{{song.uuid}}">
-                        <span class="">{{song.title}}</span>
-                    </a>
-                </div>
-            </li>
-        </ul>
-        </section>
-    </div>
+               placeholder="Издөө" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
+      </header>
+      <ul class="list-group list-group-lg no-border bg-info-ltest m-b-lg auto"
+          id="songs" *ngIf="songs" infiniteScroll
+          [infiniteScrollDistance]="10"
+          [infiniteScrollThrottle]="300"
+          [scrollWindow]="false"
+          [infiniteScrollContainer]='"#bjax-target"'
+          (scrolled)="onScrollDown()">
+        <li class="list-group-item"
+            *ngFor="let song of songs; let i = index" class="list-group-item"
+            [ngClass]="{active: playerService.isCurrentSong(song)}">
+          <div class="row">
+            <div class="col-md-1">
+
+              <i class="icon-control-play text fa-1-3x" (click)="playerService.play(song,songs)"
+                 *ngIf="!playerService.isCurrentSong(song)"></i>
+              <i class="icon-control-pause fa-1-3x" (click)="playerService.pause()"
+                 *ngIf="playerService.isCurrentSong(song)"></i>
+            </div>
+            <div class="col-md-9">
+              <p><a routerLink="/song/{{song.uuid}}">{{song.title}}</a></p>
+              <a routerLink="/artist/{{artist.id}}" class="text-muted accent-link"
+                 *ngFor="let artist of song.artists; let  last=last; let index=index;">
+                {{artist.name}}<span *ngIf="last!=true">, </span>
+              </a>
+            </div>
+            <div class="col-md-1">
+              <a (click)="appService.favourite(song)">
+                <i class="icon-heart text-danger-dker fa-1-3x" *ngIf="localStorageService.isFavorite(song.id)"></i>
+                <i class="icon-heart fa-1-3x" *ngIf="!localStorageService.isFavorite(song.id)"></i>
+              </a>
+            </div>
+            <div class="col-md-1">
+              <a (click)="appService.download(song, songs, i)">
+                <i class="icon-cloud-download fa-1-3x"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
 </div>
