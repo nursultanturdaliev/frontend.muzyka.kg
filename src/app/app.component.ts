@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
   @ViewChild('toggleBtn') toggleBtn:ElementRef;
 
   public player:Observable<Player>;
-  private subscription;
+  public currentSong:Song;
 
   constructor(public playerService:PlayerService,
               public authService:AuthService,
@@ -44,6 +44,9 @@ export class AppComponent implements OnInit{
     fb.init(initParams);
 
     this.player = this._store.select('player');
+    this.player.subscribe((p:Player)=>{
+      this.currentSong = p && p.song;
+    });
   }
   ngOnInit():void {
     this.favouriteService.all()
@@ -60,9 +63,5 @@ export class AppComponent implements OnInit{
   public logout() {
     this.authService.logout();
     this.router.navigate(['/']);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }
