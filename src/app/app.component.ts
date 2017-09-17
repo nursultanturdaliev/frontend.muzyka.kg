@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild, Renderer} from '@angular/core';
+import {Component, ElementRef, ViewChild, Renderer,OnInit} from '@angular/core';
 import {PlayerService} from './services/player.service';
 import {SongService} from './services/song.service';
 import {AuthService} from './services/auth.service';
@@ -20,7 +20,7 @@ export interface AppState {
   styleUrls: ['./app.component.css'],
   providers: [SongService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   @ViewChild('toggleBtn') toggleBtn:ElementRef;
 
   public player:Observable<Player>;
@@ -31,6 +31,7 @@ export class AppComponent {
               private fb:FacebookService,
               private router:Router,
               private renderer:Renderer,
+              private favouriteService:FavouriteService,
               private localStorageService : LocalStorageService,
   private _store:Store<AppState>) {
     const initParams:InitParams = {
@@ -43,6 +44,12 @@ export class AppComponent {
     fb.init(initParams);
 
     this.player = this._store.select('player');
+  }
+  ngOnInit():void {
+    this.favouriteService.all()
+      .then(favourites => {
+        this.localStorageService.setLocalFavorites(favourites);
+      });
   }
 
   public menuItemClick() {
