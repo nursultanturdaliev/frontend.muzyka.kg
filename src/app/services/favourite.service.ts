@@ -26,7 +26,6 @@ export class FavouriteService extends BaseService {
   }
 
   favourite(song:Song):Promise<Favourite> {
-    this.localSorageService.addFavorite(song.id);
     return this.authHttp.post(this.configService.APIS_URL + '/favourite/song/' + song.uuid, {})
       .toPromise()
       .then(response => response.json() as Favourite)

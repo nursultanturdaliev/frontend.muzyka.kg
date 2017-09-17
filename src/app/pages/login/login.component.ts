@@ -8,6 +8,8 @@ import { LoginResponse, FacebookService,LoginOptions } from 'ngx-facebook';
 import {ToastrService} from "ngx-toastr/index";
 import {GoogleService} from "../../services/GoogleService";
 import {AuthGoogleService} from "../../services/AuthGoogleService";
+import {LocalStorageService} from "../../services/LocalStorageService";
+import {FavouriteService} from "../../services/favourite.service";
 
 @Component({
   selector: 'app-login',
@@ -27,7 +29,10 @@ export class LoginComponent implements OnInit {
               private facebookService:FacebookService,
               private toastrService:ToastrService,
               private googleService:GoogleService,
-              private authGoogleService:AuthGoogleService) {
+              private authGoogleService:AuthGoogleService,
+              private localStorageService:LocalStorageService,
+              private favouriteService:FavouriteService
+              ) {
     this.createForm();
   }
 
@@ -77,6 +82,10 @@ export class LoginComponent implements OnInit {
           })
           .then(()=> {
             this.toastrService.info('Кош келиңиз!');
+            this.favouriteService.all()
+              .then(favourites => {
+                this.localStorageService.setLocalFavorites(favourites);
+              });
           })
           .catch(()=> {
             this.toastrService.error('Катталуу үзгүлтүккө учурады. Кайрадан аракет кылып көрүңүз.')
@@ -95,7 +104,10 @@ export class LoginComponent implements OnInit {
           })
           .then(()=> {
             this.toastrService.info('Кош келиңиз!');
-
+            this.favouriteService.all()
+              .then(favourites => {
+                this.localStorageService.setLocalFavorites(favourites);
+              });
           })
           .catch((error)=> {
             console.log(error);
@@ -125,6 +137,10 @@ export class LoginComponent implements OnInit {
       .then(authResponse=> {
         this.authService.saveToLocalStorage(authResponse);
         this.toastrService.info('Кош келиңиз');
+        this.favouriteService.all()
+          .then(favourites => {
+            this.localStorageService.setLocalFavorites(favourites);
+          });
         this.router.navigate(['/']);
       })
       .catch((error:Response)=> {
