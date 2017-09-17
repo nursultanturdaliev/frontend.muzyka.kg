@@ -16,13 +16,11 @@ export class ArtistComponent implements OnInit, OnDestroy {
 
   public artist:Artist;
   public artistId:number;
-  public randomSongs:Song[];
   private sub:Subscription;
   public artistSongs:string;
   public listen:string;
 
   constructor(private artistService:ArtistService,
-              private songService:SongService,
               private route:ActivatedRoute) {
     this.artistSongs = 'Ырларым';
     this.listen = 'Тыңшап көрүңүз';
@@ -40,10 +38,6 @@ export class ArtistComponent implements OnInit, OnDestroy {
     this.artistService.getArtist(this.artistId)
       .then(artist => {
         this.artist = artist;
-      });
-    this.songService.getRandomSongs({'artistId': this.artistId})
-      .then(randomSongs => {
-        this.randomSongs = randomSongs
       });
   }
 
