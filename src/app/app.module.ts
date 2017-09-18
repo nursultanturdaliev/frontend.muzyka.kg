@@ -57,6 +57,7 @@ import {LocalStorageService} from "./services/LocalStorageService";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {playerReducer} from "./reducer/player.reducer";
+import {ProfilePipe} from "./pipe/profile.pipe";
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,8 @@ import {playerReducer} from "./reducer/player.reducer";
     SongInfoComponent,
     UserRegisterComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+    ProfilePipe
   ],
 
   imports: [
@@ -106,9 +108,7 @@ import {playerReducer} from "./reducer/player.reducer";
       positionClass: 'toast-bottom-right'
     }),
     StoreModule.forRoot({player: playerReducer}),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25 //  Retains last 25 states
-    })
+    StoreDevtoolsModule.instrument({maxAge: 25})
   ],
   providers: [
     AppService,

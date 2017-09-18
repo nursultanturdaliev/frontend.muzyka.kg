@@ -8,7 +8,7 @@
              style="width: 134px; height: 134px; line-height: 134px;">
           <div class="thumb-lg">
             <a routerLink="/artist/{{artist.id}}" >
-              <img [src]="artist.profileLocal" class="img-circle" alt="{{artist.name}}">
+              <img [src]="artist.profileLocal|profile" class="img-circle" alt="{{artist.name}}">
             </a>
           </div>
           <canvas width="268" height="268" style="width: 134px; height: 134px;"></canvas>

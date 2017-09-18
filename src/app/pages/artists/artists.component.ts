@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,Inject} from '@angular/core';
 import {Artist} from '../../Models/artist';
 import {ArtistService} from '../../services/artist.service';
+import {DOCUMENT} from '@angular/common';
 @Component({
   selector: 'app-artists',
   templateUrl: './artists.component.html',
@@ -11,10 +12,12 @@ export class ArtistsComponent implements OnInit {
   public page:number;
   public noMoreArtists:boolean;
   public songFilter:any = {name: ''};
-  constructor(private artistService:ArtistService) {
+  public artistsScrollContainer;
+  constructor(private artistService:ArtistService, @Inject(DOCUMENT) private document:any) {
     this.page = 1;
     this.artists = [];
     this.noMoreArtists = false;
+    this.artistsScrollContainer = this.document.querySelector('#bjax-target');
   }
 
   ngOnInit() {

@@ -23,7 +23,8 @@
                                 </div>
                             </div>
                             <a routerLink="/artist/{{artist.id}}">
-                                <img src="{{artist.profileLocal}}" alt="{{artist.name}}" class="r r-2x img-full">
+                                <img [lazyLoad]="artist.profileLocal|profile" [scrollTarget]="artistsScrollContainer"
+                                     src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" alt="{{artist.name}}" class="r r-2x img-full">
                             </a>
                         </div>
                         <div class="padder-v">

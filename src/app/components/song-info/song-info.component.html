@@ -3,8 +3,7 @@
     <div class="row row-sm">
       <div class="col-md-6">
         <div class="text-center m-b-md">
-          <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
-               [lazyLoad]="song.profileLocal"
+          <img [lazyLoad]="song.profileLocal | profile"
                alt="{{song.title}}" class="thumb-lg img-circle avatar">
         </div>
         <h4 class="text-center">

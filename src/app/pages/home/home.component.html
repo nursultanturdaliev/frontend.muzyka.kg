@@ -28,7 +28,7 @@
                     </div>
                 </div>
               </div>
-              <a><img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" [lazyLoad]="song.profileLocal" alt="" class="r r-2x img-full"></a>
+              <a><img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" [lazyLoad]="song.profileLocal|profile" [alt]="song.title" class="r r-2x img-full"></a>
             </div>
             <div class="padder-v">
               <a routerLink="/song/{{song.uuid}}" class="text-ellipsis">{{song.title}}</a>
@@ -60,8 +60,8 @@
                   </div>
                   <a class="pull-left thumb-sm m-r">
                       <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
-                           [lazyLoad]="song.profileLocal"
-                           alt="..." class="img-circle">
+                           [lazyLoad]="song.profileLocal|profile"
+                           [alt]="song.title" class="img-circle">
                   </a>
                 <a routerLink="/song/{{song.uuid}}" class="block text-ellipsis">
                   <small class="text-muted">{{song.title}}</small>
