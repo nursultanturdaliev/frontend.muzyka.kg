@@ -18,27 +18,27 @@
             *ngFor="let song of songs; let i = index" class="list-group-item"
             [ngClass]="{active: playerService.isCurrentSong(song)}">
           <div class="row">
-            <div class="col-md-1">
+            <div class="col-xs-1">
 
               <i class="icon-control-play text fa-1-3x" (click)="playerService.play(song,songs)"
                  *ngIf="!playerService.isCurrentSong(song)"></i>
               <i class="icon-control-pause fa-1-3x" (click)="playerService.pause()"
                  *ngIf="playerService.isCurrentSong(song)"></i>
             </div>
-            <div class="col-md-9">
+            <div class="col-xs-9">
               <p><a routerLink="/song/{{song.uuid}}">{{song.title}}</a></p>
               <a routerLink="/artist/{{artist.id}}" class="text-muted accent-link"
                  *ngFor="let artist of song.artists; let  last=last; let index=index;">
                 {{artist.name}}<span *ngIf="last!=true">, </span>
               </a>
             </div>
-            <div class="col-md-1">
+            <div class="col-xs-1">
               <a (click)="appService.favourite(song)">
                 <i class="icon-heart text-danger-dker fa-1-3x" *ngIf="localStorageService.isFavorite(song.id)"></i>
                 <i class="icon-heart fa-1-3x" *ngIf="!localStorageService.isFavorite(song.id)"></i>
               </a>
             </div>
-            <div class="col-md-1">
+            <div class="col-xs-1">
               <a (click)="appService.download(song, songs, i)">
                 <i class="icon-cloud-download fa-1-3x"></i>
               </a>
