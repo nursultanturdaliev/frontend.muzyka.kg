@@ -59,8 +59,7 @@
                       </a>
                   </div>
                   <a class="pull-left thumb-sm m-r">
-                      <img src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
-                           [lazyLoad]="song.profileLocal|profile"
+                      <img [src]="song.profileLocal|profile"
                            [alt]="song.title" class="img-circle">
                   </a>
                 <a routerLink="/song/{{song.uuid}}" class="block text-ellipsis">
