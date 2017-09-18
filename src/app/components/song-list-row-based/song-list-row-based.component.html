@@ -23,7 +23,7 @@
               <strong>{{song.title}}</strong>
             </a>
           </div>
-          <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.id}}">{{artist.name}} <span *ngIf="!last">, </span></a>
+          <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.id}}">{{artist.name}}<span *ngIf="!last">, </span></a>
           <div>
             <span class="label label-info" *ngIf="song.is_new">Жаңы</span>
           </div>

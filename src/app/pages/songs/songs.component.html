@@ -5,7 +5,7 @@
     <section class="panel panel-default">
       <header class="panel-heading">
         <input #searchInput type="text" class="input-md form-control" name="searchText"
-               placeholder="Издөө" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
+               placeholder="Фильтр" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
       </header>
       <ul class="list-group list-group-lg no-border bg-info-ltest m-b-lg auto"
           id="songs" *ngIf="songs" infiniteScroll
@@ -34,7 +34,7 @@
             </div>
             <div class="col-xs-1">
               <a (click)="appService.favourite(song)">
-                <i class="icon-heart text-danger-dker fa-1-3x" *ngIf="localStorageService.isFavorite(song.id)"></i>
+                <i class="icon-heart text-danger-dker like-button fa-1-3x" *ngIf="localStorageService.isFavorite(song.id)"></i>
                 <i class="icon-heart fa-1-3x" *ngIf="!localStorageService.isFavorite(song.id)"></i>
               </a>
             </div>
