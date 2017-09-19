@@ -15,11 +15,12 @@ export class SongsComponent implements OnInit {
   songs: Song[];
   searchText: string;
   page: number;
+  lyricsHeight: string;
 
   constructor(private SongService: SongService,
               public playerService: PlayerService,
               public appService: AppService,
-              public localStorageService:LocalStorageService) {
+              public localStorageService: LocalStorageService) {
     this.page = 1;
   }
 
@@ -28,10 +29,11 @@ export class SongsComponent implements OnInit {
       .then(songs => {
         this.songs = songs;
       });
+    this.lyricsHeight = (document.getElementById('bjax-target').offsetHeight) - 60 + 'px';
   }
 
   search(value) {
-    if (value.length > 2){
+    if (value.length > 2) {
       this.SongService.search(value)
         .then(songs => {
           this.songs = songs;
@@ -45,5 +47,9 @@ export class SongsComponent implements OnInit {
       .then(songs => {
         Array.prototype.push.apply(this.songs, songs);
       });
+  }
+
+  formatLyrics(str) {
+    return str.replace(/(?:\r\n|\r|\n)/g, '<br />');
   }
 }
