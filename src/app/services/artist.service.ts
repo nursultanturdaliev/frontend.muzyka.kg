@@ -20,14 +20,14 @@ export class ArtistService {
     return this.http.get(this.configService.API_URL + '/artist/' + artistId)
       .toPromise()
       .then(response => response.json() as Artist)
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
   random(limit:number):Promise<Artist[]> {
     return this.http.get(this.configService.API_URL + '/artist/random/' + limit)
       .toPromise()
       .then(response => response.json() as Artist[])
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
   private handleError(error:any):Promise<any> {
