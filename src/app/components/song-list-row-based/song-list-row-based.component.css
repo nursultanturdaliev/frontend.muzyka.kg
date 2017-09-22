@@ -1,0 +1,7 @@
+.song-list-row-based .thumb-sm {
+  margin-top: 10px;
+}
+
+.song-list-row-based .thumb-sm:hover {
+  cursor: pointer;
+}

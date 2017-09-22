@@ -3,7 +3,6 @@
  */
 export class BaseService {
   protected handleError(error:any):Promise<any> {
-    console.error('Error!', error);
     return Promise.reject(error.message || error);
   }
 }

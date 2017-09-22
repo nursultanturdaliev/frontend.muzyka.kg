@@ -14,16 +14,14 @@
           </a>
         </span>
         <div class="pull-right text-accent m-t-sm">
-          <i class="fa fa-play fa-1-5x" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
-          <i class="fa fa-pause fa-1-5x" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
+          <i class="icon-control-play text fa-1-3x" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
+          <i class="icon-control-pause text fa-1-3x" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
         </div>
         <div class="media-body">
           <div>
-            <a routerLink="/song/{{song.uuid}}" class="text-ellipsis">
-              <strong>{{song.title}}</strong>
-            </a>
+            <a routerLink="/song/{{song.uuid}}" class="accent-link">{{song.title}}</a>
           </div>
-          <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.id}}">{{artist.name}}<span *ngIf="!last">, </span></a>
+          <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.id}}"><small>{{artist.name}}</small><span *ngIf="!last">, </span></a>
           <div>
             <span class="label label-info" *ngIf="song.is_new">Жаңы</span>
           </div>
