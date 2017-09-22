@@ -48,8 +48,4 @@ export class SongsComponent implements OnInit {
         Array.prototype.push.apply(this.songs, songs);
       });
   }
-
-  formatLyrics(str) {
-    return str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-  }
 }

@@ -58,6 +58,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {playerReducer} from "./reducer/player.reducer";
 import {ProfilePipe} from "./pipe/profile.pipe";
+import {BrPipe} from "./pipe/br.pipe";
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +86,8 @@ import {ProfilePipe} from "./pipe/profile.pipe";
     UserRegisterComponent,
     ContactComponent,
     AboutComponent,
-    ProfilePipe
+    ProfilePipe,
+    BrPipe
   ],
 
   imports: [

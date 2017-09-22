@@ -39,9 +39,6 @@ export class SongComponent implements OnInit, OnDestroy {
     this.songService.getSong(this.songId)
       .then(song => {
         this.song = song;
-        if(song.lyrics) {
-          this.song.lyrics = this.song.lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        }
       });
   }
 

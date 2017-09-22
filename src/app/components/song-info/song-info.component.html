@@ -83,7 +83,7 @@
                 <p *ngIf="song.composed_by"><strong>Обону:</strong> {{song.composed_by}}</p>
               </div>
               <div class="panel-body">
-                <p [innerHTML]="song.lyrics">
+                <p [innerHTML]="song.lyrics|br">
                 </p>
               </div>
             </div>
