@@ -132,7 +132,7 @@
                             <div class="dropdown dropup wrapper-sm clearfix" *ngIf="currentSong">
                                 <a class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="thumb-sm avatar pull-left m-l-xs">
-                                      <img [lazyLoad]="currentSong.profileLocal"
+                                      <img [lazyLoad]="currentSong.profileLocal|profile"
                                            src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
                                            class="r r-2x img-full">
                                         <i class="on b-black"></i>
