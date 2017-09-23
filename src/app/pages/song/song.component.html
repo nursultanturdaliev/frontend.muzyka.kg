@@ -1,1 +1,79 @@
-<app-song-info [song]="song"></app-song-info>
+<div class="row m-t-md" *ngIf="song">
+  <div class="col-md-6">
+    <div class="panel wrapper text-center">
+      <img [lazyLoad]="song.profileLocal | profile"
+           alt="{{song.title}}" class="thumb-lg avatar">
+      <h4 class="song-title text-center m-b-md">
+        «{{song.title}}»
+        <br/>
+        <a *ngFor="let artist of song.artists; let last=last;"
+           class="font-thin" routerLink="/artist/{{artist.id}}">{{artist.name}}<span *ngIf="!last">, </span></a>
+      </h4>
+      <div class="divider m-b-md"></div>
+      <div class="row">
+        <div class="col-xs-4">
+          <div>
+            <a class="jp-play-me m-r-sm pull-left cursor-hand">
+              <i class="icon-control-play text-lg" (click)="playerService.play(song)"
+                 *ngIf="!playerService.isCurrentSong(song)">
+                <span class="font-default text-md">Ойнотуу</span>
+              </i>
+              <i class="icon-control-pause text-lg" (click)="playerService.pause()"
+                 *ngIf="playerService.isCurrentSong(song)">
+                <span class="font-default text-md">Токтотуу</span>
+              </i>
+            </a>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <a (click)="appService.download(song,song,1)" class="m-r-sm cursor-hand">
+            <i class="icon-cloud-download text-lg"> <span class="font-default text-md">Көчүрүү</span></i>
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a class="m-r-sm cursor-hand" (click)="appService.favourite(song)">
+            <i class="icon-heart text-lg" *ngIf="!localStorageService.isFavorite(song.id)"></i>
+            <i class="icon-heart text-lg text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
+            <span class="font-default text-md">Жакты</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 text-center m-b-md">
+      <h5 class="font-thin">Сүйүктүү ырыңызды cоциалдык тармактарда бөлүшүңүз</h5>
+    </div>
+    <div class="share-on-sm">
+      <div class="col-xs-2">
+        <a [href]="share.facebook(getCurrentUrl())" class="btn btn-facebook"><i class="fa fa-facebook"></i></a>
+      </div>
+      <div class="col-xs-2">
+        <a [href]="share.odnoklassniki(getCurrentUrl())" class="btn btn-odnoklassniki"><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a>
+      </div>
+      <div class="col-xs-2">
+        <a [href]="share.twitter(getCurrentUrl())" class="btn btn-twitter"><i class="fa fa-twitter"></i></a>
+      </div>
+      <div class="col-xs-2">
+        <a [href]="share.vkontakte(getCurrentUrl())" class="btn btn-vk"><i class="fa fa-vk"></i></a>
+      </div>
+      <div class="col-xs-2">
+        <a [href]="share.whatsapp(getCurrentUrl())" class="btn btn-whatsapp"><i class="fa fa-whatsapp"></i></a>
+      </div>
+      <div class="col-xs-2">
+        <a [href]="share.telegram(getCurrentUrl())" class="btn btn-telegram"><i class="fa fa-telegram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" *ngIf="song.lyrics">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="center text-center">«{{song.title}}»</h4>
+        <p *ngIf="song.written_by"><strong>Сөзү:</strong> {{song.written_by}}</p>
+        <p *ngIf="song.composed_by"><strong>Обону:</strong> {{song.composed_by}}</p>
+      </div>
+      <div class="panel-body">
+        <p [innerHTML]="song.lyrics|br">
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
