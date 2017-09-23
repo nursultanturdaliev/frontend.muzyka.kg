@@ -26,6 +26,7 @@ export class PlayerComponent implements OnInit {
   repeat:boolean;
   muted:boolean;
   currentTime:any;
+  pausedTime:any;
   progressBar:any;
   volume:any;
   tempVolume:any;
@@ -59,7 +60,7 @@ export class PlayerComponent implements OnInit {
       this.duration = this.formatTime(this.audio.duration);
     });
     this.audio.addEventListener('timeupdate', (event) => {
-      this.currentTime = this.formatTime(this.audio.currentTime)
+      this.currentTime = this.formatTime(this.audio.currentTime);
     });
 
     this.playerObservable = store.select('player');
@@ -94,10 +95,14 @@ export class PlayerComponent implements OnInit {
     if (!song) {
       return;
     }
-    this.currentSong = song;
-    this.audio.src = this.getCurrentURL(song);
+
+    if(this.currentSong != song){
+      this.currentSong = song;
+      this.pausedTime = 0;
+    }
+    this.audio.src = this.getCurrentURL(this.currentSong);
     this.audio.play();
-    this.audio.currentTime = 0;
+    this.audio.currentTime = this.pausedTime;
     this.playing = true;
     document.getElementById('musicbar').className += ' animate';
   }
@@ -119,6 +124,7 @@ export class PlayerComponent implements OnInit {
   }
 
   pause() {
+    this.pausedTime = this.audio.currentTime;
     this.playing = false;
     this.paused = true;
     this.audio.pause();
