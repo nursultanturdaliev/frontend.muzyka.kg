@@ -56,6 +56,8 @@ import {LocalStorageService} from "./services/LocalStorageService";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {playerReducer} from "./reducer/player.reducer";
+import { SearchComponent } from './components/search/search.component';
+import {SearchService} from "./services/search.service";
 import {ProfilePipe} from "./pipe/profile.pipe";
 import {BrPipe} from "./pipe/br.pipe";
 @NgModule({
@@ -85,6 +87,7 @@ import {BrPipe} from "./pipe/br.pipe";
     ContactComponent,
     AboutComponent,
     ProfilePipe,
+    SearchComponent,
     BrPipe
   ],
 
@@ -123,7 +126,8 @@ import {BrPipe} from "./pipe/br.pipe";
     UserService,
     GoogleService,
     AuthGoogleService,
-    LocalStorageService
+    LocalStorageService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })
