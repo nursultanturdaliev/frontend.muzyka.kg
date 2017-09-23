@@ -30,7 +30,6 @@ import { SongListComponent } from './components/index';
 import { SongListRowBasedComponent } from './components/index';
 import { HistoryListComponent } from './components/index';
 import {UserFormComponent} from "./components/index";
-import {SongInfoComponent} from './components/index';
 
 import {UserRegisterComponent } from './pages/index';
 import { ProfileComponent } from './pages/index';
@@ -60,12 +59,12 @@ import { SearchComponent } from './components/search/search.component';
 import {SearchService} from "./services/search.service";
 import {ProfilePipe} from "./pipe/profile.pipe";
 import {BrPipe} from "./pipe/br.pipe";
+import {ShareService} from "./services/share.service";
 @NgModule({
   declarations: [
     AppComponent,
     ArtistComponent,
     ArtistInfoComponent,
-    SongInfoComponent,
     ArtistsComponent,
     FavouriteComponent,
     HistoryListComponent,
@@ -82,7 +81,6 @@ import {BrPipe} from "./pipe/br.pipe";
     UserFormComponent,
     UserRegisterComponent,
     SongComponent,
-    SongInfoComponent,
     UserRegisterComponent,
     ContactComponent,
     AboutComponent,
@@ -127,7 +125,8 @@ import {BrPipe} from "./pipe/br.pipe";
     GoogleService,
     AuthGoogleService,
     LocalStorageService,
-    SearchService
+    SearchService,
+    ShareService
   ],
   bootstrap: [AppComponent]
 })
