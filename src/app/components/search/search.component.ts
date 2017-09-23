@@ -4,6 +4,8 @@ import {SearchService} from "../../services/search.service";
 import {AuthHttp} from "angular2-jwt";
 import {ArtistService} from "../../services/artist.service";
 import {Router} from "@angular/router";
+import {Song} from "../../Models/song";
+import {Artist} from "../../Models/artist";
 
 @Component({
   selector: 'app-search',
@@ -32,14 +34,14 @@ export class SearchComponent {
     }
   }
 
-  getResultArtist(artist){
+  navigateToArtistPage(artist:Artist){
     this.result = null;
-    this.router.navigate(['artist/',artist]);
+    this.router.navigate(['artist/'+ artist.id]);
   }
 
-  getResultSong(song){
+  navigateToSongPage(song:Song){
     this.result = null;
-    this.router.navigate(['song/',song]);
+    this.router.navigate(['song/'+ song.uuid]);
   }
 
 }

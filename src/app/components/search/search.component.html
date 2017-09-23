@@ -13,24 +13,24 @@
 </form>
 <ul *ngIf="result" class="list-group alt live-search">
   <li class="list-group-item"><strong>Аткаруучулар</strong></li>
-  <li class="list-group-item" *ngFor="let artist of result.artists" (click)="getResultArtist(artist.id)">
+  <li class="list-group-item" *ngFor="let artist of result.artists" (click)="navigateToArtistPage(artist)">
     <div class="media">
     <span class="pull-left thumb-xs">
       <img src="{{artist.profileLocal|profile}}" class="img-circle">
     </span>
       <div class="media-body m-t-xs">
-        <div><a href="#">{{artist.name}}</a></div>
+        <div>{{artist.name}}</div>
       </div>
     </div>
   </li>
   <li class="list-group-item"><strong>Ырлар</strong></li>
-  <li class="list-group-item" *ngFor="let song of result.songs" (click)="getResultSong(song.uuid)">
+  <li class="list-group-item" *ngFor="let song of result.songs" (click)="navigateToSongPage(song)">
     <div class="media">
     <span class="pull-left thumb-xs">
       <img src="{{song.cover|profile}}" class="img-circle">
     </span>
       <div class="media-body m-t-xs">
-        <div class="m-t-x"><a href="#">{{song.title}}</a></div>
+        <div class="m-t-x">{{song.title}}</div>
       </div>
     </div>
   </li>
