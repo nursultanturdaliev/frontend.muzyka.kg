@@ -1,0 +1,7 @@
+.live-search .list-group-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.live-search .list-group-item:hover{
+  cursor: pointer;
+}

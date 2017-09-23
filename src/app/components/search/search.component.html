@@ -3,7 +3,7 @@
     <div class="input-group">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-sm bg-white btn-icon rounded">
-                            <i class="fa fa-search"></i>
+                          <i class="fa fa-search"></i>
                         </button>
                     </span>
       <input [(ngModel)]="searchText" type="text" name="text" class="form-control input-sm no-border rounded"
@@ -11,18 +11,28 @@
     </div>
   </div>
 </form>
-
-
-<div *ngIf="result" class="live-search">
-  <h4 *ngFor="let artist of result.artists" (click)="getResultArtist(artist.id)">
-    <a href="javascript:(void 0)">
-
-      <i *ngIf="artist.gender == null" class="icon-users"></i>
-      <i *ngIf="artist.gender == 'f'" class="icon-user-female"></i>
-      <i *ngIf="artist.gender == 'm'" class="icon-user"></i>
-      {{artist.name}}
-    </a>
-  </h4>
-  <h4 *ngFor="let song of result.songs" (click)="getResultSong(song.uuid)"><a href="javascript:(void 0)"> <i class="icon-music-tone"></i>{{song.artist_as_one}} {{song.title}}</a></h4>
-</div>
+<ul *ngIf="result" class="list-group alt live-search">
+  <li class="list-group-item"><strong>Аткаруучулар</strong></li>
+  <li class="list-group-item" *ngFor="let artist of result.artists" (click)="getResultArtist(artist.id)">
+    <div class="media">
+    <span class="pull-left thumb-xs">
+      <img src="{{artist.profileLocal|profile}}" class="img-circle">
+    </span>
+      <div class="media-body m-t-xs">
+        <div><a href="#">{{artist.name}}</a></div>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item"><strong>Ырлар</strong></li>
+  <li class="list-group-item" *ngFor="let song of result.songs" (click)="getResultSong(song.uuid)">
+    <div class="media">
+    <span class="pull-left thumb-xs">
+      <img src="{{song.cover|profile}}" class="img-circle">
+    </span>
+      <div class="media-body m-t-xs">
+        <div class="m-t-x"><a href="#">{{song.title}}</a></div>
+      </div>
+    </div>
+  </li>
+</ul>
 
