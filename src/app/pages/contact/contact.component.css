@@ -1,0 +1,25 @@
+.btn-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  font-size: 32px;
+  padding-top: 16px;
+}
+
+.contact-header {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contact-phone {
+  display: block;
+}
+
+.contact-heading {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.btn .fa {
+  color: white;
+}
