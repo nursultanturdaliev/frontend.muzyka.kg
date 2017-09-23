@@ -45,8 +45,7 @@
       <div class="list-group bg-white list-group-lg auto">
 
           <ul class="list-group list-group-lg bg-white auto m-b-none">
-              <li class="list-group-item clearfix" *ngFor="let song of topSongs; let index=index;" [ngClass]="{active: playerService.isCurrentSong(song)}"
-                  (click)="playerService.play(song,topSongs)">
+              <li class="list-group-item clearfix" *ngFor="let song of topSongs; let index=index;" [ngClass]="{active: playerService.isCurrentSong(song)}">
                   <span class="pull-left h2 m-r">{{index + 1}}</span>
                   <div (click)="appService.download(song,topSongs,index)">
                       <a class="pull-right m-t-sm m-l text-md text-accent cursor-hand">

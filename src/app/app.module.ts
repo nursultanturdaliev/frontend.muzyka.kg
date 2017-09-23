@@ -25,7 +25,6 @@ import {ReactiveFormsModule } from '@angular/forms';
 import {AppRoutingModule} from './routing/app-routing.module';
 
 import { ArtistInfoComponent } from './components/index';
-import { MySongsComponent } from './components/index';
 import {PlayerComponent} from './components/index';
 import { SongListComponent } from './components/index';
 import { SongListRowBasedComponent } from './components/index';
@@ -70,7 +69,6 @@ import {BrPipe} from "./pipe/br.pipe";
     HistoryListComponent,
     HomeComponent,
     LoginComponent,
-    MySongsComponent,
     NewsongsComponent,
     PlayerComponent,
     ProfileComponent,
