@@ -16,11 +16,11 @@ export class SearchComponent {
 
   _searchText: any;
   hide: boolean;
-  private search: Search[];
+  public search: Search[];
+  public result: Search;
   constructor(private searchService: SearchService, public artistService:ArtistService,private router: Router) {
   }
 
-  private result: Search;
   set searchText(searchText: string) {
     this.hide = true;
     this._searchText = searchText;
