@@ -1,22 +1,23 @@
 <div class="row row-sm">
   <ng-container *ngFor="let song of songs; let i = index;">
+    <div class="clearfix" *ngIf="i % 4 == 0"></div>
     <div class="col-xs-6 col-sm-4 col-md-3">
       <div class="item">
         <div class="pos-rlt discover-song">
 
           <div class="item-overlay opacity r r-2x bg-black">
             <div class="center text-center m-t-n">
-              <a>
-                <i class="fa fa-play fa-1-5x" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
-                <i class="fa fa-pause fa-1-5x" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
+              <a class="cursor-hand">
+                <i class="icon-control-play i-2x" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
+                <i class="icon-control-pause i-2x" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
               </a>
             </div>
             <div class="bottom padder m-b-sm">
-              <a (click)="appService.favourite(song)" class="pull-right">
+              <a (click)="appService.favourite(song)" class="pull-right cursor-hand">
                 <i class="fa fa-heart-o fa-1-5x text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
                 <i class="fa fa-heart-o fa-1-5x" *ngIf="!localStorageService.isFavorite(song.id)"></i>
               </a>
-              <a (click)="appService.download(song)" class="pull-left">
+              <a (click)="appService.download(song)" class="pull-left cursor-hand">
                 <i class="fa fa-cloud-download fa-1-5x"></i>
               </a>
             </div>
