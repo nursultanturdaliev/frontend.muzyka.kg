@@ -37,11 +37,14 @@ export class PlayerComponent implements OnInit {
   player:Player;
   duration:string;
 
+  iOSAudioSrc:any;
+
   constructor(public playerService:PlayerService,
               private songService:SongService,
               private ref:ChangeDetectorRef,
               private configService:ConfigService,
               private store:Store<AppState>) {
+
     this.audio = new Audio();
 
     setInterval(() => {
@@ -79,6 +82,7 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.playing = false;
     this.paused = true;
     this.muted = false;
@@ -92,6 +96,7 @@ export class PlayerComponent implements OnInit {
   }
 
   play(song:Song) {
+
     if (!song) {
       return;
     }
@@ -100,7 +105,16 @@ export class PlayerComponent implements OnInit {
       this.currentSong = song;
       this.pausedTime = 0;
     }
-    this.audio.src = this.getCurrentURL(this.currentSong);
+
+    if (this.isIOS()) {
+      this.audio = <HTMLMediaElement>document.getElementById("audio");
+      this.iOSAudioSrc = <HTMLMediaElement>document.getElementById("audio-src");
+      this.iOSAudioSrc.src = this.getCurrentURL(this.currentSong);
+      this.audio.load();
+
+    } else {
+      this.audio.src = this.getCurrentURL(this.currentSong);
+    }
     this.audio.play();
     this.audio.currentTime = this.pausedTime;
     this.playing = true;
@@ -222,5 +236,12 @@ export class PlayerComponent implements OnInit {
       this.audio.volume = Math.round(this.volume / 100);
     }
     this.muted = !this.muted;
+  }
+
+  public isIOS(){
+    return parseFloat(
+      ('' + (/CPU.*OS ([0-9_]{1,5})|(CPU like).*AppleWebKit.*Mobile/i.exec(navigator.userAgent) || [0,''])[1])
+        .replace('undefined', '3_2').replace('_', '.').replace('_', '')
+    ) || false;
   }
 }

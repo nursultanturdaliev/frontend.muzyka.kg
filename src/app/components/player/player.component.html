@@ -57,6 +57,11 @@
             <div class="hide"><a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
               <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
             </div>
+
+            <audio *ngIf="isIOS()" controls="" id="audio" autoplay="">
+              <source id="audio-src" src="" type="audio/mpeg">
+            </audio>
+
           </div>
         </div>
       </div>
