@@ -7,14 +7,11 @@ import {ConfigService} from "../services/config.service";
   }
 )
 export class ProfilePipe implements PipeTransform {
-  private relativeDirectory:string = '/uploads/artist/profile/';
-
-  constructor(private configService:ConfigService){}
 
   public transform(value:string):string {
     if(!value){
       value = 'placeholder_one';
     }
-    return this.configService.URL + this.relativeDirectory + value + '.jpg';
+    return 'https://storage.googleapis.com/muzykakg/'+ value + '.jpg';
   }
 }
