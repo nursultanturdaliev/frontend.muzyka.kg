@@ -33,10 +33,14 @@
               </a>
             </div>
             <div class="col-xs-1">
-              <a (click)="appService.favourite(song)">
-                <i class="icon-heart text-danger-dker like-button fa-1-3x" *ngIf="localStorageService.isFavorite(song.id)"></i>
-                <i class="icon-heart fa-1-3x" *ngIf="!localStorageService.isFavorite(song.id)"></i>
+              <a (click)="appService.removeFavourite(song)" *ngIf="localStorageService.isFavorite(song.id)" class="pull-right cursor-hand">
+                <i class="fa fa-heart-o fa-1-5x text-danger-dker"></i>
               </a>
+
+              <a (click)="appService.favourite(song)" *ngIf="!localStorageService.isFavorite(song.id)" class="pull-right cursor-hand">
+                <i class="fa fa-heart-o fa-1-5x"></i>
+              </a>
+
             </div>
             <div class="col-xs-1">
               <a (click)="appService.download(song, songs, i)">

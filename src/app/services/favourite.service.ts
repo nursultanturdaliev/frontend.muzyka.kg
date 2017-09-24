@@ -35,4 +35,16 @@ export class FavouriteService extends BaseService {
       })
       .catch(this.handleError);
   }
+
+  removeFavourite(song:Song):Promise<Favourite> {
+    return this.authHttp.post(this.configService.APIS_URL + '/favourite/remove/song/' + song.uuid, {})
+      .toPromise()
+      .then(response => response.json() as Favourite)
+      .then((favourite:Favourite) =>{
+        this.localSorageService.removeFavorite(favourite.song.id);
+        return favourite;
+      })
+      .catch(this.handleError);
+  }
+
 }
