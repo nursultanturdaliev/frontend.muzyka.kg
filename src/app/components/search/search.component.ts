@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {Search} from "../../Models/search";
 import {SearchService} from "../../services/search.service";
 import {AuthHttp} from "angular2-jwt";
@@ -10,7 +10,12 @@ import {Artist} from "../../Models/artist";
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+
+  host: {
+    '(document:click)': 'onOutsideClick($event)',
+  },
+
 })
 export class SearchComponent {
 
@@ -18,7 +23,15 @@ export class SearchComponent {
   hide: boolean;
   public search: Search[];
   public result: Search;
-  constructor(private searchService: SearchService, public artistService:ArtistService,private router: Router) {
+  constructor(private searchService: SearchService,
+              public artistService:ArtistService,
+              private router: Router,
+              private _eref: ElementRef) {
+  }
+
+  onOutsideClick(event) {
+    if(!this._eref.nativeElement.contains(event.target))
+      this.resetSearch();
   }
 
   set searchText(searchText: string) {
@@ -44,4 +57,7 @@ export class SearchComponent {
     this.router.navigate(['song/'+ song.uuid]);
   }
 
+  resetSearch(){
+    this.result = null;
+  }
 }

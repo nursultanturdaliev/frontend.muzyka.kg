@@ -13,10 +13,15 @@
               </a>
             </div>
             <div class="bottom padder m-b-sm">
-              <a (click)="appService.favourite(song)" class="pull-right cursor-hand">
-                <i class="fa fa-heart-o fa-1-5x text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
-                <i class="fa fa-heart-o fa-1-5x" *ngIf="!localStorageService.isFavorite(song.id)"></i>
+              <a (click)="appService.removeFavourite(song)" *ngIf="localStorageService.isFavorite(song.id)" class="pull-right cursor-hand">
+                <i class="fa fa-heart-o fa-1-5x text-danger-dker"></i>
               </a>
+
+              <a (click)="appService.favourite(song)" *ngIf="!localStorageService.isFavorite(song.id)" class="pull-right cursor-hand">
+                <i class="fa fa-heart-o fa-1-5x"></i>
+              </a>
+
+
               <a (click)="appService.download(song)" class="pull-left cursor-hand">
                 <i class="fa fa-cloud-download fa-1-5x"></i>
               </a>

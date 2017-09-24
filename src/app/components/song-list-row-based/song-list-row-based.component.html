@@ -8,9 +8,11 @@
     <li class="list-group-item song-list-row-based" *ngFor="let song of songs| filterBy: songFilter; let index = index" [ngClass]="{active: playerService.isCurrentSong(song)}">
       <div class="media">
         <span class="pull-left thumb-sm" style="margin-left: 5px; margin-right: -3px;">
-          <a (click)="appService.favourite(song)">
-            <i class="fa fa-heart-o fa-1-5x  text-danger-dker" *ngIf="localStorageService.isFavorite(song.id)"></i>
-            <i class="fa fa-heart-o fa-1-5x"  *ngIf="!localStorageService.isFavorite(song.id)"></i>
+          <a (click)="appService.removeFavourite(song)" *ngIf="localStorageService.isFavorite(song.id)">
+            <i class="fa fa-heart-o fa-1-5x text-danger-dker"></i>
+          </a>
+          <a (click)="appService.favourite(song)" *ngIf="!localStorageService.isFavorite(song.id)">
+            <i class="fa fa-heart-o fa-1-5x"></i>
           </a>
         </span>
         <div class="pull-right text-accent m-t-sm">

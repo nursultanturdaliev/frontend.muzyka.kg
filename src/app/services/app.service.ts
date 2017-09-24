@@ -38,6 +38,18 @@ export class AppService {
       });
   }
 
+  removeFavourite(song:Song) {
+    this.favouriteService.removeFavourite(song)
+      .then((favourite:Favourite)=> {
+        this.toastrService.info('Сиз сүйгөн ырлар тизмегинен өчүрүлдү.', favourite.song.artist_as_one + ' ' + favourite.song.title);
+      })
+      .catch((response) => {
+        if(response.status == 409){
+          this.toastrService.warning('Бул ыр сүйгөн ырлар тизмегинде жок.');
+        }
+      });
+  }
+
   download(song: Song) {
     let downloadUrl = this.configService.API_URL + '/song/stream/' + song.uuid;
 
