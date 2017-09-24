@@ -9,7 +9,7 @@ export class GoogleService {
   constructor() {
     gapi.load('auth2', ()=> {
       this.auth2 = gapi.auth2.init({
-        client_id: '477569422113-tph1nvuv3n01mhkki09494u7n1moru0r.apps.googleusercontent.com',
+        client_id: '206742710770-4745okje7auaio006j53ng38141ar97p.apps.googleusercontent.com',
         fetch_basic_profile: true,
         scope: 'profile'
       });
