@@ -5,3 +5,7 @@
 .live-search .list-group-item:hover{
   cursor: pointer;
 }
+.search-close i{
+  font-size: 15px;
+  color: red;
+}
