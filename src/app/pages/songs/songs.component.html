@@ -1,6 +1,6 @@
 <h3 class="font-thin m-b-md">Ырлар</h3>
 <div class="row">
-  <div style="float: left" class="col-md-7 col-sm-6 col-xs-12">
+  <div class="col-xs-12">
 
     <section class="panel panel-default">
       <header class="panel-heading">
@@ -51,42 +51,5 @@
         </li>
       </ul>
     </section>
-  </div>
-  <div *ngFor="let song of songs; let i = index" class="col-md-3 col-sm-6 col-xs-12"
-       [ngClass]="{active: playerService.isCurrentSong(song)}"
-       >
-    <div *ngIf="playerService.isCurrentSong(song)" style="overflow:scroll;" class="panel panel-default lyrics"
-    [ngStyle]="{'height':lyricsHeight }">
-
-      <div class="panel-heading">
-        <h4 class="center text-center">{{song.title}}</h4>
-        <p *ngIf="song.written_by"><strong>Сөзү:</strong> {{song.written_by}}</p>
-        <!--<p *ngIf="!song.written_by">-->
-          <!--Жазуучусун киргизсеңиз <br>-->
-          <!--сизге 5 упай-->
-          <!--<br>-->
-          <!--<a href="#"><i class="fa fa-keyboard-o fa-1-3x"></i>киргизүү</a>-->
-        <!--</p>-->
-        <p *ngIf="song.composed_by"><strong>Обону:</strong> {{song.composed_by}}</p>
-        <!--<p *ngIf="!song.composed_by">-->
-          <!--Обончусун киргизсеңиз <br>-->
-          <!--сизге 5 упай-->
-          <!--<br>-->
-          <!--<a href="#"><i class="fa fa-keyboard-o fa-1-3x"></i>киргизүү</a>-->
-        <!--</p>-->
-      </div>
-      <div class="panel-body">
-        <p *ngIf="song.lyrics" [innerHTML]="song.lyrics|br">
-        </p>
-        <!--<p *ngIf="!song.lyrics">-->
-          <!--Тексттин киргизсеңиз-->
-          <!--<br>-->
-          <!--сизге 10 упай-->
-          <!--<br>-->
-          <!--<a href="#"><i class="fa fa-keyboard-o fa-1-3x"></i>киргизүү</a>-->
-        <!--</p>-->
-      </div>
-    </div>
-
   </div>
 </div>

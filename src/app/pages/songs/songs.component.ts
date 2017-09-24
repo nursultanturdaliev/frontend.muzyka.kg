@@ -15,7 +15,6 @@ export class SongsComponent implements OnInit {
   songs: Song[];
   searchText: string;
   page: number;
-  lyricsHeight: string;
 
   constructor(private SongService: SongService,
               public playerService: PlayerService,
@@ -29,7 +28,6 @@ export class SongsComponent implements OnInit {
       .then(songs => {
         this.songs = songs;
       });
-    this.lyricsHeight = (document.getElementById('bjax-target').offsetHeight) - 60 + 'px';
   }
 
   search(value) {
