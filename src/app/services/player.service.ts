@@ -14,6 +14,7 @@ export class PlayerService {
   private songs:any;
   private index:any;
   public currentTime:any;
+  public currentSong:any;
   public currentSongTitle:any;
   public player:Player;
 
@@ -35,6 +36,12 @@ export class PlayerService {
   }
 
   play(song:Song, songs) {
+    if(this.currentSong != song){
+      let currentUuid = this.currentSong ? this.currentSong.uuid : null;
+      let nextUuid = song.uuid;
+      this.currentSong = song;
+      this.historyService.updateHistory(currentUuid, nextUuid);
+    }
     //noinspection TypeScriptValidateTypes
     this.store.dispatch({type: playerActions.PLAY, payload: {song: song, songs: songs}});
   }
