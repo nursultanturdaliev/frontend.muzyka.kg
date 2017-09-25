@@ -1,30 +1,30 @@
 /**
  * Created by nursultan on 7/30/17.
  */
-import {BaseService} from "./BaseService";
-import {AuthHttp} from "angular2-jwt";
+import {BaseService} from './BaseService';
+import {AuthHttp} from 'angular2-jwt';
 import {Song} from '../Models/song';
-import {Injectable } from '@angular/core';
-import {ConfigService} from "./config.service";
-import {AuthService} from "./auth.service";
+import {Injectable} from '@angular/core';
+import {ConfigService} from './config.service';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class HistoryService extends BaseService {
 
-  constructor(private authHttp:AuthHttp,
-              private authService:AuthService,
-              private configService:ConfigService) {
+  constructor(private authHttp: AuthHttp,
+              private authService: AuthService,
+              private configService: ConfigService) {
     super();
   }
 
-  all():Promise<History[]> {
+  all(): Promise<History[]> {
     return this.authHttp.get(this.configService.APIS_URL + '/history')
       .toPromise()
       .then(response => response.json() as History[])
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
-  start(uuid:string) {
+  start(uuid: string) {
     if (!this.authService.loggedIn()) {
       return;
     }
@@ -34,17 +34,17 @@ export class HistoryService extends BaseService {
       .catch(this.handleError);
   }
 
-  stop(uuid:string) {
+  stop(uuid: string) {
     if (!this.authService.loggedIn()) {
       return;
     }
     return this.authHttp.put(this.configService.APIS_URL + '/history/stop/' + uuid, {})
       .toPromise()
       .then(response => response)
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
-  updateHistory(currentUuid:string, nextUuid:string):void {
+  updateHistory(currentUuid: string, nextUuid: string): void {
 
     if (!this.authService.loggedIn()) {
       return;
@@ -52,11 +52,11 @@ export class HistoryService extends BaseService {
 
     if (currentUuid) {
       this.stop(currentUuid)
-        .then(()=> {
-          this.start(nextUuid)
+        .then(() => {
+          this.start(nextUuid);
         })
-        .catch(()=> {
-          this.start(nextUuid)
+        .catch(() => {
+          this.start(nextUuid);
         });
     } else {
       this.start(nextUuid);
