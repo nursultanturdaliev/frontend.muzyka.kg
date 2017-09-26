@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 export class ConfigService {
   public API_URL = 'http://api-muzyka.aio.kg/api';
   public APIS_URL = 'http://api-muzyka.aio.kg/apis';
+  public HISTORY_APIS_URL = 'http://api-muzyka.aio.kg/aapis';
   public URL = 'http://api-muzyka.aio.kg';
 
   // public API_URL = 'http://muzyka.api/api';
