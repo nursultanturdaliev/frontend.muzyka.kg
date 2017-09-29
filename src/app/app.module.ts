@@ -60,6 +60,8 @@ import {SearchService} from "./services/search.service";
 import {ProfilePipe} from "./pipe/profile.pipe";
 import {BrPipe} from "./pipe/br.pipe";
 import {ShareService} from "./services/share.service";
+import {PlaylistsComponent} from "./pages/index";
+import {PlaylistService} from "./services/playlist.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +88,7 @@ import {ShareService} from "./services/share.service";
     AboutComponent,
     ProfilePipe,
     SearchComponent,
+    PlaylistsComponent,
     BrPipe
   ],
 
@@ -126,7 +129,8 @@ import {ShareService} from "./services/share.service";
     AuthGoogleService,
     LocalStorageService,
     SearchService,
-    ShareService
+    ShareService,
+    PlaylistService
   ],
   bootstrap: [AppComponent]
 })

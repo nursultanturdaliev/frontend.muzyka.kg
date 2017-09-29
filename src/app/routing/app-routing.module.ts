@@ -15,11 +15,12 @@ import {
   RandomsongsComponent,
   SongsComponent,
   TopsongsComponent,
-  SongComponent
+  SongComponent,
+  UserRegisterComponent,
+  ContactComponent,
+  AboutComponent,
+  PlaylistsComponent
 } from '../pages/index';
-import {UserRegisterComponent} from '../pages/index';
-import {ContactComponent} from "../pages/index";
-import {AboutComponent} from "../pages/index";
 
 const appRoutes:Routes = <Routes>[
   {
@@ -77,6 +78,10 @@ const appRoutes:Routes = <Routes>[
   {
     path: 'about',
     component: AboutComponent,
+  },
+  {
+    path: 'playlists',
+    component: PlaylistsComponent
   }
 ];
 

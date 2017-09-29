@@ -15,3 +15,4 @@ export {UserRegisterComponent} from './user-register/user-register.component';
 export {HomeComponent} from './home/home.component';
 export {ContactComponent} from './contact/contact.component';
 export {AboutComponent} from './about/about.component';
+export {PlaylistsComponent} from './playlists/playlists.component';

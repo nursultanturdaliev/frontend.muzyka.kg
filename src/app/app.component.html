@@ -101,6 +101,12 @@
                                             <span class="font-bold">Туш келди</span>
                                         </a>
                                     </li>
+                                  <li>
+                                    <a routerLink="/playlists" routerLinkActive="active" (click)="menuItemClick()">
+                                      <i class="icon-playlist"></i>
+                                      <span class="font-bold">Плейлисттер</span>
+                                    </a>
+                                  </li>
                                     <li *ngIf="authService.loggedIn()">
                                         <a routerLink="/favourite" routerLinkActive="active" (click)="menuItemClick()">
                                             <i class="icon-heart icon text-danger-dker"></i>
