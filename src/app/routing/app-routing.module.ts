@@ -21,6 +21,7 @@ import {
   AboutComponent,
   PlaylistsComponent
 } from '../pages/index';
+import {PlaylistComponent} from "../pages/playlist/playlist.component";
 
 const appRoutes:Routes = <Routes>[
   {
@@ -82,6 +83,10 @@ const appRoutes:Routes = <Routes>[
   {
     path: 'playlists',
     component: PlaylistsComponent
+  },
+  {
+    path: 'playlist/:id',
+    component: PlaylistComponent
   }
 ];
 

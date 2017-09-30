@@ -62,6 +62,8 @@ import {BrPipe} from "./pipe/br.pipe";
 import {ShareService} from "./services/share.service";
 import {PlaylistsComponent} from "./pages/index";
 import {PlaylistService} from "./services/playlist.service";
+import {PlaylistComponent} from "./pages/playlist/playlist.component";
+import {PlaylistPipe} from "./pipe/playlistPhoto.pipe";
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +91,9 @@ import {PlaylistService} from "./services/playlist.service";
     ProfilePipe,
     SearchComponent,
     PlaylistsComponent,
-    BrPipe
+    PlaylistComponent,
+    BrPipe,
+    PlaylistPipe
   ],
 
   imports: [

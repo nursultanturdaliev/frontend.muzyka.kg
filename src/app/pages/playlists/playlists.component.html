@@ -16,14 +16,13 @@
             <div class="pos-rlt">
               <div class="item-overlay opacity r r-2x bg-black" routerLink="/playlist/{{playlist.id}}">
                 <div class="center text-center m-t-n">
-                  <!--<a routerLink="/playlist/{{playlist.id}}">-->
-                  <!--<i class="icon-user"></i>-->
-                  <!--Баракчам-->
-                  <!--</a>-->
+                  <a routerLink="/playlist/{{playlist.id}}">
+                  <span class="font-bold">{{playlist.name}}</span>
+                  </a>
                 </div>
               </div>
               <a routerLink="/playlist/{{playlist.id}}">
-                <img [lazyLoad]="playlist.profileLocal|profile" [scrollTarget]="playlistsScrollContainer"
+                <img [lazyLoad]="playlist.profile_photo|playlistPhoto" [scrollTarget]="playlistsScrollContainer"
                      src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" alt="{{playlist.name}}" class="r r-2x img-full">
               </a>
             </div>
