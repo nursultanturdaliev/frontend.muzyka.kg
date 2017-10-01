@@ -9,6 +9,7 @@ import {Playlist} from "../../Models/playlist";
 export class PlaylistsComponent implements OnInit {
 
   public playlists:Playlist[];
+  public playlistFilter:any = {name: ''};
 
   constructor(private playlistService:PlaylistService) {
     this.playlists = [];

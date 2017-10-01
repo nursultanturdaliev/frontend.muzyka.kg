@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <h3 class="font-thin m-b-md">Плейлисттер</h3>
     <div class="row">
-      <div *ngFor="let playlist of playlists| filterBy: songFilter; let index=index;">
+      <div *ngFor="let playlist of playlists| filterBy: playlistFilter; let index=index;">
 
         <div class="clearfix" *ngIf="index % 4 == 0"></div>
         <div class="col-xs-6 col-sm-3 m-b-md">
@@ -22,7 +22,7 @@
             </div>
             <div class="padder-v">
               <a routerLink="/playlist/{{playlist.id}}" class="text-ellipsis">{{playlist.name}}</a>
-              <span class="text-ellipsis text-xs text-muted pull-left">Ырлар</span>
+              <span class="text-ellipsis text-xs text-muted pull-left">Ыр</span>
               <span class="badge bg-info pull-right">{{playlist.numberOfSongs}}</span>
             </div>
           </div>

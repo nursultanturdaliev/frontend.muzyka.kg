@@ -9,9 +9,9 @@ import {Playlist} from "../../Models/playlist";
   templateUrl: './playlist.component.html'
 })
 export class PlaylistComponent implements OnInit,OnDestroy {
-  private playlistId:number;
-  private sub:Subscription;
-  private playlist:Playlist;
+  public playlistId:number;
+  public sub:Subscription;
+  public playlist:Playlist;
 
   constructor(private playlistService:PlaylistService,
               private route:ActivatedRoute) {
