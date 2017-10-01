@@ -2,13 +2,7 @@
   <div class="col-md-12">
     <h3 class="font-thin m-b-md">Плейлисттер</h3>
     <div class="row">
-      <div *ngFor="let playlist of playlists| filterBy: songFilter; let index=index;"
-           infiniteScroll
-           [infiniteScrollDistance]="2"
-           [infiniteScrollThrottle]="300"
-           (scrolled)="onScrollDown()"
-           [scrollWindow]="false"
-           [infiniteScrollContainer]='"#bjax-target"'>
+      <div *ngFor="let playlist of playlists| filterBy: songFilter; let index=index;">
 
         <div class="clearfix" *ngIf="index % 4 == 0"></div>
         <div class="col-xs-6 col-sm-3 m-b-md">
@@ -22,7 +16,7 @@
                 </div>
               </div>
               <a routerLink="/playlist/{{playlist.id}}">
-                <img [lazyLoad]="playlist.profile_photo|playlistPhoto" [scrollTarget]="playlistsScrollContainer"
+                <img [lazyLoad]="playlist.profile_photo|playlistPhoto"
                      src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" alt="{{playlist.name}}" class="r r-2x img-full">
               </a>
             </div>
