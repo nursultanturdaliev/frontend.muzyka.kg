@@ -2,6 +2,7 @@ import {Component, OnInit,Inject} from '@angular/core';
 import {Artist} from '../../Models/artist';
 import {ArtistService} from '../../services/artist.service';
 import {DOCUMENT} from '@angular/common';
+import {Window} from "../../services/window.service";
 @Component({
   selector: 'app-artists',
   templateUrl: './artists.component.html',
@@ -13,11 +14,19 @@ export class ArtistsComponent implements OnInit {
   public noMoreArtists:boolean;
   public songFilter:any = {name: ''};
   public artistsScrollContainer;
-  constructor(private artistService:ArtistService, @Inject(DOCUMENT) private document:any) {
+
+  constructor(private artistService:ArtistService, @Inject(DOCUMENT) private document:any, private window:Window) {
     this.page = 1;
     this.artists = [];
     this.noMoreArtists = false;
     this.artistsScrollContainer = this.document.querySelector('#bjax-target');
+
+    if (window.isMobile) {
+      window.nativeWindow.addEventListener('scroll', ()=> {
+        this.onScrollDown();
+      });
+      this.artistsScrollContainer = window.nativeWindow;
+    }
   }
 
   ngOnInit() {

@@ -64,6 +64,7 @@ import {PlaylistsComponent} from "./pages/index";
 import {PlaylistService} from "./services/playlist.service";
 import {PlaylistComponent} from "./pages/playlist/playlist.component";
 import {PlaylistPipe} from "./pipe/playlistPhoto.pipe";
+import {Window} from "./services/window.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -134,7 +135,8 @@ import {PlaylistPipe} from "./pipe/playlistPhoto.pipe";
     LocalStorageService,
     SearchService,
     ShareService,
-    PlaylistService
+    PlaylistService,
+    Window
   ],
   bootstrap: [AppComponent]
 })
