@@ -19,6 +19,11 @@
           <i class="icon-control-play text fa-1-3x" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
           <i class="icon-control-pause text fa-1-3x" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
         </div>
+        <div class="pull-right text-accent m-t-sm">
+          <a (click)="appService.download(song)" class="cursor-hand">
+            <i class="icon-cloud-download text fa-1-3x"></i>
+          </a>
+        </div>
         <div class="media-body">
           <div>
             <a routerLink="/song/{{song.uuid}}" class="accent-link">{{song.title}}</a>
