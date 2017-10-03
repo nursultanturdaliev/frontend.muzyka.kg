@@ -24,14 +24,14 @@
             <i class="icon-cloud-download text fa-1-3x"></i>
           </a>
         </div>
+          <div class="pull-right text-accent m-t-sm">
+              <span class="label label-info" *ngIf="song.is_new">Жаңы</span>
+          </div>
         <div class="media-body">
           <div>
             <a routerLink="/song/{{song.uuid}}" class="accent-link">{{song.title}}</a>
           </div>
           <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.id}}"><small>{{artist.name}}</small><span *ngIf="!last">, </span></a>
-          <div>
-            <span class="label label-info" *ngIf="song.is_new">Жаңы</span>
-          </div>
         </div>
 
       </div>
