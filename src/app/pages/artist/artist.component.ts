@@ -15,7 +15,7 @@ import {PlayerService} from '../../services/player.service';
 export class ArtistComponent implements OnInit, OnDestroy {
 
   public artist:Artist;
-  public artistId:number;
+  public artistSlug:string;
   private sub:Subscription;
   public artistSongs:string;
   public listen:string;
@@ -29,13 +29,13 @@ export class ArtistComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.artistId = +params['id'];
+      this.artistSlug = params['slug'];
       this.onUrlChange();
     });
   }
 
   onUrlChange(){
-    this.artistService.getArtist(this.artistId)
+    this.artistService.getArtist(this.artistSlug)
       .then(artist => {
         this.artist = artist;
       });

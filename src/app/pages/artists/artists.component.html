@@ -14,20 +14,20 @@
                 <div class="col-xs-6 col-sm-3 m-b-md">
                     <div class="item">
                         <div class="pos-rlt">
-                            <div class="item-overlay opacity r r-2x bg-black" routerLink="/artist/{{artist.id}}">
+                            <div class="item-overlay opacity r r-2x bg-black" routerLink="/artist/{{artist.slug}}">
                                 <div class="center text-center m-t-n">
-                                  <a routerLink="/artist/{{artist.id}}">
+                                  <a routerLink="/artist/{{artist.slug}}">
                                     <span class="font-bold">{{artist.name}} {{artist.lastname}}</span>
                                   </a>
                                 </div>
                             </div>
-                            <a routerLink="/artist/{{artist.id}}">
+                            <a routerLink="/artist/{{artist.slug}}">
                                 <img [lazyLoad]="artist.profileLocal|profile" [scrollTarget]="artistsScrollContainer"
                                      src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" alt="{{artist.name}}" class="r r-2x img-full">
                             </a>
                         </div>
                         <div class="padder-v">
-                            <a routerLink="/artist/{{artist.id}}" class="text-ellipsis">{{artist.name}}</a>
+                            <a routerLink="/artist/{{artist.slug}}" class="text-ellipsis">{{artist.name}}</a>
                             <span class="text-ellipsis text-xs text-muted pull-left">Ырлар</span>
                             <span class="badge bg-info pull-right">{{artist.numberOfSongs}}</span>
                         </div>

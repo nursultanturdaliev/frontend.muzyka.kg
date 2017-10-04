@@ -16,8 +16,8 @@ export class PlaylistService extends BaseService {
       .catch(this.handleError)
   }
 
-  public getPlaylist(id:number):Promise<Playlist> {
-    return this.http.get(this.configService.API_URL + '/playlist/' + id)
+  public getPlaylist(slug):Promise<Playlist> {
+    return this.http.get(this.configService.API_URL + '/playlist/' + slug)
       .toPromise()
       .then(response => response.json() as Playlist)
       .catch(this.handleError);

@@ -20,7 +20,7 @@ export class SongComponent implements OnInit, OnDestroy {
 
   public song:Song;
   public artist:Artist;
-  private songId:any;
+  private songSlug:any;
   private sub:Subscription;
 
 
@@ -36,13 +36,13 @@ export class SongComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params:Params) => {
-      this.songId = params['uuid'];
+      this.songSlug = params['slug'];
       this.onUrlChange();
     });
   }
 
   onUrlChange() {
-    this.songService.getSong(this.songId)
+    this.songService.getSong(this.songSlug)
       .then(song => {
         this.song = song;
       });

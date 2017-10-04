@@ -29,9 +29,9 @@
           </div>
         <div class="media-body">
           <div>
-            <a routerLink="/song/{{song.uuid}}" class="accent-link">{{song.title}}</a>
+            <a routerLink="/song/{{song.slug}}" class="accent-link">{{song.title}}</a>
           </div>
-          <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.id}}"><small>{{artist.name}}</small><span *ngIf="!last">, </span></a>
+          <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.slug}}"><small>{{artist.name}}</small><span *ngIf="!last">, </span></a>
         </div>
 
       </div>

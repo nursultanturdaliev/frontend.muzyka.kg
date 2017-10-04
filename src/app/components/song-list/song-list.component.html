@@ -34,11 +34,11 @@
         </div>
         <div class="padder-v">
           <div>
-            <a routerLink="/song/{{song.uuid}}" class="text-ellipsis">
+            <a routerLink="/song/{{song.slug}}" class="text-ellipsis">
             <strong>{{song.title}}</strong>
             </a>
           </div>
-          <a *ngFor="let artist of song.artists" routerLink="/artist/{{artist.id}}" class="text-ellipsis">
+          <a *ngFor="let artist of song.artists" routerLink="/artist/{{artist.slug}}" class="text-ellipsis">
             {{artist.name}} {{artist.lastname}}
           </a>
         </div>

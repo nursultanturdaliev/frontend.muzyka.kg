@@ -9,7 +9,7 @@ import {Playlist} from "../../Models/playlist";
   templateUrl: './playlist.component.html'
 })
 export class PlaylistComponent implements OnInit,OnDestroy {
-  public playlistId:number;
+  public playlistSlug:string;
   public sub:Subscription;
   public playlist:Playlist;
 
@@ -21,13 +21,13 @@ export class PlaylistComponent implements OnInit,OnDestroy {
 
   ngOnInit():void {
     this.sub = this.route.params.subscribe((params:Params) => {
-      this.playlistId = params['id'];
+      this.playlistSlug = params['slug'];
       this.onUrlChange();
     });
   }
 
   private onUrlChange() {
-    this.playlistService.getPlaylist(this.playlistId)
+    this.playlistService.getPlaylist(this.playlistSlug)
       .then(playlist => {
         this.playlist = playlist;
       });

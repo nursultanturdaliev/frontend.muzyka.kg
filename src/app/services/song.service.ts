@@ -20,8 +20,8 @@ export class SongService extends BaseService {
       .catch(this.handleError);
   }
 
-  getSong(songId):Promise<Song> {
-    return this.http.get(this.configService.API_URL + '/song/' + songId)
+  getSong(songSlug):Promise<Song> {
+    return this.http.get(this.configService.API_URL + '/song/' + songSlug)
         .toPromise()
         .then(response => response.json() as Song)
         .catch(this.handleError);

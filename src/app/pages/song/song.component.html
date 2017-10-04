@@ -7,7 +7,7 @@
         «{{song.title}}»
         <br/>
         <a *ngFor="let artist of song.artists; let last=last;"
-           class="font-thin" routerLink="/artist/{{artist.id}}">{{artist.name}}<span *ngIf="!last">, </span></a>
+           class="font-thin" routerLink="/artist/{{artist.slug}}">{{artist.name}}<span *ngIf="!last">, </span></a>
       </h4>
       <div class="divider m-b-md"></div>
       <div class="row">

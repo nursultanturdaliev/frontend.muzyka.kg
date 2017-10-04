@@ -53,7 +53,7 @@ const appRoutes:Routes = <Routes>[
     component: RandomsongsComponent,
   },
   {
-    path: 'artist/:id',
+    path: 'artist/:slug',
     component: ArtistComponent,
   },
   {
@@ -69,7 +69,7 @@ const appRoutes:Routes = <Routes>[
     component: UserRegisterComponent
   },
   {
-    path: 'song/:uuid',
+    path: 'song/:slug',
     component: SongComponent
   },
   {
@@ -85,7 +85,7 @@ const appRoutes:Routes = <Routes>[
     component: PlaylistsComponent
   },
   {
-    path: 'playlist/:id',
+    path: 'playlist/:slug',
     component: PlaylistComponent
   }
 ];

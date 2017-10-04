@@ -16,8 +16,8 @@ export class ArtistService {
       .catch(this.handleError);
   }
 
-  getArtist(artistId):Promise<Artist> {
-    return this.http.get(this.configService.API_URL + '/artist/' + artistId)
+  getArtist(artistSlug):Promise<Artist> {
+    return this.http.get(this.configService.API_URL + '/artist/' + artistSlug)
       .toPromise()
       .then(response => response.json() as Artist)
       .catch(this.handleError);

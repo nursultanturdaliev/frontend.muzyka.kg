@@ -26,8 +26,8 @@
                  *ngIf="playerService.isCurrentSong(song)"></i>
             </div>
             <div class="col-xs-9">
-              <p><a routerLink="/song/{{song.uuid}}">{{song.title}}</a></p>
-              <a routerLink="/artist/{{artist.id}}" class="text-muted accent-link"
+              <p><a routerLink="/song/{{song.slug}}">{{song.title}}</a></p>
+              <a routerLink="/artist/{{artist.slug}}" class="text-muted accent-link"
                  *ngFor="let artist of song.artists; let  last=last; let index=index;">
                 {{artist.name}}<span *ngIf="last!=true">, </span>
               </a>

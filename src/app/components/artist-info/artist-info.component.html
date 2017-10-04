@@ -7,14 +7,14 @@
              data-size="134" data-line-cap="butt" data-animate="1000"
              style="width: 134px; height: 134px; line-height: 134px;">
           <div class="thumb-lg">
-            <a routerLink="/artist/{{artist.id}}" >
+            <a routerLink="/artist/{{artist.slug}}" >
               <img [src]="artist.profileLocal|profile" class="img-circle" alt="{{artist.name}}">
             </a>
           </div>
           <canvas width="268" height="268" style="width: 134px; height: 134px;"></canvas>
         </div>
         <div class="h4 m-t m-b-xs">
-          <a routerLink="/artist/{{artist.id}}" >
+          <a routerLink="/artist/{{artist.slug}}" >
             {{artist.name}} {{artist.lastname}}
           </a>
         </div>
