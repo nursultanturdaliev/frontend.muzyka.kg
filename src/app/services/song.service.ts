@@ -24,7 +24,7 @@ export class SongService extends BaseService {
     return this.http.get(this.configService.API_URL + '/song/' + songId)
         .toPromise()
         .then(response => response.json() as Song)
-        .catch(this.handleError)
+        .catch(this.handleError);
   }
 
   getRandomSongs(options):Promise<Song[]> {

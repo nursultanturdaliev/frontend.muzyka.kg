@@ -26,21 +26,19 @@
             <span class="bar4 a4 bg-warning dk"></span>
             <span class="bar5 a5 bg-danger dker"></span>
         </span>
-    </ul>
-    <app-search></app-search>
-
-    <div class="navbar-right">
-      <ul class="nav navbar-nav m-n hidden-xs nav-user user" *ngIf="!authService.loggedIn()">
-        <li>
-          <a routerLink="/register" class="login-btn m-r-md"><i class="icon-user-follow"></i> Катталуу</a>
-        </li>
-        <li>
-          <a routerLink="/login" class="login-btn m-r-xl"><i class="icon-user"></i> Кирүү</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav m-n hidden-xs nav-user user" *ngIf="authService.loggedIn()">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+        </ul>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav m-n hidden-xs nav-user user" *ngIf="!authService.loggedIn()">
+                <li>
+                    <a routerLink="/register" class="login-btn m-r-md"><i class="icon-user-follow"></i> Катталуу</a>
+                </li>
+                <li>
+                    <a routerLink="/login" class="login-btn m-r-xl"><i class="icon-user"></i> Кирүү</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav m-n hidden-xs nav-user user" *ngIf="authService.loggedIn()">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
                 <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                   <img src="{{ authService.userPhoto() }}" alt="{{authService.userName()}}">
                 </span>
