@@ -49,12 +49,12 @@ export class SearchComponent {
 
   navigateToArtistPage(artist:Artist){
     this.result = null;
-    this.router.navigate(['artist/'+ artist.id]);
+    this.router.navigate(['artist/'+ artist.slug]);
   }
 
   navigateToSongPage(song:Song){
     this.result = null;
-    this.router.navigate(['song/'+ song.uuid]);
+    this.router.navigate(['song/'+ song.slug]);
   }
 
   resetSearch(){
