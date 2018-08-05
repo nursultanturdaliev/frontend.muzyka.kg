@@ -35,7 +35,8 @@
       <img src="{{song.cover|profile}}" class="img-circle">
     </span>
       <div class="media-body m-t-xs">
-        <div class="m-t-x">{{song.title}} - {{song.artists[0].name}} </div>
+        <div class="m-t-x" *ngIf="(song.artists).length">{{song.title}}  {{song.artists[0].name}} </div>
+        <div class="m-t-x" *ngIf="!(song.artists).length">{{song.title}}</div>
       </div>
     </div>
   </li>
