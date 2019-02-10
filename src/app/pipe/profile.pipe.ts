@@ -12,6 +12,8 @@ export class ProfilePipe implements PipeTransform {
     if(!value){
       value = 'placeholder_one';
     }
-    return 'https://storage.googleapis.com/muzykakg/'+ value + '.jpg';
+    return 'http://api-muzyka.aio.kg/uploads/artist/profile/' + value + '.jpg';
+
+    //return 'https://storage.googleapis.com/muzykakg/'+ value + '.jpg';
   }
 }
