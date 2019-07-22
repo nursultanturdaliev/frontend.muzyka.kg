@@ -1,144 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-aside.aside .vbox {
-  background-color: #232C32;
-}
-
-html {
-  background-color: white;
-  height: 100%;
-}
-
-body {
-  background-color: #f2f4f8 !important;
-  min-height: 100%;
-}
-
-.bg-black.auto .list-group-item, .bg-black .auto .list-group-item {
-  background-color: white;
-}
-
-.bg-black.dker, .bg-black .dker {
-  background-color: white;
-}
-
-#song-lyrics {
-  padding-left: 0 !important;
-}
-
-#song-lyrics pre {
-  background-color: white;
-  border: none;
-}
-
-.bg-black.auto .list-group-item:hover, .bg-black.auto .list-group-item:focus, .bg-black.auto .list-group-item:active, .bg-black.auto .list-group-item.active, .bg-black .auto .list-group-item:hover, .bg-black .auto .list-group-item:focus, .bg-black .auto .list-group-item:active, .bg-black .auto .list-group-item.active {
-  background-color: #691A99 !important;
-}
-
-.main-content {
-  margin: 15px;
-}
-
-
-.fa-1-5x {
-  font-size: 1.5em;
-}
-
-.bg-muzyka.dk, .bg-muzyka .dk {
-  cursor: pointer;
-}
-
-.content {
-  overflow-y: auto;
-}
-
-#volume-bar {
-  background-color: white;
-}
-
-.vertical-middle {
-  margin-top: 10px;;
-}
-
-.bg-muzyka.bg, .bg-muzyka .bg, .bg-muzyka.lter, .bg-muzyka .lter {
-  background-color: #FF5722 !important;
-}
-
-.bg-muzyka .text-muted {
-  color: #FF5722 !important;
-}
-
-.jp-volume {
-  width: 100px !important;
-}
-
-#song-lyrics .panel-heading a {
-  color: #691a99;
-}
-
-#song-lyrics .panel-heading a:hover {
-  color: #9b26af;
-}
-
-#main-content .list-group-item:hover {
-  background: rgb(247, 250, 250);
-}
-
-.bg-primary {
-  background-color: #691a99;
-}
-
-.bg-primary.dk, .bg-primary .dk {
-  background-color: #9b26af;
-}
-
-.list-group-item.active {
-  background-color: #9b26af !important;
-}
-
-#songs .fa-instagram {
-  margin-left: 10px;
-  margin-top: 5px;
-}
-
-.social-buttons {
-  position: absolute;
-  bottom: 65px;
-  left: 35px;
-}
-
-.list-group-item.active .text-muted {
-  color: #DDDDDD;
-}
-
-.bg-black a:hover, a.link-primary:hover, .artists a:hover {
-  color: #691a99;
-}
-
-.text-accent, .jp-pause, .jp-play {
-  color: #FF5722 !important
-}
-
-.bg-muzyka .text-muted {
-  color: white !important;
-}
-
-#progress-bar {
-  border-right: 2px solid #9b26af;
-  border-left: 2px solid #9b26af;
-  background-color: #691a99;
-}
-
-.discover-song .fa:hover {
-  cursor: pointer !important;
-}
-
-.text-center {
-  text-align: center;
-}
-
-/*
-*TOAST START
-*/
+/*TOAST START*/
 .toast-title {
   font-weight: bold;
 }
@@ -376,92 +236,20 @@ button.toast-close-button {
 * TOAST END
 */
 
-.song-list-row-based .fa-heart-o {
-  margin-top: 10px;
+#progress-bar {
+  border-right: 2px solid #3d4a81;
+  border-left: 2px solid #3d4a81;
 }
-
-.btn-primary {
-  color: #fff !important;
-  background-color: #691a99;
-  border-color: #691a99;
+.btn-google-plus {
+  background-color: #D84B37;
+  color: #fff;
 }
+.developer .developer-social-media {
+  font-size: 24px;
+  margin: 0 10px;
 
-.bg-primary {
-  color: #fff !important;
-  background-color: #691a99 !important;
 }
-
-.btn-facebook {
-  color: #FFFFFF;
-  background-color: #4267B2;
-  border-color: #4267B2;
-}
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-  color: #fff !important;
-  background-color: #9b26af;
-  border-color: #9b26af;
-}
-
-.bg-primary.bg,
-.bg-primary .bg,
-.bg-primary .nav > li > a:hover,
-.bg-primary .nav > li > a:focus,
-.bg-primary .nav > li > a.active {
-  background-color: #9b26af !important;
-}
-
-#songs .fa-heart-o {
-  margin-top: 15px;
-}
-
-.nav > li {
-  display: inline-block;
-}
-
-.mobile-menu-title {
-  font-size: 10px;
-}
-
-.mobile-menu-icon {
-  font-size: 1.5em;
-  text-align: center;
-  display: block;
-}
-
-.mobile-menu-container {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.mobile-menu {
-  text-align: center;
-}
-
-.btn-facebook:hover, .btn-facebook:focus, .btn-facebook:active, .btn-facebook.active, .open .dropdown-toggle.btn-facebook {
-  color: #fff !important;
-  background-color: #435ba7;
-  border-color: #435ba7;
-}
-
-.login-or {
-  font-weight: 700;
-  text-align: center;
-}
-
-.login-link {
-  font-weight: 700;
-  color: #691a99;
-}
-
-.accent-link:hover {
-  color: #FF5722 !important;
-}
-
-.fa-play, .fa-pause, .fa-heart-o, .fa-download {
-  cursor: pointer;
-}
-
-.item-overlay.active {
-  display: block;
+#map {
+  height: 400px;
+  width: 100%;
 }

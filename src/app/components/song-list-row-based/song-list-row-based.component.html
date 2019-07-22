@@ -1,34 +1,42 @@
 <section class="panel panel-default">
   <header class="panel-heading">
-    <p>{{title}}</p>
+    <!--<p>{{title}}</p>-->
     <input #searchInput type="text" class="input-md form-control" name="searchText"
            placeholder="Издөө" [(ngModel)]="songFilter.title">
   </header>
   <ul class="list-group" *ngIf="songs">
-    <li class="list-group-item song-list-row-based" *ngFor="let song of songs| filterBy: songFilter; let index = index"
-        [ngClass]="{active: playerService.isCurrentSong(song)}">
+    <li class="list-group-item song-list-row-based" *ngFor="let song of songs| filterBy: songFilter; let index = index" [ngClass]="{active: playerService.isCurrentSong(song)}">
       <div class="media">
-        <span class="pull-left ">
-          <a  (click)="appService.favourite(song)">
+        <span class="pull-left thumb-sm" style="margin-left: 5px; margin-right: -3px;">
+          <a (click)="appService.removeFavourite(song)" *ngIf="localStorageService.isFavorite(song.id)">
+            <i class="fa fa-heart-o fa-1-5x text-danger-dker"></i>
+          </a>
+          <a (click)="appService.favourite(song)" *ngIf="!localStorageService.isFavorite(song.id)">
             <i class="fa fa-heart-o fa-1-5x"></i>
           </a>
           <a  (click)="appService.download(song)">
             <i class="fa fa-download fa-1-5x"></i>
           </a>
         </span>
-        <div class="pull-right text-accent m-t-sm" (click)="playerService.play(song, songs,index )">
-          <i class="fa fa-play fa-1-5x"
-             [ngClass]="{'fa-play': !playerService.isCurrentSong(song), 'fa-pause': playerService.isCurrentSong(song)}"></i>
+        <div class="pull-right text-accent m-t-sm">
+          <i class="icon-control-play text fa-1-3x" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>
+          <i class="icon-control-pause text fa-1-3x" (click)="playerService.pause()" *ngIf="playerService.isCurrentSong(song)"></i>
         </div>
+        <div class="pull-right text-accent m-t-sm">
+          <a (click)="appService.download(song)" class="cursor-hand">
+            <i class="icon-cloud-download text fa-1-3x"></i>
+          </a>
+        </div>
+          <div class="pull-right text-accent m-t-sm">
+              <span class="label label-info" *ngIf="song.is_new">Жаңы</span>
+          </div>
         <div class="media-body">
           <div>
-            <strong>{{song.title}}</strong>
+            <a routerLink="/song/{{song.slug}}" class="accent-link">{{song.title}}</a>
           </div>
-          <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.id}}">{{artist.name}} <span *ngIf="!last">, </span></a>
-          <div>
-            <span class="label label-info" *ngIf="song.is_new">Жаңы</span>
-          </div>
+          <a class="text-muted accent-link" *ngFor="let artist of song.artists; let last=last" routerLink="/artist/{{artist.slug}}"><small>{{artist.name}}</small><span *ngIf="!last">, </span></a>
         </div>
+
       </div>
     </li>
   </ul>

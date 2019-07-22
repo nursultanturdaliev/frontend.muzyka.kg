@@ -4,6 +4,7 @@ import { AuthHttp } from 'angular2-jwt';
 import {ConfigService} from "./config.service";
 import {Favourite} from "../Models/Favourite";
 import {Song} from '../Models/song';
+import {LocalStorageService} from "./LocalStorageService";
 /**
  * Created by nursultan on 7/29/17.
  */
@@ -11,7 +12,9 @@ import {Song} from '../Models/song';
 @Injectable()
 export class FavouriteService extends BaseService {
 
-  constructor(private authHttp:AuthHttp, private configService:ConfigService) {
+  constructor(private authHttp:AuthHttp,
+              private configService:ConfigService,
+              private localSorageService : LocalStorageService) {
     super();
   }
 
@@ -26,6 +29,22 @@ export class FavouriteService extends BaseService {
     return this.authHttp.post(this.configService.APIS_URL + '/favourite/song/' + song.uuid, {})
       .toPromise()
       .then(response => response.json() as Favourite)
+      .then((favourite:Favourite) =>{
+        this.localSorageService.addFavorite(favourite.song.id);
+        return favourite;
+      })
       .catch(this.handleError);
   }
+
+  removeFavourite(song:Song):Promise<Favourite> {
+    return this.authHttp.post(this.configService.APIS_URL + '/favourite/remove/song/' + song.uuid, {})
+      .toPromise()
+      .then(response => response.json() as Favourite)
+      .then((favourite:Favourite) =>{
+        this.localSorageService.removeFavorite(favourite.song.id);
+        return favourite;
+      })
+      .catch(this.handleError);
+  }
+
 }

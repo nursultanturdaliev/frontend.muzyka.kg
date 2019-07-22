@@ -8,6 +8,8 @@ import { LoginResponse, FacebookService,LoginOptions } from 'ngx-facebook';
 import {ToastrService} from "ngx-toastr/index";
 import {GoogleService} from "../../services/GoogleService";
 import {AuthGoogleService} from "../../services/AuthGoogleService";
+import {LocalStorageService} from "../../services/LocalStorageService";
+import {FavouriteService} from "../../services/favourite.service";
 
 @Component({
   selector: 'app-login',
@@ -27,7 +29,10 @@ export class LoginComponent implements OnInit {
               private facebookService:FacebookService,
               private toastrService:ToastrService,
               private googleService:GoogleService,
-              private authGoogleService:AuthGoogleService) {
+              private authGoogleService:AuthGoogleService,
+              private localStorageService:LocalStorageService,
+              private favouriteService:FavouriteService
+              ) {
     this.createForm();
   }
 
@@ -67,6 +72,7 @@ export class LoginComponent implements OnInit {
           firstName: basicProfile.getGivenName(),
           lastName: basicProfile.getFamilyName(),
           email: basicProfile.getEmail(),
+          photo: basicProfile.getImageUrl(),
           accessToken: authResponse.access_token
         };
         this.authGoogleService.save(requestBody)
@@ -76,6 +82,10 @@ export class LoginComponent implements OnInit {
           })
           .then(()=> {
             this.toastrService.info('Кош келиңиз!');
+            this.favouriteService.all()
+              .then(favourites => {
+                this.localStorageService.setLocalFavorites(favourites);
+              });
           })
           .catch(()=> {
             this.toastrService.error('Катталуу үзгүлтүккө учурады. Кайрадан аракет кылып көрүңүз.')
@@ -84,7 +94,7 @@ export class LoginComponent implements OnInit {
   }
 
   saveFacebookCredentials() {
-    this.facebookService.api("/me?fields=id,name,email")
+    this.facebookService.api("/me?fields=id,name,first_name,last_name,email,picture.width(100).height(100)")
       .then((response)=> {
         let requestBody = this.prepareFacebookData(response);
         this.authService.loginWithFacebook(requestBody)
@@ -94,7 +104,10 @@ export class LoginComponent implements OnInit {
           })
           .then(()=> {
             this.toastrService.info('Кош келиңиз!');
-
+            this.favouriteService.all()
+              .then(favourites => {
+                this.localStorageService.setLocalFavorites(favourites);
+              });
           })
           .catch((error)=> {
             console.log(error);
@@ -107,9 +120,10 @@ export class LoginComponent implements OnInit {
     let authResponse = this.facebookService.getAuthResponse();
     return {
       email: apiResponse.email,
-      firstName: apiResponse.name,
-      lastName: apiResponse.name,
+      firstName: apiResponse.first_name,
+      lastName: apiResponse.last_name,
       accessToken: authResponse.accessToken,
+      photo: apiResponse.picture.data.url,
       id: authResponse.userID
     }
   }
@@ -123,6 +137,10 @@ export class LoginComponent implements OnInit {
       .then(authResponse=> {
         this.authService.saveToLocalStorage(authResponse);
         this.toastrService.info('Кош келиңиз');
+        this.favouriteService.all()
+          .then(favourites => {
+            this.localStorageService.setLocalFavorites(favourites);
+          });
         this.router.navigate(['/']);
       })
       .catch((error:Response)=> {

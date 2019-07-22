@@ -1,38 +1,50 @@
-<div class="main-content">
+<section class="scrollable padder-lg w-f-md">
   <div class="row">
-    <div class="col-md-6">
-      <header class="panel-heading font-bold">Катталуу</header>
-      <form role="form" [formGroup]="registrationForm" novalidate (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label>Атыңыз</label>
-          <input type="text" class="form-control" placeholder="Азамат" formControlName="firstName">
-        </div>
-        <div class="form-group">
-          <label>Фамилияңыз</label>
-          <input type="text" class="form-control" placeholder="Алиев" formControlName="lastName">
-        </div>
-        <div class="form-group">
-          <label>Электрондук адрес</label>
-          <input type="email" class="form-control" placeholder="азамат@muzyka.kg" formControlName="email"></div>
-        <div class="form-group">
-          <label>Купуя сөз</label>
-          <input type="password" class="form-control" placeholder="Купуя сөз" formControlName="password">
-        </div>
+    <div class="col-md-12 m-t-md">
+      <div class="row row-sm">
+        <div class="container aside-xl">
+          <a class="navbar-brand block">
+            <span class="h1 font-bold">Катталуу</span>
+          </a>
+          <section class="m-b-lg">
+            <header class="wrapper text-center">
+              <strong>Ырлар дүйнөсүнө кош келиңиз</strong>
+            </header>
+            <form role="form" [formGroup]="registrationForm" novalidate (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <input type="text" class="form-control rounded input-lg text-center no-border"
+                       placeholder="Атыңыз" formControlName="firstName">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control rounded input-lg text-center no-border"
+                       placeholder="Фамилияңыз" formControlName="lastName">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control rounded input-lg text-center no-border"
+                       placeholder="Электрондук адресиңиз" formControlName="email">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control rounded input-lg text-center no-border"
+                       placeholder="Купуя сөз" formControlName="password">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control rounded input-lg text-center no-border"
+                       placeholder="Купуя сөздү кайталаңыз" formControlName="confirmPassword">
+              </div>
 
-        <div class="form-group">
-          <label>Купуя сөздү кайталап коюңуз</label>
-          <input type="password" class="form-control" placeholder="Купуя сөз жогорудагынын өзү"
-                 formControlName="confirmPassword">
+              <button [disabled]="!registrationForm.valid" type="submit" class="btn btn-lg btn-primary lt b-white b-2x btn-block btn-rounded">
+                <i class="icon-arrow-right pull-right"></i>
+                <span class="m-r-n-lg">Катталуу</span>
+              </button>
+            </form>
+            <div class="line line-dashed"></div>
+            <p class="text-center">
+              <small>Эгер порталга катталган болсоңуз</small>
+            </p>
+            <a routerLink="/login" class="btn btn-lg btn-danger btn-block rounded">Кирүү</a>
+          </section>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">Катталуу</button>
-          </div>
-          <div class="col-md-6">
-            <p class="m-t-sm">Эчак эле мүчө болгонсузбу? <a routerLink="/login" class="login-link">кирүү</a></p>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
-</div>
+</section>

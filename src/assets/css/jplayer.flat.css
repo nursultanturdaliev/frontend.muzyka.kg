@@ -37,6 +37,7 @@ div.jp-progress{
 	right: 0px;
 	display: block !important;
 	line-height: 60px;
+  text-align: center !important;
 }
 .jp-title ul{
 	list-style: none;

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="font-thin m-b-md">Плейлисттер</h3>
+    <div class="row">
+      <div *ngFor="let playlist of playlists| filterBy: playlistFilter; let index=index;">
+
+        <div class="clearfix" *ngIf="index % 4 == 0"></div>
+        <div class="col-xs-6 col-sm-3 m-b-md">
+          <div class="item">
+            <div class="pos-rlt">
+              <div class="item-overlay opacity r r-2x bg-black" routerLink="/playlist/{{playlist.slug}}">
+                <div class="center text-center m-t-n">
+                  <a routerLink="/playlist/{{playlist.slug}}">
+                  <span class="font-bold">{{playlist.name}}</span>
+                  </a>
+                </div>
+              </div>
+              <a routerLink="/playlist/{{playlist.slug}}">
+                <img [lazyLoad]="playlist.profile_photo|playlistPhoto"
+                     src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg" alt="{{playlist.name}}" class="r r-2x img-full">
+              </a>
+            </div>
+            <div class="padder-v">
+              <a routerLink="/playlist/{{playlist.slug}}" class="text-ellipsis">{{playlist.name}}</a>
+              <span class="text-ellipsis text-xs text-muted pull-left">Ыр</span>
+              <span class="badge bg-info pull-right">{{playlist.numberOfSongs}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

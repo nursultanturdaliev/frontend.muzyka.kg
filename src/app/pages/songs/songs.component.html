@@ -1,56 +1,55 @@
-<section class="w-f-md">
-  <section class="hbox stretch main-content"> <!-- side content -->
-    <aside class="col-sm-5 no-padder" id="sidebar">
-      <section class="vbox animated fadeInUp">
-        <section class="scrollable">
+<h3 class="font-thin m-b-md">Ырлар</h3>
+<div class="row">
+  <div class="col-xs-12">
+
+    <section class="panel panel-default">
+      <header class="panel-heading">
+        <input #searchInput type="text" class="input-md form-control" name="searchText"
+               placeholder="Фильтр" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
+      </header>
+      <ul class="list-group list-group-lg no-border bg-info-ltest m-b-lg auto"
+          id="songs" *ngIf="songs" infiniteScroll
+          [infiniteScrollDistance]="10"
+          [infiniteScrollThrottle]="300"
+          [scrollWindow]="false"
+          [infiniteScrollContainer]='"#bjax-target"'
+          (scrolled)="onScrollDown()">
+        <li class="list-group-item"
+            *ngFor="let song of songs; let i = index" class="list-group-item"
+            [ngClass]="{active: playerService.isCurrentSong(song)}">
           <div class="row">
-            <div class="col-md-5 col-sm-6">
-              <section class="panel panel-default">
-                <header class="panel-heading">
-                  <input #searchInput type="text" class="input-md form-control" name="searchText"
-                         placeholder="Издөө" (ngModelChange)="search(searchInput.value)" [(ngModel)]="searchText">
-                </header>
-                <ul class="list-group alt" id="songs" *ngIf="songs" infiniteScroll
-                    [infiniteScrollDistance]="2"
-                    [infiniteScrollThrottle]="300"
-                    (scrolled)="onScrollDown()">
-                  <li class="list-group-item" *ngFor="let song of songs; let i = index" class="list-group-item"
-                      [ngClass]="{active: playerService.isCurrentSong(song)}">
-                    <div class="row">
-                      <div class="col-xs-1 col-sm-2" (click)="appService.favourite(song)">
-                        <i class="fa fa-heart-o fa-1-5x"></i>
-                      </div>
-                      <div class="col-xs-3 col-sm-2 ">
-                        <span class="pull-left thumb-sm avatar m-r artist-profile">
-                            <img alt="{{song.artist_as_one}}" [lazyLoad]="song.profileLocal"
-                                 src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg">
-                        </span>
-                      </div>
-                      <div class="col-xs-5 col-sm-6 no-padder">
-                        <div class="vertical-middle"><strong>{{song.title}}</strong></div>
-                        <a routerLink="/artist/{{artist.id}}" class="vertical-middle accent-link" *ngFor="let artist of song.artists; let  last=last;">{{artist.name}}<span *ngIf="!last">, </span></a>
-                        <div><span class="label label-info" *ngIf="song.is_new">Жаңы</span></div>
-                      </div>
-                      <div class="col-xs-2 col-sm-2" (click)="play(song, songs,i )">
-                        <div class="vertical-middle" >
-                          <i class="fa fa-play fa-1-5x text-accent" *ngIf="!playerService.isCurrentSong(song)"></i>
-                          <i class="fa fa-pause fa-1-5x text-accent" *ngIf="playerService.isCurrentSong(song)"></i>
-                        </div>
-                      </div>
-                        <div class="col-xs-1 col-sm-2"  (click)="appService.download(song)">
-                          <i class="fa fa-download fa-1-5x"></i>
-                        </div>
-                    </div>
-                  </li>
-                </ul>
-              </section>
+            <div class="col-xs-1">
+
+              <i class="icon-control-play text fa-1-3x" (click)="playerService.play(song,songs)"
+                 *ngIf="!playerService.isCurrentSong(song)"></i>
+              <i class="icon-control-pause fa-1-3x" (click)="playerService.pause()"
+                 *ngIf="playerService.isCurrentSong(song)"></i>
             </div>
-            <div class="col-md-6 col-sm-6 hidden-xs" id="song-lyrics" *ngIf="playingSong">
-              <app-my-songs [song]="playingSong"></app-my-songs>
+            <div class="col-xs-9">
+              <p><a routerLink="/song/{{song.slug}}">{{song.title}}</a></p>
+              <a routerLink="/artist/{{artist.slug}}" class="text-muted accent-link"
+                 *ngFor="let artist of song.artists; let  last=last; let index=index;">
+                {{artist.name}}<span *ngIf="last!=true">, </span>
+              </a>
+            </div>
+            <div class="col-xs-1">
+              <a (click)="appService.removeFavourite(song)" *ngIf="localStorageService.isFavorite(song.id)" class="pull-right cursor-hand">
+                <i class="fa fa-heart-o fa-1-5x text-danger-dker"></i>
+              </a>
+
+              <a (click)="appService.favourite(song)" *ngIf="!localStorageService.isFavorite(song.id)" class="pull-right cursor-hand">
+                <i class="fa fa-heart-o fa-1-5x"></i>
+              </a>
+
+            </div>
+            <div class="col-xs-1">
+              <a (click)="appService.download(song, songs, i)">
+                <i class="icon-cloud-download fa-1-3x"></i>
+              </a>
             </div>
           </div>
-        </section>
-      </section>
-    </aside>
-  </section>
-</section>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>

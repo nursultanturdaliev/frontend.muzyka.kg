@@ -39,12 +39,13 @@ export class AuthService extends BaseService {
       .then(response => response.json() as AuthResponse);
   }
 
-  public saveToLocalStorage(authResponse:AuthResponse):void {
+  public saveToLocalStorage(authResponse):void {
     localStorage.setItem('token', authResponse.token);
     localStorage.setItem('refresh_token', authResponse.refresh_token);
     localStorage.setItem('email', authResponse.user);
-    localStorage.setItem('first_name', authResponse.first_name);
-    localStorage.setItem('last_name', authResponse.last_name);
+    localStorage.setItem('first_name', authResponse.firstName ? authResponse.firstName : '' );
+    localStorage.setItem('last_name', authResponse.lastName ? authResponse.lastName : '' );
+    localStorage.setItem('photo', authResponse.photo ? authResponse.photo : 'profile.png');
   }
 
   loggedIn() {
@@ -55,7 +56,14 @@ export class AuthService extends BaseService {
     localStorage.clear();
   }
 
-  public userEmail() {
+  public userName() {
+      if( localStorage.getItem('first_name') || localStorage.getItem('last_name') ){
+          return (localStorage.getItem('first_name') + ' ' + localStorage.getItem('last_name'));
+      }
     return localStorage.getItem('email');
+  }
+
+  public userPhoto() {
+      return this.configService.URL + '/uploads/users/' + localStorage.getItem('photo');
   }
 }

@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "^4.3.4",
     "@angular/platform-server": "^4.3.4",
     "@angular/router": "^4.3.4",
+    "@ngrx/store": "^4.0.3",
+    "@ngrx/store-devtools": "^4.0.0",
     "@types/gapi": "0.0.34",
     "@types/gapi.auth2": "0.0.43",
     "angular2-jwt": "^0.2.3",

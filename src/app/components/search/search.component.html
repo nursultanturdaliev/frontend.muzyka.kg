@@ -1,0 +1,44 @@
+<form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs" role="search" autocomplete="off">
+  <div class="form-group">
+    <div class="input-group">
+                    <span class="input-group-btn">
+                        <button *ngIf="!result" type="submit" class="btn btn-sm bg-white btn-icon rounded">
+                          <i class="fa fa-search"></i>
+                        </button>
+
+                        <button *ngIf="result" (click)="resetSearch()"  type="reset" class="btn btn-sm bg-white btn-icon rounded search-close">
+                          <i class="fa fa-close"></i>
+                        </button>
+
+                    </span>
+      <input [(ngModel)]="searchText" type="text" name="text" class="form-control input-sm no-border rounded"
+             placeholder="Издөө...">
+    </div>
+  </div>
+</form>
+<ul *ngIf="result" class="list-group alt live-search">
+  <li class="list-group-item" *ngIf="(result.artists).length"><strong>Аткаруучулар</strong></li>
+  <li class="list-group-item" *ngFor="let artist of result.artists" (click)="navigateToArtistPage(artist)">
+    <div class="media">
+    <span class="pull-left thumb-xs">
+      <img src="{{artist.profileLocal|profile}}" class="img-circle">
+    </span>
+      <div class="media-body m-t-xs">
+        <div>{{artist.name}}</div>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item" *ngIf="(result.songs).length"><strong>Ырлар</strong></li>
+  <li class="list-group-item" *ngFor="let song of result.songs" (click)="navigateToSongPage(song)">
+    <div class="media">
+    <span class="pull-left thumb-xs">
+      <img src="{{song.cover|profile}}" class="img-circle">
+    </span>
+      <div class="media-body m-t-xs">
+        <div class="m-t-x" *ngIf="(song.artists).length">{{song.title}}  {{song.artists[0].name}} </div>
+        <div class="m-t-x" *ngIf="!(song.artists).length">{{song.title}}</div>
+      </div>
+    </div>
+  </li>
+</ul>
+

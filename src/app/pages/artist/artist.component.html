@@ -1,4 +1,4 @@
-<section *ngIf="artist" class="main-content">
+<section *ngIf="artist">
   <section class="vbox">
     <section class="w-f-md">
       <section class="hbox stretch">
@@ -7,14 +7,6 @@
             <section class="vbox animated fadeInUp">
               <app-artist-info [artist]="artist"></app-artist-info>
               <app-song-list-row-based [songs]="artist.songs" [title]="artistSongs"></app-song-list-row-based>
-            </section>
-          </div>
-          <div class="col-sm-6 hidden-xs col-sm-4 col-sm-offset-1
-          ">
-            <section class="vbox">
-              <section class="scrollable hover">
-                <app-song-list-row-based [songs]="randomSongs" [title]="listen"></app-song-list-row-based>
-              </section>
             </section>
           </div>
         </div>

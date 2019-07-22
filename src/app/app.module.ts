@@ -25,7 +25,6 @@ import {ReactiveFormsModule } from '@angular/forms';
 import {AppRoutingModule} from './routing/app-routing.module';
 
 import { ArtistInfoComponent } from './components/index';
-import { MySongsComponent } from './components/index';
 import {PlayerComponent} from './components/index';
 import { SongListComponent } from './components/index';
 import { SongListRowBasedComponent } from './components/index';
@@ -37,6 +36,7 @@ import { ProfileComponent } from './pages/index';
 import { FavouriteComponent } from './pages/index';
 import { HomeComponent } from './pages/index';
 import {ArtistComponent} from './pages/index';
+import {SongComponent} from './pages/index';
 import { LoginComponent } from './pages/index';
 import { TopsongsComponent } from './pages/index';
 import { NewsongsComponent } from './pages/index';
@@ -49,8 +49,22 @@ import {UserService} from "./services/user.service";
 import { FacebookModule } from 'ngx-facebook';
 import {GoogleService} from "./services/GoogleService";
 import {AuthGoogleService} from "./services/AuthGoogleService";
-
-
+import {ContactComponent} from "./pages/index";
+import {AboutComponent} from "./pages/index";
+import {LocalStorageService} from "./services/LocalStorageService";
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {playerReducer} from "./reducer/player.reducer";
+import { SearchComponent } from './components/search/search.component';
+import {SearchService} from "./services/search.service";
+import {ProfilePipe} from "./pipe/profile.pipe";
+import {BrPipe} from "./pipe/br.pipe";
+import {ShareService} from "./services/share.service";
+import {PlaylistsComponent} from "./pages/index";
+import {PlaylistService} from "./services/playlist.service";
+import {PlaylistComponent} from "./pages/playlist/playlist.component";
+import {PlaylistPipe} from "./pipe/playlistPhoto.pipe";
+import {Window} from "./services/window.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +75,6 @@ import {AuthGoogleService} from "./services/AuthGoogleService";
     HistoryListComponent,
     HomeComponent,
     LoginComponent,
-    MySongsComponent,
     NewsongsComponent,
     PlayerComponent,
     ProfileComponent,
@@ -71,7 +84,17 @@ import {AuthGoogleService} from "./services/AuthGoogleService";
     SongsComponent,
     TopsongsComponent,
     UserFormComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    SongComponent,
+    UserRegisterComponent,
+    ContactComponent,
+    AboutComponent,
+    ProfilePipe,
+    SearchComponent,
+    PlaylistsComponent,
+    PlaylistComponent,
+    BrPipe,
+    PlaylistPipe
   ],
 
   imports: [
@@ -93,6 +116,8 @@ import {AuthGoogleService} from "./services/AuthGoogleService";
       maxOpened: 3,
       positionClass: 'toast-bottom-right'
     }),
+    StoreModule.forRoot({player: playerReducer}),
+    StoreDevtoolsModule.instrument({maxAge: 25})
   ],
   providers: [
     AppService,
@@ -106,7 +131,12 @@ import {AuthGoogleService} from "./services/AuthGoogleService";
     PlayerService,
     UserService,
     GoogleService,
-    AuthGoogleService
+    AuthGoogleService,
+    LocalStorageService,
+    SearchService,
+    ShareService,
+    PlaylistService,
+    Window
   ],
   bootstrap: [AppComponent]
 })

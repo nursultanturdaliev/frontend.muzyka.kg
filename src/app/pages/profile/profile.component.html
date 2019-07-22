@@ -1,18 +1,16 @@
-<section class="main-content">
-  <section class="vbox">
-    <section class="scrollable">
-      <section class="hbox stretch">
-        <div class="row">
-          <div class="col-md-6">
-            <section class="panel panel-default" *ngIf="user">
-              <header class="panel-heading font-bold">Сиз тууралуу маалымат</header>
-              <div class="panel-body">
-                <app-user-form [user]="user" (userUpdated)="handleUserUpdate($event)"></app-user-form>
-              </div>
-            </section>
-          </div>
+<section class="vbox">
+  <section class="scrollable">
+    <section class="hbox stretch">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 m-t-lg">
+          <section class="panel panel-default" *ngIf="user">
+            <header class="panel-heading font-bold">Сиз тууралуу маалымат</header>
+            <div class="panel-body">
+              <app-user-form [user]="user" (userUpdated)="handleUserUpdate($event)"></app-user-form>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </section>
   </section>
 </section>

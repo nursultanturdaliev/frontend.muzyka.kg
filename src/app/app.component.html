@@ -1,126 +1,196 @@
 <section class="vbox">
-  <header class="bg-primary lter header header-sm navbar navbar-fixed-top-xs">
-    <div class="container" id="header-content">
-      <div class="navbar-right">
-        <ul class="nav navbar-nav hidden-xs">
-          <li>
-            <a routerLink="/">
-              <span class="font-bold" routerLinkActive="active">Башкы бет</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/songs">
-              <span class="font-bold" routerLinkActive="active">Ырлар</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/artists" routerLinkActive="active">
-              <span class="font-bold hidden-xs">Ырчылар</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/topsongs" routerLinkActive="active">
-              <span class="font-bold">Тренд</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/newsongs" routerLinkActive="active">
-              <span class="font-bold">Жаңы ырлар</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/randomsongs" routerLinkActive="active">
-              <span class="font-bold">Туш келди</span>
-            </a>
-          </li>
-          <li *ngIf="authService.loggedIn()">
-            <a routerLink="/favourite" routerLinkActive="active">
-              <span class="font-bold">Сүйгөн ырларым</span>
-            </a>
-          </li>
+  <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+    <div class="navbar-header aside">
+      <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html" #toggleBtn>
+        <i class="icon-list"></i>
+      </a>
+      <a routerLink="/" class="navbar-brand">
+        <img class="nav-xs logo-m" src="assets/img/logo-m.png" alt="Muzyka.kg" title="Muzyka.kg">
+        <img class="hidden-nav-xs logo-part" src="assets/img/logo-part.png" alt="Muzyka.kg" title="Muzyka.kg">
+      </a>
+      <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+        <i class="icon-user"></i>
+      </a>
+    </div>
+    <ul class="nav navbar-nav hidden-xs">
+      <li>
+        <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+          <i class="fa fa-dedent text"></i>
+          <i class="fa fa-indent text-active"></i>
+        </a>
+      </li>
+          <span id="musicbar" class="musicbar inline m-l-sm" style="width:20px;height:20px">
+            <span class="bar1 a1 bg-primary lter"></span>
+            <span class="bar2 a2 bg-info lt"></span>
+            <span class="bar3 a3 bg-success"></span>
+            <span class="bar4 a4 bg-warning dk"></span>
+            <span class="bar5 a5 bg-danger dker"></span>
+        </span>
         </ul>
-        <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-          <li *ngIf="!authService.loggedIn()">
-            <a routerLink="/login">Кирүү</a>
-          </li>
-
-          <li class="dropdown" *ngIf="authService.loggedIn()">
-            <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-              {{authService.userEmail()}}<b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu animated fadeInRight">
-              <li><a routerLink="profile">Профиль</a></li>
-              <li class="divider"></li>
-              <li><a (click)="logout()" data-toggle="ajaxModal">Чыгуу</a></li>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav m-n hidden-xs nav-user user" *ngIf="!authService.loggedIn()">
+                <li>
+                    <a routerLink="/register" class="login-btn m-r-md"><i class="icon-user-follow"></i> Катталуу</a>
+                </li>
+                <li>
+                    <a routerLink="/login" class="login-btn m-r-xl"><i class="icon-user"></i> Кирүү</a>
+                </li>
             </ul>
-          </li>
-        </ul>
-      </div>
+            <ul class="nav navbar-nav m-n hidden-xs nav-user user" *ngIf="authService.loggedIn()">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                  <img src="{{ authService.userPhoto() }}" alt="{{authService.userName()}}">
+                </span>
+            {{authService.userName()}}<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu animated fadeInRight">
+            <li><a routerLink="profile">Профиль</a></li>
+            <li class="divider"></li>
+            <li><a (click)="logout()" data-toggle="ajaxModal">Чыгуу</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
-    <div class="mobile-menu-container visible-xs">
-      <div class="row">
-        <div class="col-xs-3 mobile-menu">
-          <a routerLink="/" routerLinkActive="active">
-            <i class="fa fa-home mobile-menu-icon" aria-hidden="true"></i>
-            <span class="mobile-menu-title">Башкы бет</span>
-          </a>
-        </div>
-
-        <div class="col-xs-3 mobile-menu">
-          <a routerLink="/favourite" routerLinkActive="active">
-            <i class="fa fa-heart-o mobile-menu-icon" aria-hidden="true"></i>
-            <span class="mobile-menu-title">Сүйгөн</span>
-          </a>
-        </div>
-
-        <div class="col-xs-3 mobile-menu">
-          <a routerLink="/topsongs" routerLinkActive="active">
-            <i class="fa fa-fire mobile-menu-icon" aria-hidden="true"></i>
-            <span class="mobile-menu-title">Тренд</span>
-          </a>
-        </div>
-        <div class="col-xs-3 mobile-menu">
-          <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".menu-more">
-            <i class="fa fa-bars mobile-menu-icon"></i>
-          </a>
-
-        </div>
-      </div>
-      <div class="row ">
-        <div class="nav navbar-nav m-n nav-user menu-more hidden-xs">
-          <div class="col-xs-3 mobile-menu">
-            <a routerLink="/newsongs" routerLinkActive="active">
-              <i class="fa fa-globe mobile-menu-icon" aria-hidden="true"></i>
-              <span class="mobile-menu-title">Жаңы</span>
-            </a>
-          </div>
-          <div class="col-xs-3 mobile-menu">
-            <a routerLink="/randomsongs" routerLinkActive="active">
-              <i class="fa fa-random mobile-menu-icon" aria-hidden="true"></i>
-              <span class="mobile-menu-title">Туш келди</span>
-            </a>
-          </div>
-          <div class="col-xs-3 mobile-menu">
-            <a routerLink="/songs">
-              <i class="fa fa-music mobile-menu-icon"></i>
-              <span class="mobile-menu-title">Ырлар</span>
-            </a>
-          </div>
-          <div class="col-xs-3 mobile-menu">
-            <a routerLink="/artists" routerLinkActive="active">
-              <i class="fa fa-microphone mobile-menu-icon"></i>
-              <span class="mobile-menu-title">Ырчылар</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-search class="mobile-search"></app-search>
   </header>
   <section>
-    <section class="hbox stretch"> <!-- .aside -->
-      <section id="content">
+    <section class="hbox stretch">
+      <aside class="bg-black dk aside hidden-print" id="nav">
         <section class="vbox">
-          <router-outlet></router-outlet>
+          <section class="w-f-md scrollable">
+            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                 data-size="10px" data-railOpacity="0.2">
+              <nav class="nav-primary hidden-xs">
+                <ul class="nav bg clearfix">
+                  <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">Ырлар дүйнөсү</li>
+                  <li>
+                    <a routerLink="/" (click)="menuItemClick()">
+                      <i class="icon-home icon text-success"></i>
+                      <span class="font-bold" routerLinkActive="active">Башкы бет</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/songs" (click)="menuItemClick()">
+                      <i class="fa-music fa text-info"></i>
+                      <span class="font-bold" routerLinkActive="active">Ырлар</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/artists" routerLinkActive="active" (click)="menuItemClick()">
+                      <i class="icon-user icon text-primary-lter"></i>
+                      <span class="font-bold">Аткаруучу</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/topsongs" routerLinkActive="active" (click)="menuItemClick()">
+                      <i class="fa fa-line-chart text-info-dker"></i>
+                      <span class="font-bold">Тренд</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/newsongs" routerLinkActive="active" (click)="menuItemClick()">
+                      <i class="icon-plus icon text-primary"></i>
+                      <span class="font-bold">Жаңы ырлар</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/randomsongs" routerLinkActive="active" (click)="menuItemClick()">
+                      <i class="icon-shuffle icon"></i>
+                      <span class="font-bold">Туш келди</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/playlists" routerLinkActive="active" (click)="menuItemClick()">
+                      <i class="icon-playlist text-info"></i>
+                      <span class="font-bold">Плейлисттер</span>
+                    </a>
+                  </li>
+                  <li *ngIf="authService.loggedIn()">
+                    <a routerLink="/favourite" routerLinkActive="active" (click)="menuItemClick()">
+                      <i class="icon-heart icon text-danger-dker"></i>
+                      <span class="font-bold">Сүйгөн ырларым</span>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="nav text-sm">
+                  <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                    Плейлисттер
+                  </li>
+                  <li>
+                    <a routerLink="/playlist/suiuu-yrlary">
+                      <i class="fa fa-heart text-danger-lter"></i> <span>Сүйүү ырлары</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/playlist/toi-yrlary">
+                      <i class="icon-playlist icon text-success-lter"></i><span>Той ырлары</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/playlist/esten-ketkis-eski-yrlar">
+                      <i class="icon-playlist icon text-success-lter"></i><span>Эски ырлар</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/playlist/gitara-koshtoosunda">
+                      <i class="icon-playlist icon text-success-lter"></i><span>Гитара</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/playlists">
+                      <i class="fa fa-bars text-success-lter"></i><span>Дагы...</span>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="nav" data-ride="collapse">
+                  <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">Пайдалуу шилтемелер
+                  </li>
+                  <li>
+                    <a href="" routerLink="/about" class="auto" (click)="menuItemClick()">
+                      <i class="icon-music-tone-alt icon"></i>
+                      <span>Портал тууралуу</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/contact" class="auto" (click)="menuItemClick()">
+                      <i class="icon-call-in icon"></i>
+                      <span>Байланыш</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </section>
+          <footer class="footer hidden-xs no-padder text-center-nav-xs">
+            <div class="bg hidden-xs ">
+              <div class="dropdown dropup wrapper-sm clearfix" *ngIf="currentSong">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="thumb-sm avatar pull-left m-l-xs">
+                                      <img [lazyLoad]="currentSong.profileLocal|profile"
+                                           src="http://api-muzyka.aio.kg/uploads/artist/profile/placeholder_one.jpg"
+                                           class="r r-2x img-full">
+                                        <i class="on b-black"></i>
+                                    </span>
+                </a>
+              </div>
+            </div>
+          </footer>
+        </section>
+      </aside>
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+            <section class="vbox">
+              <section class="scrollable padder-md w-f-md" id="bjax-target">
+                <router-outlet></router-outlet>
+              </section>
+              <footer class="footer bg-primary music-player">
+                <app-player></app-player>
+
+              </footer>
+            </section>
+          </section>
         </section>
         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
            data-target="#nav,html"></a>
@@ -128,6 +198,3 @@
     </section>
   </section>
 </section>
-<app-player></app-player>
-
-

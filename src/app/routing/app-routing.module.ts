@@ -14,9 +14,14 @@ import {
   ProfileComponent,
   RandomsongsComponent,
   SongsComponent,
-  TopsongsComponent
+  TopsongsComponent,
+  SongComponent,
+  UserRegisterComponent,
+  ContactComponent,
+  AboutComponent,
+  PlaylistsComponent
 } from '../pages/index';
-import {UserRegisterComponent} from '../pages/user-register/user-register.component';
+import {PlaylistComponent} from "../pages/playlist/playlist.component";
 
 const appRoutes:Routes = <Routes>[
   {
@@ -48,7 +53,7 @@ const appRoutes:Routes = <Routes>[
     component: RandomsongsComponent,
   },
   {
-    path: 'artist/:id',
+    path: 'artist/:slug',
     component: ArtistComponent,
   },
   {
@@ -62,6 +67,26 @@ const appRoutes:Routes = <Routes>[
   {
     path: 'register',
     component: UserRegisterComponent
+  },
+  {
+    path: 'song/:slug',
+    component: SongComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+  },
+  {
+    path: 'playlists',
+    component: PlaylistsComponent
+  },
+  {
+    path: 'playlist/:slug',
+    component: PlaylistComponent
   }
 ];
 
