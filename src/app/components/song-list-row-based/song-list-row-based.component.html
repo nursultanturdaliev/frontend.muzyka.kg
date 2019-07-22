@@ -14,6 +14,9 @@
           <a (click)="appService.favourite(song)" *ngIf="!localStorageService.isFavorite(song.id)">
             <i class="fa fa-heart-o fa-1-5x"></i>
           </a>
+          <a  (click)="appService.download(song)">
+            <i class="fa fa-download fa-1-5x"></i>
+          </a>
         </span>
         <div class="pull-right text-accent m-t-sm">
           <i class="icon-control-play text fa-1-3x" (click)="playerService.play(song,songs)" *ngIf="!playerService.isCurrentSong(song)"></i>

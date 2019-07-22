@@ -20,7 +20,7 @@ export class AppService {
               private configService: ConfigService) {
   }
 
-  favourite(song:Song) {
+  favourite(song: Song) {
     if (!this.authService.loggedIn()) {
       let config = new ToastConfig();
       config.timeOut = 5000;
@@ -28,11 +28,11 @@ export class AppService {
       return;
     }
     this.favouriteService.favourite(song)
-      .then((favourite:Favourite)=> {
+      .then((favourite: Favourite) => {
         this.toastrService.info('Сиз сүйгөн ырлар тизмегине кошулду', favourite.song.artist_as_one + ' ' + favourite.song.title);
       })
       .catch((response) => {
-        if(response.status == 409){
+        if (response.status == 409) {
           this.toastrService.warning('Сүйгөн ырлар тизмегинде эчак эле кошулган.');
         }
       });
@@ -49,7 +49,6 @@ export class AppService {
         }
       });
   }
-
   download(song: Song) {
     let downloadUrl = this.configService.API_URL + '/song/stream/' + song.uuid;
 

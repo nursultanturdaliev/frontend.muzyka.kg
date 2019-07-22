@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
               private playerService: PlayerService,
               private appService: AppService,
               private localStorageService: LocalStorageService) {
+
   }
 
   ngOnInit() {

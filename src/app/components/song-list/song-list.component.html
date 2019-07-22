@@ -20,8 +20,6 @@
               <a (click)="appService.favourite(song)" *ngIf="!localStorageService.isFavorite(song.id)" class="pull-right cursor-hand">
                 <i class="fa fa-heart-o fa-1-5x"></i>
               </a>
-
-
               <a (click)="appService.download(song)" class="pull-left cursor-hand">
                 <i class="fa fa-cloud-download fa-1-5x"></i>
               </a>
